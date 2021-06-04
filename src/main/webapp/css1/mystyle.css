@@ -1,30 +1,10 @@
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
-
 li {
     float: right;
+    text-align: center;
 }
 
-li a {
-    display: block;
-    color: white;
-    text-align: right;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-/* Change the link color to #111 (black) on hover */
-li a:hover {
-    background-color: #111;
-}
-
-.active {
-    background-color: #4CAF50;
+li.active {
+    background-color: #009999;
 }
 
 
@@ -34,26 +14,6 @@ ul {
     top: 0;
 }
 
-/**/
-.nav-selections {
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    font: 18px "lato", sans-serif;
-    display: inline-block;
-    text-decoration: none;
-    color: white;
-    padding: 18px;
-    float: right;
-    margin-left: 50px;
-    transition: 1.5s;
-}
-
-.nav-selections:hover {
-    transition: 1.5s;
-    color: black;
-}
-
-/**/
 
 body {
     background-color: #ffffff;
@@ -71,49 +31,10 @@ a:hover {
     color: #009999;
 }
 
-/*Per usare un font da internet:
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia"> */
-
-
-/*box per la ricerca all'interno della riga*/
-
-form.example input[type=text] {
-    padding: 10px;
-    font-size: 17px;
-    border: 1px solid grey;
-    float: left;
-    width: 50%;
-    background: #f1f1f1;
-}
-
-/* Style the submit button */
-form.search button {
-    float: right;
-    width: 5%;
-    padding: 10px;
-    background: #000000;
-    color: white;
-    font-size: 17px;
-    border: 1px solid grey;
-    border-left: none; /* Prevent double borders */
-    cursor: pointer;
-}
-
-form.search button:hover {
-    background: #0b7dda;
-}
-
-/* Clear floats */
-form.search:after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
 /* The side navigation menu */
 .sidebar {
     margin: 0;
-    padding: 15px 0px;
+    padding: 15px 0;
     width: 20px;
     background-color: #ffffff;
     opacity: .4;
@@ -137,18 +58,7 @@ h3{
     coloumn-span: 3;
 }
 
-.w3-content{
-    align-content: center;
-}
-
-.w3-display-container{:hover}
-.w3-display-hover{display:block}
-.w3-display-container{:hover}
-span.w3-display-hover{display:inline-block}
-.w3-display-hover{display:none}
-.w3-display-position{position:absolute}
-
 h4{
     text-align: left;
-    color: red;
+    color: black;
 }
