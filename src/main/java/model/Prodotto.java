@@ -1,62 +1,76 @@
 package model;
 
+/*
+
+CREATE TABLE prodotto(
+codP INT PRIMARY KEY,
+tipo char(30) NOT NULL,
+marca char(15) NOT NULL,
+modello char(200) NOT NULL,
+prezzo float NOT NULL,
+quantità int Not null
+);
+ */
+
+
 public class Prodotto {
-    private int id;
-    private String nome;
-    private String descrizione;
-    private long prezzoCent;
+    private int codP;
+    private String tipo;
+    private String marca;
+    private String modello;
+    private float prezzo;
+    private int quantità;
 
-    public int getId() {
-        return id;
+    public int getCodP() {
+        return this.codP;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCodP(int id) {
+        this.codP = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getMarca() {
+        return marca;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public String getTipo() {
+        return tipo;
     }
 
-    public String getDescrizione() {
-        return descrizione;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
-    public void setDescrizione(String descrizione) {
-        this.descrizione = descrizione;
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
-    public long getPrezzoCent() {
-        return prezzoCent;
+    public String getModello() {
+        return modello;
     }
 
-    public void setPrezzoCent(long prezzoCent) {
-        this.prezzoCent = prezzoCent;
+    public void setModello(String modello) {
+        this.modello = modello;
     }
 
-    public String getPrezzoEuro() {
-        return String.format("%.2f", prezzoCent / 100.);
+    public float getPrezzo() {
+        return prezzo;
+    }
+
+    public void setPrezzo(float prezzo) {
+        this.prezzo = prezzo;
+    }
+
+    public int getQuantità() {
+        return quantità;
+    }
+
+    public void setQuantità(int quantità) {
+        this.quantità = quantità;
     }
 
     @Override
     public String toString() {
-        return "Prodotto [id=" + id + ", nome=" + nome + ", descrizione=" + descrizione + ", prezzoCent=" + prezzoCent
-                + ", categorie="+ "]";
+        return super.toString();
     }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((descrizione == null) ? 0 : descrizione.hashCode());
-        result = prime * result + id;
-        result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-        result = prime * result + (int) (prezzoCent ^ (prezzoCent >>> 32));
-        return result;
-    }
-
 }
