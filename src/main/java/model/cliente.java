@@ -42,6 +42,10 @@ public class cliente{
             this.data_registrazione=data_registrazione;
         }
 
+    public cliente() {
+
+    }
+
     public List<Ordine> getOrdine() {
         return ordine;
     }
