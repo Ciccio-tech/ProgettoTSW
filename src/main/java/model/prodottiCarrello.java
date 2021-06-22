@@ -18,6 +18,6 @@ public class prodottiCarrello {
     }
 
     public double totale(){
-        return prodotto.getPrezzo()* prodotto.getQuantità();
+        return prodotto.getPrezzo()* prodotto.getQuantita();
     }
 }

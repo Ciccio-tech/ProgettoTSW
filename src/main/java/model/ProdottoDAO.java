@@ -32,7 +32,7 @@ public class ProdottoDAO {
                 p.setMarca(rs.getString(2));
                 p.setModello(rs.getString(3));
                 p.setPrezzo(rs.getLong(4));
-                p.setQuantità(rs.getInt(5));
+                p.setQuantita(rs.getInt(5));
                 prodotti.add(p);
             }
             return prodotti;
@@ -52,7 +52,7 @@ public class ProdottoDAO {
                 p.setMarca(rs.getString(2));
                 p.setModello(rs.getString(3));
                 p.setPrezzo(rs.getLong(4));
-                p.setQuantità(rs.getInt(5));
+                p.setQuantita(rs.getInt(5));
                 return p;
             }
             return null;
@@ -76,7 +76,7 @@ public class ProdottoDAO {
                 p.setMarca(rs.getString(2));
                 p.setModello(rs.getString(3));
                 p.setPrezzo(rs.getLong(4));
-                p.setQuantità(rs.getInt(5));
+                p.setQuantita(rs.getInt(5));
                 prodotti.add(p);
             }
             return prodotti;

@@ -19,7 +19,7 @@ public class Prodotto {
     private String marca;
     private String modello;
     private float prezzo;
-    private int quantità;
+    private int quantita;
 
     public int getCodP() {
         return this.codP;
@@ -61,12 +61,12 @@ public class Prodotto {
         this.prezzo = prezzo;
     }
 
-    public int getQuantità() {
-        return quantità;
+    public int getQuantita() {
+        return quantita;
     }
 
-    public void setQuantità(int quantità) {
-        this.quantità = quantità;
+    public void setQuantita(int quantita) {
+        this.quantita = quantita;
     }
 
     @Override

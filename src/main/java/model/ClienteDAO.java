@@ -1,6 +1,6 @@
 package model;
 
-import java.net.ConnectException;
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -71,23 +71,38 @@ public class ClienteDAO {
         }
     }
 
+
     //da fare il metodo doSave
 
-
-
-    ArrayList<cliente> fetchCliente(int start, int end) throws SQLException {
-        return null;
+/*
+    public ArrayList<cliente> fetchCliente(int start, int end) throws SQLException {
+        DataSource source;
+        try(Connection c= source.getConnection()){
+            QueryBuilder queryBuilder = new QueryBuilder("account", "acc");
+            String query = queryBuilder.select().GenerateQuery();
+            try(PreparedStatement ps= c.prepareStatement(query)){
+                ps.setInt(1, start);
+                ps.setInt(2, end);
+                ResultSet set = ps.executeQuery();
+                cliente account = new cliente();
+                ArrayList<cliente> accounts = new ArrayList<cliente>();
+                while(set.next()){
+                    accounts.add(c);
+                }
+                return accounts;
+            }
+        }
     }
-
-    Boolean createCliente(cliente c) throws SQLException{
+*/
+    public Boolean createCliente(cliente c) throws SQLException{
         return false;
     }
 
-    Boolean updateCliente(cliente c) throws  SQLException{
+    public Boolean updateCliente(cliente c) throws  SQLException{
         return false;
     }
 
-    Boolean deleteCliente(cliente c) throws SQLException{
+    public Boolean deleteCliente(cliente c) throws SQLException{
         return false;
     }
 

@@ -10,7 +10,7 @@
 <div class="header">
 <ul>
     <li> <a href="WEB-INF/nome.html" > About Us </a></li>
-    <li> <a href="WEB-INF/nome.html" >Categorie </a></li>
+    <li> <a id="categorie" href="WEB-INF/nome.html" >Categorie </a></li>
     <li> <a href="WEB-INF/nome.html" >Prodotti </a></li>
     <li> <a href="WEB-INF/Login.jsp" >Iscriviti</a> </li>
     <li>
