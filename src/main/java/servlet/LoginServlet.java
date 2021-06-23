@@ -1,11 +1,14 @@
 package servlet;
 
+import model.ClienteDAO;
 import model.cliente;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
 
 public class LoginServlet {
 
@@ -14,7 +17,7 @@ public class LoginServlet {
         String password=request.getParameter("password");
         cliente c=null;
         if(username!=null && password != null){
-            //c=clienteDAO.doRetrieveByUsernamePassword(username, password);
+            c= ClienteDAO.doRetrieveByUsernamePassword(username, password);
         }
 
         if(c==null){

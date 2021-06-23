@@ -43,8 +43,8 @@ public class ClienteDAO {
         }
     }
 
- /*
-  public cliente doRetriveByUsernamePassword(String username, String password){
+
+  public static cliente doRetrieveByUsernamePassword(String username, String password){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("SELECT username, password, nome, email FROM utente WHERE username=?");
             ps.setString(0, username);
@@ -63,7 +63,7 @@ public class ClienteDAO {
             throw new RuntimeException(e);
         }
     }
-*/
+
 
     public cliente doRetrieveByUsername(String username) throws SQLException {
         try (Connection con = ConPool.getConnection()) {

@@ -10,7 +10,7 @@
 <div class="header">
 <ul>
     <li> <a href="WEB-INF/nome.html" > About Us </a></li>
-    <li> <a href="WEB-INF/nome.html" >Categorie </a></li>
+    <li> Categorie<!-- menu a tendina --> </li>
     <li> <a href="WEB-INF/nome.html" >Prodotti </a></li>
     <li> <a href="WEB-INF/Login.jsp" >Iscriviti</a> </li>
     <li>
@@ -84,6 +84,7 @@
     nihil imperdiet doming id quod mazim placerat facer possim assum.
     <h3>bello</h3>
 
+    <a href="WEB-INF/Registrazione.jsp">accedi</a>
 
 </div>
 
