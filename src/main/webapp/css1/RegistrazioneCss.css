@@ -1,0 +1,24 @@
+body {
+    background-color: #ffffff;
+}
+
+h3{
+    color: black;
+    margin-left: 20px;
+    text-align: center;
+    font-family: Tahoma, Verdana, sans-serif;
+}
+
+button{
+    padding: 1px;
+    color: #009999;
+    margin-left: 20px;
+    text-align: center;
+    font-family: Tahoma, Verdana, sans-serif;
+}
+
+div #registrazione input{
+    text-align: center;
+    font-family: Tahoma, Verdana, sans-serif;
+    border-color: black;
+}
