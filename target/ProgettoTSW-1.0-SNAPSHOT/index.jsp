@@ -10,7 +10,18 @@
 <div class="header">
 <ul>
     <li> <a href="WEB-INF/nome.html" > About Us </a></li>
-    <li> Categorie<!-- menu a tendina --> </li>
+    <li>
+        <div class="dropdown">
+            <button class="dropbtn" onclick="myFunction()">Categorie
+             <i class="fa fa-caret-down"></i>
+            </button>
+                <div class="dropdown-content" id="myDropdown">
+                 <a href="#">Link 1</a>
+                 <a href="#">Link 2</a>
+                 <a href="#">Link 3</a>
+                </div>
+        </div>
+    </li>
     <li> <a href="WEB-INF/nome.html" >Prodotti </a></li>
     <li> <a href="WEB-INF/Login.jsp" >Iscriviti</a> </li>
     <li>
@@ -40,6 +51,28 @@
 </div>
 
 
+<!--Script per il menu a tendina "Categorie"-->
+<script>
+    /* When the user clicks on the button,
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(e) {
+        if (!e.target.matches('.dropbtn')) {
+            var myDropdown = document.getElementById("myDropdown");
+            if (myDropdown.classList.contains('show')) {
+                myDropdown.classList.remove('show');
+            }
+        }
+    }
+</script>
+
+
+
+
 <!-- The sidebar -->
 <div class="sidebar" style="width:70px; text-align: right; color: transparent">
         <a href="https://api.whatsapp.com/send?phone=DA INSERIRE UN NUMERO DI TELEFONO&text=Salve,%20vorrei%20qualche%20informazione%20in%20merito%20ai%20vostri%20prodotti." ><img src="images/whatsapp.png" width=25px height=25px alt="whatsapp"> </a><br>
@@ -52,50 +85,39 @@
 
 
 
-<script>
-    let slideIndex = 1;
-    showDivs(slideIndex);
 
-    function plusDivs(n) {
-        showDivs(slideIndex += n);
-    }
-
-    function showDivs(n) {
-        let i;
-        let x = document.getElementsByClassName("mySlides");
-        if (n > x.length) {slideIndex = 1}
-        if (n < 1) {slideIndex = x.length}
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-        }
-        x[slideIndex-1].style.display = "block";
-    }
-</script>
+<div class="immagini">
+    ciao
+    <div class="slider-container">
+        <div class="image-container">
+            image container
+            <img src="images/Slider/foto.jpg" alt="vecchia Canon" class="slider-image" id="slider-image-1" height="400px" width="800px"/>
+            <img src="images/Slider/foto1.jpg" alt="paesaggio" class="slider-image" id="slider-image-2" height="400px" width="800px"/>
+            <img src="images/Slider/foto2.jpg" alt="bimbo" class="slider-image" id="slider-image-3" height="400px" width="800px"/>
+        </div>
+        <div class="button-container">
+            button container
+            <a href="#slider-image-1" class="slider-change"></a>
+            <a href="#slider-image-2" class="slider-change"></a>
+            <a href="#slider-image-3" class="slider-change"></a>
+        </div>
+    </div>
+</div>
 
 
 
 <div class="product">
-    <h2>ciao</h2>
-    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-    magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
-    nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
-    consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent
-    luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue
-    nihil imperdiet doming id quod mazim placerat facer possim assum.
-    <h3>bello</h3>
-
-    <a href="WEB-INF/Registrazione.jsp">accedi</a>
 
 </div>
 
 
 
-<footer class="my-5 pt-5 text-muted text-center text-small">
-    <p class="mb-1">&copy;2021 Reflex Your World</p>
-    <ul class="list-inline">
-        <li class="list-inline-item"><a href="#">Privacy</a></li>
-        <li class="list-inline-item"><a href="#">Terms</a></li>
-        <li class="list-inline-item"><a href="#">Support</a></li>
+<footer class="f">
+    <p class="marchio">&copy;2021 Reflex Your World</p>
+    <ul>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Support</a></li>
     </ul>
 </footer>
 
