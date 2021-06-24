@@ -7,6 +7,8 @@
 </head>
 <body>
 
+<img src="images/Logo.png" alt="logo" id="logo">
+
 <div class="header">
 <ul>
     <li> <a href="WEB-INF/nome.html" > About Us </a></li>
@@ -71,8 +73,6 @@
 </script>
 
 
-
-
 <!-- The sidebar -->
 <div class="sidebar" style="width:70px; text-align: right; color: transparent">
         <a href="https://api.whatsapp.com/send?phone=DA INSERIRE UN NUMERO DI TELEFONO&text=Salve,%20vorrei%20qualche%20informazione%20in%20merito%20ai%20vostri%20prodotti." ><img src="images/whatsapp.png" width=25px height=25px alt="whatsapp"> </a><br>
@@ -84,19 +84,14 @@
 </div>
 
 
-
-
 <div class="immagini">
-    ciao
     <div class="slider-container">
         <div class="image-container">
-            image container
-            <img src="images/Slider/foto.jpg" alt="vecchia Canon" class="slider-image" id="slider-image-1" height="400px" width="800px"/>
-            <img src="images/Slider/foto1.jpg" alt="paesaggio" class="slider-image" id="slider-image-2" height="400px" width="800px"/>
-            <img src="images/Slider/foto2.jpg" alt="bimbo" class="slider-image" id="slider-image-3" height="400px" width="800px"/>
+            <img src="images/Slider/foto.jpg" alt="Canon" class="slider-image" id="slider-image-1" height="500px" width="1000px"/>
+            <img src="images/Slider/foto1.jpg" alt="paesaggio" class="slider-image" id="slider-image-2" height="500px" width="1000px"/>
+            <img src="images/Slider/foto2.jpg" alt="bimbo" class="slider-image" id="slider-image-3" height="500px" width="1000px"/>
         </div>
         <div class="button-container">
-            button container
             <a href="#slider-image-1" class="slider-change"></a>
             <a href="#slider-image-2" class="slider-change"></a>
             <a href="#slider-image-3" class="slider-change"></a>
@@ -106,8 +101,10 @@
 
 
 
-<div class="product">
 
+<div class="product">
+    <p>Prodotti più venduti:</p>
+    <!--codice per inserire immagini e prezzo-->
 </div>
 
 

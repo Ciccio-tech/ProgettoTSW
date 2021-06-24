@@ -1,3 +1,11 @@
+img #logo {
+    width: 25px;
+    height: 25px;
+    padding: 10px 10px 10px 10px;
+    position: -ms-device-fixed;
+
+}
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -115,13 +123,14 @@ a:hover {
 
 .slider-container
 {
-    width: 800px;
-    height: 400px;
+    width: 1000px;
+    height: 500px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 0;
     text-align: center;
     overflow: hidden;
+    position: -ms-device-fixed;
 }
 
 .image-container
@@ -137,6 +146,7 @@ a:hover {
     transition: left 2s;
 }
 
+/*in questo modo modifico le immagini tramite il css, ma dovrei farlo con il timer in JS*/
 #slider-image-1:target ~ .image-container
 {
     left: 0;
@@ -155,6 +165,7 @@ a:hover {
     position: relative;
     top: -20px;
 }
+
 .slider-change
 {
     display: inline-block;
