@@ -72,9 +72,8 @@ function load() {
     }
 }
 
-/*
+
 function loadImage(i) {
     ws_images[i] = new Image();
     ws_images[i].src = cartella + i + extension;
 }
-*/

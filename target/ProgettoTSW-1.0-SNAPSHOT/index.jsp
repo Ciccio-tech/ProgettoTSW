@@ -7,11 +7,11 @@
 </head>
 <body>
 
-<img src="images/Logo%20(1).png" alt="logo" id="logo" class="Logo">
+<img src="images/Logo%20(1).png" alt="logo" class="Logo">
 
 <div class="header">
 <ul class="h">
-    <li> <a href="WEB-INF/nome.html" > About Us </a></li>
+    <li> <a href="Login1.jsp" > About Us </a></li>
     <li>
         <div class="dropdown">
             <button class="dropbtn" onclick="myFunction()">Categorie
@@ -68,6 +68,8 @@
         </div>
 -->
 
+
+<!--
 <script>
     $(document).ready(function(){
         $('.dropbtn').hover(
@@ -82,6 +84,9 @@
 
 
 </script>
+-->
+
+
 <script>
     /* When the user clicks on the button,
     toggle between hiding and showing the dropdown content */
@@ -112,7 +117,7 @@
             </svg>
 </div>
 
-
+<!--
 <div class="immagini">
     <div class="slider-container">
         <div class="image-container">
@@ -127,7 +132,42 @@
         </div>
     </div>
 </div>
+-->
 
+<div class="slideshow-container">
+
+    <div class="mySlides">
+        <img src="images/Slider/foto.jpg" alt="Canon" class="slider-image" id="slider-image-1" height="500px" width="1000px">
+    </div>
+
+    <div class="mySlides">
+        <img src="images/Slider/foto1.jpg" alt="paesaggio" class="slider-image" id="slider-image-2" height="500px" width="1000px">
+    </div>
+
+    <div class="mySlides">
+        <img src="images/Slider/foto2.jpg" alt="bimbo" class="slider-image" id="slider-image-3" height="500px" width="1000px">
+    </div>
+
+</div>
+
+
+
+<script>
+    var slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}
+        slides[slideIndex-1].style.display = "block";
+        setTimeout(showSlides, 3000); // Change image every 3 seconds
+    }
+</script>
 
 
 

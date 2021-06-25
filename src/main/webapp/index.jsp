@@ -11,7 +11,7 @@
 
 <div class="header">
 <ul class="h">
-    <li> <a href="WEB-INF/nome.html" > About Us </a></li>
+    <li> <a href="Login1.jsp" > About Us </a></li>
     <li>
         <div class="dropdown">
             <button class="dropbtn" onclick="myFunction()">Categorie
@@ -53,21 +53,9 @@
 </div>
 
 
-<!--Script per il menu a tendina "Categorie"
+<!--Script per il menu a tendina "Categorie"-->
 
-
-<div class="dropdown">
-            <button class="dropbtn" onclick="myFunction()">Categorie
-             <i class="fa fa-caret-down"></i>
-            </button>
-                <div class="dropdown-content" id="myDropdown">
-                 <a href="#">Link 1</a>
-                 <a href="#">Link 2</a>
-                 <a href="#">Link 3</a>
-                </div>
-        </div>
--->
-
+<!--
 <script>
     $(document).ready(function(){
         $('.dropbtn').hover(
@@ -82,6 +70,9 @@
 
 
 </script>
+-->
+
+
 <script>
     /* When the user clicks on the button,
     toggle between hiding and showing the dropdown content */
@@ -113,20 +104,41 @@
 </div>
 
 
-<div class="immagini">
-    <div class="slider-container">
-        <div class="image-container">
-            <img src="images/Slider/foto.jpg" alt="Canon" class="slider-image" id="slider-image-1" height="500px" width="1000px"/>
-            <img src="images/Slider/foto1.jpg" alt="paesaggio" class="slider-image" id="slider-image-2" height="500px" width="1000px"/>
-            <img src="images/Slider/foto2.jpg" alt="bimbo" class="slider-image" id="slider-image-3" height="500px" width="1000px"/>
-        </div>
-        <div class="button-container">
-            <a href="#slider-image-1" class="slider-change"></a>
-            <a href="#slider-image-2" class="slider-change"></a>
-            <a href="#slider-image-3" class="slider-change"></a>
-        </div>
+
+<div class="slideshow-container">
+
+    <div class="mySlides">
+        <img src="images/Slider/foto.jpg" alt="Canon" class="slider-image" id="slider-image-1" height="500px" width="1000px">
     </div>
+
+    <div class="mySlides">
+        <img src="images/Slider/foto1.jpg" alt="paesaggio" class="slider-image" id="slider-image-2" height="500px" width="1000px">
+    </div>
+
+    <div class="mySlides">
+        <img src="images/Slider/foto2.jpg" alt="bimbo" class="slider-image" id="slider-image-3" height="500px" width="1000px">
+    </div>
+
 </div>
+
+<!-- script per le immagini-->
+<script>
+    var slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}
+        slides[slideIndex-1].style.display = "block";
+        setTimeout(showSlides, 3000); // Change image every 3 seconds
+    }
+</script>
+
 
 
 
