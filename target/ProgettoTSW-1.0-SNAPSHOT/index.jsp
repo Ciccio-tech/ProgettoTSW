@@ -7,10 +7,10 @@
 </head>
 <body>
 
-<img src="images/Logo.png" alt="logo" id="logo">
+<img src="images/Logo%20(1).png" alt="logo" id="logo" class="Logo">
 
 <div class="header">
-<ul>
+<ul class="h">
     <li> <a href="WEB-INF/nome.html" > About Us </a></li>
     <li>
         <div class="dropdown">
@@ -53,7 +53,35 @@
 </div>
 
 
-<!--Script per il menu a tendina "Categorie"-->
+<!--Script per il menu a tendina "Categorie"
+
+
+<div class="dropdown">
+            <button class="dropbtn" onclick="myFunction()">Categorie
+             <i class="fa fa-caret-down"></i>
+            </button>
+                <div class="dropdown-content" id="myDropdown">
+                 <a href="#">Link 1</a>
+                 <a href="#">Link 2</a>
+                 <a href="#">Link 3</a>
+                </div>
+        </div>
+-->
+
+<script>
+    $(document).ready(function(){
+        $('.dropbtn').hover(
+            function(){
+                $('ul', this).delay(5).slideDown(50);
+            },
+            function(){
+                $('ul', this).delay(5).slideUp(50);
+            }
+        );
+    });
+
+
+</script>
 <script>
     /* When the user clicks on the button,
     toggle between hiding and showing the dropdown content */
@@ -74,6 +102,7 @@
 
 
 <!-- The sidebar -->
+
 <div class="sidebar" style="width:70px; text-align: right; color: transparent">
         <a href="https://api.whatsapp.com/send?phone=DA INSERIRE UN NUMERO DI TELEFONO&text=Salve,%20vorrei%20qualche%20informazione%20in%20merito%20ai%20vostri%20prodotti." ><img src="images/whatsapp.png" width=25px height=25px alt="whatsapp"> </a><br>
         <a href="https://www.facebook.com/francesco.cammarota.562"> <img src="images/facebook.png" width=25px height=25px alt="facebook"></a><br>
@@ -105,6 +134,8 @@
 <div class="product">
     <p>Prodotti più venduti:</p>
     <!--codice per inserire immagini e prezzo-->
+    <img src="images/FotoProdotti/CanonG9.jpg">
+
 </div>
 
 

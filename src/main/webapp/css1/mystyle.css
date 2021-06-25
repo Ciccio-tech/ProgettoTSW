@@ -1,20 +1,20 @@
-img #logo {
-    width: 25px;
-    height: 25px;
+img .Logo {
+    width: 5px;
+    height: 5px;
     padding: 10px 10px 10px 10px;
     position: -ms-device-fixed;
-
+    position: center;
 }
 
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;
     background-color: #333;
     position: sticky;
     position: -webkit-sticky;
     top: 0;
+    overflow: auto;
 }
 
 
@@ -174,7 +174,6 @@ a:hover {
     border-radius: 5px;
     background-color: white;
 }
-
 
 
 
