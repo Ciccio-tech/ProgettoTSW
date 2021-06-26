@@ -53,21 +53,7 @@
 </div>
 
 
-<!--Script per il menu a tendina "Categorie"
-
-
-<div class="dropdown">
-            <button class="dropbtn" onclick="myFunction()">Categorie
-             <i class="fa fa-caret-down"></i>
-            </button>
-                <div class="dropdown-content" id="myDropdown">
-                 <a href="#">Link 1</a>
-                 <a href="#">Link 2</a>
-                 <a href="#">Link 3</a>
-                </div>
-        </div>
--->
-
+<!--Script per il menu a tendina "Categorie"-->
 
 <!--
 <script>
@@ -117,22 +103,7 @@
             </svg>
 </div>
 
-<!--
-<div class="immagini">
-    <div class="slider-container">
-        <div class="image-container">
-            <img src="images/Slider/foto.jpg" alt="Canon" class="slider-image" id="slider-image-1" height="500px" width="1000px"/>
-            <img src="images/Slider/foto1.jpg" alt="paesaggio" class="slider-image" id="slider-image-2" height="500px" width="1000px"/>
-            <img src="images/Slider/foto2.jpg" alt="bimbo" class="slider-image" id="slider-image-3" height="500px" width="1000px"/>
-        </div>
-        <div class="button-container">
-            <a href="#slider-image-1" class="slider-change"></a>
-            <a href="#slider-image-2" class="slider-change"></a>
-            <a href="#slider-image-3" class="slider-change"></a>
-        </div>
-    </div>
-</div>
--->
+
 
 <div class="slideshow-container">
 
@@ -150,8 +121,7 @@
 
 </div>
 
-
-
+<!-- script per le immagini-->
 <script>
     var slideIndex = 0;
     showSlides();
@@ -171,10 +141,32 @@
 
 
 
+
+
 <div class="product">
     <p>Prodotti più venduti:</p>
     <!--codice per inserire immagini e prezzo-->
-    <img src="images/FotoProdotti/CanonG9.jpg">
+    <ul>
+        <li id="prodotti"></li>
+    </ul>
+    <!--
+    <script>
+        document.ready();
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                xhttp.open("doRetrieveAll", "../java/model/Prodotto.java", true);
+                xhttp.send();
+                var s=xhttp.responseText;
+                var array = new Array();
+                array = s.split(".jpg");
+                if(array.length > 0){
+                    document.getElementById("prodotti").innerHTML=array;
+                }
+            }
+        };
+    </script>
+    -->
 
 </div>
 

@@ -121,7 +121,8 @@ a:hover {
 
 /*codice per lo slider*/
 
-.slider-container
+/*
+.slideshow-container
 {
     width: 1000px;
     height: 500px;
@@ -132,21 +133,14 @@ a:hover {
     overflow: hidden;
     position: -ms-device-fixed;
 }
-
-.image-container
-{
-    width: 2400px;
-    height: 400px;
-    clear: both;
-    position: relative;
-
-    -webkit-transition: left 2s;
-    -moz-transition: left 2s;
-    -o-transition: left 2s;
-    transition: left 2s;
+*/
+.slideshow-container{
+    text-align: center;
 }
 
+
 /*in questo modo modifico le immagini tramite il css, ma dovrei farlo con il timer in JS*/
+/*
 #slider-image-1:target ~ .image-container
 {
     left: 0;
@@ -174,6 +168,9 @@ a:hover {
     border-radius: 5px;
     background-color: white;
 }
+
+*/
+
 
 
 

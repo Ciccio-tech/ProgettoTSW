@@ -146,7 +146,58 @@
 <div class="product">
     <p>Prodotti più venduti:</p>
     <!--codice per inserire immagini e prezzo-->
-    <img src="images/FotoProdotti/CanonG9.jpg">
+    <ul>
+        <li id="prodotti"></li>
+    </ul>
+    <!--
+    <script>
+        document.ready();
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                xhttp.open("doRetrieveAll", "../java/model/Prodotto.java", true);
+                xhttp.send();
+                var s=xhttp.responseText;
+                var array = new Array();
+                array = s.split(".jpg");
+                if(array.length > 0){
+                    document.getElementById("prodotti").innerHTML=array;
+                }
+            }
+        };
+    </script>
+
+
+<script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      loadProducts(this);
+    }
+  };
+  xhttp.open("GET", "../java/model/Prodotto.java", true);
+  xhttp.send();
+}
+function loadProducts(xml) {
+  var i;
+  var xmlDoc = xml.responseXML;
+  var table="<tr><th>Prodotti</th><th>Title</th></tr>";
+  var x = xmlDoc.getElementsByTagName("Obiettivi");
+  for (i = 0; i <x.length; i++) {
+    table += "<tr><td>" +
+    x[i].getElementsByTagName("Marca")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("prezzo")[0].childNodes[0].nodeValue +
+    "</td></tr>";
+    DA CONTINUARE
+  }
+  document.getElementById("demo").innerHTML = table;
+}
+</script>
+
+
+    -->
 
 </div>
 
