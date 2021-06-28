@@ -17,7 +17,7 @@ indirizzo varchar(50) NOT NULL
 import java.util.GregorianCalendar;
 import java.util.List;
 
-public class cliente{
+public class Cliente {
 
         private String username;
         private String password;
@@ -30,7 +30,7 @@ public class cliente{
         private GregorianCalendar data_registrazione;
         private List<Ordine> ordine;
 
-        public cliente(String username, String password, String nome, String cognome, GregorianCalendar data_nascita, String indirizzo, String p_elettronica, long telefono, GregorianCalendar data_registrazione){
+        public Cliente(String username, String password, String nome, String cognome, GregorianCalendar data_nascita, String indirizzo, String p_elettronica, long telefono, GregorianCalendar data_registrazione){
             this.username=username;
             this.password=password;
             this.nome=nome;
@@ -42,7 +42,7 @@ public class cliente{
             this.data_registrazione=data_registrazione;
         }
 
-    public cliente() {
+    public Cliente() {
 
     }
 

@@ -20,15 +20,15 @@ indirizzo varchar(50) NOT NULL
 
 public class ClienteDAO {
 
-    public ArrayList<cliente> doRettieveAll(int offset, int limit) throws SQLException {
+    public ArrayList<Cliente> doRettieveAll(int offset, int limit) throws SQLException {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("SELECT username, passwordhash, nome, cognome, p_elettronica, data_nascita FROM utente LIMIT ?, ?");
             ps.setInt(1, offset);
             ps.setInt(2, limit);
-            ArrayList<cliente> cli = new ArrayList<>();
+            ArrayList<Cliente> cli = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                cliente c = new cliente();
+                Cliente c = new Cliente();
                 c.setUsername(rs.getString(1));
                 c.setPassword(rs.getString(2)); //creare un metodo hash per nascondere la password
                 c.setNome(rs.getString(3));
@@ -44,14 +44,13 @@ public class ClienteDAO {
     }
 
 
-  public static cliente doRetrieveByUsernamePassword(String username, String password){
+  public static Cliente doRetrieveByUsernamePassword(String username){
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT username, password, nome, email FROM utente WHERE username=?");
-            ps.setString(0, username);
-            ps.setString(1, password);
+            PreparedStatement ps = con.prepareStatement("SELECT username, pass, nome, email FROM utente_registrato WHERE username=?");
+            ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                cliente p = new cliente();
+                Cliente p = new Cliente();
                 p.setUsername(rs.getString(1));
                 p.setPassword(rs.getString(2));
                 p.setNome(rs.getString(3));
@@ -65,13 +64,13 @@ public class ClienteDAO {
     }
 
 
-    public cliente doRetrieveByUsername(String username) throws SQLException {
+    public Cliente doRetrieveByUsername(String username) throws SQLException {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("SELECT username, passwordhash, nome, cognome, p_elettronica FROM utente WHERE username=?");
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                cliente cl = new cliente();
+                Cliente cl = new Cliente();
                 cl.setUsername(rs.getString(1));
                 cl.setPassword(rs.getString(2));
                 cl.setNome(rs.getString(3));
@@ -79,17 +78,17 @@ public class ClienteDAO {
                 cl.setP_elettronica(rs.getString(5));
                 return cl;
             }
-            return null;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.getStackTrace();
         }
+        return null;
     }
 
 
     //da fare il metodo doSave
 
 
-    public ArrayList<cliente> fetchCliente(int start, int end) throws SQLException {
+    public ArrayList<Cliente> fetchCliente(int start, int end) throws SQLException {
         try (Connection c = ConPool.getConnection()) {
             QueryBuilder queryBuilder = new QueryBuilder("account", "acc");
             String query = queryBuilder.select().GenerateQuery();
@@ -97,8 +96,8 @@ public class ClienteDAO {
                 ps.setInt(1, start);
                 ps.setInt(2, end);
                 ResultSet set = ps.executeQuery();
-                cliente account = new cliente();
-                ArrayList<cliente> accounts = new ArrayList<cliente>();
+                Cliente account = new Cliente();
+                ArrayList<Cliente> accounts = new ArrayList<Cliente>();
                 while (set.next()) {
                     accounts.add(account);
                 }
@@ -110,7 +109,7 @@ public class ClienteDAO {
 
     //creare un metodo che prende anche le informazioni delle relazioni
 
-    public boolean createCliente(cliente cliente) throws SQLException {
+    public boolean createCliente(Cliente cliente) throws SQLException {
         try (Connection c = ConPool.getConnection()) {
             QueryBuilder queryBuilder = new QueryBuilder("cliente", "cli");
             queryBuilder.insert("username, passwordhash, nome, cognome, p_elettronica");
@@ -128,7 +127,7 @@ public class ClienteDAO {
         }
     }
 
-    public boolean updateCliente(cliente c) throws SQLException {
+    public boolean updateCliente(Cliente c) throws SQLException {
         try (Connection conn = ConPool.getConnection()) {
             QueryBuilder queryBuilder = new QueryBuilder("cliente", "cli");
             queryBuilder.update("nome", "cognome").where("username=?");
