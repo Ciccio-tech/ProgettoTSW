@@ -12,6 +12,7 @@ on update cascade
 );
  */
 
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class Ordine {
@@ -45,6 +46,13 @@ public class Ordine {
         this.dataO = dataO;
     }
 
+    public void SetDataS(String data){
+        GregorianCalendar d= new GregorianCalendar();
+        String[] a = data.split("/");
+        d.set(Integer.parseInt(a[0]), Integer.parseInt(a[1]), Integer.parseInt(a[2]));
+        this.dataO=d;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -60,4 +68,14 @@ public class Ordine {
     public void setCarrello(Carrello carrello) {
         this.carrello = carrello;
     }
+
+    public String getData(){
+        String data;
+        int mese= this.dataO.get(Calendar.MONTH);
+        int giorno= this.dataO.get(Calendar.DAY_OF_MONTH);
+        int anno=this.dataO.get(Calendar.YEAR);
+        data=giorno+"/"+mese+ ""+anno;
+        return data;
+    }
+
 }
