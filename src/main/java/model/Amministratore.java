@@ -22,6 +22,10 @@ public class Amministratore {
         this.cognome = cognome;
     }
 
+    public Amministratore() {
+
+    }
+
     public String getUsername() {
         return username;
     }
