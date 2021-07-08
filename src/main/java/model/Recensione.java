@@ -50,6 +50,13 @@ public class Recensione{
         this.dataR = dataR;
     }
 
+    public void setDataS(String data){
+        GregorianCalendar d= new GregorianCalendar();
+        String[] a = data.split("/");
+        d.set(Integer.parseInt(a[0]), Integer.parseInt(a[1]), Integer.parseInt(a[2]));
+        this.dataR=d;
+    }
+
     public int getVoto() {
         return voto;
     }
