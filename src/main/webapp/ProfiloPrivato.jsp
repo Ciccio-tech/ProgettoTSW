@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>Profilo</title>
-    <link rel="stylesheet" href="../css1/ProfileCss.css">
+    <link rel="stylesheet" href="css1/ProfileCss.css">
 </head>
 
 <body>

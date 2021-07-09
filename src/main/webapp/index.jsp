@@ -1,216 +1,457 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Home</title>
-    <link rel="stylesheet" href="css1/mystyle.css">
-</head>
-<body>
-
-<img src="images/Logo%20(1).png" alt="logo" class="Logo">
-
-<div class="header">
-<ul class="h">
-    <li> <a href="Login1.jsp" > About Us </a></li>
-    <li>
-        <div class="dropdown">
-            <button class="dropbtn" onclick="myFunction()">Categorie
-             <i class="fa fa-caret-down"></i>
-            </button>
-                <div class="dropdown-content" id="myDropdown">
-                 <a href="#">Link 1</a>
-                 <a href="#">Link 2</a>
-                 <a href="#">Link 3</a>
-                </div>
-        </div>
-    </li>
-    <li> <a href="WEB-INF/nome.html" >Prodotti </a></li>
-    <li> <a href="Login.jsp" >Iscriviti</a> </li>
-    <li>
-        <a href="Login.jsp">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
-                <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
-            </svg>
-        </a>
-    </li>
-    <li>
-        <a href="WEB-INF/nome.html">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
-            </svg>
-        </a>
-    </li>
-    <li>
-        <form class="search" action="action_page.php">
-            <a href="WEB-INF/Registrazione.jsp">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-            </svg>
-            </a>
-        </form>
-    </li>
-</ul>
-</div>
-
-
-<!--Script per il menu a tendina "Categorie"-->
-
-<!--
-<script>
-    $(document).ready(function(){
-        $('.dropbtn').hover(
-            function(){
-                $('ul', this).delay(5).slideDown(50);
-            },
-            function(){
-                $('ul', this).delay(5).slideUp(50);
-            }
-        );
-    });
-
-
-</script>
--->
-
-
-<script>
-    /* When the user clicks on the button,
-    toggle between hiding and showing the dropdown content */
-    function myFunction() {
-        document.getElementById("myDropdown").classList.toggle("show");
-    }
-
-    // Close the dropdown if the user clicks outside of it
-    window.onclick = function(e) {
-        if (!e.target.matches('.dropbtn')) {
-            var myDropdown = document.getElementById("myDropdown");
-            if (myDropdown.classList.contains('show')) {
-                myDropdown.classList.remove('show');
+    <!-- Theme Made By www.w3schools.com - No Copyright -->
+    <title>Bootstrap Theme The Band</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font: 400 15px/1.8 Lato, sans-serif;
+            color: #777;
+        }
+        h3, h4 {
+            margin: 10px 0 30px 0;
+            letter-spacing: 10px;
+            font-size: 20px;
+            color: #111;
+        }
+        .container {
+            padding: 80px 120px;
+        }
+        .person {
+            border: 10px solid transparent;
+            margin-bottom: 25px;
+            width: 80%;
+            height: 80%;
+            opacity: 0.7;
+        }
+        .person:hover {
+            border-color: #f1f1f1;
+        }
+        .navbar-toggle {
+            margin-top: 18px;
+        }
+        .navbar-brand {
+            float: left;
+            height: 70px;
+            padding: 5px 5px;
+            font-size: 20px;
+            line-height: 20px;
+        }
+        .navbar-nav>li>a {
+            padding-top: 25px;
+            padding-bottom: 15px;
+        }
+        .carousel-inner img {
+           /* -webkit-filter: grayscale(90%);
+            filter: grayscale(90%);  make all photos black and white */
+            width: 100%; /* Set width to 100% */
+            margin: auto;
+        }
+        .carousel-caption h3 {
+            color: #fff !important;
+        }
+        @media (max-width: 600px) {
+            .carousel-caption {
+                display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
             }
         }
-    }
-</script>
+        .bg-1 {
+            background: #2d2d30;
+            color: #bdbdbd;
+        }
+        .bg-1 h3 {color: #fff;}
+        .bg-1 p {font-style: italic;}
+        .list-group-item:first-child {
+            border-top-right-radius: 0;
+            border-top-left-radius: 0;
+        }
+        .list-group-item:last-child {
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+        .thumbnail {
+            padding: 0 0 15px 0;
+            border: none;
+            border-radius: 0;
+        }
+        .thumbnail p {
+            margin-top: 15px;
+            color: #555;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #f1f1f1;
+            border-radius: 0;
+            transition: .2s;
+        }
+        .btn:hover, .btn:focus {
+            border: 1px solid #333;
+            background-color: #fff;
+            color: #000;
+        }
+        .modal-header, h4, .close {
+            background-color: #333;
+            color: #fff !important;
+            text-align: center;
+            font-size: 30px;
+        }
+        .modal-header, .modal-body {
+            padding: 40px 50px;
+        }
+        .nav-tabs li a {
+            color: #777;
+        }
 
+        .navbar {
+            font-family: Montserrat, sans-serif;
+            margin-bottom: 0;
+            background-color: #2d2d30;
+            border: 0;
+            font-size: 11px !important;
+            letter-spacing: 4px;
+            opacity: 0.9;
+        }
+        .navbar li a, .navbar .navbar-brand {
+            color: #d5d5d5 !important;
+        }
+        .navbar-nav li a:hover {
+            color: #fff !important;
+        }
 
-<!-- The sidebar -->
+        .navbar-nav li.active a {
+            color: #fff !important;
+            background-color: #29292c !important;
+        }
+        .navbar-default .navbar-toggle {
+            border-color: transparent;
+        }
+        .open .dropdown-toggle {
+            color: #fff;
+            background-color: #555 !important;
+        }
+        .dropdown-menu li a {
+            color: #000 !important;
+        }
+        .dropdown-menu li a:hover {
+            background-color: lightseagreen !important;
+        }
+        footer {
+            background-color: #2d2d30;
+            color: #f5f5f5;
+            padding: 32px;
+        }
+        footer a {
+            color: #f5f5f5;
+        }
+        footer a:hover {
+            color: #777;
+            text-decoration: none;
+        }
+        .form-control {
+            border-radius: 0;
+        }
+        textarea {
+            resize: none;
+        }
+    </style>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
 
-<div class="sidebar" style="width:70px; text-align: right; color: transparent">
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#myPage"><img src="images/Logo.png" alt="logo" class="Logo" ></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#myPage">HOME</a></li>
+                <li><a href="#band">Chi siamo?</a></li>
+                <li><a href="#tour">Alcuni prodotti</a></li>
+                <li><a href="Login.jsp">Login</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Categorie
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Merchandise</a></li>
+                        <li><a href="#">Extras</a></li>
+                        <li><a href="#">Media</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="images/Slider/foto.jpg" alt="" width="1200" height="600">
+            <div class="carousel-caption">
+               <!-- <h3>New York</h3>
+                <p>The atmosphere in New York is lorem ipsum.</p> -->
+            </div>
+        </div>
+
+        <div class="item">
+            <img src="images/Slider/foto1.jpg" alt="" width="1200" height="600">
+            <div class="carousel-caption">
+        <!--        <h3>Chicago</h3>
+                <p>Thank you, Chicago - A night we won't forget.</p>-->
+            </div>
+        </div>
+
+        <div class="item">
+            <img src="images/Slider/foto2.jpg" alt="" width="1200" height="600">
+            <div class="carousel-caption">
+                <!--  <h3>LA</h3>
+                  <p>Even though the traffic was a mess, we had the best time playing at Venice Beach!</p> -->
+              </div>
+          </div>
+      </div>
+
+      <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<!-- Container (The Band Section) -->
+<div id="band" class="container text-center">
+    <h3> Chi siamo? </h3>
+    <p><em>.....</em></p>
+    <p>..........</p>
+    <br>
+    <div class="row">
+        <div class="col-sm-4">
+            <p class="text-center"><strong>Name</strong></p><br>
+            <a href="#demo" data-toggle="collapse">
+                <img src="bandmember.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+            </a>
+            <div id="demo" class="collapse">
+                <p>Guitarist and Lead Vocalist</p>
+                <p>Loves long walks on the beach</p>
+                <p>Member since 1988</p>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <p class="text-center"><strong>Name</strong></p><br>
+            <a href="#demo2" data-toggle="collapse">
+                <img src="bandmember.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+            </a>
+            <div id="demo2" class="collapse">
+                <p>Drummer</p>
+                <p>Loves drummin'</p>
+                <p>Member since 1988</p>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <p class="text-center"><strong>Name</strong></p><br>
+            <a href="#demo3" data-toggle="collapse">
+                <img src="bandmember.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+            </a>
+            <div id="demo3" class="collapse">
+                <p>Bass player</p>
+                <p>Loves math</p>
+                <p>Member since 2005</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Container (Alcuni prodotti) -->
+<div id="tour" class="bg-1">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-sm-4">
+                <div class="thumbnail">
+                    <img src="images/FotoProdotti/CanonG9.jpg" alt="CanonG9" width="400" height="300">
+                    <p><strong>CanonG9</strong></p>
+                    <!--<p>Friday 27 November 2015</p>
+                    <button class="btn" data-toggle="modal" data-target="#myModal">Buy Tickets</button> -->
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="thumbnail">
+                    <img src="images/FotoProdotti/FujifilmNstax.jpg" alt="FujifilmNstax" width="400" height="300">
+                    <p><strong>FujifilmNstax</strong></p>
+                    <!--  <p>Saturday 28 November 2015</p>
+                  <button class="btn" data-toggle="modal" data-target="#myModal">Buy Tickets</button> -->
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="thumbnail">
+                    <img src="images/FotoProdotti/Nikond610.jpeg" alt="Nikond610" width="400" height="300">
+                    <p><strong>Nikond610</strong></p>
+                   <!-- <p>Sunday 29 November 2015</p>
+                    <button class="btn" data-toggle="modal" data-target="#myModal">Buy Tickets</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal-->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4><span class="glyphicon glyphicon-lock"></span> Tickets</h4>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="psw"><span class="glyphicon glyphicon-shopping-cart"></span> Tickets, $23 per person</label>
+                            <input type="number" class="form-control" id="psw" placeholder="How many?">
+                        </div>
+                        <div class="form-group">
+                            <label for="usrname"><span class="glyphicon glyphicon-user"></span> Send To</label>
+                            <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+                        </div>
+                        <button type="submit" class="btn btn-block">Pay
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+                        <span class="glyphicon glyphicon-remove"></span> Cancel
+                    </button>
+                    <p>Need <a href="#">help?</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Container (Contact Section) -->
+<div id="contact" class="container">
+    <h3 class="text-center">Contact</h3>
+    <p class="text-center"><em>.....</em></p>
+
+   <div class="row">
+        <div class="col-md-4">
+            <p></p>
+            <p><span class="glyphicon glyphicon-map-marker"></span></p>
+            <p><span class="glyphicon glyphicon-phone"></span>Phone: +00 1515151515</p>
+            <p><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</p>
+        </div>
+         <!--  <div class="col-md-8">
+            <div class="row">
+                <div class="col-sm-6 form-group">
+                    <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+                </div>
+                <div class="col-sm-6 form-group">
+                    <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+                </div>
+            </div>
+            <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
+            <br>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <button class="btn pull-right" type="submit">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <h3 class="text-center">From The Blog</h3>
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#home">Mike</a></li>
+        <li><a data-toggle="tab" href="#menu1">Chandler</a></li>
+        <li><a data-toggle="tab" href="#menu2">Peter</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            <h2>Mike Ross, Manager</h2>
+            <p>Man, we've been on the road for some time now. Looking forward to lorem ipsum.</p>
+        </div>
+        <div id="menu1" class="tab-pane fade">
+            <h2>Chandler Bing, Guitarist</h2>
+            <p>Always a pleasure people! Hope you enjoyed it as much as I did. Could I BE.. any more pleased?</p>
+        </div>
+        <div id="menu2" class="tab-pane fade">
+            <h2>Peter Griffin, Bass player</h2>
+            <p>I mean, sometimes I enjoy the show, but other times I enjoy other things.</p>
+        </div>-->
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="text-center">
+    <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+    </a><br><br>
+    <div class="sidebar" style="width:70px; text-align: right; color: transparent" >
         <a href="https://api.whatsapp.com/send?phone=DA INSERIRE UN NUMERO DI TELEFONO&text=Salve,%20vorrei%20qualche%20informazione%20in%20merito%20ai%20vostri%20prodotti." ><img src="images/whatsapp.png" width=25px height=25px alt="whatsapp"> </a><br>
         <a href="https://www.facebook.com/francesco.cammarota.562"> <img src="images/facebook.png" width=25px height=25px alt="facebook"></a><br>
         <a href="https://www.instagram.com/cammarota.f"> <img src="images/insta.png" width=25px height=25px alt="instagram"></a><br>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
             <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
-            </svg>
-</div>
-
-
-
-<div class="slideshow-container">
-
-    <div class="mySlides">
-        <img src="images/Slider/foto.jpg" alt="Canon" class="slider-image" id="slider-image-1" height="500px" width="1000px">
+        </svg>
     </div>
-
-    <div class="mySlides">
-        <img src="images/Slider/foto1.jpg" alt="paesaggio" class="slider-image" id="slider-image-2" height="500px" width="1000px">
-    </div>
-
-    <div class="mySlides">
-        <img src="images/Slider/foto2.jpg" alt="bimbo" class="slider-image" id="slider-image-3" height="500px" width="1000px">
-    </div>
-
-</div>
-
-<!-- script per le immagini-->
-<script>
-    var slideIndex = 0;
-    showSlides();
-
-    function showSlides() {
-        var i;
-        var slides = document.getElementsByClassName("mySlides");
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        slideIndex++;
-        if (slideIndex > slides.length) {slideIndex = 1}
-        slides[slideIndex-1].style.display = "block";
-        setTimeout(showSlides, 3000); // Change image every 3 seconds
-    }
-</script>
-
-
-
-
-
-<div class="product">
-    <p>Prodotti più venduti:</p>
-    <!--codice per inserire immagini e prezzo-->
-    <ul>
-        <li id="prodotti"></li>
-    </ul>
-    <!--
-    <script>
-        document.ready();
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                xhttp.open("doRetrieveAll", "../java/model/Prodotto.java", true);
-                xhttp.send();
-                var s=xhttp.responseText;
-                var array = new Array();
-                array = s.split(".jpg");
-                if(array.length > 0){
-                    document.getElementById("prodotti").innerHTML=array;
-                }
-            }
-        };
-    </script>
-
-
-<script>
-function loadDoc() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      loadProducts(this);
-    }
-  };
-  xhttp.open("GET", "../java/model/Prodotto.java", true);
-  xhttp.send();
-}
-function loadProducts(xml) {
-  var i;
-  var xmlDoc = xml.responseXML;
-  var table="<tr><th>Prodotti</th><th>Title</th></tr>";
-  var x = xmlDoc.getElementsByTagName("Obiettivi");
-  for (i = 0; i <x.length; i++) {
-    table += "<tr><td>" +
-    x[i].getElementsByTagName("Marca")[0].childNodes[0].nodeValue +
-    "</td><td>" +
-    x[i].getElementsByTagName("prezzo")[0].childNodes[0].nodeValue +
-    "</td></tr>";
-    DA CONTINUARE
-  }
-  document.getElementById("demo").innerHTML = table;
-}
-</script>
-
-
-    -->
-
-</div>
-
-
-
-<footer class="f">
-    <p class="marchio">&copy;2021 Reflex Your World</p>
-    <ul>
-        <li><a href="#">Privacy</a></li>
-        <li><a href="#">Terms</a></li>
-        <li><a href="#">Support</a></li>
-    </ul>
 </footer>
+
+<script>
+    $(document).ready(function(){
+        // Initialize Tooltip
+        $('[data-toggle="tooltip"]').tooltip();
+
+        // Add smooth scrolling to all links in navbar + footer link
+        $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+
+            // Make sure this.hash has a value before overriding default behavior
+            if (this.hash !== "") {
+
+                // Prevent default anchor click behavior
+                event.preventDefault();
+
+                // Store hash
+                var hash = this.hash;
+
+                // Using jQuery's animate() method to add smooth page scroll
+                // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top
+                }, 900, function(){
+
+                    // Add hash (#) to URL when done scrolling (default click behavior)
+                    window.location.hash = hash;
+                });
+            } // End if
+        });
+    })
+</script>
 
 </body>
 </html>

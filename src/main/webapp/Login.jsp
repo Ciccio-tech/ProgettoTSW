@@ -29,7 +29,7 @@
                 <p><input class="myInput1" id="password" type="password" size="30" name = "password" placeholder="Password tra i 8 e i 25 caratteri" autocomplete="off"><br></p>
                 <button class="button button2" type = "submit" >Accedi</button>
                 <button class="button button2" type = "reset">Reset</button><br><br>
-                Non sei ancora registrato? &nbsp &nbsp<a href= "WEB-INF/Registrazione.jsp"> Registrati ora</a>
+                Non sei ancora registrato? &nbsp &nbsp<a href= "Registrazione.jsp"> Registrati ora</a>
             </fieldset>
         </form>
     </div>
