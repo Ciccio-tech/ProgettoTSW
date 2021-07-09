@@ -9,6 +9,10 @@ public class Carrello {
         this.p_carrello=p_carrello;
     }
 
+    public Carrello() {
+
+    }
+
     public double totale(){
         double totale=0.0;
         for(prodottiCarrello p: p_carrello){
