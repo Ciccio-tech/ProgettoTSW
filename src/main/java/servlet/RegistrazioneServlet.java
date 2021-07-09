@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.util.GregorianCalendar;
 
 
-@WebServlet("/Registrazione")
+@WebServlet("/RegistrazioneSuccesso")
 
 public class RegistrazioneServlet extends HttpServlet {
     private ClienteDAO clienteDAO= new ClienteDAO();
@@ -130,7 +130,7 @@ public class RegistrazioneServlet extends HttpServlet {
 
         request.getSession().setAttribute("cliente", cliente);
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/registrazioneSuccesso.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/RegistrazioneSuccesso.jsp");        //fare una JSP che mostri l'avvenuta registrazione correttamente
         requestDispatcher.forward(request, response);
     }
 
