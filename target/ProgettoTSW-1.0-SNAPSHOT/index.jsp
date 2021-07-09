@@ -203,7 +203,7 @@ function loadProducts(xml) {
 
 
 
-<footer class="f">
+<footer class="footer">
     <p class="marchio">&copy;2021 Reflex Your World</p>
     <ul>
         <li><a href="#">Privacy</a></li>
