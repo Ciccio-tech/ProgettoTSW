@@ -22,7 +22,7 @@ public class ClienteDAO {
 
     public ArrayList<Cliente> doRettieveAll(int offset, int limit) throws SQLException {
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT username, passwordhash, nome, cognome, p_elettronica, data_nascita FROM utente LIMIT ?, ?");
+            PreparedStatement ps = con.prepareStatement("SELECT username, pass, nome, cognome, p_elettronica, data_nascita FROM utente LIMIT ?, ?");
             ps.setInt(1, offset);
             ps.setInt(2, limit);
             ArrayList<Cliente> cli = new ArrayList<>();
@@ -153,5 +153,26 @@ public class ClienteDAO {
             }
         }
     }
+
+    public void doSave(Cliente cliente) throws SQLException{
+        try(Connection c = ConPool.getConnection()){
+            QueryBuilder queryBuilder = new QueryBuilder("cliente","cli");
+            queryBuilder.insert("username, pass, nome, cognome, n_telefono, email, data_nascita, indirizzo");
+            PreparedStatement ps= c.prepareStatement(queryBuilder.GenerateQuery());
+            ps.setString(1, cliente.getUsername());
+            ps.setString(2, cliente.getPassword());
+            ps.setString(3, cliente.getNome());
+            ps.setString(4, cliente.getCognome());
+            ps.setLong(5, cliente.getTelefono());
+            ps.setString(6, cliente.getP_elettronica());
+            ps.setString(7, cliente.getData_nascitaS());
+            ps.setString(8, cliente.getIndirizzo());
+            if(ps.executeUpdate() != 1)
+                throw new RuntimeException("Insert Error");
+        }catch(SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
 
 }

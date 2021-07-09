@@ -14,6 +14,7 @@ indirizzo varchar(50) NOT NULL
 );
  */
 
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -88,6 +89,15 @@ public class Cliente {
 
     public GregorianCalendar getData_nascita() {
         return data_nascita;
+    }
+
+    public String getData_nascitaS(){
+        String data;
+        int mese= this.data_nascita.get(Calendar.MONTH);
+        int giorno= this.data_nascita.get(Calendar.DAY_OF_MONTH);
+        int anno=this.data_nascita.get(Calendar.YEAR);
+        data=giorno+"/"+mese+ ""+anno;
+        return data;
     }
 
     public void setData_nascita(GregorianCalendar data_nascita) {
