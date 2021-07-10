@@ -5,7 +5,7 @@
   Time: 09:09
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"  %>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -14,13 +14,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#myPage"><img src="images/Logo%20(1).png" alt="logo" class="Logo"></a>
+            <a class="navbar-brand" href="#myPage"><img src="images/logo.png" style = "width: 65px" alt="logo" class="logo" ></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#myPage">HOME</a></li>
-                <li><a href="#band">BAND</a></li>
-                <li><a href="#tour">TOUR</a></li>
+                <li><a href="#band">Chi siamo?</a></li>
+                <li><a href="#tour">Alcuni prodotti</a></li>
                 <li><a href="Login.jsp">Login</a></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Categorie
