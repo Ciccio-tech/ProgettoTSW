@@ -15,6 +15,7 @@ private int codP;
     private String modello;
     private float prezzo;
     private int quantità;
+    codP, tipo, marca, modello, prezzo, quantità
  */
 
 public class ProdottoDAO {
@@ -111,8 +112,48 @@ public class ProdottoDAO {
         }
     }
 
+    public void doSave(Prodotto prodotto) throws SQLException{
+        try(Connection c= ConPool.getConnection()){
+            PreparedStatement ps= c.prepareStatement("INSERT INTO prodotto (codP, tipo, marca, modello, prezzo, quantità) VALUES(?,?,?,?,?,?)");
+            ps.setInt(1, prodotto.getCodP());
+            ps.setString(2, prodotto.getTipo());
+            ps.setString(3, prodotto.getMarca());
+            ps.setString(4, prodotto.getModello());
+            ps.setFloat(5, prodotto.getPrezzo());
+            ps.setInt(6, prodotto.getQuantita());
+            if(ps.executeUpdate() != 1)
+                throw new RuntimeException("INSERT FAILED");
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
 
+    public void doDelete(int codP) throws SQLException {
+        try(Connection c= ConPool.getConnection()) {
+            PreparedStatement ps = c.prepareStatement("DELETE FROM prodotto WHERE id=?");
+            ps.setInt(1, codP);
+            if (ps.executeUpdate() != 1)
+                throw new RuntimeException("DELETE ERROR");
+        }catch(SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
 
-    //aggiungere il doSave, doUpdate e doDelete.
+    public void doUpdate(Prodotto prodotto) throws SQLException{
+        try(Connection c= ConPool.getConnection()){
+            PreparedStatement ps= c.prepareStatement("UPDATE prodotto SET tipo=?, marca=?, modello=?, prezzo=?, quantità=? WHERE codP=?");
+            ps.setString(1, prodotto.getTipo());
+            ps.setString(2, prodotto.getMarca());
+            ps.setString(3, prodotto.getModello());
+            ps.setFloat(4, prodotto.getPrezzo());
+            ps.setInt(5, prodotto.getQuantita());
+            ps.setInt(6, prodotto.getCodP());
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("UPDATE ERROR.");
+            }
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
 
 }
