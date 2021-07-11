@@ -179,7 +179,7 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img src="images/Slider/foto.jpg" alt="" width="1200" height="600">
+            <img src="images/Slider/foto.jpg" alt="FotoSlider1" width="1200" height="600">
             <div class="carousel-caption">
                 <!-- <h3>New York</h3>
                  <p>The atmosphere in New York is lorem ipsum.</p> -->
@@ -187,7 +187,7 @@
         </div>
 
         <div class="item">
-            <img src="images/Slider/foto1.jpg" alt="" width="1200" height="600">
+            <img src="images/Slider/foto3.jpg" alt="FotoSlider2" width="1200" height="600">
             <div class="carousel-caption">
                 <!--        <h3>Chicago</h3>
                         <p>Thank you, Chicago - A night we won't forget.</p>-->
@@ -195,7 +195,7 @@
         </div>
 
         <div class="item">
-            <img src="images/Slider/foto2.jpg" alt="" width="1200" height="600">
+            <img src="images/Slider/foto5.jpg" alt="FotoSlider3" width="1200" height="600">
             <div class="carousel-caption">
                 <!--  <h3>LA</h3>
                   <p>Even though the traffic was a mess, we had the best time playing at Venice Beach!</p> -->
