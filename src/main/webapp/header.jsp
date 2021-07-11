@@ -14,7 +14,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#myPage"><img src="images/logo.png" style = "width: 65px" alt="logo" class="logo" ></a>
+            <a class="navbar-brand" href="index.jsp"><img src="images/logo.png" style = "width: 65px" alt="logo" class="logo" ></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
