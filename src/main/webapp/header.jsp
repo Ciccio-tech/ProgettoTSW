@@ -18,9 +18,9 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#myPage">HOME</a></li>
+                    <li><a href="index.jsp">Home</a></li>
                 <li><a href="#band">Chi siamo?</a></li>
-                <li><a href="#tour">Alcuni prodotti</a></li>
+                <li><a href="Catalogo.jsp">Alcuni prodotti</a></li>
                 <li><a href="Login.jsp">Login</a></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Catalogo
