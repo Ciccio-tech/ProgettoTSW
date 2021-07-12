@@ -154,12 +154,12 @@
         </div>
         <div class="col-md-6">
             <div class="registrazione">
-                <form id = "val" action="RegistrazioneServlet" method="post">
+                <form id = "val" action="RegistrazioneSuccesso" method="post">
                     <fieldset>
                         <h2> Registrazione  </h2>
                             <%
                             Boolean warning = (Boolean) request.getAttribute("warning");
-                            if (warning == null ? false : warning) {
+                            if (warning != null && warning) {
                         %>
                         <div id="alert3" class="alert" style=""><span class="closebtn" onclick="this.parentElement.style.display='none';">×</span> <strong>Errore!</strong> Esite già un utente con questa email e username! Cambiare username ed email!</div>
                             <%}

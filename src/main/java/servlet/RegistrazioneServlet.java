@@ -48,11 +48,13 @@ public class RegistrazioneServlet extends HttpServlet {
         }
 
         String passwordConferma= request.getParameter("passwordConferma");
-        if(!password.equals(passwordConferma)){
-            try {
-                throw new MyServletException("Password e password di conferma differenti.");
-            } catch (MyServletException e) {
-                e.printStackTrace();
+        if(password!=null){
+            if(!password.equals(passwordConferma)) {
+                try {
+                    throw new MyServletException("Password e password di conferma differenti.");
+                } catch (MyServletException e) {
+                    e.printStackTrace();
+                }
             }
         }
 
@@ -93,7 +95,7 @@ public class RegistrazioneServlet extends HttpServlet {
         }
 
         String dataN = request.getParameter("dataN");
-        if(!(dataN!=null)){
+        if((dataN==null)){
             try {
                 throw new MyServletException("Data non valida");
             } catch (MyServletException e) {
@@ -103,7 +105,7 @@ public class RegistrazioneServlet extends HttpServlet {
 
 
         String indirizzo = request.getParameter("indirizzo");
-        if(!(indirizzo!=null)){
+        if(indirizzo == null){
             try {
                 throw new MyServletException("Indirizzo non valida");
             } catch (MyServletException e) {
@@ -117,10 +119,14 @@ public class RegistrazioneServlet extends HttpServlet {
         cliente.setPassword(password);
         cliente.setNome(nome);
         cliente.setCognome(cognome);
-        cliente.setTelefono(Long.parseLong(numero_t));
+        if (numero_t != null) {
+            cliente.setTelefono(Long.parseLong(numero_t));
+        }
         GregorianCalendar today= new GregorianCalendar();
         cliente.setData_registrazione(today);
-        cliente.setDataNascitaS(dataN);
+        if (dataN != null) {
+            cliente.setDataNascitaS(dataN);
+        }
         cliente.setIndirizzo(indirizzo);
         try {
             clienteDAO.doSave(cliente);
@@ -130,7 +136,7 @@ public class RegistrazioneServlet extends HttpServlet {
 
         request.getSession().setAttribute("cliente", cliente);
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/RegistrazioneSuccesso.jsp");        //fare una JSP che mostri l'avvenuta registrazione correttamente
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/index.jsp");        //fare una JSP che mostri l'avvenuta registrazione correttamente
         requestDispatcher.forward(request, response);
     }
 
