@@ -23,12 +23,12 @@
                 <li><a href="#tour">Alcuni prodotti</a></li>
                 <li><a href="Login.jsp">Login</a></li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Categorie
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Catalogo
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Merchandise</a></li>
-                        <li><a href="#">Extras</a></li>
-                        <li><a href="#">Media</a></li>
+                        <li><a href="Catalogo.jsp">Fotocamere</a></li>
+                        <li><a href="Catalogo.jsp">Obiettivi fotografici</a></li>
+                        <li><a href="Catalogo.jsp">Accessori</a></li>
                     </ul>
                 </li>
                 <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
