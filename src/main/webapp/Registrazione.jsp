@@ -100,7 +100,7 @@
             text-decoration: none;
         }
         .container {
-            padding: 80px 120px;
+        padding: 80px 120px;
         }
         @media (max-width: 600px) {
             .container {
@@ -164,14 +164,16 @@
                         <div id="alert3" class="alert" style=""><span class="closebtn" onclick="this.parentElement.style.display='none';">×</span> <strong>Errore!</strong> Esite già un utente con questa email e username! Cambiare username ed email!</div>
                             <%}
                         %>
+                        <p><input class="myInput1" id="username" type="text" size="30" name = "username" placeholder="username" autocomplete="off"><br></p>
+                        <p><input class="myInput1" id="password" type="password" size="30" name = "password" placeholder="Password tra i 8 e i 25 caratteri" autocomplete="off"><br></p>
+                        <p><input class="myInput1" id="comfermapassword" type="password" size="30" name = "password" placeholder="Conferma Password" autocomplete="off"><br></p>
                         <p><input class="myInput1" id="nome" type="text" size="30" name = "nome" placeholder="Nome" autocomplete="off"><br></p>
                         <p><input class="myInput1" id="cognome" type="text" size="30" name = "cognome" placeholder="Cogname" autocomplete="off"><br></p>
-                        <p><input class="myInput1" id="username" type="email" size="30" name = "username" placeholder="Email" autocomplete="off"><br></p>
-                        <p><input class="myInput1" id="password" type="password" size="30" name = "password" placeholder="Password tra i 8 e i 25 caratteri" autocomplete="off"><br></p>
+                        <p><input class="myInput1" id="email" type="email" size="30" name = "email" placeholder="Email" autocomplete="off"><br></p>
+                        <label for="dataN">Dara di nascita:</label><br>
+                        <input type="date" id="dataN" name="dataN"><br>
                         <p><input class="myInput1" id="number" type="text" size="30" name = "N_tel" placeholder="Numero di telefono" autocomplete="off"><br></p>
-
-                        <label for="birthday">Birthday:</label><br>
-                        <input type="date" id="birthday" name="birthday"><br>
+                        <p><input class="myInput1" id="indirizzo" type="text" size="30" name = "indirizzo" placeholder="Indirizzo" autocomplete="off"><br></p>
 
                         <button class="button button4" type="submit" value="Registrati!"> Registrati</button>
 
