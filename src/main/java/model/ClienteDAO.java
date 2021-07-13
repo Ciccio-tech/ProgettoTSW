@@ -10,11 +10,7 @@ username varchar(20) primary key,
 pass varchar(20) NOT NULL,
 nome char(15) NOT NULL,
 cognome char(15) NOT NULL,
-n_telefono char(10) NOT NULL,
 email char(30) NOT NULL,
-data_nascita date NOT NULL,
-data_registrazione date NOT NULL,
-indirizzo varchar(50) NOT NULL
 );
  */
 
@@ -66,7 +62,7 @@ public class ClienteDAO {
 
     public Cliente doRetrieveByUsername(String username) throws SQLException {
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT username, passwordhash, nome, cognome, p_elettronica FROM utente WHERE username=?");
+            PreparedStatement ps = con.prepareStatement("SELECT username, password , nome, cognome, p_elettronica FROM utente WHERE username=?");
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -84,8 +80,6 @@ public class ClienteDAO {
         return null;
     }
 
-
-    //da fare il metodo doSave
 
 
     public ArrayList<Cliente> fetchCliente(int start, int end) throws SQLException {
@@ -107,7 +101,6 @@ public class ClienteDAO {
     }
 
 
-    //creare un metodo che prende anche le informazioni delle relazioni
 
     public boolean createCliente(Cliente cliente) throws SQLException {
         try (Connection c = ConPool.getConnection()) {
@@ -157,13 +150,12 @@ public class ClienteDAO {
     public void doSave(Cliente cliente) throws SQLException{
         try(Connection c = ConPool.getConnection()){
             QueryBuilder queryBuilder = new QueryBuilder("cliente","cli");
-            queryBuilder.insert("username, pass, nome, cognome, n_telefono, email, data_nascita, indirizzo");
+            queryBuilder.insert("username, pass, nome, cognome, email");
             PreparedStatement ps= c.prepareStatement(queryBuilder.GenerateQuery());
             ps.setString(1, cliente.getUsername());
             ps.setString(2, cliente.getPassword());
             ps.setString(3, cliente.getNome());
             ps.setString(4, cliente.getCognome());
-            ps.setLong(5, cliente.getTelefono());
             ps.setString(6, cliente.getP_elettronica());
             if(ps.executeUpdate() != 1)
                 throw new RuntimeException("Insert Error");
