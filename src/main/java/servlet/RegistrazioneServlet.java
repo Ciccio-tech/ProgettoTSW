@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.util.GregorianCalendar;
 
 
-@WebServlet("/RegistrazioneSuccesso")
+@WebServlet("/RegistrazioneServlet")
 
 public class RegistrazioneServlet extends HttpServlet {
     private ClienteDAO clienteDAO= new ClienteDAO();

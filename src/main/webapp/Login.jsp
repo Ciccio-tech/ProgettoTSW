@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>Login</title>
-    <link rel="stylesheet" href="css1/LoginCss.css">
+    <link rel="stylesheet" href="css1/style.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -18,7 +18,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
-        input[type=email], input[type=password]{
+        input[type=text], input[type=password]{
             width: 100%;
             border: 2px solid lightseagreen;
             border-radius: 4px;
@@ -163,7 +163,7 @@
                         <div id="alert3" class="alert" style=""><span class="closebtn" onclick="this.parentElement.style.display='none';">×</span> <strong>Errore!</strong> Nome utente o password non corretti</div>
                         <%}
                         %>
-                        <p><input class="myInput1" id="username" type="email" size="30" name = "username" placeholder="Email" autocomplete="off"><br></p>
+                        <p><input class="myInput1" id="username" type="text" size="30" name = "username" placeholder="Username" autocomplete="off"><br></p>
                         <p><input class="myInput1" id="password" type="password" size="30" name = "password" placeholder="Password tra i 8 e i 25 caratteri" autocomplete="off"><br></p>
                         <button class="button button4" type = "submit" >Accedi</button>
                         <button class="button button4" type = "reset">Cancella</button><br><br>

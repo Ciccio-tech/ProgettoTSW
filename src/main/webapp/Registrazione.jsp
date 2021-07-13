@@ -9,7 +9,6 @@
 <html>
 <head>
     <title>Registrazione</title>
-    <link rel="stylesheet" href="css1/RegistrazioneCss.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -154,7 +153,7 @@
         </div>
         <div class="col-md-6">
             <div class="registrazione">
-                <form id = "val" action="RegistrazioneSuccesso" method="post">
+                <form id = "val" action="RegistrazioneServlet" method="post">
                     <fieldset>
                         <h2> Registrazione  </h2>
                             <%
