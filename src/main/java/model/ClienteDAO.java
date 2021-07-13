@@ -165,8 +165,6 @@ public class ClienteDAO {
             ps.setString(4, cliente.getCognome());
             ps.setLong(5, cliente.getTelefono());
             ps.setString(6, cliente.getP_elettronica());
-            ps.setString(7, cliente.getData_nascitaS());
-            ps.setString(8, cliente.getIndirizzo());
             if(ps.executeUpdate() != 1)
                 throw new RuntimeException("Insert Error");
         }catch(SQLException e){
