@@ -85,33 +85,6 @@ public class RegistrazioneServlet extends HttpServlet {
             }
         }
 
-        String numero_t = request.getParameter("n_telefomo");
-        if(!(numero_t != null && numero_t.length()>=9 && numero_t.length()<=11 && numero_t.matches("^[0-9]+$"))){
-            try {
-                throw new MyServletException("Numero di telefono non valido");
-            } catch (MyServletException e) {
-                e.printStackTrace();
-            }
-        }
-
-        String dataN = request.getParameter("dataN");
-        if((dataN==null)){
-            try {
-                throw new MyServletException("Data non valida");
-            } catch (MyServletException e) {
-                e.printStackTrace();
-            }
-        }
-
-
-        String indirizzo = request.getParameter("indirizzo");
-        if(indirizzo == null){
-            try {
-                throw new MyServletException("Indirizzo non valida");
-            } catch (MyServletException e) {
-                e.printStackTrace();
-            }
-        }
 
 
         Cliente cliente= new Cliente();
@@ -119,15 +92,7 @@ public class RegistrazioneServlet extends HttpServlet {
         cliente.setPassword(password);
         cliente.setNome(nome);
         cliente.setCognome(cognome);
-        if (numero_t != null) {
-            cliente.setTelefono(Long.parseLong(numero_t));
-        }
-        GregorianCalendar today= new GregorianCalendar();
-        cliente.setData_registrazione(today);
-        if (dataN != null) {
-            cliente.setDataNascitaS(dataN);
-        }
-        cliente.setIndirizzo(indirizzo);
+
         try {
             clienteDAO.doSave(cliente);
         } catch (SQLException e) {
