@@ -92,6 +92,7 @@ public class RegistrazioneServlet extends HttpServlet {
         cliente.setPassword(password);
         cliente.setNome(nome);
         cliente.setCognome(cognome);
+        cliente.setP_elettronica(email);
 
         try {
             clienteDAO.doSave(cliente);

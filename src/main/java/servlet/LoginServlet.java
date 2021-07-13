@@ -29,7 +29,7 @@ public class LoginServlet extends HttpServlet {
             Cliente user = utente.doRetrieveByUsernamePassword(username);
             if (user != null ? user.getPassword().equals(password) : false){ //non è perfetto perché getpassword potrebbbe essere null
                 session.setAttribute("user", user);
-                session.setAttribute("isUser", new Boolean(true));
+                session.setAttribute("isUser", true);
                 session.removeAttribute("wasPaying");
 
                 if (paying) {
@@ -46,8 +46,8 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect(response.encodeURL(page));
         } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("warning", new Boolean (true));
-            getServletContext().getRequestDispatcher(response.encodeURL("/Login.jsp")).forward(request, response);
+            request.setAttribute("warning", true);
+            getServletContext().getRequestDispatcher(response.encodeURL("/index.jsp")).forward(request, response);
         }
     }
 

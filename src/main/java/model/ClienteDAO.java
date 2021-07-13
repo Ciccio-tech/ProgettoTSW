@@ -156,7 +156,7 @@ public class ClienteDAO {
             ps.setString(2, cliente.getPassword());
             ps.setString(3, cliente.getNome());
             ps.setString(4, cliente.getCognome());
-            ps.setString(6, cliente.getP_elettronica());
+            ps.setString(5, cliente.getP_elettronica());
             if(ps.executeUpdate() != 1)
                 throw new RuntimeException("Insert Error");
         }catch(SQLException e){
