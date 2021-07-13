@@ -6,9 +6,8 @@ public class QueryBuilder {
 
 
 
-    public QueryBuilder(String table, String alias){
+    public QueryBuilder(String table){
         this.table=table;
-        this.alias=alias;
         this.query=new StringBuilder();
     }
 
@@ -26,11 +25,11 @@ public class QueryBuilder {
         else {
             StringJoiner comma = new StringJoiner(";");
             for(String field: fields){
-                comma.add(String.format("%s.%s", alias, field));
+                comma.add(String.format("%s",  field));
             }
             query.append(comma.toString());
         }
-        query.append("FROM").append(table).append("AS").append("AS").append(alias);
+        query.append("FROM").append(table);
         return this;
     }
 
@@ -83,7 +82,7 @@ public class QueryBuilder {
         return this;
     }
 
-    private final String table, alias;
+    private final String table;
     private final StringBuilder query;
     private static final String QM="?";
 }

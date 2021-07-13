@@ -88,7 +88,7 @@ public class ProdottoDAO {
 
     public ArrayList<Prodotto> doRetrieveByModelloorMarca(String against, int offset, int limit) throws SQLException {
         try(Connection c= ConPool.getConnection()){
-            QueryBuilder queryBuilder= new QueryBuilder("prodotto","product");
+            QueryBuilder queryBuilder= new QueryBuilder("prodotto");
             queryBuilder.select("codP, tipo, marca, modello, prezzo, quantità;").where("MATCH(marca, modello) AGAINST(?) LIMIT ?, ?");
             PreparedStatement ps = c.prepareStatement(queryBuilder.GenerateQuery());
             ps.setString(1, against);

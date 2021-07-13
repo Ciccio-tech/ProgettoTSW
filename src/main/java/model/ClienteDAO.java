@@ -40,10 +40,14 @@ public class ClienteDAO {
     }
 
 
-  public static Cliente doRetrieveByUsernamePassword(String username){
+  public static Cliente doRetrieveByUsernamePassword(String username, String password){
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT username, pass, nome, email FROM utente_registrato WHERE username=?");
+            //PreparedStatement ps = con.prepareStatement("SELECT username, password, nome, email FROM utente_registrato WHERE username=? AND password=?");
+            QueryBuilder queryBuilder= new QueryBuilder("utente_registrato");
+            queryBuilder.select("username, password, nome, email").where("username= ? AND password = ?");
+            PreparedStatement ps= con.prepareStatement(queryBuilder.GenerateQuery());
             ps.setString(1, username);
+            ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 Cliente p = new Cliente();
@@ -84,7 +88,7 @@ public class ClienteDAO {
 
     public ArrayList<Cliente> fetchCliente(int start, int end) throws SQLException {
         try (Connection c = ConPool.getConnection()) {
-            QueryBuilder queryBuilder = new QueryBuilder("account", "acc");
+            QueryBuilder queryBuilder = new QueryBuilder("account");
             String query = queryBuilder.select().GenerateQuery();
             try (PreparedStatement ps = c.prepareStatement(query)) {
                 ps.setInt(1, start);
@@ -104,7 +108,7 @@ public class ClienteDAO {
 
     public boolean createCliente(Cliente cliente) throws SQLException {
         try (Connection c = ConPool.getConnection()) {
-            QueryBuilder queryBuilder = new QueryBuilder("cliente", "cli");
+            QueryBuilder queryBuilder = new QueryBuilder("cliente");
             queryBuilder.insert("username, passwordhash, nome, cognome, p_elettronica");
             try (PreparedStatement ps = c.prepareStatement(queryBuilder.GenerateQuery())) {
                 ps.setString(1, cliente.getUsername());
@@ -122,7 +126,7 @@ public class ClienteDAO {
 
     public boolean updateCliente(Cliente c) throws SQLException {
         try (Connection conn = ConPool.getConnection()) {
-            QueryBuilder queryBuilder = new QueryBuilder("cliente", "cli");
+            QueryBuilder queryBuilder = new QueryBuilder("cliente");
             queryBuilder.update("nome", "cognome").where("username=?");
             try (PreparedStatement ps = conn.prepareStatement(queryBuilder.GenerateQuery())) {
                 ps.setString(1, c.getNome());
@@ -138,7 +142,7 @@ public class ClienteDAO {
 
     public boolean deleteCliente(String username) throws SQLException {
         try (Connection conn = ConPool.getConnection()) {
-            QueryBuilder queryBuilder = new QueryBuilder("cliente", "cli");
+            QueryBuilder queryBuilder = new QueryBuilder("cliente");
             queryBuilder.delete().where("username=?");
             try (PreparedStatement ps = conn.prepareStatement(queryBuilder.GenerateQuery())) {
                 ps.setString(1, username);
@@ -149,7 +153,7 @@ public class ClienteDAO {
 
     public void doSave(Cliente cliente) throws SQLException{
         try(Connection c = ConPool.getConnection()){
-            QueryBuilder queryBuilder = new QueryBuilder("cliente","cli");
+            QueryBuilder queryBuilder = new QueryBuilder("cliente");
             queryBuilder.insert("username, pass, nome, cognome, email");
             PreparedStatement ps= c.prepareStatement(queryBuilder.GenerateQuery());
             ps.setString(1, cliente.getUsername());

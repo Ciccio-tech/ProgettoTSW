@@ -1,22 +1,47 @@
 package servlet;
 
+import MyException.MyServletException;
 import model.Cliente;
 import model.ClienteDAO;
 
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.SQLException;
+
 
 @WebServlet( "/LoginServlet")
 public class LoginServlet extends HttpServlet {
-    static ClienteDAO utente;
+    static ClienteDAO clienteDAO= new ClienteDAO();
 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        String username= request.getParameter("username");
+        String password= request.getParameter("password");
+        Cliente cliente = null;
+        if(username != null && password!= null){
+            cliente = clienteDAO.doRetrieveByUsernamePassword(username, password);
+        }
+        if(cliente == null) {
+            try {
+                throw new MyServletException("username o password non validi");
+            } catch (MyServletException e) {
+                e.printStackTrace();
+            }
+        }
+        request.getSession().setAttribute("cliente", cliente);
+        RequestDispatcher requestDispatcher= request.getRequestDispatcher("../../webapp/index.jsp");
+        requestDispatcher.forward(request, response);
+    }
 
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+    }
+
+    /*
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         HttpSession session = request.getSession();
         boolean paying = session.getAttribute("wasPaying") == null ? false : (Boolean) session.getAttribute("wasPaying");
@@ -41,7 +66,7 @@ public class LoginServlet extends HttpServlet {
                     session.setAttribute("isAdmin", true);
                     page = "amministratore.jsp";
                     session.removeAttribute("cart");
-                } else throw new Exception();*/
+                } else throw new Exception();
             }
             response.sendRedirect(response.encodeURL(page));
         } catch (Exception e) {
@@ -54,5 +79,7 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
+
+     */
 
 }

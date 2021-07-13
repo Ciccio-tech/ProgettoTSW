@@ -37,7 +37,7 @@ public class OrdineDAO {
 
     public boolean createOrdine(Ordine ordine) throws SQLException{
         try(Connection c = ConPool.getConnection()){
-            QueryBuilder queryBuilder= new QueryBuilder("ordine", "order");
+            QueryBuilder queryBuilder= new QueryBuilder("ordine");
             queryBuilder.insert("codO, stato, dataO, username");
             PreparedStatement ps= c.prepareStatement(queryBuilder.GenerateQuery());
             ps.setInt(1, ordine.getCodO());
@@ -56,7 +56,7 @@ public class OrdineDAO {
 
     public boolean deleteOrdine(Ordine ordine)throws SQLException{
         try(Connection c= ConPool.getConnection()){
-            QueryBuilder queryBuilder= new QueryBuilder("ordine", "order");
+            QueryBuilder queryBuilder= new QueryBuilder("ordine");
             queryBuilder.delete().where("codO=?");
             PreparedStatement ps= c.prepareStatement(queryBuilder.GenerateQuery());
             ps.setInt(1, ordine.getCodO());
@@ -73,7 +73,7 @@ public class OrdineDAO {
 
     public ArrayList<Ordine> doRetrieveByUsername(String username) throws SQLException{
         try(Connection c = ConPool.getConnection()){
-            QueryBuilder queryBuilder = new QueryBuilder("ordine","order");
+            QueryBuilder queryBuilder = new QueryBuilder("ordine");
             queryBuilder.select("*").where("username= ?");
             PreparedStatement ps= c.prepareStatement(queryBuilder.GenerateQuery());
             ps.setString(1, username);

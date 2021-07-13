@@ -46,7 +46,7 @@ public class RecensioneDAO {
 
     public boolean createRecensione(Recensione recensione) throws SQLException {
         try(Connection c= ConPool.getConnection()){
-            QueryBuilder queryBuilder = new QueryBuilder("recensione", "rec");
+            QueryBuilder queryBuilder = new QueryBuilder("recensione");
             queryBuilder.insert("username, codP, dataR, voto, commento");
             PreparedStatement ps= c.prepareStatement(queryBuilder.GenerateQuery());
             if(ps.executeUpdate() == 1)
@@ -61,7 +61,7 @@ public class RecensioneDAO {
 
     public boolean deleteRecensione(Recensione recensione) throws SQLException{
         try(Connection c= ConPool.getConnection()){
-            QueryBuilder queryBuilder = new QueryBuilder("recensione","rec");
+            QueryBuilder queryBuilder = new QueryBuilder("recensione");
             queryBuilder.delete().where("username = ?, codP= ?");
             PreparedStatement ps= c.prepareStatement(queryBuilder.GenerateQuery());
             ps.setString(1, recensione.getUsername());
@@ -77,7 +77,7 @@ public class RecensioneDAO {
 
     public ArrayList<Recensione> doRetrieveByUsername(Cliente cliente) throws SQLException{
         try(Connection c= ConPool.getConnection()){
-            QueryBuilder queryBuilder = new QueryBuilder("recensione","rec");
+            QueryBuilder queryBuilder = new QueryBuilder("recensione");
             queryBuilder.select("*").where("username = ?");
             PreparedStatement ps= c.prepareStatement(queryBuilder.GenerateQuery());
             ps.setString(1, cliente.getUsername());
@@ -101,7 +101,7 @@ public class RecensioneDAO {
 
      public ArrayList<Recensione> doRetrieveByCodP(Prodotto prodotto) throws SQLException{
          try(Connection c= ConPool.getConnection()){
-             QueryBuilder queryBuilder = new QueryBuilder("recensione","rec");
+             QueryBuilder queryBuilder = new QueryBuilder("recensione");
              queryBuilder.select("*").where("codP = ?");
              PreparedStatement ps= c.prepareStatement(queryBuilder.GenerateQuery());
              ps.setInt(1, prodotto.getCodP());
