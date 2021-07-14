@@ -20,6 +20,15 @@ public class Prodotto {
     private String modello;
     private float prezzo;
     private int quantita;
+    private String immagine;
+
+    public String getImmagine() {
+        return immagine;
+    }
+
+    public void setImmagine(String immagine) {
+        this.immagine = immagine;
+    }
 
     public int getCodP() {
         return this.codP;

@@ -18,7 +18,7 @@ public class ClienteDAO {
 
     public ArrayList<Cliente> doRettieveAll(int offset, int limit) throws SQLException {
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT username, pass, nome, cognome, p_elettronica, data_nascita FROM utente LIMIT ?, ?");
+            PreparedStatement ps = con.prepareStatement("SELECT username, pass, nome, cognome, email FROM utente LIMIT ?, ?");
             ps.setInt(1, offset);
             ps.setInt(2, limit);
             ArrayList<Cliente> cli = new ArrayList<>();
@@ -30,7 +30,6 @@ public class ClienteDAO {
                 c.setNome(rs.getString(3));
                 c.setCognome(rs.getString(4));
                 c.setP_elettronica(rs.getString(5));
-                //inserire la data
                 cli.add(c);
             }
             return cli;
@@ -44,7 +43,7 @@ public class ClienteDAO {
         try (Connection con = ConPool.getConnection()) {
             //PreparedStatement ps = con.prepareStatement("SELECT username, password, nome, email FROM utente_registrato WHERE username=? AND password=?");
             QueryBuilder queryBuilder= new QueryBuilder("utente_registrato");
-            queryBuilder.select("username, password, nome, email").where("username= ? AND password = ?");
+            queryBuilder.select("username, pass, nome, cognome, email").where("username = ? AND pass = ?");
             PreparedStatement ps= con.prepareStatement(queryBuilder.GenerateQuery());
             ps.setString(1, username);
             ps.setString(2, password);
@@ -54,7 +53,8 @@ public class ClienteDAO {
                 p.setUsername(rs.getString(1));
                 p.setPassword(rs.getString(2));
                 p.setNome(rs.getString(3));
-                p.setP_elettronica(rs.getString(4));
+                p.setCognome(rs.getString(4));
+                p.setP_elettronica(rs.getString(5));
                 return p;
             }
             return null;

@@ -21,7 +21,7 @@ public class RegistrazioneServlet extends HttpServlet {
     private ClienteDAO clienteDAO= new ClienteDAO();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        if(request.getSession().getAttribute("utente") != null){
+        if(request.getSession().getAttribute("cliente") != null){
             try {
                 throw new MyServletException("Utente già loggato!");
             } catch (MyServletException e) {

@@ -22,7 +22,7 @@ public class ProdottoDAO {
 
     public List<Prodotto> doRetrieveAll(int offset, int limit) {
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT codP, marca, modello, prezzo, quantità FROM prodotto LIMIT ?, ?");
+            PreparedStatement ps = con.prepareStatement("SELECT codP, marca, modello, prezzo, quantità, immagine FROM prodotto LIMIT ?, ?");
             ps.setInt(1, offset);
             ps.setInt(2, limit);
             ArrayList<Prodotto> prodotti = new ArrayList<>();
@@ -44,7 +44,7 @@ public class ProdottoDAO {
 
     public Prodotto doRetrieveById(int id) {
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT  codP, marca, modello, prezzo, quantità FROM prodotto WHERE codP=?");
+            PreparedStatement ps = con.prepareStatement("SELECT  codP, marca, modello, prezzo, quantità, immagine FROM prodotto WHERE codP=?");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -65,7 +65,7 @@ public class ProdottoDAO {
     public List<Prodotto> doRetrieveByNome(String against, int offset, int limit) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "SELECT codP, marca, modello, prezzo, quantità FROM prodotto WHERE MATCH(nome) AGAINST(? IN BOOLEAN MODE) LIMIT ?, ?");
+                    "SELECT codP, marca, modello, prezzo, quantità, immagine FROM prodotto WHERE MATCH(nome) AGAINST(? IN BOOLEAN MODE) LIMIT ?, ?");
             ps.setString(1, against);
             ps.setInt(2, offset);
             ps.setInt(3, limit);
@@ -89,7 +89,7 @@ public class ProdottoDAO {
     public ArrayList<Prodotto> doRetrieveByModelloorMarca(String against, int offset, int limit) throws SQLException {
         try(Connection c= ConPool.getConnection()){
             QueryBuilder queryBuilder= new QueryBuilder("prodotto");
-            queryBuilder.select("codP, tipo, marca, modello, prezzo, quantità;").where("MATCH(marca, modello) AGAINST(?) LIMIT ?, ?");
+            queryBuilder.select("codP, tipo, marca, modello, prezzo, quantità, immagine").where("MATCH(marca, modello) AGAINST(?) LIMIT ?, ?");
             PreparedStatement ps = c.prepareStatement(queryBuilder.GenerateQuery());
             ps.setString(1, against);
             ps.setInt(2, offset);
@@ -114,13 +114,14 @@ public class ProdottoDAO {
 
     public void doSave(Prodotto prodotto) throws SQLException{
         try(Connection c= ConPool.getConnection()){
-            PreparedStatement ps= c.prepareStatement("INSERT INTO prodotto (codP, tipo, marca, modello, prezzo, quantità) VALUES(?,?,?,?,?,?)");
+            PreparedStatement ps= c.prepareStatement("INSERT INTO prodotto (codP, tipo, marca, modello, prezzo, quantità, immagine) VALUES(?,?,?,?,?,?, ?)");
             ps.setInt(1, prodotto.getCodP());
             ps.setString(2, prodotto.getTipo());
             ps.setString(3, prodotto.getMarca());
             ps.setString(4, prodotto.getModello());
             ps.setFloat(5, prodotto.getPrezzo());
             ps.setInt(6, prodotto.getQuantita());
+            ps.setString(7, prodotto.getImmagine());
             if(ps.executeUpdate() != 1)
                 throw new RuntimeException("INSERT FAILED");
         }catch (SQLException e){
@@ -141,13 +142,14 @@ public class ProdottoDAO {
 
     public void doUpdate(Prodotto prodotto) throws SQLException{
         try(Connection c= ConPool.getConnection()){
-            PreparedStatement ps= c.prepareStatement("UPDATE prodotto SET tipo=?, marca=?, modello=?, prezzo=?, quantità=? WHERE codP=?");
+            PreparedStatement ps= c.prepareStatement("UPDATE prodotto SET tipo=?, marca=?, modello=?, prezzo=?, quantità=?, immagine=? WHERE codP=?");
             ps.setString(1, prodotto.getTipo());
             ps.setString(2, prodotto.getMarca());
             ps.setString(3, prodotto.getModello());
             ps.setFloat(4, prodotto.getPrezzo());
             ps.setInt(5, prodotto.getQuantita());
             ps.setInt(6, prodotto.getCodP());
+            ps.setString(7, prodotto.getImmagine());
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("UPDATE ERROR.");
             }
