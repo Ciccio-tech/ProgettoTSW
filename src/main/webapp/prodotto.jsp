@@ -12,7 +12,7 @@
 <html>
 
 <head>
-    <title>${prodotto.getModello()}</title>
+    <title>Prodotto</title>
     <link rel="stylesheet" href="css1/style.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -100,17 +100,21 @@
     </style>
 
 </head>
-<body style="background-image: url('images/FotoProdotti/FujifilmNstax.jpg');" data-spy="scroll" data-target=".navbar" data-offset="50">
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
 <%@include file = "header.jsp" %>
 <%@ page import = "model.Prodotto" %>
 <%@ page import = "java.util.List,java.util.ArrayList, model.Recensione, java.util.Random"%>
 
 <section class="card"  style="padding-bottom:90px;">
     <div style="float:left; padding:20px " >
-        <%@include file = "zoom.jsp" %>
+        <div class="img-magnifier-container">
+            <img id="image" src="images/FotoProdotti/NikonG35.jpg">  <!--{product.photo}-->
+        </div>
+
+
     </div>
     <div class="capo">
-        <h1>{product.getName()} <%@include file = "voto.jsp" %></h1>
+        <h1>{product.getName()} </h1>
         <br>
         <h3 class="price"><span>{product.getPricewithIva()} &#8364</span></h3>
         <p>La quantit&#224 disponibile in magazzino &#232 {product.getQty()}</p>
@@ -125,12 +129,10 @@
     </div><br>
 </section>
 <section>
-    <%@include file = "recensione.jsp" %>
+    <!-- </form> -->
 </section>
-
-
-
-
 <%@include file = "footer.jsp" %>
+<script type = "text/javascript" src = "JavaScript/magnifier.js"></script>
+<script>magnify('myimage', 3);</script>
 </body>
 </html>
