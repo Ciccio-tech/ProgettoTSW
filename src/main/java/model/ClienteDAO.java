@@ -39,12 +39,12 @@ public class ClienteDAO {
     }
 
 
-  public static Cliente doRetrieveByUsernamePassword(String username, String password){
+  public Cliente doRetrieveByUsernamePassword(String username, String password){
         try (Connection con = ConPool.getConnection()) {
-            //PreparedStatement ps = con.prepareStatement("SELECT username, password, nome, email FROM utente_registrato WHERE username=? AND password=?");
-            QueryBuilder queryBuilder= new QueryBuilder("utente_registrato");
-            queryBuilder.select("username, pass, nome, cognome, email").where("username = ? AND pass = ?");
-            PreparedStatement ps= con.prepareStatement(queryBuilder.GenerateQuery());
+            PreparedStatement ps = con.prepareStatement("SELECT username, pass, nome, cognome, email FROM utente_registrato WHERE username=? AND pass=?");
+            /*QueryBuilder queryBuilder= new QueryBuilder("utente_registrato");
+            queryBuilder.select("username, pass, nome, cognome, email").where("utente_registrato.username = ? AND utente_registrato.pass = ?");*/
+            //PreparedStatement ps= con.prepareStatement(queryBuilder.GenerateQuery());
             ps.setString(1, username);
             ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
