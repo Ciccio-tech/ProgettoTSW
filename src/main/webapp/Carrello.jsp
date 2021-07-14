@@ -222,13 +222,49 @@
             }
         }
         .container1 {
-            padding: 80px 20px;
+            padding: 30px 20px;
         }
         @media (max-width: 600px) {
             .container1 {
                 padding: 40px 40px;
             }
         }
+
+        table {
+            margin-bottom: 20px;
+            margin-top: 100px;
+            margin-left: 20px;
+            border-collapse: collapse;
+            width: 97%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {background-color: #f2f2f2;}
+        div #img {
+            width: 80px;
+            height:80px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            border-radius:50%;
+        }
+        .button3 {background-color: #f44336;} /* Red */
+        .button2 {
+            border: none;
+            color: white;
+            padding: 15px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius:50%;
+        }
+
     </style>
 
 </head>
@@ -236,6 +272,29 @@
 <body>
 <%@include file = "header.jsp" %>
 
+
+    <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Rimuovi Prodotto</th>
+                <th>Immagine Prodotto</th>
+                <th>Nome prodotto</th>
+                <th>Prezzo</th>
+                <th>IVA</th>
+                <th>Quantità</th>
+                <th>Tatale prezzo</th>
+            </tr>
+                <tr class="text-center">
+                <td class="product-remove"><button class="removeX button2 button3" ><span class="glyphicon glyphicon-trash" style="color: white"></span></button>
+                <td class="image-prod"><div id="img" style="background-image: url(images/FotoProdotti/SigmaCanon10-20mm.jpg);"></div> </td>
+                <td class="product-name">nome</td>
+                <td>78</td>
+                <td>21&#37;</td>
+                <td class="quantity"><div class="input-group mb-3"><input type="number" name="quantity" class="quantity form-control input-number" value="1" min="1" max="34"></div></td> <!-- in value dobbiamo portare la quantita dell'ordine -->
+                <td class="total">78</td>
+          </tr>
+        </table>
+    </div>
 <div class="row container1">
     <div class="col-75">
         <div class="container2">
@@ -244,23 +303,29 @@
                 <div class="row">
                     <div class="col-50">
                         <h3>Billing Address</h3>
-                        <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-                        <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
+                        <label for="fname"><i class="fa fa-user"></i> Nome</label>
+                        <input type="text" id="fname" name="firstname" placeholder="John M. Doe" readonly>
                         <label for="email"><i class="fa fa-envelope"></i> Email</label>
-                        <input type="text" id="email" name="email" placeholder="john@example.com">
-                        <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+                        <input type="text" id="email" name="email" placeholder="john@example.com" readonly>
+                        <label for="adr"><i class="fa fa-address-card-o"></i> Indirizzo</label>
                         <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
-                        <label for="city"><i class="fa fa-institution"></i> City</label>
+                        <label for="city"><i class="fa fa-institution"></i> Città </label>
                         <input type="text" id="city" name="city" placeholder="New York">
 
                         <div class="row">
                             <div class="col-50">
-                                <label for="state">State</label>
-                                <input type="text" id="state" name="state" placeholder="NY">
-                            </div>
+                                <label for="prov">Provincia</label>
+                                <input type="text" id="prov" name="prov" placeholder="SA">
+                           </div>
+
                             <div class="col-50">
-                                <label for="zip">Zip</label>
-                                <input type="text" id="zip" name="zip" placeholder="10001">
+                                <label for="cap">Cap</label>
+                                <input type="text" id="cap" name="cap" placeholder="84049">
+                            </div>
+
+                            <div class="col-50">
+                                <label for="state">Nazione</label>
+                                <input type="text" id="state" name="state" placeholder="NY">
                             </div>
                         </div>
                     </div>
@@ -296,7 +361,7 @@
                 <label>
                     <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
                 </label>
-                <input type="submit" value="Continue to checkout" class="button button4">
+                <input type="submit" value="Acquista" class="button button4" style="width: 100%">
             </form>
         </div>
     </div>
