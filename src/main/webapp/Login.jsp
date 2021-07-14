@@ -164,7 +164,7 @@
                         <%}
                         %>
                         <p><input class="myInput1" id="username" type="text" size="30" name = "username" placeholder="Username" autocomplete="off"><br></p>
-                        <p><input class="myInput1" id="password" type="password" size="30" name = "password" placeholder="Password tra i 8 e i 25 caratteri" autocomplete="off"><br></p>
+                        <p><input class="myInput1" id="pass" type="password" size="30" name = "pass" placeholder="Password tra i 8 e i 25 caratteri" autocomplete="off"><br></p>
                         <button class="button button4" type = "submit" >Accedi</button>
                         <button class="button button4" type = "reset">Cancella</button><br><br>
                         Non sei ancora registrato? &nbsp &nbsp<a class="mylink" href= "Registrazione.jsp"> Registrati ora</a>
