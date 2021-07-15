@@ -192,6 +192,7 @@ div .login{
     position:relative;
     box-sizing: border-box;
     cursor: none;
+    margin: 80px;
 }
 
 .img-magnifier-glass {

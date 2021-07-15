@@ -1,12 +1,7 @@
 <%@ page import="model.ProdottoDAO" %>
 <%@ page import="model.Prodotto" %>
-<%@ page import="java.util.List" %><%--
-  Created by IntelliJ IDEA.
-  User: franc
-  Date: 27/06/2021
-  Time: 15:59
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.List" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
@@ -125,38 +120,56 @@
 
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
-<%@include file = "header.jsp" %>
-<%@ page import = "model.Prodotto" %>
-<%@ page import = "java.util.List,java.util.ArrayList, model.Recensione, java.util.Random"%>
+    <%@include file = "header.jsp" %>
+    <%@ page import = "model.Prodotto" %>
+    <%@ page import = "java.util.List,java.util.ArrayList, model.Recensione, java.util.Random"%>
 
-<section class="card"  style="padding-bottom:90px;">
-    <div style="float:left; padding:20px " >
-        <div class="img-magnifier-container">
-            <img id="image" src="images/FotoProdotti/NikonG35.jpg">  <!--{product.photo}-->
+    <section class="card"  style="padding-bottom:90px;">
+        <div style="float:left; padding:80px " >
+            <div class="img-magnifier-container">
+                <img id="image" src="images/FotoProdotti/NikonG35.jpg">  <!--{product.photo}-->
+            </div>
+            <script type = "text/javascript" src = "JavaScript/magnifier.js"></script>
+            <script>magnify('image', 3);</script>
         </div>
+        <div class="capo">
+            <h1> Nome prodotto</h1>  <!--{product.getName()} -->
+            <%    Double obj = (Double) request.getAttribute ("voto");
+                java.util.List<Recensione> recensioni = (java.util.List<Recensione>) request.getAttribute("recensioni");
+                Recensione userCommentate = (Recensione) request.getAttribute ("userComment");
+                int vote = obj == null ? 0 : obj.intValue() > 5 ? 5 : obj.intValue();
 
+                if ((recensioni == null ? false : recensioni.size() != 0) || (userCommentate == null ? false : true)) {
 
-    </div>
-    <div class="capo">
-        <h1> Nome prodotto</h1>  <!--{product.getName()} -->
-        <br>
-        <h3 class="price"><span>Iva</span></h3> <!--{product.getPricewithIva()} &#8364 -->
-        <p>La quantit&#224 disponibile in magazzino</p><!--&#232 {product.getQty()}-->
-        <p>descrizione</p> <!--{product.getDescription()} -->
-
-      <!---  <form method = "post" action="ProductControl?id={product.code}&act=addC">-->
-            <label  class="myLabel" >Quantit&#224 desiderata</label>
-            <input id="inputN" type="number" name="qty" value = "1" min="1" max="{product.getQty()}">
-            <br><a href="Carrello.jsp" class="button button2">Avanti</a>
-            <a href="Catalogo.jsp" class="button button2">Indietro</a>
-      <!-- </form> -->
-    </div></br>
-</section>
-<section>
-    <!-- </form> -->
-</section>
-<%@include file = "footer.jsp" %>
-<script type = "text/javascript" src = "JavaScript/magnifier.js"></script>
-<script>magnify('myimage', 3);</script>
+                    for (int owo = 0;owo < 5; owo++) {
+                        if (vote > 0) {%>
+            <span class="fa fa-star checked"></span>
+            <%
+                vote--;
+            } else {
+            %>
+            <span class="fa fa-star"></span>
+            <%
+                        }
+                    }
+                }
+            %>
+            <hr style="border:3px solid #f1f1f1">
+            <br>
+            <h3 class="price"><span>Iva</span></h3> <!--{product.getPricewithIva()} &#8364 -->
+            <p>La quantit&#224 disponibile in magazzino</p><!--&#232 {product.getQty()}-->
+            <p>descrizione</p> <!--{product.getDescription()} -->
+        <form method = "post" action="ProductControl?id={product.code}&act=addC">-->
+                <label  class="myLabel" >Quantit&#224 desiderata</label>
+                <input id="inputN" type="number" name="qty" value = "1" min="1" max="{product.getQty()}">
+                <br><a href="Carrello.jsp" class="button button2">Avanti</a>
+                <a href="Catalogo.jsp" class="button button2">Indietro</a>
+        </form>
+        </div></br>
+    </section>
+ <!--   <section>
+     %@ < include file = "recensione.jsp" %>
+    </section>-->
+    <%@include file = "footer.jsp" %>
 </body>
 </html>
