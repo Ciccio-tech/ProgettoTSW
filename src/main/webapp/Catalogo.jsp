@@ -134,6 +134,7 @@
             cursor: pointer;
             width: 100%;
             font-size: 18px;
+            border-radius: 12px;
         }
 
         .card button:hover {
@@ -163,7 +164,7 @@
             <h1><a href="prodotto.jsp" target="_self">Tailored Jeans</a></h1>
             <p class="price">$19.99</p>
             <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
-            <p><button>Aggiungi al carrello</button></p>
+            <p><a href="Carrello.jsp" class="card button "> Aggiungi al carrello</a></p>
         </div>
     </div>
     <%

@@ -13,8 +13,8 @@
 
 <head>
     <title>Prodotto</title>
-    <link rel="stylesheet" href="css1/style.css">
-    <meta charset="utf-8">
+    <link rel="stylesheet" href="css1/style.css" type = "text/css">
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
@@ -23,6 +23,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <style>
+        input[type=text], input[type=number]{
+            width: 100%;
+            border: 2px solid lightseagreen;
+            border-radius: 4px;
+            padding: 12px 20px;
+            margin: 8px 0;
+        }
         .navbar-nav>li>a {
             padding-top: 25px;
             padding-bottom: 15px;
@@ -97,6 +104,23 @@
             color: #777;
             text-decoration: none;
         }
+
+        .button {
+            background-color: lightseagreen; /* Green */
+            border: none;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .button2 {
+            border-radius: 12px;
+        }
     </style>
 
 </head>
@@ -114,19 +138,19 @@
 
     </div>
     <div class="capo">
-        <h1>{product.getName()} </h1>
+        <h1> Nome prodotto</h1>  <!--{product.getName()} -->
         <br>
-        <h3 class="price"><span>{product.getPricewithIva()} &#8364</span></h3>
-        <p>La quantit&#224 disponibile in magazzino &#232 {product.getQty()}</p>
-        <p>{product.getDescription()}</p>
+        <h3 class="price"><span>Iva</span></h3> <!--{product.getPricewithIva()} &#8364 -->
+        <p>La quantit&#224 disponibile in magazzino</p><!--&#232 {product.getQty()}-->
+        <p>descrizione</p> <!--{product.getDescription()} -->
 
       <!---  <form method = "post" action="ProductControl?id={product.code}&act=addC">-->
             <label  class="myLabel" >Quantit&#224 desiderata</label>
             <input id="inputN" type="number" name="qty" value = "1" min="1" max="{product.getQty()}">
-            <br><button  type = "submit" class="button button2" >Acquista</button>
+            <br><a href="Carrello.jsp" class="button button2">Avanti</a>
             <a href="Catalogo.jsp" class="button button2">Indietro</a>
       <!-- </form> -->
-    </div><br>
+    </div></br>
 </section>
 <section>
     <!-- </form> -->

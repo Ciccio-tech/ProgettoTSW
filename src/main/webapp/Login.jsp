@@ -119,7 +119,10 @@
             margin: 4px 2px;
             cursor: pointer;
         }
-        .button4 {border-radius: 12px;}
+        .button4 {
+            border-radius: 12px;
+        }
+
         .mylink:link, .mylink:visited {
             background-color: white;
             color: black;

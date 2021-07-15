@@ -1,3 +1,5 @@
+@CHARSET "ISO-8859-1";
+
 /*carrello*/
 table {
     border-collapse: collapse;
@@ -325,12 +327,12 @@ div .container {
     font-size: large;
 }
 
-.productCard button {
+.productCard {
     border: none;
     outline: 0;
     padding: 12px;
     color: white;
-    background-color: #1E90FF/*#000*/;
+    background-color: lightseagreen/*#000*/;
     text-align: center;
     cursor: pointer;
     width: 100%;
@@ -386,7 +388,7 @@ body {
     border-width: 3px;
     padding: 2%;
     border-style: none;
-    border-color: blue;
+    border-color: lightseagreen;
     border-radius:15px;
     filter:alpha(opacity=50);
     -moz-opacity: 0.9;
@@ -402,7 +404,7 @@ fieldset, .field {
     border-width: 1px;
     padding: 2%;
     border-style: none;
-    border-color: blue;
+    border-color: lightseagreen;
     border-radius:15px;
     filter:alpha(opacity=50);
     -moz-opacity: 0.9;
@@ -412,14 +414,14 @@ fieldset, .field {
 h1, .h1disney{
     font-family: Waltograph,Times, sans-serif;
     font-size: 40px;
-    color: #120A8F;
+    color: lightseagreen;
     text-align: center;
 }
 
 h2, .h2disney{
     font-family: Verdana,Geneva,sans-serif;
     font-size: 13px;
-    color: #120A8F;
+    color: lightseagreen;
 }
 
 .casella {
@@ -435,7 +437,7 @@ h2, .h2disney{
 
 /*link*/
 fieldset a:link, fieldset a:visited ,.field a:link, .field  a:visited{
-    background-color: #1E90FF;
+    background-color: lightseagreen;
     color: white;
     padding: 15px 20px;
     text-align: center;
@@ -445,35 +447,27 @@ fieldset a:link, fieldset a:visited ,.field a:link, .field  a:visited{
 }
 
 fieldset a:hover,fieldset a:active,.field a:hover, .field  a:active{
-    background-color: blue;
+    background-color: lightseagreen;
     margin: 5px 5px 5px 5px;
 }
 /**/
 .button {
-    background-color: #4CAF50; /* Green */
+    background-color: lightseagreen; /* Green */
     border: none;
     color: white;
-    padding: 10px 15px;
+    padding: 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
     cursor: pointer;
 }
 
 .button2 {
-    background-color: white;
-    color: black;
-    border: 2px solid #1E90FF;
+    border-radius: 12px;
 }
 
-.button2:hover {
-    background-color:#1E90FF;
-    color: white;
-}
 
 /*fine link*/
 /*styleGallery*/
@@ -565,7 +559,7 @@ div.desc {
 }
 
 .checked {
-    color: orange;
+    color: lightseagreen;
 }
 
 /* Three column layout */
@@ -647,7 +641,7 @@ span.price {
 }
 
 .btn {
-    background-color:#1E90FF;
+    background-color:lightseagreen;
     color: white;
     padding: 12px;
     margin: 10px 0;
@@ -659,11 +653,11 @@ span.price {
 }
 
 .btn:hover {
-    background-color: #2196F3;
+    background-color: lightseagreen;
 }
 
 a {
-    color: #2196F3;
+    color: lightseagreen;
 }
 
 hr {
