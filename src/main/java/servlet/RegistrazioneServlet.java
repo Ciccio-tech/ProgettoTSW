@@ -4,7 +4,7 @@ import MyException.MyServletException;
 import model.Cliente;
 import model.ClienteDAO;
 
-import javax.servlet.RequestDispatcher;
+//import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,16 +12,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.GregorianCalendar;
+
 
 
 @WebServlet("/RegistrazioneServlet")
 
 public class RegistrazioneServlet extends HttpServlet {
-    private ClienteDAO clienteDAO= new ClienteDAO();
+    private final ClienteDAO clienteDAO= new ClienteDAO();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        if(request.getSession().getAttribute("cliente") != null){
+        if(request.getSession().getAttribute("utente_registrato") != null){
             try {
                 throw new MyServletException("Utente già loggato!");
             } catch (MyServletException e) {
@@ -47,16 +47,16 @@ public class RegistrazioneServlet extends HttpServlet {
             }
         }
 
-        String passwordConferma= request.getParameter("passwordConferma");
-        if(password!=null){
-            if(!password.equals(passwordConferma)) {
-                try {
-                    throw new MyServletException("Password e password di conferma differenti.");
-                } catch (MyServletException e) {
-                    e.printStackTrace();
-                }
+        String passwordConferma= request.getParameter("confermaPassword");
+        assert password != null;
+        if(!password.equals(passwordConferma)) {
+            try {
+                throw new MyServletException("Password e password di conferma differenti.");
+            } catch (MyServletException e) {
+                e.printStackTrace();
             }
         }
+
 
         String nome = request.getParameter("nome");
         if(!(nome != null && nome.trim().length() > 0 && nome.matches("^[ a-zA-Z\\u00C0-\\u00ff]+$"))){
@@ -67,7 +67,7 @@ public class RegistrazioneServlet extends HttpServlet {
             }
         }
 
-        String cognome = request.getParameter("nome");
+        String cognome = request.getParameter("cognome");
         if(!(cognome != null && cognome.trim().length() > 0 && cognome.matches("^[ a-zA-Z\\u00C0-\\u00ff]+$"))){
             try {
                 throw new MyServletException("Cognome non valido");
@@ -77,14 +77,13 @@ public class RegistrazioneServlet extends HttpServlet {
         }
 
         String email= request.getParameter("email");
-        if(!(email != null && email.matches("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w+)+$"))){
+        if(!(email != null && email.matches("^\\w+([.-]?\\w+)*@\\w+([.-]?\\w+)*(\\.\\w+)+$"))){
             try {
                 throw new MyServletException("Email non valida");
             } catch (MyServletException e) {
                 e.printStackTrace();
             }
         }
-
 
 
         Cliente cliente= new Cliente();
@@ -100,10 +99,15 @@ public class RegistrazioneServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        request.getSession().setAttribute("cliente", cliente);
+        request.getSession().setAttribute("utente_registrato", cliente);
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/index.jsp");        //fare una JSP che mostri l'avvenuta registrazione correttamente
+
+        /*
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");        //fare una JSP che mostri l'avvenuta registrazione correttamente
         requestDispatcher.forward(request, response);
+
+         */
+        response.sendRedirect("index.jsp");
     }
 
 

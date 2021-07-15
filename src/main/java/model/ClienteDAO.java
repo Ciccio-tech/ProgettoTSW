@@ -18,7 +18,7 @@ public class ClienteDAO {
 
     public ArrayList<Cliente> doRettieveAll(int offset, int limit) throws SQLException {
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT username, pass, nome, cognome, email FROM utente LIMIT ?, ?");
+            PreparedStatement ps = con.prepareStatement("SELECT username, pass, nome, cognome, email FROM utente_registrato LIMIT ?, ?");
             ps.setInt(1, offset);
             ps.setInt(2, limit);
             ArrayList<Cliente> cli = new ArrayList<>();
@@ -66,7 +66,7 @@ public class ClienteDAO {
 
     public Cliente doRetrieveByUsername(String username) throws SQLException {
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT username, password , nome, cognome, p_elettronica FROM utente WHERE username=?");
+            PreparedStatement ps = con.prepareStatement("SELECT username, password , nome, cognome, p_elettronica FROM utente_registrato WHERE username=?");
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -88,7 +88,7 @@ public class ClienteDAO {
 
     public ArrayList<Cliente> fetchCliente(int start, int end) throws SQLException {
         try (Connection c = ConPool.getConnection()) {
-            QueryBuilder queryBuilder = new QueryBuilder("account");
+            QueryBuilder queryBuilder = new QueryBuilder("utente_registrato");
             String query = queryBuilder.select().GenerateQuery();
             try (PreparedStatement ps = c.prepareStatement(query)) {
                 ps.setInt(1, start);
@@ -108,7 +108,7 @@ public class ClienteDAO {
 
     public boolean createCliente(Cliente cliente) throws SQLException {
         try (Connection c = ConPool.getConnection()) {
-            QueryBuilder queryBuilder = new QueryBuilder("cliente");
+            QueryBuilder queryBuilder = new QueryBuilder("utente_registrato");
             queryBuilder.insert("username, passwordhash, nome, cognome, p_elettronica");
             try (PreparedStatement ps = c.prepareStatement(queryBuilder.GenerateQuery())) {
                 ps.setString(1, cliente.getUsername());
@@ -126,7 +126,7 @@ public class ClienteDAO {
 
     public boolean updateCliente(Cliente c) throws SQLException {
         try (Connection conn = ConPool.getConnection()) {
-            QueryBuilder queryBuilder = new QueryBuilder("cliente");
+            QueryBuilder queryBuilder = new QueryBuilder("utente_registrato");
             queryBuilder.update("nome", "cognome").where("username=?");
             try (PreparedStatement ps = conn.prepareStatement(queryBuilder.GenerateQuery())) {
                 ps.setString(1, c.getNome());
@@ -142,7 +142,7 @@ public class ClienteDAO {
 
     public boolean deleteCliente(String username) throws SQLException {
         try (Connection conn = ConPool.getConnection()) {
-            QueryBuilder queryBuilder = new QueryBuilder("cliente");
+            QueryBuilder queryBuilder = new QueryBuilder("utente_registrato");
             queryBuilder.delete().where("username=?");
             try (PreparedStatement ps = conn.prepareStatement(queryBuilder.GenerateQuery())) {
                 ps.setString(1, username);
@@ -153,9 +153,12 @@ public class ClienteDAO {
 
     public void doSave(Cliente cliente) throws SQLException{
         try(Connection c = ConPool.getConnection()){
-            QueryBuilder queryBuilder = new QueryBuilder("cliente");
+            /*
+            QueryBuilder queryBuilder = new QueryBuilder("utente_registrato");
             queryBuilder.insert("username, pass, nome, cognome, email");
             PreparedStatement ps= c.prepareStatement(queryBuilder.GenerateQuery());
+             */
+            PreparedStatement ps= c.prepareStatement("INSERT INTO utente_registrato(username, pass, nome, cognome, email) VALUES(?,?,?,?,?)");
             ps.setString(1, cliente.getUsername());
             ps.setString(2, cliente.getPassword());
             ps.setString(3, cliente.getNome());
