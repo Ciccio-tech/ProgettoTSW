@@ -158,7 +158,7 @@
     <div class="column">
         <div class="card">
 
-            <img src="/images/logo.png" alt="Tutorials Point" border="0"/>
+            <img src="images/logo.png" alt="Tutorials Point" border="0"/>
 
             <img src="images/FotoProdotti/FujifilmNstax.jpg" alt="Denim Jeans" style="width:100%">
             <h1><a href="prodotto.jsp" target="_self">Tailored Jeans</a></h1>

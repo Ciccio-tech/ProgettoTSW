@@ -159,7 +159,7 @@
             <h3 class="price"><span>Iva</span></h3> <!--{product.getPricewithIva()} &#8364 -->
             <p>La quantit&#224 disponibile in magazzino</p><!--&#232 {product.getQty()}-->
             <p>descrizione</p> <!--{product.getDescription()} -->
-        <form method = "post" action="ProductControl?id={product.code}&act=addC">-->
+        <form method = "post" action="ProdottoServlet">
                 <label  class="myLabel" >Quantit&#224 desiderata</label>
                 <input id="inputN" type="number" name="qty" value = "1" min="1" max="{product.getQty()}">
                 <br><a href="Carrello.jsp" class="button button2">Avanti</a>

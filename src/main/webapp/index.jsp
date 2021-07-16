@@ -217,10 +217,10 @@
 <!-- Container (The Band Section) -->
 <div id="band" class="container text-center">
     <h3> Chi siamo? </h3>
-    <p><em>.....</em></p>
-    <p>..........</p>
+    <p>Siamo un ragazzo e una ragazza con la passione per la fotografia</p>
     <br>
     <div class="row">
+        <h5> Cosa dicono di noi:</h5>
         <div class="col-sm-4">
             <p class="text-center"><strong>Name</strong></p><br>
             <a href="#demo" data-toggle="collapse">
