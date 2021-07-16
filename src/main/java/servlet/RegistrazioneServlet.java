@@ -3,8 +3,6 @@ package servlet;
 import MyException.MyServletException;
 import model.Cliente;
 import model.ClienteDAO;
-
-//import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -100,13 +98,6 @@ public class RegistrazioneServlet extends HttpServlet {
         }
 
         request.getSession().setAttribute("utente_registrato", cliente);
-
-
-        /*
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");        //fare una JSP che mostri l'avvenuta registrazione correttamente
-        requestDispatcher.forward(request, response);
-
-         */
         response.sendRedirect("index.jsp");
     }
 
