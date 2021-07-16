@@ -220,6 +220,7 @@
     <p>Siamo un ragazzo e una ragazza con la passione per la fotografia</p>
     <br>
     <div class="row">
+        <h5> Cosa dicono di noi:</h5>
         <div class="col-sm-4">
             <p class="text-center"><strong>Name</strong></p><br>
             <a href="#demo" data-toggle="collapse">

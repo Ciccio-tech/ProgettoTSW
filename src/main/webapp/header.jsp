@@ -16,15 +16,7 @@
                 <li><a href="#band">Chi siamo?</a></li>
                 <li><a href="Catalogo.jsp">Prodotti</a></li>
 
-                <% HttpSession Usersession= request.getSession();
-                   if(Usersession.getAttribute("username")== null){
-                %>
-                <li><a href="Login.jsp">Login</a></li>
-                <%
-                }else{
-                %>>
-                <li><a href="ProfiloPrivato.jsp"><%=Usersession.getAttribute("username")%></a></li>
-                <%} %>
+
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Catalogo
                         <span class="caret"></span></a>
@@ -34,6 +26,23 @@
                         <li><a href="Catalogo.jsp">Accessori</a></li>
                     </ul>
                 </li>
+                <% HttpSession Usersession= request.getSession();
+                    if(Usersession.getAttribute("username")== null){
+                %>
+                <li><a href="Login.jsp">Login</a></li>
+                <%
+                }else{
+                %>>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%=Usersession.getAttribute("username")%>
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="ProfiloPrivato.jsp">Area Personale</a></li>
+                        <li><a href="">Visualizza Ordini</a></li>
+                        <li><a href="">Logout</a></li>
+                    </ul>
+                </li>
+                <%} %>
                 <li><a href="Carrello.jsp"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
                 <li><a href="ricerca.jsp"><span class="glyphicon glyphicon-search"></span></a></li>
             </ul>

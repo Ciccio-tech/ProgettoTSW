@@ -24,16 +24,14 @@ public class Cliente {
         private String nome;
         private String cognome;
         private String p_elettronica;
-        private long telefono;
         private List<Ordine> ordine;
 
-        public Cliente(String username, String password, String nome, String cognome, String p_elettronica, long telefono){
+        public Cliente(String username, String password, String nome, String cognome, String p_elettronica){
             this.username=username;
             this.password=password;
             this.nome=nome;
             this.cognome=cognome;
             this.p_elettronica=p_elettronica;
-            this.telefono=telefono;
         }
 
     public Cliente() {
@@ -149,7 +147,7 @@ public class Cliente {
         this.p_elettronica = p_elettronica;
     }
 
-    public long getTelefono() {
+    /*public long getTelefono() {
         return telefono;
     }
 
@@ -157,7 +155,7 @@ public class Cliente {
         this.telefono = telefono;
     }
 
-    /*
+
     public GregorianCalendar getData_registrazione() {
         return data_registrazione;
     }
@@ -175,9 +173,7 @@ public class Cliente {
                 ", password='" + password + '\'' +
                 ", nome='" + nome + '\'' +
                 ", cognome='" + cognome + '\'' +
-                ", p_elettronica='" + p_elettronica + '\'' +
-                ", telefono=" + telefono +
-                '}';
+                ", p_elettronica='" + p_elettronica + '\'' ;
     }
 }
 
