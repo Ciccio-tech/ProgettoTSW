@@ -14,8 +14,17 @@
             <ul class="nav navbar-nav navbar-right">
                     <li><a href="index.jsp">Home</a></li>
                 <li><a href="#band">Chi siamo?</a></li>
-                <li><a href="Catalogo.jsp">Alcuni prodotti</a></li>
+                <li><a href="Catalogo.jsp">Prodotti</a></li>
+
+                <% HttpSession Usersession= request.getSession();
+                   if(Usersession.getAttribute("username")== null){
+                %>
                 <li><a href="Login.jsp">Login</a></li>
+                <%
+                }else{
+                %>>
+                <li><a href="ProfiloPrivato.jsp"><%=Usersession.getAttribute("username")%></a></li>
+                <%} %>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Catalogo
                         <span class="caret"></span></a>

@@ -6,10 +6,13 @@ import model.ProdottoDAO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+
+@WebServlet("/ProdottoServlet")
 public class ProdottoServlet {
 
     private final ProdottoDAO prodottoDAO= new ProdottoDAO();
