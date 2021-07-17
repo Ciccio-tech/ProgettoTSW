@@ -39,7 +39,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="ProfiloPrivato.jsp">Area Personale</a></li>
                         <li><a href="">Visualizza Ordini</a></li>
-                        <li><a href="">Logout</a></li>
+                        <li><a href="LoginServlet">Logout</a></li>
                     </ul>
                 </li>
                 <%} %>
