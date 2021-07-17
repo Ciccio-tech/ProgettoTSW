@@ -298,7 +298,7 @@
 <div class="row container1">
     <div class="col-75">
         <div class="container2">
-            <form action="/action_page.php">
+            <form action="Carrello">
 
                 <div class="row">
                     <div class="col-50">

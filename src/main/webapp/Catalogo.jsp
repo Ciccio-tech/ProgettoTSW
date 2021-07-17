@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="model.Prodotto" %><%--
   Created by IntelliJ IDEA.
   User: damia
   Date: 12/07/2021
@@ -82,7 +83,7 @@
             text-decoration: none;
         }
         .container {
-            padding: 60px 0px;
+            padding: 60px 0;
         }
         @media (max-width: 600px) {
             .container {
@@ -148,14 +149,14 @@
 
 <%@include file = "header.jsp" %>
 
+//<% response.sendRedirect("ProdottiServlet");%>
+<form action="ProdottiServlet" method="get">
 <div class="container">
     <h2 style="text-align:center">Prodotti</h2>
 <div class="row">
-
-        <%
-            for(int i=0; i<20; i++) {
-        %>
     <div class="column">
+
+        <!--
         <div class="card">
 
             <img src="images/logo.png" alt="Tutorials Point" border="0"/>
@@ -166,13 +167,38 @@
             <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
             <p><a href="Carrello.jsp" class="card button "> Aggiungi al carrello</a></p>
         </div>
+        -->
+
+        <%  ArrayList<Prodotto> prodotti= (ArrayList<Prodotto>) request.getAttribute("products");
+            String Tipo, Marca, Modello;
+            Float prezzo;
+            String immagine;
+            if(prodotti!=null){
+                    for(Prodotto p: prodotti){
+                    Tipo=p.getTipo();
+                    Marca= p.getMarca();
+                    immagine = p.getImmagine();
+                    prezzo=p.getPrezzo();
+                    Modello= p.getModello();
+        %>
+
+                    <img src=<%=immagine%> alt="immagine_prodotto" style="width:100%">
+                    <h3><a href="prodotto.jsp" target="_self"><%=Tipo +Marca + Modello%></a></h3>
+                    <p class="price"><%=prezzo%></p>
+                    <p><a href="Carrello.jsp" class="card button "> Aggiungi al carrello</a></p>
+        <%
+                    }
+            }
+        %>
+
     </div>
-    <%
-        }
-    %>
+
+
 
 </div>
+
 </div>
+</form>
     <%@include file = "footer.jsp" %>
 </body>
 </html>
