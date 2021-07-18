@@ -21,7 +21,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
-
         .navbar-nav>li>a {
             padding-top: 25px;
             padding-bottom: 15px;
@@ -86,7 +85,7 @@
             text-decoration: none;
         }
         .container {
-            padding: 60px 0;
+            padding: 60px 0px;
         }
         @media (max-width: 600px) {
             .container {
@@ -123,7 +122,7 @@
             background-color: #f1f1f1;
         }
 
-         .price {
+        .price {
             color: grey;
             font-size: 22px;
         }
@@ -152,60 +151,42 @@
 
 <%@include file = "header.jsp" %>
 
+
+<form action="ProdottiServlet" method="get" >
 <% response.sendRedirect("ProdottiServlet");%>
-<!-- <form action="ProdottiServlet" method="get"> -->
-<div class="container">
-    <h2 style="text-align:center">Prodotti</h2>
-<div class="row">
-    <div class="column">
+    <div class="container">
+        <h2 style="text-align:center">Prodotti</h2>
+        <div class="row">
+            <div class="column">
+                <div class="card">
+                    <%
+                        ArrayList<Prodotto> prodotti = (ArrayList<Prodotto>) request.getAttribute("products");
+                        String Marca, Modello;
+                        Float prezzo;
+                        String immagine;
+                        if(prodotti != null){
+                            for (Prodotto p : prodotti) {
+                                Marca = p.getMarca();
+                                immagine = p.getImmagine();
+                                prezzo = p.getPrezzo();
+                                Modello = p.getModello();
+                                System.out.println(Marca + prezzo + Modello + immagine);
+                    %>
 
-        <!--
-        <div class="card">
+                    <img src=<%=immagine%>   alt="Immagine_Prodotto" style="width:100%">
+                    <h4><a href="prodotto.jsp" target="_self"><%=Marca + Modello%></a></h4>
+                    <p class="price"><%=prezzo%></p>
+                    <p><a href="Carrello.jsp" class="card button"> Aggiungi al carrello</a></p>  <!-- qui si deve fare il form per chiamare la servlet che aggiunge al carrello-->
+                    <%
 
-            <img src="images/logo.png" alt="Tutorials Point" border="0"/>
-
-            <img src="images/FotoProdotti/FujifilmNstax.jpg" alt="Denim Jeans" style="width:100%">
-            <h1><a href="prodotto.jsp" target="_self">Tailored Jeans</a></h1>
-            <p class="price">$19.99</p>
-            <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
-            <p><a href="Carrello.jsp" class="card button "> Aggiungi al carrello</a></p>
+                            }
+                        }
+                    %>
+                </div>
+            </div>
         </div>
-        -->
-
-        <%
-            ArrayList<Prodotto> prodotti = (ArrayList<Prodotto>) request.getAttribute("products");
-            String Marca, Modello;
-            Float prezzo;
-            String immagine;
-            if(prodotti != null){
-                for (Prodotto p : prodotti) {
-                    Marca = p.getMarca();
-                    immagine = p.getImmagine();
-                    prezzo = p.getPrezzo();
-                    Modello = p.getModello();
-                    System.out.println(Marca + prezzo + Modello + immagine);
-        %>
-
-        <img src=<%=immagine%>  alt="Immagine_Prodotto">
-        <h3><a href="prodotto.jsp" target="_self"><%=Marca + Modello%>
-        </a></h3>
-        <p class="price"><%=prezzo%>
-        </p>
-        <p><a href="Carrello.jsp" class="card button"> Aggiungi al carrello</a></p>  <!-- qui si deve fare il form per chiamare la servlet che aggiunge al carrello-->
-        <%
-
-                }
-            }
-        %>
-
     </div>
-
-
-
-</div>
-
-</div>
-<!-- </form> -->
+</form>
     <%@include file = "footer.jsp" %>
 </body>
 </html>
