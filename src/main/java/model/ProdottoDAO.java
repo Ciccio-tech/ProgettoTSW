@@ -22,7 +22,7 @@ public class ProdottoDAO {
 
     public List<Prodotto> doRetrieveAll(int offset, int limit) {
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT codP, marca, modello, prezzo, quantità, immagine FROM prodotto LIMIT ?, ?");
+            PreparedStatement ps = con.prepareStatement("SELECT codP, marca, modello, prezzo, quantità, immagine, tipo FROM prodotto LIMIT ?, ?");
             ps.setInt(1, offset);
             ps.setInt(2, limit);
             ArrayList<Prodotto> prodotti = new ArrayList<>();
@@ -34,6 +34,8 @@ public class ProdottoDAO {
                 p.setModello(rs.getString(3));
                 p.setPrezzo(rs.getLong(4));
                 p.setQuantita(rs.getInt(5));
+                p.setImmagine(rs.getString(6));
+                p.setTipo(rs.getString(7));
                 prodotti.add(p);
             }
             return prodotti;

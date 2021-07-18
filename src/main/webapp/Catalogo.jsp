@@ -1,5 +1,8 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="model.Prodotto" %><%--
+<%@ page import="model.Prodotto" %>
+<%@ page import="java.util.Collections" %>
+<%@ page import="java.util.Collection" %>
+<%@ page import="java.util.Iterator" %><%--
   Created by IntelliJ IDEA.
   User: damia
   Date: 12/07/2021
@@ -149,8 +152,8 @@
 
 <%@include file = "header.jsp" %>
 
-//<% response.sendRedirect("ProdottiServlet");%>
-<form action="ProdottiServlet" method="get">
+<% response.sendRedirect("ProdottiServlet");%>
+<!-- <form action="ProdottiServlet" method="get"> -->
 <div class="container">
     <h2 style="text-align:center">Prodotti</h2>
 <div class="row">
@@ -169,25 +172,29 @@
         </div>
         -->
 
-        <%  ArrayList<Prodotto> prodotti= (ArrayList<Prodotto>) request.getAttribute("products");
-            String Tipo, Marca, Modello;
+        <%
+            ArrayList<Prodotto> prodotti = (ArrayList<Prodotto>) request.getAttribute("products");
+            String Marca, Modello;
             Float prezzo;
             String immagine;
-            if(prodotti!=null){
-                    for(Prodotto p: prodotti){
-                    Tipo=p.getTipo();
-                    Marca= p.getMarca();
+            if(prodotti != null){
+                for (Prodotto p : prodotti) {
+                    Marca = p.getMarca();
                     immagine = p.getImmagine();
-                    prezzo=p.getPrezzo();
-                    Modello= p.getModello();
+                    prezzo = p.getPrezzo();
+                    Modello = p.getModello();
+                    System.out.println(Marca + prezzo + Modello + immagine);
         %>
 
-                    <img src=<%=immagine%> alt="immagine_prodotto" style="width:100%">
-                    <h3><a href="prodotto.jsp" target="_self"><%=Tipo +Marca + Modello%></a></h3>
-                    <p class="price"><%=prezzo%></p>
-                    <p><a href="Carrello.jsp" class="card button "> Aggiungi al carrello</a></p>
+        <img src=<%=immagine%>  alt="Immagine_Prodotto">
+        <h3><a href="prodotto.jsp" target="_self"><%=Marca + Modello%>
+        </a></h3>
+        <p class="price"><%=prezzo%>
+        </p>
+        <p><a href="Carrello.jsp" class="card button"> Aggiungi al carrello</a></p>  <!-- qui si deve fare il form per chiamare la servlet che aggiunge al carrello-->
         <%
-                    }
+
+                }
             }
         %>
 
@@ -198,7 +205,7 @@
 </div>
 
 </div>
-</form>
+<!-- </form> -->
     <%@include file = "footer.jsp" %>
 </body>
 </html>
