@@ -31,8 +31,8 @@ public class ProdottiServlet extends HttpServlet {
         }
         request.setAttribute("products", prodotti);
         //response.sendRedirect("Catalogo.jsp");
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
-        requestDispatcher.forward(request, response);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("Catalogo.jsp");
+        requestDispatcher.include(request, response);
 
     }
 
