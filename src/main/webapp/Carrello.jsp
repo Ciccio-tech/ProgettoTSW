@@ -272,10 +272,22 @@
 <body>
 <%@include file = "header.jsp" %>
 
-
+<% response.sendRedirect("Carrello");%>
     <div style="overflow-x:auto;">
         <table>
             <tr>
+
+                <!--
+                    <%
+
+
+                    %>
+
+
+
+
+
+                -->
                 <th>Rimuovi Prodotto</th>
                 <th>Immagine Prodotto</th>
                 <th>Nome prodotto</th>

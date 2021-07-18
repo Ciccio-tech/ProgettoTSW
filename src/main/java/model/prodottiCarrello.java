@@ -9,6 +9,7 @@ public class prodottiCarrello {
         this.quantita = quantita;
     }
 
+
     public Prodotto getProdotto() {
         return prodotto;
     }

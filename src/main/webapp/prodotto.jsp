@@ -124,16 +124,27 @@
     <%@ page import = "model.Prodotto" %>
     <%@ page import = "java.util.List,java.util.ArrayList, model.Recensione, java.util.Random"%>
 
+    <%
+        response.sendRedirect("ProdottoServlet");
+        Prodotto prodotto= (Prodotto) request.getAttribute("Prodotto");
+        if(prodotto!= null){
+        String Marca= prodotto.getMarca();
+        String Modello= prodotto.getModello();
+        String Tipo= prodotto.getTipo();
+        Float prezzo= prodotto.getPrezzo();
+        String immagine= prodotto.getImmagine();
+        int quantita = prodotto.getQuantita();
+    %>
     <section class="card"  style="padding-bottom:90px;">
         <div style="float:left; padding:80px " >
             <div class="img-magnifier-container">
-                <img id="image" src="images/FotoProdotti/NikonG35.jpg">  <!--{product.photo}-->
+                <img id="image" src=<%=immagine%>>  <!--{product.photo}-->
             </div>
             <script type = "text/javascript" src = "JavaScript/magnifier.js"></script>
             <script>magnify('image', 3);</script>
         </div>
         <div class="capo">
-            <h1> Nome prodotto</h1>  <!--{product.getName()} -->
+            <h1> <%= Marca + Modello%>></h1>
             <%    Double obj = (Double) request.getAttribute ("voto");
                 java.util.List<Recensione> recensioni = (java.util.List<Recensione>) request.getAttribute("recensioni");
                 Recensione userCommentate = (Recensione) request.getAttribute ("userComment");
@@ -157,14 +168,16 @@
             <hr style="border:3px solid #f1f1f1">
             <br>
             <h3 class="price"><span>Iva</span></h3> <!--{product.getPricewithIva()} &#8364 -->
-            <p>La quantit&#224 disponibile in magazzino</p><!--&#232 {product.getQty()}-->
+            <p>La quantit&#224 disponibile in magazzino è: <%=quantita%></p><!--&#232 {product.getQty()}-->
             <p>descrizione</p> <!--{product.getDescription()} -->
-        <form method = "post" action="ProdottoServlet">
-                <label  class="myLabel" >Quantit&#224 desiderata</label>
+     <!--   <form method = "get" action="ProdottoServlet">  -->
+                <label  class="myLabel" >Inserite la quantit&#224 che desiderate acquistare:</label>
                 <input id="inputN" type="number" name="qty" value = "1" min="1" max="{product.getQty()}">
-                <br><a href="Carrello.jsp" class="button button2">Avanti</a>
-                <a href="Catalogo.jsp" class="button button2">Indietro</a>
-        </form>
+                <br><a href="Carrello.jsp" class="button button2">Acquista!</a>
+                <!--<a href="Catalogo.jsp" class="button button2">Indietro</a>-->
+      <!--  </form> -->
+
+         <% } %>
         </div></br>
     </section>
  <!--   <section>

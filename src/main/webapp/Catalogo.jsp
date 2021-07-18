@@ -177,21 +177,22 @@
             String Marca, Modello;
             Float prezzo;
             String immagine;
+            int codP;
             if(prodotti != null){
                 for (Prodotto p : prodotti) {
+                    codP = p.getCodP();
                     Marca = p.getMarca();
                     immagine = p.getImmagine();
                     prezzo = p.getPrezzo();
                     Modello = p.getModello();
-                    System.out.println(Marca + prezzo + Modello + immagine);
+                    session.setAttribute("codP", p.getCodP());
         %>
 
         <img src=<%=immagine%>  alt="Immagine_Prodotto">
-        <h3><a href="prodotto.jsp" target="_self"><%=Marca + Modello%>
-        </a></h3>
-        <p class="price"><%=prezzo%>
+        <h3><a href="prodotto.jsp" target="_self"><%=Marca + Modello%></a></h3>
+        <p class="price">$<%=prezzo%>
         </p>
-        <p><a href="Carrello.jsp" class="card button"> Aggiungi al carrello</a></p>  <!-- qui si deve fare il form per chiamare la servlet che aggiunge al carrello-->
+        <p> <form action="Carrello" method="get"> <button id="carrello">Aggiungi al Carrello</button> </form>   <!-- qui si deve fare il form per chiamare la servlet che aggiunge al carrello-->
         <%
 
                 }
