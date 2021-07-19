@@ -125,7 +125,7 @@
     <%@ page import = "java.util.List,java.util.ArrayList, model.Recensione, java.util.Random"%>
 
     <%
-        response.sendRedirect("ProdottoServlet");
+
         Prodotto prodotto= (Prodotto) request.getAttribute("Prodotto");
         if(prodotto!= null){
         String Marca= prodotto.getMarca();

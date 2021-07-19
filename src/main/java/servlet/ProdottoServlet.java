@@ -21,17 +21,12 @@ public class ProdottoServlet extends HttpServlet {
     private final ProdottoDAO prodottoDAO= new ProdottoDAO();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        //String id= (String) session.getAttribute("codP");
-        Object o= session.getAttribute("codP");
-        String s= String.valueOf(o);
-        System.out.println(session.getAttributeNames());
-        int codP=0;
-        if(s != null) {
-            codP = Integer.parseInt(s);
-            System.out.println(codP);
-        }
-            Prodotto p = prodottoDAO.doRetrieveById(codP);
+        String q= request.getQueryString();
+        q= q.replaceAll("\\D+", "");  //Prendo il codice del prodotto
+
+        int codP = 0;
+        codP = Integer.parseInt(q);
+        Prodotto p = prodottoDAO.doRetrieveById(codP);
             if (p == null) {
                 try {
                     throw new MyServletException("Prodotto non trovato");
