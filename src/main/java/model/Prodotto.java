@@ -22,6 +22,25 @@ public class Prodotto {
     private int quantita;
     private String immagine;
 
+    public Prodotto(int codP, String tipo, String marca, String modello, float prezzo, int quantita, String immagine){
+        this.codP=codP;
+        this.tipo=tipo;
+        this.marca=marca;
+        this.modello=modello;
+        this.prezzo=prezzo;
+        this.quantita=quantita;
+        this.immagine=immagine;
+    }
+
+    public Prodotto(){
+
+    }
+
+    public Prodotto(int id){
+        codP=id;
+    }
+
+
     public String getImmagine() {
         return immagine;
     }
@@ -82,4 +101,6 @@ public class Prodotto {
     public String toString() {
         return super.toString();
     }
+
+
 }

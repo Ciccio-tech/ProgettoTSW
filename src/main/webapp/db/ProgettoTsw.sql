@@ -3,68 +3,83 @@ CREATE DATABASE progettoTSW;
 use progettoTSW;
 
 CREATE TABLE prodotto(
-codP INT PRIMARY KEY,
-tipo char(30) NOT NULL,
-marca char(15) NOT NULL,
-modello char(200) NOT NULL,
-prezzo float NOT NULL,
-quantità int Not null, 
-immagine char(50)
+	codP INT PRIMARY KEY,
+	tipo char(30) NOT NULL,
+	marca char(15) NOT NULL,
+	modello char(200) NOT NULL,
+	prezzo float NOT NULL,
+	quantità int Not null, 
+	immagine char(50)
 );
 
 create table utente_registrato(
-username varchar(20) primary key, 
-pass varchar(20) NOT NULL, 
-nome char(15) NOT NULL, 
-cognome char(15) NOT NULL, 
-email char(30) NOT NULL
+	username varchar(20) primary key, 
+	pass varchar(20) NOT NULL, 
+	nome char(15) NOT NULL, 
+	cognome char(15) NOT NULL, 
+	email char(30) NOT NULL
 );
 
 CREATE TABLE ordine(
-codO int primary key,
-stato boolean NOT NULL,
-dataO date NOT NULL, 
-username varchar(20)  not null,
-foreign key(username) references utente_registrato(username)
-on delete cascade
-on update cascade
+	codO int primary key,
+	stato boolean NOT NULL,
+	username varchar(20)  not null,
+	foreign key(username) references utente_registrato(username)
+	on delete cascade
+	on update cascade
 ); 
 
 create table dettaglio_ordine(
-codO int not null,
-codP int not null,
-FOREIGN KEY (codO) REFERENCES ordine(codO)
-on delete cascade
-on update cascade,
-FOREIGN KEY (codP) REFERENCES prodotto(codP)
-on delete cascade
-on update cascade,
-quantita int NOT NULL, 
-IVA int NOT NULL,
-primary key(codO, codP)
+	codO int not null,
+	codP int not null,
+	FOREIGN KEY (codO) REFERENCES ordine(codO)
+	on delete cascade
+	on update cascade,
+	FOREIGN KEY (codP) REFERENCES prodotto(codP)
+	on delete cascade
+	on update cascade,
+	quantita int NOT NULL, 
+	IVA int NOT NULL,
+    dataO date not null,
+	primary key(codO, codP)
 ); 
 
 create table amministratore(
-username varchar(20) primary key, 
-pass varchar(20) NOT NULL, 
-nome char(15) NOT NULL, 
-cognome char(15) NOT NULL
+	username varchar(20) primary key, 
+	pass varchar(20) NOT NULL, 
+	nome char(15) NOT NULL, 
+	cognome char(15) NOT NULL
 ); 
 
+
 create table recensione(
-username varchar(20) not null,
-codP int not null,
-FOREIGN KEY (username) REFERENCES utente_registrato(username)
-on delete cascade
-on update cascade,
-FOREIGN KEY (codP) REFERENCES prodotto(codP)
-on delete cascade
-on update cascade,
-primary key(username, codP),
-dataR date NOT NULL,
-voto int NOT NULL, 
-commento char(50)
+	username varchar(20) not null,
+	codP int not null,
+	FOREIGN KEY (username) REFERENCES utente_registrato(username)
+	on delete cascade
+	on update cascade,
+	FOREIGN KEY (codP) REFERENCES prodotto(codP)
+	on delete cascade
+	on update cascade,
+	primary key(username, codP),
+	dataR date NOT NULL,
+	voto int NOT NULL, 
+	commento char(50)
 );
+ 
+ CREATE TABLE indirizzo (
+	username varchar(20) ,
+	FOREIGN KEY (username) REFERENCES utente_registrato(username)
+		on update cascade
+        on delete set null,
+    via varchar (50) not null,
+    cap int (5) not null,
+    nCivico int not null,
+    citta varchar(60) not null,
+    provincia varchar(60) not null,
+    stato varchar(40) default 'italia'
+);
+
  
 insert into prodotto values
 (0001,"fotocamera","NIKON","D610",714.90,10, "images/FotoProdotti/NikonD610.jpg"),
@@ -91,34 +106,34 @@ insert into utente_registrato values
 ;
 
 insert into ordine value
-(012351,true,"2020-05-10","Claudia99"),
-(012352,true,"2021-04-03","Elena01"),
-(012353,true,"2021-03-29","Jae-Wook98"),
-(012354,true,"2021-05-10","Martina01"), 
-(012355,true,"2021-04-19","Jae-Wook98"),
-(012356,true,"2021-04-30","Pippo88"),
-(012357,true,"2021-05-02","Elena01"),
-(012358,true,"2021-02-06","Tae-hyung95"),
-(012359,true,"2021-01-29","Giovanni777"),
-(012360,true,"2021-01-29","Pippo88"),
-(012361,true,"2021-02-09","Jung-kook97"),
-(012362,true,"2020-11-19","Ji-min95")
+(012351,true,"Claudia99"),
+(012352,true,"Elena01"),
+(012353,true,"Jae-Wook98"),
+(012354,true,"Martina01"), 
+(012355,true,"Jae-Wook98"),
+(012356,true,"Pippo88"),
+(012357,true,"Elena01"),
+(012358,true,"Tae-hyung95"),
+(012359,true,"Giovanni777"),
+(012360,true,"Pippo88"),
+(012361,true,"Jung-kook97"),
+(012362,true,"Ji-min95")
 ;
 
 insert into dettaglio_ordine value
-(012351,0001,1,24),
-(012353,0003,2,20),
-(012357,0002,4,21),
-(012352,0001,5,20),
-(012360,0006,8,24),
-(012361,0004,2,20),
-(012358,0010,1,21),
-(012362,0005,1,24),
-(012359,0007,1,24),
-(012354,0004,1,24),
-(012355,0010,1,24),
-(012352,0008,1,24),
-(012356,0009,1,24)
+(012351,0001,1,24,"2020-05-10"),
+(012353,0003,2,20,"2020-10-19"),
+(012357,0002,4,21,"2021-06-02"),
+(012352,0001,5,20,"2021-01-13"),
+(012360,0006,8,24,"2021-04-30"),
+(012361,0004,2,20,"2021-03-09"),
+(012358,0010,1,21,"2021-04-20"),
+(012362,0005,1,24,"2020-08-27"),
+(012359,0007,1,56,"2021-09-05"),
+(012354,0004,1,24,"2021-11-19"),
+(012355,0010,1,24,"2020-12-11"),
+(012352,0008,1,24,"2021-02-26"),
+(012356,0009,1,24,"2020-05-26")
 ;
 
 INSERT INTO amministratore VALUES
@@ -132,3 +147,9 @@ insert into recensione values
 ("Tae-hyung95",0010,"2020-11-27",6,"il prodotto é..."),
 ("Jae-Wook98",0003,"2021-04-21",6,"il prodotto e il servizio sono..")
 ;
+
+insert into indirizzo (username, via, cap, nCivico, citta, provincia) value
+("Martina01","via parmenide",84069,1,"Roscigno","Salerno"),
+("Elena01","via giuliani",84012,28,"Roma","Roma"),
+("Claudia99","via tommasini",84061,7,"Felitto","Salerno"),
+("Pippo88","via roma",85178,16,"Aquara","Salerno");
