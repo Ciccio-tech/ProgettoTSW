@@ -138,13 +138,13 @@
     <section class="card"  style="padding-bottom:90px;">
         <div style="float:left; padding:80px " >
             <div class="img-magnifier-container">
-                <img id="image" src=<%=immagine%>>  <!--{product.photo}-->
+                <img id="image" src=<%=immagine%> >  <!--{product.photo}-->
             </div>
             <script type = "text/javascript" src = "JavaScript/magnifier.js"></script>
             <script>magnify('image', 3);</script>
         </div>
         <div class="capo">
-            <h1> <%= Marca + Modello%>></h1>
+            <h1> <%= Marca + Modello %></h1>
             <%    Double obj = (Double) request.getAttribute ("voto");
                 java.util.List<Recensione> recensioni = (java.util.List<Recensione>) request.getAttribute("recensioni");
                 Recensione userCommentate = (Recensione) request.getAttribute ("userComment");
@@ -174,7 +174,7 @@
                 <label  class="myLabel" >Inserite la quantit&#224 che desiderate acquistare:</label>
                 <input id="inputN" type="number" name="qty" value = "1" min="1" max="{product.getQty()}">
                 <br><a href="Carrello.jsp" class="button button2">Acquista!</a>
-                <!--<a href="Catalogo.jsp" class="button button2">Indietro</a>-->
+                <a href="Catalogo.jsp" class="button button2">Indietro</a>
       <!--  </form> -->
 
          <% } %>

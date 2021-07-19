@@ -279,7 +279,7 @@
             </div>
             <div class="col-sm-4">
                 <div class="thumbnail">
-                    <img src="images/FotoProdotti/Nikond610.jpeg" alt="Nikond610" width="400" height="300">
+                    <img src="images/FotoProdotti/Nikond610.jpg" alt="Nikond610" width="400" height="300">
                     <p><strong>Nikond610</strong></p>
                     <!-- <p>Sunday 29 November 2015</p>
                      <button class="btn" data-toggle="modal" data-target="#myModal">Buy Tickets</button> -->
