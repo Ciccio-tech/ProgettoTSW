@@ -16,15 +16,26 @@ public class Carrello {
         return p_carrello;
     }
 
+    public void setP_carrello(ArrayList<prodottiCarrello> p_carrello) {
+        this.p_carrello = p_carrello;
+    }
+
+    public void setP_carrelloV() {
+        this.p_carrello = new ArrayList<>();
+    }
+
     public boolean add(int codP, int quantita){
-        ProdottoDAO prodottoDAO= new ProdottoDAO();
-        Prodotto prodotto;
-        prodotto= prodottoDAO.doRetrieveById(codP);
-        prodottiCarrello prodottiCarrello;
-        if(prodotto != null) {
-            prodottiCarrello= new prodottiCarrello(prodotto, quantita);
-            p_carrello.add(prodottiCarrello);
-            return true;
+        if(codP != 0 && quantita != 0) {
+            ProdottoDAO prodottoDAO = new ProdottoDAO();
+            Prodotto prodotto;
+            prodotto = prodottoDAO.doRetrieveById(codP);
+            prodottiCarrello prodottiCarrello;
+            if (prodotto != null) {
+                prodottiCarrello = new prodottiCarrello(prodotto, quantita);
+                this.p_carrello.add(prodottiCarrello);
+                return true;
+            } else
+                return false;
         }
         else
             return false;

@@ -275,14 +275,17 @@
 <body>
 <%@include file = "header.jsp" %>
 
-<% response.sendRedirect("Carrello");%>
+
     <div style="overflow-x:auto;">
         <table>
             <tr>
                 <%
+
                     Carrello carrello= (Carrello) request.getAttribute("carrello");
                     if(carrello != null){
+                        System.out.println("if nella jsp");
                         for(prodottiCarrello p: carrello.getP_carrello()){
+                            System.out.println("siamo nel for");
                             Prodotto prodotto= p.getProdotto();
                             int q= p.getQuantita();
                             if(prodotto!= null && q!=0){

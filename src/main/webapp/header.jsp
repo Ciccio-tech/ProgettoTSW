@@ -31,15 +31,15 @@
                 %>
                 <li><a href="Login.jsp">Login</a></li>
                 <%
-                }else{
-                %>>
+                    }else{
+                %>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%=Usersession.getAttribute("username")%>
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="ProfiloPrivato.jsp">Area Personale</a></li>
                         <li><a href="">Visualizza Ordini</a></li>
-                        <li><a href="LoginServlet">Logout</a></li>
+                        <li><form action="Logout" method="get"> <button name="logout"> Logout </button> </form></li>
                     </ul>
                 </li>
                 <%} %>

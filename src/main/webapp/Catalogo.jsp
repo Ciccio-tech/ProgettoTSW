@@ -188,12 +188,12 @@
         %>
 
         <img src=<%=immagine%>  alt="Immagine_Prodotto">
-        <h3><a href="prodotto.jsp?codP=<%=codP%>" target="_self"><%=Marca + Modello%></a></h3>
+        <h3><%=Marca + Modello%></h3>
         <p class="price">$<%=prezzo%>
         </p>
         <p> <form action="Carrello" method="get"> <button id="carrello">Aggiungi al Carrello</button> </form>
         <p> <form action="ProdottoServlet" method="get"><button id="prodotto" name="<%=codP%>">Visualizza Prodotto</button> </form> </p>
-        <!-- qui si deve fare il form per chiamare la servlet che aggiunge al carrello-->
+
         <%
 
                 }

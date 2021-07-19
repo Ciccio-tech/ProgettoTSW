@@ -181,29 +181,23 @@
         <div class="item active">
             <img src="images/Slider/foto.jpg" alt="FotoSlider1" width="1200" height="600">
             <div class="carousel-caption">
-                <!-- <h3>New York</h3>
-                 <p>The atmosphere in New York is lorem ipsum.</p> -->
             </div>
         </div>
 
         <div class="item">
             <img src="images/Slider/foto3.jpg" alt="FotoSlider2" width="1200" height="600">
             <div class="carousel-caption">
-                <!--        <h3>Chicago</h3>
-                        <p>Thank you, Chicago - A night we won't forget.</p>-->
             </div>
         </div>
 
         <div class="item">
             <img src="images/Slider/foto5.jpg" alt="FotoSlider3" width="1200" height="600">
             <div class="carousel-caption">
-                <!--  <h3>LA</h3>
-                  <p>Even though the traffic was a mess, we had the best time playing at Venice Beach!</p> -->
             </div>
         </div>
     </div>
 
-    <!-- Left and right controls -->
+
     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
@@ -265,24 +259,18 @@
                 <div class="thumbnail">
                     <img src="images/FotoProdotti/CanonG9.jpg" alt="CanonG9" width="400" height="300">
                     <p><strong>CanonG9</strong></p>
-                    <!--<p>Friday 27 November 2015</p>
-                    <button class="btn" data-toggle="modal" data-target="#myModal">Buy Tickets</button> -->
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="thumbnail">
                     <img src="images/FotoProdotti/FujifilmNstax.jpg" alt="FujifilmNstax" width="400" height="300">
                     <p><strong>FujifilmNstax</strong></p>
-                    <!--  <p>Saturday 28 November 2015</p>
-                  <button class="btn" data-toggle="modal" data-target="#myModal">Buy Tickets</button> -->
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="thumbnail">
                     <img src="images/FotoProdotti/Nikond610.jpg" alt="Nikond610" width="400" height="300">
                     <p><strong>Nikond610</strong></p>
-                    <!-- <p>Sunday 29 November 2015</p>
-                     <button class="btn" data-toggle="modal" data-target="#myModal">Buy Tickets</button> -->
                 </div>
             </div>
         </div>

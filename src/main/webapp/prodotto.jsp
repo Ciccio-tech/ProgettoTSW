@@ -128,12 +128,14 @@
 
         Prodotto prodotto= (Prodotto) request.getAttribute("Prodotto");
         if(prodotto!= null){
-        String Marca= prodotto.getMarca();
-        String Modello= prodotto.getModello();
-        String Tipo= prodotto.getTipo();
-        Float prezzo= prodotto.getPrezzo();
-        String immagine= prodotto.getImmagine();
-        int quantita = prodotto.getQuantita();
+            String Marca= prodotto.getMarca();
+            String Modello= prodotto.getModello();
+            String Tipo= prodotto.getTipo();
+            Float prezzo= prodotto.getPrezzo();
+            String immagine= prodotto.getImmagine();
+            int quantita = prodotto.getQuantita();
+            int codP= prodotto.getCodP();
+
     %>
     <section class="card"  style="padding-bottom:90px;">
         <div style="float:left; padding:80px " >
@@ -167,14 +169,13 @@
             %>
             <hr style="border:3px solid #f1f1f1">
             <br>
-            <h3 class="price"><span>Iva: 22%</span></h3> <!--{product.getPricewithIva()} &#8364 -->
-            <p>La quantit&#224 disponibile in magazzino è: <%=quantita%></p><!--&#232 {product.getQty()}-->
-            <p>descrizione</p> <!--{product.getDescription()} -->
-     <!--   <form method = "get" action="ProdottoServlet">  -->
+            <h3 class="price"><span>Iva: 22%</span></h3>
+            <p>La quantit&#224 disponibile in magazzino è: <%=quantita%></p>
+            <p>descrizione</p>
                 <label  class="myLabel" >Inserite la quantit&#224 che desiderate acquistare:</label>
-                <input id="inputN" type="number" name="qty" value = "1" min="1" max="{product.getQty()}">
-                <br><a href="Carrello.jsp" class="button button2">Acquista!</a>
-                <br> <form action="Carrello" method="get">Acquista!</form>
+                <input id="qty" type="number" name="qty" value = "1" min="1" max="<%=quantita%>">
+                <!-- <br><a href="Carrello.jsp" class="button button2">Acquista!</a> -->
+                <br> <form action="Carrello" method="get"> <button class="button button2" name="<%=codP%>">Acquista!</button> </form>
                 <a href="Catalogo.jsp" class="button button2">Indietro</a>
       <!--  </form> -->
 
