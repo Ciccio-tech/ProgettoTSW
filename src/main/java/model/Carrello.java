@@ -10,7 +10,10 @@ public class Carrello {
     }
 
     public Carrello() {
+    }
 
+    public ArrayList<prodottiCarrello> getP_carrello() {
+        return p_carrello;
     }
 
     public boolean add(int codP, int quantita){
@@ -25,6 +28,15 @@ public class Carrello {
         }
         else
             return false;
+    }
+
+    public Prodotto get(int codP){
+        ProdottoDAO prodottoDAO= new ProdottoDAO();
+        Prodotto prodotto= prodottoDAO.doRetrieveById(codP);
+        if(prodotto != null)
+            return prodotto;
+        else
+            return null;
     }
 
     public double totale(){

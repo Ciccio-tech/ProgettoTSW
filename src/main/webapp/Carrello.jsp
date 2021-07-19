@@ -1,4 +1,7 @@
-<%--
+<%@ page import="model.ProdottoDAO" %>
+<%@ page import="model.Prodotto" %>
+<%@ page import="model.Carrello" %>
+<%@ page import="model.prodottiCarrello" %><%--
   Created by IntelliJ IDEA.
   User: damia
   Date: 12/07/2021
@@ -276,15 +279,19 @@
     <div style="overflow-x:auto;">
         <table>
             <tr>
-
-                <!--
-                    <%
-
+                <%
+                    Carrello carrello= (Carrello) request.getAttribute("carrello");
+                    if(carrello != null){
+                        for(prodottiCarrello p: carrello.getP_carrello()){
+                            Prodotto prodotto= p.getProdotto();
+                            int q= p.getQuantita();
+                            if(prodotto!= null && q!=0){
+                                String Nome= prodotto.getModello();
+                                String immagine= prodotto.getImmagine();
+                                float prezzo = prodotto.getPrezzo();
+                                double prezzo_t = p.totale();
 
                     %>
-
-
-
 
 
                 -->
@@ -298,15 +305,24 @@
             </tr>
                 <tr class="text-center">
                 <td class="product-remove"><button class="removeX button2 button3" ><span class="glyphicon glyphicon-trash" style="color: white"></span></button>
-                <td class="image-prod"><div id="img" style="background-image: url(images/FotoProdotti/SigmaCanon10-20mm.jpg);"></div> </td>
-                <td class="product-name">nome</td>
-                <td>78</td>
-                <td>21&#37;</td>
-                <td class="quantity"><div class="input-group mb-3"><input type="number" name="quantity" class="quantity form-control input-number" value="1" min="1" max="34"></div></td> <!-- in value dobbiamo portare la quantita dell'ordine -->
-                <td class="total">78</td>
+                <td class="image-prod"><div id="img" style="background-image: url(<%=immagine%>);"></div> </td>
+                <td class="product-name"><%=Nome%></td>
+                <td><%=prezzo%></td>
+                <td>22&#37;</td>
+                <td class="quantity"><div class="input-group mb-3"><input type="number" name="quantity" class="quantity form-control input-number" value="<%=q%>" min="1" max="100"></div></td> <!-- in value dobbiamo portare la quantita dell'ordine -->
+                <td class="total"><%=prezzo_t%></td>
           </tr>
         </table>
+        <%
+                    }
+                }
+
+            }
+        %>
+
     </div>
+
+
 <div class="row container1">
     <div class="col-75">
         <div class="container2">

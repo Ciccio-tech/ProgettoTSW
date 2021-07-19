@@ -167,13 +167,14 @@
             %>
             <hr style="border:3px solid #f1f1f1">
             <br>
-            <h3 class="price"><span>Iva</span></h3> <!--{product.getPricewithIva()} &#8364 -->
+            <h3 class="price"><span>Iva: 22%</span></h3> <!--{product.getPricewithIva()} &#8364 -->
             <p>La quantit&#224 disponibile in magazzino è: <%=quantita%></p><!--&#232 {product.getQty()}-->
             <p>descrizione</p> <!--{product.getDescription()} -->
      <!--   <form method = "get" action="ProdottoServlet">  -->
                 <label  class="myLabel" >Inserite la quantit&#224 che desiderate acquistare:</label>
                 <input id="inputN" type="number" name="qty" value = "1" min="1" max="{product.getQty()}">
                 <br><a href="Carrello.jsp" class="button button2">Acquista!</a>
+                <br> <form action="Carrello" method="get">Acquista!</form>
                 <a href="Catalogo.jsp" class="button button2">Indietro</a>
       <!--  </form> -->
 

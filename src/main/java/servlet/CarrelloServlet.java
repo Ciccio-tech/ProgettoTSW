@@ -23,7 +23,7 @@ public class CarrelloServlet extends HttpServlet {
             session.setAttribute("carrello", carrello);
         }
 
-        String IdProdottoS= request.getParameter("id");
+        String IdProdottoS= request.getParameter("codP");
         if(IdProdottoS != null){
             int Idprodotto= Integer.parseInt(IdProdottoS);
 
@@ -35,7 +35,7 @@ public class CarrelloServlet extends HttpServlet {
         }
 
         RequestDispatcher requestDispatcher= request.getRequestDispatcher("Carrello.jsp"); //JSP DA FARE
-        requestDispatcher.forward(request, response);
+        requestDispatcher.include(request, response);
     }
 
 
