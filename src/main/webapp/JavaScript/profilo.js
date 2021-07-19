@@ -7,27 +7,11 @@ $(document).ready(function() {
     $("#alert3").hide();
 
 
-    $("#but1").click(function () {
-
-        var nome = $("#name").val();
-        var cognome = $("#surname").val();
-
-        if (nameVerifier ()) {
-            $.post("", {op: "modCred", nome: nome, cognome: cognome})
-                .done(function(data){
-                    $("#success1").slideDown();
-                })
-                .fail(function() {
-                    $("#alert1").slideDown();
-                });
-        }
-    });
-
     $("#but2").click(function () {
         var pw = $("#pass").val();
         var oldpw= $("#password").val();
         if(oldpw==pw && validatePassword ()){
-            $.post("UserManager", {op: "modCred", pass: pw}, "html")
+            $.post("CambioPasswordServlet", {op: "modCred", pass: pw}, "html")
                 .done(function(data){
                     $("#success2").slideDown();
                 })
@@ -38,8 +22,6 @@ $(document).ready(function() {
             $("#alert3").slideDown();
         }
 
-
     });
-
 
 });

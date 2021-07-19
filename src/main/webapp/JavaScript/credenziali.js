@@ -35,7 +35,7 @@ $(document).ready(function() {
         }
 
         if(city != null){
-            if(!verifier(city,caratteri, document.getElementById("cityWarning")))
+            if(!verifier(city,caratteri, document.getElementById("")))
                 flag = false;
         }
 
