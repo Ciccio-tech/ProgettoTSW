@@ -24,7 +24,7 @@ public class Ordine2 {
         qty = quantity;
     }
 
-    public Prodotto getProduct() {
+    public Prodotto getProdotto() {
         return prod;
     }
     public void setProdotto(Prodotto prod) {

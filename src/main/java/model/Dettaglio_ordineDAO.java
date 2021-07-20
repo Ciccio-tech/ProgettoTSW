@@ -27,7 +27,7 @@ public class Dettaglio_ordineDAO {
         }
     }
 
-    public void doSave(Dettagli_ordine det){
+    public void doSave(Dettagli_ordine det)throws Exception{
 
     }
 
