@@ -1,3 +1,8 @@
+<%@ page import="model.Recensione" %>
+<%@ page import="model.RecensioneDAO" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="model.Prodotto" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"  %>
 <!DOCTYPE html>
 <html lang="en">
@@ -215,15 +220,33 @@
     <br>
     <div class="row">
         <h3> Cosa dicono di noi:</h3>
+
+        <%
+            RecensioneDAO recensioneDAO= new RecensioneDAO();
+            ArrayList<Recensione> recensioni= new ArrayList<>();
+            try {
+                recensioni = recensioneDAO.doRetrieveAll(0, 100);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            for(Recensione r: recensioni){
+                String username = r.getUsername();
+                String commento= r.getCommento();
+                int voto= r.getVoto();
+
+
+        %>
+
+
         <div class="col-sm-4">
-            <p class="text-center"><strong>Name</strong></p><br>
+            <p class="text-center"><strong><%=username%></strong></p><br>
             <a href="#demo" data-toggle="collapse">
-                <img src="bandmember.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+                <!-- <img src="bandmember.jpg" class="img-circle person" alt="Random Name" width="255" height="255"> -->
             </a>
             <div id="demo" class="collapse">
-                <p>Guitarist and Lead Vocalist</p>
-                <p>Loves long walks on the beach</p>
-                <p>Member since 1988</p>
+                <p>Commento: <%=commento%>></p>
+                <p>Voto: <%=voto%></p>
+
             </div>
         </div>
         <div class="col-sm-4">
@@ -248,8 +271,11 @@
                 <p>Member since 2005</p>
             </div>
         </div>
+        <% } %>
     </div>
 </div>
+
+
 
 <!-- Container (Alcuni prodotti) -->
 <div id="tour" class="bg-1">

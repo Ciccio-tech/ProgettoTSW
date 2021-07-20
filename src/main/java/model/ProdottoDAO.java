@@ -1,5 +1,7 @@
 package model;
 
+import MyException.MyServletException;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -97,6 +99,29 @@ public class ProdottoDAO {
             ps.setInt(2, offset);
             ps.setInt(3, limit);
             ResultSet rs = ps.executeQuery();
+            ArrayList<Prodotto> prodotti= new ArrayList<>();
+            while(rs.next()){
+                Prodotto p= new Prodotto();
+                p.setCodP(rs.getInt(1));
+                p.setTipo(rs.getString(2));
+                p.setMarca(rs.getString(3));
+                p.setModello(rs.getString(4));
+                p.setPrezzo(rs.getFloat(5));
+                p.setQuantita(rs.getInt(6));
+                prodotti.add(p);
+            }
+            return prodotti;
+        }catch(SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public ArrayList<Prodotto> doRetrieveDyTipo(String tipo) throws SQLException{
+        try(Connection c = ConPool.getConnection()){
+            PreparedStatement ps= c.prepareStatement("SELECT codP, tipo, marca, modello, prezzo, quantità, immagine FROM prodotto WHERE tipo=?");
+            ps.setString(1, tipo);
+            ResultSet rs= ps.executeQuery();
             ArrayList<Prodotto> prodotti= new ArrayList<>();
             while(rs.next()){
                 Prodotto p= new Prodotto();

@@ -279,25 +279,6 @@
     <div style="overflow-x:auto;">
         <table>
             <tr>
-                <%
-
-                    Carrello carrello= (Carrello) request.getAttribute("carrello");
-                    if(carrello != null){
-                        System.out.println("if nella jsp");
-                        for(prodottiCarrello p: carrello.getP_carrello()){
-                            System.out.println("siamo nel for");
-                            Prodotto prodotto= p.getProdotto();
-                            int q= p.getQuantita();
-                            if(prodotto!= null && q!=0){
-                                String Nome= prodotto.getModello();
-                                String immagine= prodotto.getImmagine();
-                                float prezzo = prodotto.getPrezzo();
-                                double prezzo_t = p.totale();
-
-                    %>
-
-
-                -->
                 <th>Rimuovi Prodotto</th>
                 <th>Immagine Prodotto</th>
                 <th>Nome prodotto</th>
@@ -306,8 +287,35 @@
                 <th>Quantità</th>
                 <th>Tatale prezzo</th>
             </tr>
+
+                <%
+                    Carrello carrello= (Carrello) session.getAttribute("carrello");
+                    if(carrello != null){
+                        for(prodottiCarrello p: carrello.getP_carrello()){
+                            Prodotto prodotto= p.getProdotto();
+                            int q= p.getQuantita();
+                            if(prodotto!= null && q!=0){
+                                String Nome= prodotto.getModello();
+                                String immagine= prodotto.getImmagine();
+                                float prezzo = prodotto.getPrezzo();
+                                double prezzo_t = p.totale();
+                                int id= prodotto.getCodP();
+
+                    %>
+
+            <!--
+            <script>
+                function DeleteProduct(){
+                    var id;
+                    id= document.getElementById("deleteButton").getAttributeNames();
+
+
+                }
+            </script>
+            -->
+
                 <tr class="text-center">
-                <td class="product-remove"><button class="removeX button2 button3" ><span class="glyphicon glyphicon-trash" style="color: white"></span></button>
+                <td class="product-remove"><button class="removeX button2 button3" onclick="DeleteProduct()" id="deleteButton" name="<%=id%>"><span class="glyphicon glyphicon-trash" style="color: white"></span></button>
                 <td class="image-prod"><div id="img" style="background-image: url(<%=immagine%>);"></div> </td>
                 <td class="product-name"><%=Nome%></td>
                 <td><%=prezzo%></td>
@@ -398,13 +406,19 @@
     </div>
     <div class="col-25">
         <div class="container2">
-            <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
-            <p><a href="#">Product 1</a> <span class="price">$15</span></p>
-            <p><a href="#">Product 2</a> <span class="price">$5</span></p>
-            <p><a href="#">Product 3</a> <span class="price">$8</span></p>
-            <p><a href="#">Product 4</a> <span class="price">$2</span></p>
+            <% assert carrello != null;%>
+            <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b><%=carrello.getP_carrello().size()%></b></span></h4>
+            <%
+                double totale=0.0;
+                for(prodottiCarrello p: carrello.getP_carrello()){
+                    Prodotto prodotto= p.getProdotto();
+            %>
+            <p><a href="#"><%=prodotto.getModello()%></a> <span class="price"><%=p.totale()%></span></p>
+            <%
+                totale+=p.totale();
+                }%>
             <hr>
-            <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+            <p>Total <span class="price" style="color:black"><b><%=totale%></b></span></p>
         </div>
     </div>
 </div>
