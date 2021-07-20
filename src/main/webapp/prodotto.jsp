@@ -135,6 +135,7 @@
             String immagine= prodotto.getImmagine();
             int quantita = prodotto.getQuantita();
             int codP= prodotto.getCodP();
+            ArrayList<Recensione> recensione= prodotto.getRecensione();
 
     %>
     <section class="card"  style="padding-bottom:90px;">
@@ -146,38 +147,37 @@
             <script>magnify('image', 3);</script>
         </div>
         <div class="capo">
-            <h1> <%= Marca + Modello %></h1>
-            <%    Double obj = (Double) request.getAttribute ("voto");
-                java.util.List<Recensione> recensioni = (java.util.List<Recensione>) request.getAttribute("recensioni");
-                Recensione userCommentate = (Recensione) request.getAttribute ("userComment");
-                int vote = obj == null ? 0 : obj.intValue() > 5 ? 5 : obj.intValue();
+            <h1> <%= Marca + " " + Modello %></h1>
 
-                if ((recensioni == null ? false : recensioni.size() != 0) || (userCommentate == null ? false : true)) {
-
-                    for (int owo = 0;owo < 5; owo++) {
-                        if (vote > 0) {%>
-            <span class="fa fa-star checked"></span>
-            <%
-                vote--;
-            } else {
-            %>
-            <span class="fa fa-star"></span>
-            <%
-                        }
-                    }
-                }
-            %>
             <hr style="border:3px solid #f1f1f1">
             <br>
             <h3 class="price"><span>Iva: 22%</span></h3>
             <p>La quantit&#224 disponibile in magazzino è: <%=quantita%></p>
-            <p>descrizione</p>
+            <p>Prezzo: $<%=prezzo%></p>
                 <label  class="myLabel" >Inserite la quantit&#224 che desiderate acquistare:</label>
                 <input id="qty" type="number" name="qty" value = "1" min="1" max="<%=quantita%>">
                 <!-- <br><a href="Carrello.jsp" class="button button2">Acquista!</a> -->
                 <br> <form action="Carrello" method="get"> <button class="button button2" name="<%=codP%>">Acquista!</button> </form>
                 <a href="Catalogo.jsp" class="button button2">Indietro</a>
       <!--  </form> -->
+
+            <% if(recensione!= null){
+                    for(Recensione r: recensione){
+                        String commento= r.getCommento();
+                        int voto= r.getVoto();
+                        String nome = r.getUsername();
+            %>
+                <h4> Recensioni: </h4>
+                <p> <%=nome%>></p>
+                <p> <%=voto%></p>
+                <p> <%=commento%></p>
+
+            <%}
+
+            }
+            else{ %>
+                <p>Non ci sono recensioni per questo prodotto...</p>
+            <% } %>
 
          <% } %>
         </div></br>

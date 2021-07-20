@@ -191,8 +191,8 @@
         <h3><%=Marca + Modello%></h3>
         <p class="price">$<%=prezzo%>
         </p>
-        <p> <form action="Carrello" method="get"> <button id="carrello">Aggiungi al Carrello</button> </form>
-        <p> <form action="ProdottoServlet" method="get"><button id="prodotto" name="<%=codP%>">Visualizza Prodotto</button> </form> </p>
+        <p> <form action="Carrello" method="get"> <button id="carrello" name="<%=codP%>" >Aggiungi al Carrello </button> </form> </p>
+        <p> <form action="ProdottoServlet" method="get"> <button id="prodotto" name="<%=codP%>">Visualizza Prodotto</button> </form> </p>
 
         <%
 

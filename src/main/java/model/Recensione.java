@@ -52,7 +52,7 @@ public class Recensione{
 
     public void setDataS(String data){
         GregorianCalendar d= new GregorianCalendar();
-        String[] a = data.split("/");
+        String[] a = data.split("-");
         d.set(Integer.parseInt(a[0]), Integer.parseInt(a[1]), Integer.parseInt(a[2]));
         this.dataR=d;
     }

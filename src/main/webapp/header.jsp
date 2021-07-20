@@ -21,9 +21,9 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Catalogo
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="Catalogo.jsp">Fotocamere</a></li>
-                        <li><a href="Catalogo.jsp">Obiettivi fotografici</a></li>
-                        <li><a href="Catalogo.jsp">Accessori</a></li>
+                        <li><a href="fotocamere.jsp">Fotocamere</a></li>
+                        <li><a href="obiettivi.jsp">Obiettivi fotografici</a></li>
+                        <li><a href="accessori.jsp">Accessori</a></li>
                     </ul>
                 </li>
                 <% HttpSession Usersession= request.getSession();

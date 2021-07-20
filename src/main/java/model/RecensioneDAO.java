@@ -99,12 +99,14 @@ public class RecensioneDAO {
     }
 
 
-     public ArrayList<Recensione> doRetrieveByCodP(Prodotto prodotto) throws SQLException{
+     public ArrayList<Recensione> doRetrieveByCodP(int codP) throws SQLException{
          try(Connection c= ConPool.getConnection()){
-             QueryBuilder queryBuilder = new QueryBuilder("recensione");
+            /* QueryBuilder queryBuilder = new QueryBuilder("recensione");
              queryBuilder.select("*").where("codP = ?");
              PreparedStatement ps= c.prepareStatement(queryBuilder.GenerateQuery());
-             ps.setInt(1, prodotto.getCodP());
+             */
+             PreparedStatement ps = c.prepareStatement("SELECT * FROM recensione WHERE codP=?");
+             ps.setInt(1, codP);
              ResultSet rs=ps.executeQuery();
              ArrayList<Recensione> recensioni= new ArrayList<>();
              while(rs.next()){

@@ -1,6 +1,5 @@
 package servlet;
 
-import MyException.MyServletException;
 import model.Carrello;
 
 import javax.servlet.RequestDispatcher;
@@ -17,7 +16,6 @@ import java.io.IOException;
 public class CarrelloServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        System.out.println("arrivati nella servlet");
         HttpSession session = request.getSession();
         Carrello carrello= (Carrello) session.getAttribute("carrello");
 
@@ -27,12 +25,10 @@ public class CarrelloServlet extends HttpServlet {
 
 
         if(carrello == null){
-            System.out.println("siamo all'interno dell'if");
             carrello = new Carrello();
             carrello.setP_carrelloV();
         }
 
-        //String IdProdottoS= request.getParameter("codP");
         String IdProdottoS = q;
         System.out.println(IdProdottoS);
         int Idprodotto= Integer.parseInt(IdProdottoS);
@@ -57,7 +53,7 @@ public class CarrelloServlet extends HttpServlet {
         else {
             requestDispatcher = request.getRequestDispatcher("Catalogo.jsp");
         }
-        requestDispatcher.forward(request, response);
+        requestDispatcher.include(request, response);
     }
 
 

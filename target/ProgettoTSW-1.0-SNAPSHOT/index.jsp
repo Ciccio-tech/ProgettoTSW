@@ -162,6 +162,10 @@
         textarea {
             resize: none;
         }
+
+        video{
+            position: center;
+        }
     </style>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -216,36 +220,31 @@
     <div class="row">
         <h3> Cosa dicono di noi:</h3>
         <div class="col-sm-4">
-            <p class="text-center"><strong>Name</strong></p><br>
+            <p class="text-center"><strong>Elena</strong></p><br>
             <a href="#demo" data-toggle="collapse">
-                <img src="bandmember.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+                <img src="images/FotoProdotti/CanonG9.jpg" class="img-circle person" alt="Spedizione" width="255" height="255">
             </a>
             <div id="demo" class="collapse">
-                <p>Guitarist and Lead Vocalist</p>
-                <p>Loves long walks on the beach</p>
-                <p>Member since 1988</p>
+                <p>Spedizione Puntuale, come sempre!</p>
             </div>
         </div>
         <div class="col-sm-4">
-            <p class="text-center"><strong>Name</strong></p><br>
+            <p class="text-center"><strong>Jin-Sung</strong></p><br>
             <a href="#demo2" data-toggle="collapse">
-                <img src="bandmember.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+                <img  src="images/FotoProdotti/SigmaNikon50mm.jpg" class="img-circle person" alt="Servizio clienti" width="255" height="255">
             </a>
             <div id="demo2" class="collapse">
-                <p>Drummer</p>
-                <p>Loves drummin'</p>
-                <p>Member since 1988</p>
+                <p>Gentili e cordiali</p>
             </div>
         </div>
         <div class="col-sm-4">
-            <p class="text-center"><strong>Name</strong></p><br>
+            <p class="text-center"><strong>Giovanni</strong></p><br>
             <a href="#demo3" data-toggle="collapse">
-                <img src="bandmember.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+                <img src="images/FotoProdotti/Sigma100-400mmF5-6-3.jpg" class="img-circle person" alt="Prodotti" width="255" height="255">
             </a>
             <div id="demo3" class="collapse">
-                <p>Bass player</p>
-                <p>Loves math</p>
-                <p>Member since 2005</p>
+                <p>Prdootti di ottima qualità</p>
+                <p>e prezzi scontati!</p>
             </div>
         </div>
     </div>
@@ -254,6 +253,7 @@
 <!-- Container (Alcuni prodotti) -->
 <div id="tour" class="bg-1">
     <div class="container">
+        <h4>Preferiti dai Clienti:</h4>
         <div class="row text-center">
             <div class="col-sm-4">
                 <div class="thumbnail">
@@ -312,15 +312,22 @@
     </div>
 </div>
 
+
+<div id="video">
+    <video width="500" height="450" controls>
+        <source src="images/Video/Nikon.mp4" type="video/mp4">
+    </video>
+</div>
+
+
 <!-- Container (Contact Section) -->
-<div id="contact" class="container">
+<div id="contact"  class="container">
     <h3 class="text-center">Contact</h3>
-    <p class="text-center"><em>.....</em></p>
 
     <div class="row">
         <div class="col-md-4">
             <p></p>
-            <p><span class="glyphicon glyphicon-map-marker"></span></p>
+            <p><span class="glyphicon glyphicon-map-marker">Position</span></p>
             <p><span class="glyphicon glyphicon-phone"></span>Phone: +00 1515151515</p>
             <p><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</p>
         </div>
