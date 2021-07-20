@@ -13,6 +13,9 @@ quantità int Not null
  */
 
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 public class Prodotto {
     private int codP;
     private String tipo;
@@ -22,6 +25,23 @@ public class Prodotto {
     private int quantita;
     private String immagine;
     private int iva;
+    private ArrayList<Recensione> recensione;
+
+    public int getIva() {
+        return iva;
+    }
+
+    public ArrayList<Recensione> getRecensione() throws SQLException {
+        RecensioneDAO recensioneDAO= new RecensioneDAO();
+        ArrayList<Recensione> recensioni= recensioneDAO.doRetrieveByCodP(this.codP);
+        if(!recensioni.isEmpty()) {
+            recensione= recensioni;
+            return recensioni;
+        }
+        else
+            return null;
+    }
+
 
     public Prodotto(int codP, String tipo, String marca, String modello, float prezzo, int quantita, String immagine, int iva){
         this.codP=codP;
