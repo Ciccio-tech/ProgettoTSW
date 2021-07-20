@@ -1,14 +1,17 @@
 package model;
 
 public class prodottiCarrello {
-    private final Prodotto prodotto;
-    private final int quantita;
+    private Prodotto prodotto;
+    private int quantita;
 
     public prodottiCarrello(Prodotto prodotto, int quantita) {
         this.prodotto = prodotto;
         this.quantita = quantita;
     }
 
+    public prodottiCarrello () {
+
+    }
 
     public Prodotto getProdotto() {
         return prodotto;
@@ -21,4 +24,6 @@ public class prodottiCarrello {
     public double totale(){
         return prodotto.getPrezzo()* quantita;
     }
+
+
 }

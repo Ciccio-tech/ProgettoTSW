@@ -21,8 +21,9 @@ public class Prodotto {
     private float prezzo;
     private int quantita;
     private String immagine;
+    private int iva;
 
-    public Prodotto(int codP, String tipo, String marca, String modello, float prezzo, int quantita, String immagine){
+    public Prodotto(int codP, String tipo, String marca, String modello, float prezzo, int quantita, String immagine, int iva){
         this.codP=codP;
         this.tipo=tipo;
         this.marca=marca;
@@ -30,6 +31,7 @@ public class Prodotto {
         this.prezzo=prezzo;
         this.quantita=quantita;
         this.immagine=immagine;
+        this.iva=iva;
     }
 
     public Prodotto(){
@@ -95,6 +97,14 @@ public class Prodotto {
 
     public void setQuantita(int quantita) {
         this.quantita = quantita;
+    }
+
+    public int getIVA() {
+        return iva;
+    }
+
+    public void setIva(int iva) {
+        this.iva = iva;
     }
 
     @Override

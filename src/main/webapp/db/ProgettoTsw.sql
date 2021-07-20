@@ -2,14 +2,15 @@ DROP database if exists progettoTSW;
 CREATE DATABASE progettoTSW;
 use progettoTSW;
 
-CREATE TABLE prodotto(
-	codP INT PRIMARY KEY,
+CREATE TABLE prodotto (
+	codP INT PRIMARY KEY AUTO_INCREMENT,
 	tipo char(30) NOT NULL,
 	marca char(15) NOT NULL,
 	modello char(200) NOT NULL,
 	prezzo float NOT NULL,
 	quantità int Not null, 
-	immagine char(50)
+	immagine char(50),
+    IVA int NOT NULL
 );
 
 create table utente_registrato(
@@ -20,28 +21,24 @@ create table utente_registrato(
 	email char(30) NOT NULL
 );
 
+create table dettaglio_ordine(
+	codF INT PRIMARY KEY,
+	quantita int NOT NULL, 
+	IVA int NOT NULL,
+    dataO date not null
+); 
+
 CREATE TABLE ordine(
 	codO int primary key,
 	stato boolean NOT NULL,
 	username varchar(20)  not null,
-	foreign key(username) references utente_registrato(username)
+    foreign key(username) references utente_registrato(username)
+	on delete cascade
+	on update cascade,
+    codF int not null,
+    foreign key(codF) references dettaglio_ordine(codF)
 	on delete cascade
 	on update cascade
-); 
-
-create table dettaglio_ordine(
-	codO int not null,
-	codP int not null,
-	FOREIGN KEY (codO) REFERENCES ordine(codO)
-	on delete cascade
-	on update cascade,
-	FOREIGN KEY (codP) REFERENCES prodotto(codP)
-	on delete cascade
-	on update cascade,
-	quantita int NOT NULL, 
-	IVA int NOT NULL,
-    dataO date not null,
-	primary key(codO, codP)
 ); 
 
 create table amministratore(
@@ -82,16 +79,16 @@ create table recensione(
 
  
 insert into prodotto values
-(0001,"fotocamera","NIKON","D610",714.90,10, "images/FotoProdotti/NikonD610.jpg"),
-(0002,"fotocamera","CANON","POWERSHOT G9 X MARK II",332.90,20, "images/FotoProdotti/CanonG9.jpg"),
-(0003,"fotocamera","FUJIFILM","NSTAX MINI8",69.90,40, "images/FotoProdotti/FujifilNstax.jpg"),
-(0004,"obiettivi fotografici","CANON","SIGMA 10-20MM F/3.5 AF EX DC HSM ",374.90,18, "images/FotoProdotti/SigmaCanon10-20mm.jpg"),
-(0005,"obiettivi fotografici","NIKON","SIGMA 50MM F/1.4 DG HSM ",644.90,10, "images/FotoProdotti/SigmaNikon50mm"),
-(0006,"accessori","NIKON","NIKON MC-35 (CONNETTORE GPS PER NIKON D2X-D2XS-D3-D3X-D2HS-D200-D300)",99.90,90, "images/FotoProdotti/NikonG35"),
-(0007,"accessori","NIKON"," BATTERIA ORIGINALE EN-EL9A (Per D40 D40X D60 D5000)",52.90,100, "images/FotoProdotti/NikonEN.jpg"),
-(0008,"obiettivi fotografici","CANON","SIGMA 100-400MM F/5-6.3 DG OS HSM C",704.90,15, "images/FotoProdotti/Sigma100-400mmF5-6-3.jpg"),
-(0009,"accessori","GODOX","GODOX 303-STATIVO PER LAMPADE-TORCE-ALTEZZA MASSIMA 260CM",714.90,1, "images/FotoProdotti/Godox303.jpg"),
-(0010,"obiettivi fotografici","OLYMPUS","14-42MM F/3.5-5.6 ED EZ M.ZUIKO ",217.90,50, "images/FotoProdotti/Olympus14-42mm");
+(0001,"fotocamera","NIKON","D610",714.90,10, "images/FotoProdotti/NikonD610.jpg",20),
+(0002,"fotocamera","CANON","POWERSHOT G9 X MARK II",332.90,20, "images/FotoProdotti/CanonG9.jpg",21),
+(0003,"fotocamera","FUJIFILM","NSTAX MINI8",69.90,40, "images/FotoProdotti/FujifilNstax.jpg",21),
+(0004,"obiettivi fotografici","CANON","SIGMA 10-20MM F/3.5 AF EX DC HSM ",374.90,18, "images/FotoProdotti/SigmaCanon10-20mm.jpg",22),
+(0005,"obiettivi fotografici","NIKON","SIGMA 50MM F/1.4 DG HSM ",644.90,10, "images/FotoProdotti/SigmaNikon50mm",21),
+(0006,"accessori","NIKON","NIKON MC-35 (CONNETTORE GPS PER NIKON D2X-D2XS-D3-D3X-D2HS-D200-D300)",99.90,90, "images/FotoProdotti/NikonG35",21),
+(0007,"accessori","NIKON"," BATTERIA ORIGINALE EN-EL9A (Per D40 D40X D60 D5000)",52.90,100, "images/FotoProdotti/NikonEN.jpg",22),
+(0008,"obiettivi fotografici","CANON","SIGMA 100-400MM F/5-6.3 DG OS HSM C",704.90,15, "images/FotoProdotti/Sigma100-400mmF5-6-3.jpg",22),
+(0009,"accessori","GODOX","GODOX 303-STATIVO PER LAMPADE-TORCE-ALTEZZA MASSIMA 260CM",714.90,1, "images/FotoProdotti/Godox303.jpg",21),
+(0010,"obiettivi fotografici","OLYMPUS","14-42MM F/3.5-5.6 ED EZ M.ZUIKO ",217.90,50, "images/FotoProdotti/Olympus14-42mm",20);
 
 insert into utente_registrato values
 ("Martina01","Marty01#", "Martina", "Girolamo","martinagiro@gmail.com"),
@@ -105,36 +102,23 @@ insert into utente_registrato values
 ("Tae-hyung95","TaeHyung95^", "Tae-hyung", "Kim", "vkim95@gmail.com")
 ;
 
-insert into ordine value
-(012351,true,"Claudia99"),
-(012352,true,"Elena01"),
-(012353,true,"Jae-Wook98"),
-(012354,true,"Martina01"), 
-(012355,true,"Jae-Wook98"),
-(012356,true,"Pippo88"),
-(012357,true,"Elena01"),
-(012358,true,"Tae-hyung95"),
-(012359,true,"Giovanni777"),
-(012360,true,"Pippo88"),
-(012361,true,"Jung-kook97"),
-(012362,true,"Ji-min95")
+insert into dettaglio_ordine value
+(0001,1,21,"2020-05-10"),
+(0002,2,20,"2020-10-19"),
+(0003,4,21,"2021-06-02"),
+(0004,5,20,"2021-01-13"),
+(0005,8,21,"2021-04-30"),
+(0006,2,20,"2021-03-09")
 ;
 
-insert into dettaglio_ordine value
-(012351,0001,1,24,"2020-05-10"),
-(012353,0003,2,20,"2020-10-19"),
-(012357,0002,4,21,"2021-06-02"),
-(012352,0001,5,20,"2021-01-13"),
-(012360,0006,8,24,"2021-04-30"),
-(012361,0004,2,20,"2021-03-09"),
-(012358,0010,1,21,"2021-04-20"),
-(012362,0005,1,24,"2020-08-27"),
-(012359,0007,1,56,"2021-09-05"),
-(012354,0004,1,24,"2021-11-19"),
-(012355,0010,1,24,"2020-12-11"),
-(012352,0008,1,24,"2021-02-26"),
-(012356,0009,1,24,"2020-05-26")
+insert into ordine value
+(012351,true,"Claudia99",0001),
+(012352,true,"Elena01",0003),
+(012353,true,"Jae-Wook98",0002),
+(012354,true,"Martina01",0005), 
+(012355,true,"Giovanni777",0006)
 ;
+
 
 INSERT INTO amministratore VALUES
 ("Francesco23", "password1","Francesco", "Cammarota"),
