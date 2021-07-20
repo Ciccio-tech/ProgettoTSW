@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static model.ConPool.getConnection;
+import static model.ConPool.releaseConnection;
 
 public class  Dettaglio_ordineDAO {
 
@@ -73,7 +74,7 @@ public class  Dettaglio_ordineDAO {
                     preparedStatement.close();
             } finally {
                 if (connection != null)
-                    connection.close();
+                    releaseConnection(connection);
             }
         }
     }
@@ -117,7 +118,7 @@ public class  Dettaglio_ordineDAO {
         Connection connection= null;
         PreparedStatement preparedStatement = null;
 
-        String sql= "select * from ordine join dettaglio_ordine on dettaglio_ordine = codF where utente_registrato = ? and prodotto = ?";
+        String sql= "select * from ordine join dettaglio_ordine on dettaglio_ordine = codF where username = ? and codP = ?";
 
         try {
             connection = getConnection();
@@ -137,7 +138,7 @@ public class  Dettaglio_ordineDAO {
                     preparedStatement.close();
             } finally {
                 if (connection != null)
-                  connection.close();
+                    releaseConnection(connection);
             }
         }
         return false;
@@ -157,7 +158,7 @@ public class  Dettaglio_ordineDAO {
 
         try {
             connection = getConnection();
-            preparedStatement = connection.prepareStatement(selectSQL + " ORDER BY dettaglio_ordine");
+            preparedStatement = connection.prepareStatement(selectSQL + " ORDER BY codF");
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
@@ -173,7 +174,7 @@ public class  Dettaglio_ordineDAO {
                     preparedStatement.close();
             } finally {
                 if (connection != null)
-                    connection.close();
+                    releaseConnection(connection);
             }
         }
         return prodotto;
@@ -222,7 +223,7 @@ public class  Dettaglio_ordineDAO {
                 det_or.setCod(rs.getInt("codiceO"));
                 det_or.setProdotti(this.retrieveInvoiceOrders(det_or.getCod(), connection));
                 det_or.setCliente(new ClienteDAO().doRetrieveByUsername(cliente.getUsername()));
-                //det_or.setIndirizzo(new Indirizz.doRetrieve(rs.getInt("Indirizzo")));
+                det_or.setIndirizzo(new IndirizzoDAO().doRetrieve(rs.getInt("codInd")));
                 det_or.setData(cl);
             }
 
@@ -232,21 +233,141 @@ public class  Dettaglio_ordineDAO {
                     preparedStatement.close();
             } finally {
                 if (connection != null)
-                    connection.close();
+                    releaseConnection(connection);
             }
         }
 
         return det_or;
     }
 
+    public java.util.List<Dettaglio_ordine2> retrieveInvoices (Cliente cliente, java.util.Date data, java.util.Date data2) throws java.sql.SQLException {
+        Connection connection = null;
+
+        PreparedStatement preparedStatement = null;
+        String selectSQL = "SELECT * FROM " +ORDINE_TABLE + " WHERE username= ?";
+
+        java.util.List<Dettaglio_ordine2> list = new java.util.ArrayList<Dettaglio_ordine2> ();
+
+        try {
+            connection = getConnection();
+            preparedStatement = connection.prepareStatement(selectSQL);
+
+            if (data != null && data2 != null) {
+                selectSQL = selectSQL + " AND dataO BETWEEN ? AND ?";
+                preparedStatement = connection.prepareStatement(selectSQL);
+                preparedStatement.setString(1, cliente.getUsername());
+                preparedStatement.setDate(2, new java.sql.Date(data.getTime()));
+                preparedStatement.setDate(3, new java.sql.Date(data2.getTime()));
+            } else if (data != null && data2 == null) {
+                selectSQL = selectSQL + " AND dataO > ?";
+                preparedStatement = connection.prepareStatement(selectSQL);
+                preparedStatement.setString(1, cliente.getUsername());
+                preparedStatement.setDate(2, new java.sql.Date(data.getTime()));
+            } else if (data == null && data2 != null) {
+                selectSQL = selectSQL + " AND dataFattura < ?";
+                preparedStatement = connection.prepareStatement(selectSQL);
+                preparedStatement.setString(1, cliente.getUsername());
+                preparedStatement.setDate(2, new java.sql.Date(data2.getTime()));
+            } else {
+                preparedStatement = connection.prepareStatement(selectSQL);
+                preparedStatement.setString(1, cliente.getUsername());
+            }
+
+
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                Dettaglio_ordine2 dett = new Dettaglio_ordine2();
+
+                java.util.GregorianCalendar cl = new java.util.GregorianCalendar();
+                cl.setTime(rs.getDate("dataO"));
+
+                dett.setCod(rs.getInt("codF"));
+                dett.setProdotti(this.retrieveInvoiceOrders(dett.getCod(), connection));
+                dett.setIndirizzo(new IndirizzoDAO().doRetrieve(rs.getInt("codInd")));
+                dett.setData(cl);
+                dett.setCliente(cliente);
+
+                list.add(dett);
+            }
+
+        } finally {
+            try {
+                if (preparedStatement != null)
+                    preparedStatement.close();
+            } finally {
+                if (connection != null)
+                    releaseConnection(connection);
+            }
+        }
+        return list;
+    }
+
+    public List<Dettaglio_ordine2> retrieveInvoices(java.util.Date data, java.util.Date data2) throws SQLException {
+        // TODO Auto-generated method stub
+        Connection connection = null;
+
+        PreparedStatement preparedStatement = null;
+        String selectSQL = "SELECT * FROM " +DET_TABLE +" JOIN " + UT_REG_TABLE + " ON username = username ";
+        java.util.List<Dettaglio_ordine2> list = new java.util.ArrayList<Dettaglio_ordine2> ();
+
+        try {
+            connection = getConnection();
+
+            if (data != null && data2 != null) {
+                selectSQL = selectSQL + " WHERE dataO BETWEEN ? AND ?";
+                preparedStatement = connection.prepareStatement(selectSQL);
+                preparedStatement.setDate(1, new java.sql.Date(data.getTime()));
+                preparedStatement.setDate(2, new java.sql.Date(data2.getTime()));
+            } else if (data != null && data2 == null) {
+                selectSQL = selectSQL + " WHERE dataO > ?";
+                preparedStatement = connection.prepareStatement(selectSQL);
+                preparedStatement.setDate(1, new java.sql.Date(data.getTime()));
+            } else if (data == null && data2 != null) {
+                preparedStatement = connection.prepareStatement(selectSQL);
+                preparedStatement.setDate(1, new java.sql.Date(data2.getTime()));
+            } else
+                preparedStatement = connection.prepareStatement(selectSQL);
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                Dettaglio_ordine2 dett = new Dettaglio_ordine2();
+                Cliente cliente = new Cliente ();
+                java.util.GregorianCalendar cl = new java.util.GregorianCalendar();
+                cl.setTime(rs.getDate("dataO"));
+
+                ClienteDAO.setCliente(rs,cliente);
+                dett.setCod(rs.getInt("codF"));
+                dett.setProdotti(retrieveInvoiceOrders(dett.getCod(), connection));
+                dett.setIndirizzo(new IndirizzoDAO().doRetrieve(rs.getInt("codInd")));
+                dett.setData(cl);
+                dett.setCliente(cliente);
+
+                list.add(dett);
+            }
+
+        } finally {
+            try {
+                if (preparedStatement != null)
+                    preparedStatement.close();
+            } finally {
+                if (connection != null)
+                      releaseConnection(connection);
+            }
+        }
+        return list;
+    }
 
     private static final String ORDINE_TABLE = "ordine";
     private static final String PROD_TABLE = "prodotto";
     private static final String DET_TABLE = "dettaglio_ordine";
+    private static final String UT_REG_TABLE= "utente_registrato";
     private static final String NEW_DET_ORD="INSERT INTO " +DET_TABLE +" (codO,codP) VALUE (?,?) ";
     private static final String inserisciOrdine = "INSERT INTO "+ORDINE_TABLE+" VALUES (?, ?, ?, ?, ?, ?)";
-    private static final String recuperoOrdine = "SELECT * FROM "+ORDINE_TABLE +" JOIN " +PROD_TABLE + " ON codice = prodotto WHERE registrato = ?";
-    private static final String recuperaDettaglioOrdine= "SELECT * FROM " +ORDINE_TABLE +" JOIN " +PROD_TABLE + " ON codice = prodotto  WHERE dettaglio_ordine = ?";
-    private static final String recuperaDettaglio = "SELECT * FROM " +DET_TABLE +" WHERE registrato = ? AND codiceFattura = ?";
+    private static final String recuperoOrdine = "SELECT * FROM "+ORDINE_TABLE +" JOIN " +PROD_TABLE + " ON codP = codP WHERE username = ?";
+    private static final String recuperaDettaglioOrdine= "SELECT * FROM " +ORDINE_TABLE +" JOIN " +PROD_TABLE + " ON codP = codP  WHERE codF = ?";
+    private static final String recuperaDettaglio = "SELECT * FROM " +DET_TABLE +" WHERE username = ? AND codF = ?";
 
 }

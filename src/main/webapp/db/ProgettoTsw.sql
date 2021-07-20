@@ -3,7 +3,7 @@ CREATE DATABASE progettoTSW;
 use progettoTSW;
 
 CREATE TABLE prodotto (
-	codP INT PRIMARY KEY AUTO_INCREMENT,
+	codP INT PRIMARY KEY ,
 	tipo char(30) NOT NULL,
 	marca char(15) NOT NULL,
 	modello char(200) NOT NULL,
@@ -20,12 +20,28 @@ create table utente_registrato(
 	cognome char(15) NOT NULL, 
 	email char(30) NOT NULL
 );
-
+ CREATE TABLE indirizzo (
+	codInd int auto_increment  primary key,
+	username varchar(20) ,
+	FOREIGN KEY (username) REFERENCES utente_registrato(username)
+		on update cascade
+        on delete set null,
+    via varchar (50) not null,
+    cap int (5) not null,
+    nCivico int not null,
+    citta varchar(60) not null,
+    provincia varchar(60) not null,
+    stato varchar(40) default 'italia'
+);
 create table dettaglio_ordine(
 	codF INT PRIMARY KEY,
 	quantita int NOT NULL, 
 	IVA int NOT NULL,
-    dataO date not null
+    dataO date not null,
+    codInd int not null,
+    foreign key(codInd) references indirizzo(codInd)
+    on delete cascade
+	on update cascade
 ); 
 
 CREATE TABLE ordine(
@@ -64,18 +80,7 @@ create table recensione(
 	commento char(50)
 );
  
- CREATE TABLE indirizzo (
-	username varchar(20) ,
-	FOREIGN KEY (username) REFERENCES utente_registrato(username)
-		on update cascade
-        on delete set null,
-    via varchar (50) not null,
-    cap int (5) not null,
-    nCivico int not null,
-    citta varchar(60) not null,
-    provincia varchar(60) not null,
-    stato varchar(40) default 'italia'
-);
+
 
  
 insert into prodotto values
@@ -102,13 +107,19 @@ insert into utente_registrato values
 ("Tae-hyung95","TaeHyung95^", "Tae-hyung", "Kim", "vkim95@gmail.com")
 ;
 
+insert into indirizzo ( username, via, cap, nCivico, citta, provincia) value
+("Martina01","via parmenide",84069,1,"Roscigno","Salerno"),
+("Elena01","via giuliani",84012,28,"Roma","Roma"),
+("Claudia99","via tommasini",84061,7,"Castel San Lorenzo","Salerno"),
+("Pippo88","via roma",85178,16,"Aquara","Salerno");
+
 insert into dettaglio_ordine value
-(0001,1,21,"2020-05-10"),
-(0002,2,20,"2020-10-19"),
-(0003,4,21,"2021-06-02"),
-(0004,5,20,"2021-01-13"),
-(0005,8,21,"2021-04-30"),
-(0006,2,20,"2021-03-09")
+(0001,1,21,"2020-05-10",001),
+(0002,2,20,"2020-10-19",002),
+(0003,4,21,"2021-06-02",003),
+(0004,5,20,"2021-01-13",004),
+(0005,8,21,"2021-04-30",002),
+(0006,2,20,"2021-03-09",003)
 ;
 
 insert into ordine value
@@ -132,8 +143,3 @@ insert into recensione values
 ("Jae-Wook98",0003,"2021-04-21",6,"il prodotto e il servizio sono..")
 ;
 
-insert into indirizzo (username, via, cap, nCivico, citta, provincia) value
-("Martina01","via parmenide",84069,1,"Roscigno","Salerno"),
-("Elena01","via giuliani",84012,28,"Roma","Roma"),
-("Claudia99","via tommasini",84061,7,"Felitto","Salerno"),
-("Pippo88","via roma",85178,16,"Aquara","Salerno");
