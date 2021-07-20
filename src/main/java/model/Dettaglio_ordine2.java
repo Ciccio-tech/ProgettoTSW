@@ -35,10 +35,10 @@ public class Dettaglio_ordine2 implements java.io.Serializable{
     public void setIndirizzo(Indirizzo indirizzo) {
         this.indirizzo = indirizzo;
     }
-    public Cliente getUser() {
+    public Cliente getCliente() {
         return user;
     }
-    public void setUser(Cliente user) {
+    public void setCliente(Cliente user) {
         this.user = user;
     }
     public int size () {
@@ -50,9 +50,9 @@ public class Dettaglio_ordine2 implements java.io.Serializable{
 
         for (Ordine2 o : list) {
 
-            Prodotto item = o.getProdotto();
+            prodottiCarrello item = o.getProdotto();
 
-            total = total + o.getQuantita()*(item.getIVA());
+            total = total + o.getQuantita()*(item.getProdotto().getIVA());
         }
 
         return new java.math.BigDecimal(total).setScale(2, RoundingMode.HALF_EVEN);

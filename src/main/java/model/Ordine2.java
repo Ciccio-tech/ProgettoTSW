@@ -8,38 +8,36 @@ public class Ordine2 {
         return "Order [product=" + prod + ", qty=" + qty + "]\n";
     }
     private static final long serialVersionUID = -7625196350124530857L;
-    private Prodotto prod;
+    private prodottiCarrello prod;
     private int qty;
 
     public Ordine2 () {
 
     }
 
-    public Ordine2 (int id) {
-        prod = new Prodotto (id);
-    }
 
-    public Ordine2 (Prodotto e, int quantity) {
+    public Ordine2 (prodottiCarrello e, int quantity) {
         prod = e;
         qty = quantity;
     }
 
-    public Prodotto getProdotto() {
+    public prodottiCarrello getProdotto() {
         return prod;
-    }
-    public void setProdotto(Prodotto prod) {
-        this.prod = prod;
     }
     public int getQuantita() {
         return qty;
     }
-    public void setQuantita(int qty) {
-        this.qty = qty;
+
+    public void setProd(prodottiCarrello prod) {
+        this.prod = prod;
     }
 
+    public void setQuantita(int qty){
+        this.qty=qty;
+    }
     /*-----	utilities ------*/
     public java.math.BigDecimal getTotal () {
-        return new java.math.BigDecimal(prod.getPrezzo()*qty).setScale(2, RoundingMode.HALF_EVEN);
+        return new java.math.BigDecimal(prod.getProdotto().getPrezzo()*qty).setScale(2, RoundingMode.HALF_EVEN);
     }
 
 

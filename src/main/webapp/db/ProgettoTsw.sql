@@ -2,8 +2,8 @@ DROP database if exists progettoTSW;
 CREATE DATABASE progettoTSW;
 use progettoTSW;
 
-CREATE TABLE prodotto(
-	codP INT PRIMARY KEY,
+CREATE TABLE prodotto (
+	codP INT PRIMARY KEY AUTO_INCREMENT,
 	tipo char(30) NOT NULL,
 	marca char(15) NOT NULL,
 	modello char(200) NOT NULL,
@@ -21,28 +21,24 @@ create table utente_registrato(
 	email char(30) NOT NULL
 );
 
+create table dettaglio_ordine(
+	codF INT PRIMARY KEY,
+	quantita int NOT NULL, 
+	IVA int NOT NULL,
+    dataO date not null
+); 
+
 CREATE TABLE ordine(
 	codO int primary key,
 	stato boolean NOT NULL,
 	username varchar(20)  not null,
-	foreign key(username) references utente_registrato(username)
+    foreign key(username) references utente_registrato(username)
+	on delete cascade
+	on update cascade,
+    codF int not null,
+    foreign key(codF) references dettaglio_ordine(codF)
 	on delete cascade
 	on update cascade
-); 
-
-create table dettaglio_ordine(
-	codO int not null,
-	codP int not null,
-	FOREIGN KEY (codO) REFERENCES ordine(codO)
-	on delete cascade
-	on update cascade,
-	FOREIGN KEY (codP) REFERENCES prodotto(codP)
-	on delete cascade
-	on update cascade,
-	quantita int NOT NULL, 
-	IVA int NOT NULL,
-    dataO date not null,
-	primary key(codO, codP)
 ); 
 
 create table amministratore(
@@ -106,36 +102,23 @@ insert into utente_registrato values
 ("Tae-hyung95","TaeHyung95^", "Tae-hyung", "Kim", "vkim95@gmail.com")
 ;
 
-insert into ordine value
-(012351,true,"Claudia99"),
-(012352,true,"Elena01"),
-(012353,true,"Jae-Wook98"),
-(012354,true,"Martina01"), 
-(012355,true,"Jae-Wook98"),
-(012356,true,"Pippo88"),
-(012357,true,"Elena01"),
-(012358,true,"Tae-hyung95"),
-(012359,true,"Giovanni777"),
-(012360,true,"Pippo88"),
-(012361,true,"Jung-kook97"),
-(012362,true,"Ji-min95")
+insert into dettaglio_ordine value
+(0001,1,21,"2020-05-10"),
+(0002,2,20,"2020-10-19"),
+(0003,4,21,"2021-06-02"),
+(0004,5,20,"2021-01-13"),
+(0005,8,21,"2021-04-30"),
+(0006,2,20,"2021-03-09")
 ;
 
-insert into dettaglio_ordine value
-(012351,0001,1,21,"2020-05-10"),
-(012353,0003,2,20,"2020-10-19"),
-(012357,0002,4,21,"2021-06-02"),
-(012352,0001,5,20,"2021-01-13"),
-(012360,0006,8,21,"2021-04-30"),
-(012361,0004,2,20,"2021-03-09"),
-(012358,0010,1,19,"2021-04-20"),
-(012362,0005,1,21,"2020-08-27"),
-(012359,0007,1,21,"2021-09-05"),
-(012354,0004,1,19,"2021-11-19"),
-(012355,0010,1,21,"2020-12-11"),
-(012352,0008,1,22,"2021-02-26"),
-(012356,0009,1,22,"2020-05-26")
+insert into ordine value
+(012351,true,"Claudia99",0001),
+(012352,true,"Elena01",0003),
+(012353,true,"Jae-Wook98",0002),
+(012354,true,"Martina01",0005), 
+(012355,true,"Giovanni777",0006)
 ;
+
 
 INSERT INTO amministratore VALUES
 ("Francesco23", "password1","Francesco", "Cammarota"),
