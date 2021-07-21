@@ -38,12 +38,12 @@
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="ProfiloPrivato.jsp">Area Personale</a></li>
-                        <li><a href="">Visualizza Ordini</a></li>
+                        <li><a href="VisualizzaOrdine.jsp">Visualizza Ordini</a></li>
                         <li><form action="Logout" method="get"> <button name="logout"> Logout </button> </form></li>
                     </ul>
                 </li>
                 <%} %>
-                <li><a href="Carrello.jsp"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+                <li><a href="Carrello2.jsp"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
                 <li><a href="ricerca.jsp"><span class="glyphicon glyphicon-search"></span></a></li>
             </ul>
         </div>

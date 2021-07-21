@@ -263,7 +263,7 @@
             </div>
             <div class="col-sm-4">
                 <div class="thumbnail">
-                    <img src="images/FotoProdotti/FujifilmNstax.jpg" alt="FujifilmNstax" width="400" height="300">
+                    <img src="images/FotoProdotti/FujifilNstax.jpg" alt="FujifilmNstax" width="400" height="300">
                     <p><strong>FujifilmNstax</strong></p>
                 </div>
             </div>

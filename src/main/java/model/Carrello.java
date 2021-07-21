@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class Carrello {
     private ArrayList<prodottiCarrello> p_carrello;
@@ -82,6 +83,8 @@ public class Carrello {
         }
         return totale;
     }
+
+
 
 
 }

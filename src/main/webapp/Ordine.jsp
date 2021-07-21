@@ -1,19 +1,14 @@
-<%@ page import="model.Dettagli_ordine" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="model.Ordine2" %>
-<%@ page import="model.Dettaglio_ordine2" %>
-<%@ page import="model.prodottiCarrello" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: damia
-  Date: 19/07/2021
-  Time: 15:21
+  Date: 21/07/2021
+  Time: 16:54
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Visualizza Ordine</title>
+    <title>Effettua Ordine</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/stile.css" type = "text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -150,77 +145,26 @@
     </style>
 </head>
 <%@include file = "header.jsp" %>
-<div class="container">
-    <div class="field2">
-        <div class="row ">
-            <div class="card x">
-                <div>
-                    <input type="date" class="ricerca"  name="da" placeholder="da data..." >
-                    <input type="date" class="ricerca" name="a" placeholder="a data..." >
-                    <button id = "selector" class="button button2">Cerca</button>
+<div class="field2">
+    <div class="row ">
+        <div class="card x">
+            <div>
+                <input type="date" class="ricerca"  name="da" placeholder="da data..." >
+                <input type="date" class="ricerca" name="a" placeholder="a data...">
+                <button id = "selector" class="button button2">Cerca</button>
 
-                </div>
-                <div class="cart-list">
-                    <h1 id = "title">Ordini effettuati</h1>
-                    <%
-                        List<Dettaglio_ordine2> lista= (List<Dettaglio_ordine2>) request.getAttribute("fatture");
-                        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
-                    %>
+            </div>
+            <div class="cart-list">
+                <h1 id = "title">Ordini effettuati</h1>
 
-                    <table class="table">
-                        <thead class="thead-primary">
-                        <tr class="text-center">
-                            <th>&nbsp;</th> <!--crea lo spazio-->
-                            <th>Recenzione</th>
-                            <th>Prodotto</th>
-                            <th>Modello Prodotto</th>
-                            <th>Prezzo</th>
-                            <th>Quantità</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        <!--n ordini esistenti nel database-->
-                        <%
-                            if (lista == null ? true : lista.size() == 0) {
-                        %>
-                        <tr>
-                            <td colspan = "8" style ="text-align: center">Nessun ordine risulta essere stato effettuato</td>
-                        </tr>
-                        <%
-                        } else {
-                            for (Dettaglio_ordine2 det_ord : lista) {
-                                int size = det_ord.size();
-                                java.util.List<Ordine2> ordine = det_ord.getProdotti();
-                        %>
-                        <tr class="text-center">
-                            <td rowspan="<%=size%> " class="product-name">
-                                <p><%= format.format(det_ord.getData().getTime())%></p>
-                                <a href="FatturaPDF?id=<%=det_ord.getCod()%>">	<button  class="button button2 submitter" type="submit">Fattura</button></a>
-                            </td>
-                            <%
-                                for(Ordine2 o : ordine){
-                                    prodottiCarrello bean = o.getProdotto();
-                            %>
-                            <td><a  class="button button2" href="ProductControl?id=<%=bean.getProdotto().getCodP()%>&act=view">Aggiungi</a></td>
-                            <td><div id="img" style="background-image: url('<%=bean.getProdotto().getImmagine()%>');"></div></td>
-                            <td><%=bean.getProdotto().getMarca()%></td>
-                            <td><%=bean.getProdotto().getPrezzo()%></td>
-                            <td><%=bean.getProdotto().getPrezzoConIva()%></td
-                            <td><%=o.getQuantita()%></td>
-                        </tr>
-                        <%}
-                        }
-                        }%>
-                        </tbody>
-                    </table>
-
-                    <p style = "text-align: center">pg <input class = "pageof" type = "number" value = "1" min="1" max="<%= request.getAttribute("maxPg") %>"> of <%= request.getAttribute("maxPg") %> <button id = "submit">Invia</button></p>
-                </div>
+                <p style = "text-align: center">pg <input class = "pageof" type = "number" value = "1" min="1" max="<%= request.getAttribute("maxPg") %>"> of <%= request.getAttribute("maxPg") %> <button id = "submit">Invia</button></p>
             </div>
         </div>
     </div>
 </div>
+
+
+
 <%@include file = "footer.jsp" %>
 </body>
 </html>
