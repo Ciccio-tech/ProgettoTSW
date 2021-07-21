@@ -303,19 +303,9 @@
 
                     %>
 
-            <!--
-            <script>
-                function DeleteProduct(){
-                    var id;
-                    id= document.getElementById("deleteButton").getAttributeNames();
-
-
-                }
-            </script>
-            -->
 
                 <tr class="text-center">
-                <td class="product-remove"><button class="removeX button2 button3" onclick="DeleteProduct()" id="deleteButton" name="<%=id%>"><span class="glyphicon glyphicon-trash" style="color: white"></span></button>
+                <td class="product-remove"><form action="RimuoviProdotto" method="get"><button class="removeX button2 button3" id="deleteButton" name="<%=id%>"><span class="glyphicon glyphicon-trash" style="color: white"></span></button></form>
                 <td class="image-prod"><div id="img" style="background-image: url(<%=immagine%>);"></div> </td>
                 <td class="product-name"><%=Nome%></td>
                 <td><%=prezzo%></td>

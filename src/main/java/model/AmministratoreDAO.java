@@ -65,4 +65,25 @@ public class AmministratoreDAO {
         }
     }
 
+
+    public Amministratore doRetrieveByUsernamePassword(String username, String password){
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement("SELECT username, pass, nome, cognome FROM amministratore WHERE username=? AND pass=?");
+            ps.setString(1, username);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Amministratore a= new Amministratore();
+                a.setUsername(rs.getString(1));
+                a.setPassword(rs.getString(2));
+                a.setNome(rs.getString(3));
+                a.setCognome(rs.getString(4));
+                return a;
+            }
+            return null;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

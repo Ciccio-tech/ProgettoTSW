@@ -2,6 +2,8 @@ package servlet;
 
 
 import MyException.MyServletException;
+import model.Amministratore;
+import model.AmministratoreDAO;
 import model.Cliente;
 import model.ClienteDAO;
 
@@ -19,14 +21,24 @@ import java.io.IOException;
 @WebServlet( "/LoginServlet")
 public class LoginServlet extends HttpServlet {
     final ClienteDAO clienteDAO= new ClienteDAO();
+    final AmministratoreDAO amministratoreDAO = new AmministratoreDAO();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session= request.getSession();
         String username= request.getParameter("username");
         String password= request.getParameter("pass");
         Cliente cliente= null;
+        Amministratore amministratore = null;
+
+
         if(username != null && password!= null){
-            cliente = clienteDAO.doRetrieveByUsernamePassword(username, password);
+            if((amministratore = amministratoreDAO.doRetrieveByUsernamePassword(username, password)) != null){
+                System.out.println(amministratore.getNome());
+                session.setAttribute("username", username);
+                response.sendRedirect("admin.jsp");
+            }else {
+                cliente = clienteDAO.doRetrieveByUsernamePassword(username, password);
+            }
         }
         else
             try {
@@ -42,7 +54,9 @@ public class LoginServlet extends HttpServlet {
 
         assert cliente != null;
 
-        response.sendRedirect("index.jsp");
+        if(amministratore == null) {
+            response.sendRedirect("index.jsp");
+        }
     }
 
 
