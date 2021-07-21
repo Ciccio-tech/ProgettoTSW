@@ -53,7 +53,7 @@ public class Carrello {
     public ArrayList<prodottiCarrello> removeProduct(ArrayList<prodottiCarrello> c , int codP){
         if(c!= null) {
             System.out.println("siamo nell'if");
-            int i=0;
+            int i=0, a = 0;
             for (prodottiCarrello p : c) {
                 System.out.println("siamo nel for");
                 System.out.println(p.getProdotto().toString());
@@ -61,11 +61,12 @@ public class Carrello {
                 int cod = p.getProdotto().getCodP();
                 if (codP == cod) {
                     System.out.println("siamo nel secondo if");
-                    c.remove(i);
+                    a=i;
                     System.out.println("rimozione");
                 }
                 i++;
             }
+            c.remove(a);
             for(prodottiCarrello p : c){
                 System.out.println(p.getProdotto().toString());
             }
