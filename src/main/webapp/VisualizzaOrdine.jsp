@@ -1,6 +1,9 @@
 <%@ page import="model.Dettagli_ordine" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.text.SimpleDateFormat" %><%--
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="model.Ordine2" %>
+<%@ page import="model.Dettaglio_ordine2" %>
+<%@ page import="model.prodottiCarrello" %><%--
   Created by IntelliJ IDEA.
   User: damia
   Date: 19/07/2021
@@ -150,15 +153,15 @@
     <div class="row ">
         <div class="card x">
             <div>
-                <input type="date" class="ricerca"  name="da" placeholder="da data..." style="background-image: url('images/dateFrom.png')">
-                <input type="date" class="ricerca" name="a" placeholder="a data..." style="background-image: url('images/dateTo.png')">
+                <input type="date" class="ricerca"  name="da" placeholder="da data..." >
+                <input type="date" class="ricerca" name="a" placeholder="a data..." >
                 <button id = "selector" class="button button2">Cerca</button>
 
             </div>
             <div class="cart-list">
                 <h1 id = "title">Ordini effettuati</h1>
                 <%
-                    List<Dettagli_ordine> lista= (List<Dettagli_ordine>) request.getAttribute("fatture");
+                    List<Dettaglio_ordine2> lista= (List<Dettaglio_ordine2>) request.getAttribute("fatture");
                     SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
                 %>
 
@@ -184,26 +187,25 @@
                     </tr>
                     <%
                     } else {
-                        for (Dettagli_ordine det_ord : lista) {
+                        for (Dettaglio_ordine2 det_ord : lista) {
                             int size = det_ord.size();
-                            java.util.List<Order> orders = det_ord.getProdotti();
+                            java.util.List<Ordine2> ordine = det_ord.getProdotti();
                     %>
                     <tr class="text-center">
                         <td rowspan="<%=size%> " class="product-name">
-                            <p><%= format.format(det_ord.getDate().getTime())%></p>
+                            <p><%= format.format(det_ord.getData().getTime())%></p>
                             <a href="FatturaPDF?id=<%=det_ord.getCod()%>">	<button  class="button button2 submitter" type="submit">Fattura</button></a>
                         </td>
                         <%
-                            for(Order o : orders){
-                                ProductBean bean = o.getProduct();
+                            for(Ordine2 o : ordine){
+                                prodottiCarrello bean = o.getProdotto();
                         %>
-                        <td><a  class="button button2" href="ProductControl?id=<%=bean.getCode()%>&act=view">Aggiungi</a></td>
-                        <td><div id="img" style="background-image: url('<%=bean.getPhoto()%>');"></div></td>
-                        <td><%=bean.getName()%></td>
-                        <td><%=bean.getPriceSenzaIva()%></td>
-                        <td><%=bean.getPricewithIva()%></td>
-                        <td><%=bean.getDiscount()%></td>
-                        <td><%=o.getQty()%></td>
+                        <td><a  class="button button2" href="ProductControl?id=<%=bean.getProdotto().getCodP()%>&act=view">Aggiungi</a></td>
+                        <td><div id="img" style="background-image: url('<%=bean.getProdotto().getImmagine()%>');"></div></td>
+                        <td><%=bean.getProdotto().getMarca()%></td>
+                        <td><%=bean.getProdotto().getPrezzo()%></td>
+                        <td><%=bean.getPrezzoConIva()%></td
+                        <td><%=o.getQuantita()%></td>
                     </tr>
                     <%}
                     }

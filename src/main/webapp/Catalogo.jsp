@@ -123,7 +123,7 @@
             background-color: #f1f1f1;
         }
 
-         .price {
+        .price {
             color: grey;
             font-size: 22px;
         }
@@ -138,7 +138,6 @@
             cursor: pointer;
             width: 100%;
             font-size: 18px;
-            border-radius: 12px;
         }
 
         .card button:hover {
@@ -153,24 +152,10 @@
 <%@include file = "header.jsp" %>
 
 <% response.sendRedirect("ProdottiServlet");%>
-<!-- <form action="ProdottiServlet" method="get"> -->
+<form action="ProdottiServlet" method="get">
 <div class="container">
     <h2 style="text-align:center">Prodotti</h2>
-<div class="row">
-    <div class="column">
-
-        <!--
-        <div class="card">
-
-            <img src="images/logo.png" alt="Tutorials Point" border="0"/>
-
-            <img src="images/FotoProdotti/FujifilmNstax.jpg" alt="Denim Jeans" style="width:100%">
-            <h1><a href="prodotto.jsp" target="_self">Tailored Jeans</a></h1>
-            <p class="price">$19.99</p>
-            <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
-            <p><a href="Carrello.jsp" class="card button "> Aggiungi al carrello</a></p>
-        </div>
-        -->
+    <div class="row">
 
         <%
             ArrayList<Prodotto> prodotti = (ArrayList<Prodotto>) request.getAttribute("products");
@@ -186,28 +171,25 @@
                     prezzo = p.getPrezzo();
                     Modello = p.getModello();
         %>
+        <div class="column" >
+            <div class="card">
 
-        <img src=<%=immagine%>  alt="Immagine_Prodotto">
-        <h3><%=Marca + Modello%></h3>
-        <p class="price">$<%=prezzo%>
-        </p>
-        <p> <form action="Carrello" method="get"> <button id="carrello" name="<%=codP%>" >Aggiungi al Carrello </button> </form> </p>
-        <p> <form action="ProdottoServlet" method="get"> <button id="prodotto" name="<%=codP%>">Visualizza Prodotto</button> </form> </p>
-
+                <img src=<%=immagine%>  alt="Immagine_Prodotto" style="width:100%">
+                <h5><%=Marca + Modello%></h5>
+                <p class="price">$<%=prezzo%>
+                </p>
+                <p> <form action="Carrello" method="get"> <button id="carrello" name="<%=codP%>" >Aggiungi al Carrello </button> </form> </p>
+                <p> <form action="ProdottoServlet" method="get"> <button id="prodotto" name="<%=codP%>">Visualizza Prodotto</button> </form> </p>
+            </div>
+        </div>
         <%
 
                 }
             }
         %>
-
-    </div>
-
-
-
 </div>
-
 </div>
-<!-- </form> -->
+</form>
     <%@include file = "footer.jsp" %>
 </body>
 </html>

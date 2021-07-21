@@ -116,13 +116,25 @@
         .button2 {
             border-radius: 12px;
         }
+
+        .container {
+            padding: 70px 0;
+            margin-top: 10px;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 40px 40px;
+
+            }
+        }
+
     </style>
 
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
     <%@include file = "header.jsp" %>
     <%@ page import = "model.Prodotto" %>
-    <%@ page import = "java.util.List,java.util.ArrayList, model.Recensione, java.util.Random"%>
+    <%@ page import = "java.util.ArrayList, model.Recensione"%>
 
     <%
 
@@ -138,51 +150,47 @@
             ArrayList<Recensione> recensione= prodotto.getRecensione();
 
     %>
-    <section class="card"  style="padding-bottom:90px;">
-        <div style="float:left; padding:80px " >
-            <div class="img-magnifier-container">
-                <img id="image" src=<%=immagine%> >  <!--{product.photo}-->
+    <section class="card"  style="padding-bottom:60px;">
+        <div class="container" >
+            <div style="float:left; padding:20px " >
+                    <div class="img-magnifier-container">
+                        <img id="image" src=<%=immagine%> >  <!--{product.photo}-->
+                    </div>
+                    <script type = "text/javascript" src = "JavaScript/magnifier.js"></script>
+                    <script>magnify('image', 3);</script>
             </div>
-            <script type = "text/javascript" src = "JavaScript/magnifier.js"></script>
-            <script>magnify('image', 3);</script>
+            <div class="capo">
+                <h3> <%= Marca + " " + Modello %></h3>
+                <hr style="border:3px solid #f1f1f1"><br>
+                <h4 class="price"><span>Iva: 22%</span></h4>
+                <p>La quantit&#224 disponibile in magazzino è: <%=quantita%></p>
+                <p>Prezzo: $<%=prezzo%></p>
+                    <label  class="myLabel" >Inserite la quantit&#224 che desiderate acquistare:</label>
+                    <input id="qty" type="number" name="qty" value = "1" min="1" max="<%=quantita%>"><br>
+                    <form action="Carrello" method="get"> <button class="button button2" name="<%=codP%>">Acquista!</button> </form>
+                        <a href="Catalogo.jsp" class="button button2">Indietro</a>
+                        <% if(recensione!= null){
+                                for(Recensione r: recensione){
+                                    String commento= r.getCommento();
+                                    int voto= r.getVoto();
+                                    String nome = r.getUsername();
+                        %>
+                            <h4> Recensioni: </h4><p> <%=nome%>></p><p> <%=voto%></p><p> <%=commento%></p>
+
+                        <%}
+
+                        }
+                        else{ %>
+                            <p>Non ci sono recensioni per questo prodotto...</p>
+                        <% } %>
+
+                        <% } %>
+                    </form>
+            </div>
         </div>
-        <div class="capo">
-            <h1> <%= Marca + " " + Modello %></h1>
-
-            <hr style="border:3px solid #f1f1f1">
-            <br>
-            <h3 class="price"><span>Iva: 22%</span></h3>
-            <p>La quantit&#224 disponibile in magazzino è: <%=quantita%></p>
-            <p>Prezzo: $<%=prezzo%></p>
-                <label  class="myLabel" >Inserite la quantit&#224 che desiderate acquistare:</label>
-                <input id="qty" type="number" name="qty" value = "1" min="1" max="<%=quantita%>">
-                <!-- <br><a href="Carrello.jsp" class="button button2">Acquista!</a> -->
-                <br> <form action="Carrello" method="get"> <button class="button button2" name="<%=codP%>">Acquista!</button> </form>
-                <a href="Catalogo.jsp" class="button button2">Indietro</a>
-      <!--  </form> -->
-
-            <% if(recensione!= null){
-                    for(Recensione r: recensione){
-                        String commento= r.getCommento();
-                        int voto= r.getVoto();
-                        String nome = r.getUsername();
-            %>
-                <h4> Recensioni: </h4>
-                <p> <%=nome%>></p>
-                <p> <%=voto%></p>
-                <p> <%=commento%></p>
-
-            <%}
-
-            }
-            else{ %>
-                <p>Non ci sono recensioni per questo prodotto...</p>
-            <% } %>
-
-         <% } %>
-        </div></br>
     </section>
- <!--   <section>
+
+    <!--   <section>
      %@ < include file = "recensione.jsp" %>
     </section>-->
     <%@include file = "footer.jsp" %>

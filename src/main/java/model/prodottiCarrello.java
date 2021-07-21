@@ -1,5 +1,7 @@
 package model;
 
+import java.math.BigDecimal;
+
 public class prodottiCarrello {
     private Prodotto prodotto;
     private int quantita;
@@ -31,6 +33,17 @@ public class prodottiCarrello {
     public double totale(){
         return prodotto.getPrezzo()* quantita;
     }
+
+    public float calculateIva () {
+        return prodotto.getPrezzo()*(prodotto.getIVA()/100);
+    }
+    public double getPrezzoConIva () {
+        double iva = calculateIva();
+        double money = prodotto.getPrezzo();
+
+        return  (money + iva);
+    }
+
 
 
 }

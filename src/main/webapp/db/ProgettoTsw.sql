@@ -88,12 +88,12 @@ insert into prodotto values
 (0002,"fotocamera","CANON","POWERSHOT G9 X MARK II",332.90,20, "images/FotoProdotti/CanonG9.jpg",21),
 (0003,"fotocamera","FUJIFILM","NSTAX MINI8",69.90,40, "images/FotoProdotti/FujifilNstax.jpg",21),
 (0004,"obiettivi fotografici","CANON","SIGMA 10-20MM F/3.5 AF EX DC HSM ",374.90,18, "images/FotoProdotti/SigmaCanon10-20mm.jpg",22),
-(0005,"obiettivi fotografici","NIKON","SIGMA 50MM F/1.4 DG HSM ",644.90,10, "images/FotoProdotti/SigmaNikon50mm",21),
-(0006,"accessori","NIKON","NIKON MC-35 (CONNETTORE GPS PER NIKON D2X-D2XS-D3-D3X-D2HS-D200-D300)",99.90,90, "images/FotoProdotti/NikonG35",21),
+(0005,"obiettivi fotografici","NIKON","SIGMA 50MM F/1.4 DG HSM ",644.90,10, "images/FotoProdotti/SigmaNikon50mm.jpg",21),
+(0006,"accessori","NIKON","NIKON MC-35 (CONNETTORE GPS PER NIKON D2X-D2XS-D3-D3X-D2HS-D200-D300)",99.90,90, "images/FotoProdotti/NikonG35.jpg",21),
 (0007,"accessori","NIKON"," BATTERIA ORIGINALE EN-EL9A (Per D40 D40X D60 D5000)",52.90,100, "images/FotoProdotti/NikonEN.jpg",22),
 (0008,"obiettivi fotografici","CANON","SIGMA 100-400MM F/5-6.3 DG OS HSM C",704.90,15, "images/FotoProdotti/Sigma100-400mmF5-6-3.jpg",22),
 (0009,"accessori","GODOX","GODOX 303-STATIVO PER LAMPADE-TORCE-ALTEZZA MASSIMA 260CM",714.90,1, "images/FotoProdotti/Godox303.jpg",21),
-(0010,"obiettivi fotografici","OLYMPUS","14-42MM F/3.5-5.6 ED EZ M.ZUIKO ",217.90,50, "images/FotoProdotti/Olympus14-42mm",20);
+(0010,"obiettivi fotografici","OLYMPUS","14-42MM F/3.5-5.6 ED EZ M.ZUIKO ",217.90,50, "images/FotoProdotti/Olympus14-42mm.jpg",20);
 
 insert into utente_registrato values
 ("Martina01","Marty01#", "Martina", "Girolamo","martinagiro@gmail.com"),
