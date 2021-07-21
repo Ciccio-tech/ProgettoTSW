@@ -21,7 +21,7 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Catalogo
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="fotocamere.jsp">Fotocamere</a></li>
+                        <li><form action="Categorie" method="get"><%request.setAttribute("categoria", "fotocamera");%><a href="fotocamere.jsp">Fotocamere</a></form> </li>
                         <li><a href="obiettivi.jsp">Obiettivi fotografici</a></li>
                         <li><a href="accessori.jsp">Accessori</a></li>
                     </ul>

@@ -11,22 +11,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Fotocamere</title>
 </head>
 <body>
 <%@include file = "header.jsp" %>
 
-<% response.sendRedirect("ProdottiServlet");%>
+<% response.sendRedirect("Categorie");%>
 
+Ciao
 
 <%
-    ProdottoDAO prodottoDAO= new ProdottoDAO();
-    ArrayList<Prodotto> prodotti = new ArrayList<>();
-    try {
-         prodotti = prodottoDAO.doRetrieveDyTipo("fotocamera");
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
+
+    ArrayList<Prodotto> prodotti = (ArrayList<Prodotto>) request.getAttribute("products");
+
 
     //ArrayList<Prodotto> prodotti = (ArrayList<Prodotto>) request.getAttribute("products");
     String Marca, Modello;
@@ -35,7 +32,6 @@
     int codP;
     if(prodotti != null){
         for (Prodotto p : prodotti) {
-            if(p.getTipo().equals("fotocamera")){
                 codP = p.getCodP();
                 Marca = p.getMarca();
                 immagine = p.getImmagine();
@@ -51,7 +47,6 @@
 
 <%
             }
-        }
     }
 %>
 

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 
 
 @WebServlet("/ProdottiServlet")
@@ -28,6 +29,7 @@ public class ProdottiServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }
+
         request.setAttribute("products", prodotti);
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("Catalogo.jsp");
