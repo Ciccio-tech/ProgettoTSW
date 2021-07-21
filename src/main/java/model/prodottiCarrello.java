@@ -34,16 +34,6 @@ public class prodottiCarrello {
         return prodotto.getPrezzo()* quantita;
     }
 
-    public float calculateIva () {
-        return prodotto.getPrezzo()*(prodotto.getIVA()/100);
-    }
-    public double getPrezzoConIva () {
-        double iva = calculateIva();
-        double money = prodotto.getPrezzo();
-
-        return  (money + iva);
-    }
-
 
 
 }

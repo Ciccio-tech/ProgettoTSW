@@ -132,5 +132,14 @@ public class Prodotto {
         return super.toString();
     }
 
+    public float calculateIva () {
+        return prezzo*(iva/100);
+    }
+    public double getPrezzoConIva () {
+        double iva = calculateIva();
+        double money = prezzo;
+        return  (money + iva);
+    }
+
 
 }
