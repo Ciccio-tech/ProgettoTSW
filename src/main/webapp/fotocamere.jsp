@@ -18,7 +18,6 @@
 
 <% response.sendRedirect("Categorie");%>
 
-Ciao
 
 <%
 
@@ -49,6 +48,7 @@ Ciao
             }
     }
 %>
+
 
 <!-- </form> -->
 <%@include file = "footer.jsp" %>
