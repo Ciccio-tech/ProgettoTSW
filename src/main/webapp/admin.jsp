@@ -210,12 +210,12 @@
 <br>
 <br>
 <br>
-
     <%
         String username= (String) session.getAttribute("username");
     %>
 <div id="choice">
-    <h3>Benvenuto! <%=username%> </h3> <br>
+    <h2 style="position: center">Pannello di Controllo!</h2>
+    <h3>Benvenuto, <%=username%>!</h3> <br>
 
         <button class="admin"  name="AggiuntaProdotto" onclick="revealFormProd()"> Aggiungi un Prodotto!</button> <br>
         <div id="addP" style="display: none">
@@ -244,7 +244,7 @@
             <form action="AdminProdotto" method="get">
             <label class="codP" for="codP">Codice Prodotto:</label>
             <input type="text" id="codP" name="codP"><br><br>
-                <%request.setAttribute("rimuovi",true);%>
+            <input type="hidden" id="rimuovi" name="rimuovi" value="true">
             <input  type="submit" value="Submit">
             </form>
         </div>
@@ -290,10 +290,10 @@
     <button class="admin" name="RimozioneAmministratore" id="removeAdmin" onclick="revealDeleteA()">Rimuovi un Amministratore!</button>
     <div id="deleteA" style="display: none">
         <form action="AdminServlet" method="get">
-            <label class="codP" for="userA">Username Admin:</label>
-            <input type="text" id="userA" name="userA"><br><br>
+            <label class="codP" for="username">Username Admin:</label>
+            <input type="text" id="u" name="username"><br><br>
+            <input type="hidden" id="remove" name="rimuovi" value="true">
             <input  type="submit" value="Submit">
-            <%request.setAttribute("rimuovi",true);%>
         </form>
     </div>
 

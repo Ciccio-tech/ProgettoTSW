@@ -38,6 +38,7 @@ public class AdminProdottoServlet extends HttpServlet {
             System.out.println("secondo if");
             boolean rimuovi =  Boolean.parseBoolean(request.getParameter("rimuovi"));
             if(rimuovi){
+                System.out.println("SIAMO NEL RIMUOVI");
                 try {
                     prodottoDAO.doDelete(Integer.parseInt(idP));
                 } catch (SQLException e) {

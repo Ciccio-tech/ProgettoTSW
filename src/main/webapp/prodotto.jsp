@@ -188,7 +188,7 @@
                 <h4 class="price"><span>Iva: 22%</span></h4>
                 <p>La quantit&#224 disponibile in magazzino è: <%=quantita%></p>
                 <p>Prezzo: $<%=prezzo%></p>
-                    <label  class="myLabel" >Inserite la quantit&#224 che desiderate acquistare:</label>
+                    <label  class="myLabel" for="qty" >Inserite la quantit&#224 che desiderate acquistare:</label>
                     <input id="qty" type="number" name="qty" value = "1" min="1" max="<%=quantita%>"><br>
                     <form action="Carrello" method="get"> <button class="button button2" name="<%=codP%>" style="width: 100%;">Aggiungi al carrello!</button> </form>
                         <a href="Catalogo.jsp" class="button button2" style="width: 100%; ">Indietro</a>

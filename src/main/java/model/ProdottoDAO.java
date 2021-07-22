@@ -161,7 +161,7 @@ public class ProdottoDAO {
 
     public void doDelete(int codP) throws SQLException {
         try(Connection c= ConPool.getConnection()) {
-            PreparedStatement ps = c.prepareStatement("DELETE FROM prodotto WHERE id=?");
+            PreparedStatement ps = c.prepareStatement("DELETE FROM prodotto WHERE codP=?");
             ps.setInt(1, codP);
             if (ps.executeUpdate() != 1)
                 throw new RuntimeException("DELETE ERROR");

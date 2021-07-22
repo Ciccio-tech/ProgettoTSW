@@ -21,7 +21,7 @@ public class RicercaServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, SQLException {
         ArrayList<Prodotto> prodotti = prodottoDAO.doRetrieveByModelloorMarca(request.getParameter("ricerca"), 0, 10);
         request.setAttribute("prodotti", prodotti);
-        RequestDispatcher requestDispatcher= request.getRequestDispatcher("WEB-INF/ricerca.jsp");
+        RequestDispatcher requestDispatcher= request.getRequestDispatcher("ricerca.jsp");
         requestDispatcher.forward(request, response);
     }
 
