@@ -1,10 +1,3 @@
-img .Logo {
-    width: 5px;
-    height: 5px;
-    padding: 10px 10px 10px 10px;
-    position: -ms-device-fixed;
-    position: center;
-}
 body {
     font: 400 15px/1.8 Lato, sans-serif;
     color: #777;
@@ -28,9 +21,23 @@ h3, h4 {
 .person:hover {
     border-color: #f1f1f1;
 }
+.navbar-toggle {
+    margin-top: 18px;
+}
+.navbar-brand {
+    float: left;
+    height: 70px;
+    padding: 7px 7px;
+    font-size: 20px;
+    line-height: 20px;
+}
+.navbar-nav>li>a {
+    padding-top: 25px;
+    padding-bottom: 15px;
+}
 .carousel-inner img {
-    -webkit-filter: grayscale(90%);
-    filter: grayscale(90%); /* make all photos black and white */
+    /* -webkit-filter: grayscale(90%);
+     filter: grayscale(90%);  make all photos black and white */
     width: 100%; /* Set width to 100% */
     margin: auto;
 }
@@ -67,7 +74,7 @@ h3, h4 {
 }
 .btn {
     padding: 10px 20px;
-    background-color: #333;
+    background-color: #2d2d30;
     color: #f1f1f1;
     border-radius: 0;
     transition: .2s;
@@ -78,7 +85,7 @@ h3, h4 {
     color: #000;
 }
 .modal-header, h4, .close {
-    background-color: #333;
+    background-color: #2d2d30;
     color: #fff !important;
     text-align: center;
     font-size: 30px;
@@ -89,12 +96,7 @@ h3, h4 {
 .nav-tabs li a {
     color: #777;
 }
-#googleMap {
-    width: 100%;
-    height: 400px;
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
-}
+
 .navbar {
     font-family: Montserrat, sans-serif;
     margin-bottom: 0;
@@ -110,6 +112,7 @@ h3, h4 {
 .navbar-nav li a:hover {
     color: #fff !important;
 }
+
 .navbar-nav li.active a {
     color: #fff !important;
     background-color: #29292c !important;
@@ -125,7 +128,7 @@ h3, h4 {
     color: #000 !important;
 }
 .dropdown-menu li a:hover {
-    background-color: red !important;
+    background-color: lightseagreen !important;
 }
 footer {
     background-color: #2d2d30;
@@ -133,7 +136,7 @@ footer {
     padding: 32px;
 }
 footer a {
-    color: #f5f5f5;
+    color: #2d2d30;
 }
 footer a:hover {
     color: #777;
@@ -146,22 +149,6 @@ textarea {
     resize: none;
 }
 
-
-/*codice per i prodotti*/
-.product{
-    column-count: 3;
-    column-rule: 1px solid lightblue;
-}
-
-h2 {
-    column-span: all;
-}
-
-h3{
-    coloumn-span: 3;
-}
-
-h4{
-    text-align: left;
-    color: black;
+video{
+    position: center;
 }
