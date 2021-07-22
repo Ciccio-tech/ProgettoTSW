@@ -35,6 +35,7 @@ public class LoginServlet extends HttpServlet {
             if((amministratore = amministratoreDAO.doRetrieveByUsernamePassword(username, password)) != null){
                 System.out.println(amministratore.getNome());
                 session.setAttribute("username", username);
+                session.setAttribute("amministratore", amministratore);
                 response.sendRedirect("admin.jsp");
             }else {
                 cliente = clienteDAO.doRetrieveByUsernamePassword(username, password);

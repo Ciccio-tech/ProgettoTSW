@@ -142,7 +142,7 @@ public class ProdottoDAO {
         }
     }
 
-    public void doSave(Prodotto prodotto) throws SQLException{
+    public boolean doSave(Prodotto prodotto) throws SQLException{
         try(Connection c= ConPool.getConnection()){
             PreparedStatement ps= c.prepareStatement("INSERT INTO prodotto (codP, tipo, marca, modello, prezzo, quantità, immagine, IVA) VALUES(?,?,?,?,?,?,?,?)");
             ps.setInt(1, prodotto.getCodP());
@@ -153,8 +153,7 @@ public class ProdottoDAO {
             ps.setInt(6, prodotto.getQuantita());
             ps.setString(7, prodotto.getImmagine());
             ps.setInt(8,prodotto.getIVA());
-            if(ps.executeUpdate() != 1)
-                throw new RuntimeException("INSERT FAILED");
+            return ps.executeUpdate() == 1;
         }catch (SQLException e){
             throw new RuntimeException(e);
         }

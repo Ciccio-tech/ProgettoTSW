@@ -37,19 +37,20 @@ public class AmministratoreDAO {
 
     public boolean createAmministratore(Amministratore amministratore) throws SQLException {
         try(Connection c = ConPool.getConnection()){
+            /*
             QueryBuilder queryBuilder = new QueryBuilder("amministratore");
             queryBuilder.insert("username, pass, nome, cognome");
-            PreparedStatement ps=c.prepareStatement(queryBuilder.GenerateQuery());
+             */
+            PreparedStatement ps=c.prepareStatement("INSERT INTO amministratore (username, pass, nome, cognome) VALUES(?,?,?,?)");
                 ps.setString(1, amministratore.getUsername());
                 ps.setString(2, amministratore.getPassword());
                 ps.setString(3, amministratore.getNome());
                 ps.setString(4, amministratore.getCognome());
-            if(ps.executeUpdate() == 1)
-                return true;
-            else
-                return false;
-
+            return ps.executeUpdate() == 1;
+        }catch (SQLException e){
+            throw new RuntimeException(e);
         }
+
     }
 
     public boolean deleteAmministratore(String username) throws SQLException {

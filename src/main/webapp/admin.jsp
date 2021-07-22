@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="model.Cliente" %><%--
   Created by IntelliJ IDEA.
   User: franc
   Date: 21/07/2021
@@ -169,49 +170,175 @@
     resize: none;
     }
 
-    button {
+    button.admin{
         border: none;
         outline: 0;
         padding: 12px;
+        margin: 10px;
         color: white;
         background-color: lightseagreen;
         text-align: center;
         cursor: pointer;
-        width: 100%;
+        width: 25%;
         font-size: 18px;
     }
+
+    /*
+    label.prodForm{
+        display: none;
+    }
+
+    input.prodForm{
+        display: none;
+    }
+    */
+    ul.c{
+        padding: 20px;
+        margin: 15px;
+        box-shadow: #2d2d30;
+    }
+
+
 
 </style>
 </head>
 <body>
 <%@include file = "header.jsp" %>
 
+<br>
+<br>
+<br>
+<br>
+<br>
+
     <%
         String username= (String) session.getAttribute("username");
     %>
 <div id="choice">
-    Benvenuto! <%=username%>
-    <form action="AdminProdotto" method="get"></form>
-        <button name="AggiuntaProdotto"> Aggiungi un Prodotto!</button> <br>
-        <button name="RimozioneProdotto" <%request.setAttribute("rimuovi",true);%> > Rimuovi un prodotto!</button> <br>
-    </form>
-    <form action="AdminUtenti" method="get">
-        <button name="Clienti"> Visualizza tutti i clienti!</button> <br>
-    </form>
-   <form action="AdminServlet" method="get">
-    <button name="AggiuntaAmministratore">Aggiungi un Amministratore!</button> <br>
-    <button name="RimozioneAmministratore" <%request.setAttribute("rimuovi",true);%>  id="removeAdmin" onclick="revealForm()">Rimuovi un Amministratore!</button>
-        <input type="submit" name="RemoveAdmin" style="display:none"> UsernameAdmin
-        <input type="button" onclick="">
+    <h3>Benvenuto! <%=username%> </h3> <br>
 
+        <button class="admin"  name="AggiuntaProdotto" onclick="revealFormProd()"> Aggiungi un Prodotto!</button> <br>
+        <div id="addP" style="display: none">
+            <form action="AdminProdotto" method="get">
+                <label class="prodForm" for="cod">Codice Prodotto:</label>
+                <input class="prodForm" type="text" id="cod" name="cod"><br><br>
+                <label class="prodForm" for="tipo">Tipo:</label>
+                <input class="prodForm" type="text" id="tipo" name="tipo"><br><br>
+                <label class="prodForm" for="marca">Marca:</label>
+                <input class="prodForm" type="text" id="marca" name="marca" ><br><br>
+                <label class="prodForm" for="modello">Modello:</label>
+                <input class="prodForm" type="text" id="modello" name="modello" ><br><br>
+                <label class="prodForm" for="prezzo">Prezzo:</label>
+                <input class="prodForm" type="text" id="prezzo" name="prezzo" ><br><br>
+                <label class="prodForm" for="quantita">Quantità:</label>
+                <input class="prodForm" type="text" id="quantita" name="quantita" ><br><br>
+                <label class="prodForm" for="immagine">Immagine:</label>
+                <input class="prodForm" type="text" id="immagine" name="immagine" ><br><br>
+                <label class="prodForm" for="iva">Iva:</label>
+                <input class="prodForm" type="text" id="iva" name="iva" ><br><br>
+                <input class="prodForm" type="submit" value="Submit">
+             </form>
+        </div>
+        <button class="admin" name="RimozioneProdotto" onclick="revealDeleteP()"> Rimuovi un prodotto!</button> <br>
+        <div id="deleteProduct" style="display: none">
+            <form action="AdminProdotto" method="get">
+            <label class="codP" for="codP">Codice Prodotto:</label>
+            <input type="text" id="codP" name="codP"><br><br>
+                <%request.setAttribute("rimuovi",true);%>
+            <input  type="submit" value="Submit">
+            </form>
+        </div>
+
+
+        <form action="AdminUtenti" method="get"> <button class="admin" name="Clienti" > Visualizza tutti i clienti!</button> </form> <br>
+            <%
+                ArrayList<Cliente> clienti= (ArrayList<Cliente>) request.getAttribute("clienti");
+                if(clienti != null){
+                for(Cliente c: clienti){
+                    String u= c.getUsername();
+                    String nome= c.getNome();
+                    String cognome= c.getCognome();
+                    String email= c.getP_elettronica();
+            %>
+            <div class="clienti" id="c">
+                <ul class="c">
+                    <li><%=u%></li>
+                    <li><%=nome%></li>
+                    <li><%=cognome%></li>
+                    <li><%=email%></li>
+                </ul>
+            </div>
+
+            <%  }
+                }
+            %>
+
+    <button class="admin" name="AggiuntaAmministratore" onclick="revealNewA()">Aggiungi un Amministratore!</button> <br>
+    <div id="addA" style="display: none">
+        <form action="AdminServlet" method="get">
+            <label class="prodForm" for="username">Username:</label>
+            <input class="prodForm" type="text" id="username" name="username"><br><br>
+            <label class="prodForm" for="pass">Password:</label>
+            <input class="prodForm" type="text" id="pass" name="pass" ><br><br>
+            <label class="prodForm" for="nome">Nome:</label>
+            <input class="prodForm" type="text" id="nome" name="nome" ><br><br>
+            <label class="prodForm" for="cognome">Cognome:</label>
+            <input class="prodForm" type="text" id="cognome" name="cognome" ><br><br>
+            <input class="prodForm" type="submit" value="Submit">
+        </form>
+    </div>
+    <button class="admin" name="RimozioneAmministratore" id="removeAdmin" onclick="revealDeleteA()">Rimuovi un Amministratore!</button>
+    <div id="deleteA" style="display: none">
+        <form action="AdminServlet" method="get">
+            <label class="codP" for="userA">Username Admin:</label>
+            <input type="text" id="userA" name="userA"><br><br>
+            <input  type="submit" value="Submit">
+            <%request.setAttribute("rimuovi",true);%>
+        </form>
+    </div>
 
         <script>
-            function revealForm(){
+            function revealFormProd(){
+                var x= document.getElementById("addP");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+                //$("prodForm").css("display, inline");
+            }
 
+            function revealDeleteP(){
+                var x= document.getElementById("deleteProduct");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+                //$("prodForm").css("display, inline");
+            }
+
+            function revealNewA(){
+                var x= document.getElementById("addA");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+                //$("prodForm").css("display, inline");
+            }
+
+            function revealDeleteA(){
+                var x= document.getElementById("deleteA");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+                //$("prodForm").css("display, inline");
             }
 
         </script>
-    </form>
 </div>
 
 <%@include file = "footer.jsp" %>

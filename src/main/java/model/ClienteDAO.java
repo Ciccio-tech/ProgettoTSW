@@ -115,7 +115,7 @@ public class ClienteDAO {
     public boolean createCliente(Cliente cliente) throws SQLException {
         try (Connection c = ConPool.getConnection()) {
             QueryBuilder queryBuilder = new QueryBuilder("utente_registrato");
-            queryBuilder.insert("username, passwordhash, nome, cognome, p_elettronica");
+            queryBuilder.insert("username, pass, nome, cognome, email");
             try (PreparedStatement ps = c.prepareStatement(queryBuilder.GenerateQuery())) {
                 ps.setString(1, cliente.getUsername());
                 ps.setString(2, cliente.getPassword());

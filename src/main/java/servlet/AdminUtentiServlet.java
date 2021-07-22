@@ -19,6 +19,7 @@ public class AdminUtentiServlet extends HttpServlet {
     private final ClienteDAO clienteDAO= new ClienteDAO();
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        System.out.println("servlet Utenti");
         ArrayList<Cliente> clienti = null;
         try {
             clienti = clienteDAO.doRettieveAll(0, 10);
@@ -27,7 +28,7 @@ public class AdminUtentiServlet extends HttpServlet {
         }
         request.setAttribute("clienti", clienti);
 
-        RequestDispatcher requestDispatcher= request.getRequestDispatcher("WEB-INF/adminClienti.jsp");
+        RequestDispatcher requestDispatcher= request.getRequestDispatcher("admin.jsp");
         requestDispatcher.forward(request, response);
     }
 

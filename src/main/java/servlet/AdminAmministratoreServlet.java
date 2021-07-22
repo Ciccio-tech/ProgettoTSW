@@ -21,6 +21,7 @@ public class AdminAmministratoreServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
         Amministratore amministratore= (Amministratore) request.getSession().getAttribute("amministratore");
+
         if(amministratore == null){
             try {
                 throw new MyServletException("Utente non autorizzato");
@@ -28,7 +29,7 @@ public class AdminAmministratoreServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }else{
-            String username= request.getParameter("username_admin");
+            String username= request.getParameter("username");
             boolean rimuovi =  Boolean.parseBoolean(request.getParameter("rimuovi"));
             if(username!= null && rimuovi){
                 try {

@@ -22,8 +22,10 @@ public class AdminProdottoServlet extends HttpServlet {
     private final ProdottoDAO prodottoDAO= new ProdottoDAO();
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        System.out.println("servlet prodotti");
         Amministratore amministratore = (Amministratore) request.getSession().getAttribute("amministratore");
         if(amministratore == null){
+            System.out.println("if");
             try {
                 throw new MyServletException("Utente non autorizzato.");
             } catch (MyServletException e) {
@@ -33,7 +35,9 @@ public class AdminProdottoServlet extends HttpServlet {
 
         String idP=request.getParameter("codP");
         if(idP != null){
-            if(request.getParameter("rimuovi") != null){
+            System.out.println("secondo if");
+            boolean rimuovi =  Boolean.parseBoolean(request.getParameter("rimuovi"));
+            if(rimuovi){
                 try {
                     prodottoDAO.doDelete(Integer.parseInt(idP));
                 } catch (SQLException e) {
@@ -48,38 +52,27 @@ public class AdminProdottoServlet extends HttpServlet {
                 String modello= request.getParameter("modello");
                 String prezzo = request.getParameter("prezzo");
                 String immagine= request.getParameter("immagine");
-                String quantita = request.getParameter("quantità");
-
-                String IVA = request.getParameter("IVA");
+                String quantita = request.getParameter("quantita");
+                String IVA = request.getParameter("iva");
+                System.out.println(idP + tipo + marca + modello + prezzo + immagine + quantita + IVA);
                 if(tipo!=null && marca!=null && modello!=null && prezzo!=null && quantita!=null) {
                     prodotto = new Prodotto();
                     prodotto.setCodP(Integer.parseInt(idP));
                     prodotto.setTipo(tipo);
-                    prodotto.setModello(marca);
+                    prodotto.setMarca(marca);
                     prodotto.setModello(modello);
                     prodotto.setPrezzo(Float.parseFloat(prezzo));
                     prodotto.setQuantita(Integer.parseInt(quantita));
                     prodotto.setImmagine(immagine);
                     prodotto.setIva(Integer.parseInt(IVA));
-                    if (idP.isEmpty()) {
-                        //si aggiunge il prodotto
                         try {
-                            prodottoDAO.doSave(prodotto);
+                            if(prodottoDAO.doSave(prodotto)) {
+                                request.setAttribute("notifica", "Nuovo Prodotto aggiunto con successo!");
+                            }else
+                                request.setAttribute("notifica", "Nuovo Prodotto NON aggiunto!");
                         } catch (SQLException e) {
                             e.printStackTrace();
                         }
-                        request.setAttribute("notifica", "Prodotto aggiunto con successo");
-                    } else {
-                        //si modifica il prodotto esistente
-                        prodotto.setCodP(Integer.parseInt(idP));
-                        try {
-                            prodottoDAO.doUpdate(prodotto);
-                        } catch (SQLException e) {
-                            e.printStackTrace();
-                        }
-                        request.setAttribute("notifica", "Modifica avvenuta con successo");
-                    }
-
                 }else{
                     int codP= Integer.parseInt(idP);
                     prodotto= prodottoDAO.doRetrieveById(codP);
@@ -87,7 +80,7 @@ public class AdminProdottoServlet extends HttpServlet {
                 request.setAttribute("prodotto", prodotto);
             }
         }
-        RequestDispatcher requestDispatcher= request.getRequestDispatcher("WEB-INF/admin.jsp");
+        RequestDispatcher requestDispatcher= request.getRequestDispatcher("admin.jsp");
         requestDispatcher.forward(request, response);
     }
 
