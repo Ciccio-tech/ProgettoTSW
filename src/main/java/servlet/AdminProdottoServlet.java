@@ -1,6 +1,7 @@
 package servlet;
 
 import MyException.MyServletException;
+import model.Amministratore;
 import model.Cliente;
 import model.Prodotto;
 import model.ProdottoDAO;
@@ -21,8 +22,8 @@ public class AdminProdottoServlet extends HttpServlet {
     private final ProdottoDAO prodottoDAO= new ProdottoDAO();
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        Cliente cliente = (Cliente) request.getSession().getAttribute("cliente");
-        if(cliente == null){
+        Amministratore amministratore = (Amministratore) request.getSession().getAttribute("amministratore");
+        if(amministratore == null){
             try {
                 throw new MyServletException("Utente non autorizzato.");
             } catch (MyServletException e) {
@@ -86,7 +87,7 @@ public class AdminProdottoServlet extends HttpServlet {
                 request.setAttribute("prodotto", prodotto);
             }
         }
-        RequestDispatcher requestDispatcher= request.getRequestDispatcher("WEB-INF/Admin.jsp");
+        RequestDispatcher requestDispatcher= request.getRequestDispatcher("WEB-INF/admin.jsp");
         requestDispatcher.forward(request, response);
     }
 

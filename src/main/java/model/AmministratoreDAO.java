@@ -86,4 +86,11 @@ public class AmministratoreDAO {
         }
     }
 
+    public boolean doDelete(String username) throws SQLException {
+        try(Connection c= ConPool.getConnection()){
+            PreparedStatement ps= c.prepareStatement("DELETE FROM amministratore WHERE username=?");
+            ps.setString(1, username);
+            return ps.executeUpdate() == 1;
+        }
+    }
 }
