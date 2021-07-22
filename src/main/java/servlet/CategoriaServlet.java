@@ -30,6 +30,9 @@ public class CategoriaServlet extends HttpServlet {
         try {
             String ctgy= request.getParameter("categoria");
             int categoria = Integer.parseInt(ctgy);
+            if(categoria==0){
+                prodotti= prodottoDAO.doRetrieveAll();
+            }
             if(categoria==1){
                 prodotti= prodottoDAO.doRetrieveDyTipo("fotocamera");
             }

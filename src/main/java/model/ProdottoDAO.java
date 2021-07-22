@@ -22,24 +22,22 @@ private int codP;
 
 public class ProdottoDAO {
 
-    public List<Prodotto> doRetrieveAll(int offset, int limit) {
+    public ArrayList<Prodotto> doRetrieveAll() {
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT codP, marca, modello, prezzo, quantità, immagine, tipo, IVA FROM prodotto LIMIT ?, ?");
-            ps.setInt(1, offset);
-            ps.setInt(2, limit);
+            PreparedStatement ps = con.prepareStatement("SELECT codP, tipo, marca, modello, prezzo, quantità, immagine, IVA FROM prodotto ");
             ArrayList<Prodotto> prodotti = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Prodotto p = new Prodotto();
-                p.setCodP(rs.getInt(1));
-                p.setMarca(rs.getString(2));
-                p.setModello(rs.getString(3));
-                p.setPrezzo(rs.getLong(4));
-                p.setQuantita(rs.getInt(5));
-                p.setImmagine(rs.getString(6));
-                p.setTipo(rs.getString(7));
-                p.setIva(rs.getInt(8));
-                prodotti.add(p);
+                Prodotto bean = new Prodotto();
+                bean.setCodP(rs.getInt(1));
+                bean.setTipo(rs.getString(2));
+                bean.setMarca(rs.getString(3));
+                bean.setModello(rs.getString(4));
+                bean.setPrezzo(rs.getFloat(5));
+                bean.setQuantita(rs.getInt(6));
+                bean.setImmagine(rs.getString(7));
+                bean.setIva(rs.getInt(8));
+                prodotti.add(bean);
             }
             return prodotti;
         } catch (SQLException e) {
