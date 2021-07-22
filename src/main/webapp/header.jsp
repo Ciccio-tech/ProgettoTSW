@@ -43,7 +43,7 @@
                     </ul>
                 </li>
                 <%} %>
-                <li><a href="Carrello2.jsp"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+                <li><a href="Carrello.jsp"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
                 <li><a href="ricerca.jsp"><span class="glyphicon glyphicon-search"></span></a></li>
             </ul>
         </div>
