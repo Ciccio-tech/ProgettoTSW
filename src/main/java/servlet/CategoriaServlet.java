@@ -16,6 +16,7 @@ import java.util.ArrayList;
 @WebServlet("/Categorie")
 
 public class CategoriaServlet extends HttpServlet {
+    public ProdottoDAO prodottoDAO;
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
         /*
         System.out.println("servlet Categorie");
@@ -23,22 +24,34 @@ public class CategoriaServlet extends HttpServlet {
         q= q.replaceAll("\\D+", "");
 
          */
-        String tipo= request.getParameter("tipo");
-        System.out.println(tipo);
-        ProdottoDAO prodottoDAO= new ProdottoDAO();
-        ArrayList<Prodotto> prodotti = null;
+
+        prodottoDAO= new ProdottoDAO();
+        ArrayList<Prodotto> prodotti= null;
         try {
-            prodotti= prodottoDAO.doRetrieveDyTipo(tipo);
-        } catch (SQLException e) {
-            e.printStackTrace();
+            String ctgy= request.getParameter("categoria");
+            int categoria = Integer.parseInt(ctgy);
+            if(categoria==1){
+                prodotti= prodottoDAO.doRetrieveDyTipo("fotocamera");
+            }
+            if(categoria==2){
+                 prodotti=prodottoDAO.doRetrieveDyTipo("obiettivi fotografici");
+            }
+            if(categoria==3){
+                prodotti=prodottoDAO.doRetrieveDyTipo("accessori");
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        if(prodotti!=null){
+            response.setContentType("text/html");
+            request.setAttribute("prodotti", prodotti);
+            request.getRequestDispatcher(response.encodeURL("/Catalogo.jsp")).forward(request, response);
+        }else{
+            request.getRequestDispatcher(response.encodeURL("/ErrorPage/404.jsp")).forward(request, response);
         }
 
-        if(prodotti != null){
-            request.setAttribute("products", prodotti);
-        }
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("fotocamere.jsp");
-        requestDispatcher.include(request, response);
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{

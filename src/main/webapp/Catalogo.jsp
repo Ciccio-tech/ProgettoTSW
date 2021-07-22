@@ -121,6 +121,7 @@
             padding: 16px;
             text-align: center;
             background-color: #f1f1f1;
+            height: 470px;
         }
 
         .price {
@@ -150,46 +151,32 @@
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
 
 <%@include file = "header.jsp" %>
-
-<% response.sendRedirect("ProdottiServlet");%>
-<form action="ProdottiServlet" method="get">
+<%
+    ArrayList<Prodotto> prodotti = (ArrayList<Prodotto>) request.getAttribute("prodotti");
+%>
 <div class="container">
-    <h2 style="text-align:center">Prodotti</h2>
+    <h2 style="text-align:center">Prodotti </h2>
     <div class="row">
 
-        <%
-            ArrayList<Prodotto> prodotti = (ArrayList<Prodotto>) request.getAttribute("products");
-            String Marca, Modello;
-            Float prezzo;
-            String immagine;
-            int codP;
-            if(prodotti != null){
-                for (Prodotto p : prodotti) {
-                    codP = p.getCodP();
-                    Marca = p.getMarca();
-                    immagine = p.getImmagine();
-                    prezzo = p.getPrezzo();
-                    Modello = p.getModello();
-        %>
+
+
+            <%
+                for (Prodotto e : prodotti) { %>
         <div class="column" >
             <div class="card">
 
-                <img src=<%=immagine%>  alt="Immagine_Prodotto" style="width:100%">
-                <h5><%=Marca + Modello%></h5>
-                <p class="price">$<%=prezzo%>
+                <img src=<%=e.getImmagine()%>  alt="Immagine_Prodotto" style="width:100%">
+                <h5><%= e.getMarca()+ e.getModello()%></h5>
+                <p class="price">$<%=e.getPrezzo()%>
                 </p>
-                <p> <form action="Carrello" method="get"> <button id="carrello" name="<%=codP%>" >Aggiungi al Carrello </button> </form> </p>
-                <p> <form action="ProdottoServlet" method="get"> <button id="prodotto" name="<%=codP%>">Visualizza Prodotto</button> </form> </p>
+                <p> <form action="Carrello" method="get"> <button id="carrello" name="<%=e.getCodP()%>" >Aggiungi al Carrello </button> </form> </p>
+                <p> <form action="ProdottoServlet" method="get"> <button id="prodotto" name="<%=e.getCodP()%>">Visualizza Prodotto</button> </form> </p>
             </div>
         </div>
-        <%
-
-                }
-            }
+        <%}
         %>
 </div>
 </div>
-</form>
     <%@include file = "footer.jsp" %>
 </body>
 </html>

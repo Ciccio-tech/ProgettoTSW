@@ -269,7 +269,7 @@
             </div>
             <div class="col-sm-4">
                 <div class="thumbnail">
-                    <img src="images/FotoProdotti/Nikond610.jpg" alt="Nikond610" width="400" height="300">
+                    <img src="images/FotoProdotti/NikonD610.jpg" alt="Nikond610" width="400" height="300">
                     <p><strong>Nikond610</strong></p>
                 </div>
             </div>
