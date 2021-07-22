@@ -60,7 +60,7 @@
     </a>
 </div>
 
-<!-- Container (The Band Section) -->
+<!-- Container -->
 <div id="band" class="container text-center">
     <h3> Chi siamo? </h3>
     <p>Siamo un ragazzo e una ragazza con la passione per la fotografia</p>
@@ -98,7 +98,7 @@
     </div>
 </div>
 
-<!-- Container (Alcuni prodotti) -->
+<!-- Container ( prodotti) -->
 <div id="tour" class="bg-1">
     <div class="container">
         <h4>Preferiti dai Clienti:</h4>
@@ -177,7 +177,7 @@
             <p></p>
             <p><span class="glyphicon glyphicon-map-marker">Position</span></p>
             <p><span class="glyphicon glyphicon-phone"></span>Phone: +00 1515151515</p>
-            <p><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</p>
+            <p><span class="glyphicon glyphicon-envelope"></span>Email: ReflexYourWordld@gmail.com</p>
         </div>
 
     </div>
