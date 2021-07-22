@@ -128,19 +128,19 @@ public class ProdottoDAO {
             ps.setString(1, tipo);
             ResultSet rs= ps.executeQuery();
             ArrayList<Prodotto> prodotti= new ArrayList<>();
-            while(rs.next()){
-                Prodotto p= new Prodotto();
-                p.setCodP(rs.getInt(1));
-                p.setTipo(rs.getString(2));
-                p.setMarca(rs.getString(3));
-                p.setModello(rs.getString(4));
-                p.setPrezzo(rs.getFloat(5));
-                p.setQuantita(rs.getInt(6));
-                prodotti.add(p);
+           while(rs.next()){
+                Prodotto bean= new Prodotto();
+                bean.setCodP(rs.getInt(1));
+                bean.setTipo(rs.getString(2));
+                bean.setMarca(rs.getString(3));
+                bean.setModello(rs.getString(4));
+                bean.setPrezzo(rs.getFloat(5));
+                bean.setQuantita(rs.getInt(6));
+                bean.setImmagine(rs.getString(7));
+                bean.setIva(rs.getInt(8));
+                prodotti.add(bean);
             }
             return prodotti;
-        }catch(SQLException e){
-            throw new RuntimeException(e);
         }
     }
 

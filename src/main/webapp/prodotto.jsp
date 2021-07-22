@@ -126,6 +126,29 @@
                 padding: 40px 40px;
 
             }
+
+        }
+        @media (max-width: 800px) {
+            .row {
+                flex-direction: column-reverse;
+            }
+        }
+        .row {
+            display: -ms-flexbox; /* IE10 */
+            display: flex;
+            -ms-flex-wrap: wrap; /* IE10 */
+            flex-wrap: wrap;
+            margin: 0 -16px;
+        }
+
+        .col-50 {
+            -ms-flex: 50%; /* IE10 */
+            flex: 50%;
+        }
+
+
+        .col-50{
+            padding: 0 16px;
         }
 
     </style>
@@ -151,15 +174,15 @@
 
     %>
     <section class="card"  style="padding-bottom:60px;">
-        <div class="container" >
-            <div style="float:left; padding:20px " >
+        <div class="container row" >
+            <div class="col-50" style="float:left; padding:20px " >
                     <div class="img-magnifier-container">
                         <img id="image" src=<%=immagine%> >  <!--{product.photo}-->
                     </div>
                     <script type = "text/javascript" src = "JavaScript/magnifier.js"></script>
                     <script>magnify('image', 3);</script>
             </div>
-            <div class="capo">
+            <div class="col-50" class="capo">
                 <h3> <%= Marca + " " + Modello %></h3>
                 <hr style="border:3px solid #f1f1f1"><br>
                 <h4 class="price"><span>Iva: 22%</span></h4>
@@ -167,25 +190,28 @@
                 <p>Prezzo: $<%=prezzo%></p>
                     <label  class="myLabel" >Inserite la quantit&#224 che desiderate acquistare:</label>
                     <input id="qty" type="number" name="qty" value = "1" min="1" max="<%=quantita%>"><br>
-                    <form action="Carrello" method="get"> <button class="button button2" name="<%=codP%>">Acquista!</button> </form>
-                        <a href="Catalogo.jsp" class="button button2">Indietro</a>
-                        <% if(recensione!= null){
-                                for(Recensione r: recensione){
-                                    String commento= r.getCommento();
-                                    int voto= r.getVoto();
-                                    String nome = r.getUsername();
-                        %>
-                            <h4> Recensioni: </h4><p> <%=nome%>></p><p> <%=voto%></p><p> <%=commento%></p>
+                    <form action="Carrello" method="get"> <button class="button button2" name="<%=codP%>" style="width: 100%;">Aggiungi al carrello!</button> </form>
+                        <a href="Catalogo.jsp" class="button button2" style="width: 100%; ">Indietro</a>
 
-                        <%}
-
-                        }
-                        else{ %>
-                            <p>Non ci sono recensioni per questo prodotto...</p>
-                        <% } %>
-
-                        <% } %>
                     </form>
+            </div>
+            <div >
+                <% if(recensione!= null){
+                    for(Recensione r: recensione){
+                        String commento= r.getCommento();
+                        int voto= r.getVoto();
+                        String nome = r.getUsername();
+                %>
+                <h4> Recensioni: </h4><p> <%=nome%>></p><p> <%=voto%></p><p> <%=commento%></p>
+
+                <%}
+
+                }
+                else{ %>
+                <p>Non ci sono recensioni per questo prodotto...</p>
+                <% } %>
+
+                <% } %>
             </div>
         </div>
     </section>
