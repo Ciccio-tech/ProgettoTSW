@@ -31,8 +31,10 @@
             <div>
                 <input type="date" class="ricerca"  name="da" placeholder="da data..." >
                 <input type="date" class="ricerca" name="a" placeholder="a data...">
+                <form action="">
                 <button id = "selector" class="button button2">Cerca</button>
-
+                <input type="hidden" name="username" value=<%=session.getAttribute("username")%>>
+                </form>
             </div>
             <div class="cart-list">
                 <h1 id = "title">Ordini effettuati</h1>

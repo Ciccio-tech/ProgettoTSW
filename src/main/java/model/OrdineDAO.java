@@ -73,9 +73,11 @@ public class OrdineDAO {
 
     public ArrayList<Ordine> doRetrieveByUsername(String username) throws SQLException{
         try(Connection c = ConPool.getConnection()){
+            /*
             QueryBuilder queryBuilder = new QueryBuilder("ordine");
             queryBuilder.select("*").where("username= ?");
-            PreparedStatement ps= c.prepareStatement(queryBuilder.GenerateQuery());
+             */
+            PreparedStatement ps= c.prepareStatement("SELECT * FROM ordine WHERE username=?");
             ps.setString(1, username);
             ResultSet rs= ps.executeQuery();
             ArrayList<Ordine> ordini = new ArrayList<>();

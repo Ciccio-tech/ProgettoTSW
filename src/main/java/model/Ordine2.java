@@ -12,7 +12,6 @@ public class Ordine2 {
     private int qty;
 
     public Ordine2 () {
-
     }
 
 
@@ -65,4 +64,3 @@ public class Ordine2 {
         return true;
     }
 }
-
