@@ -19,7 +19,37 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        button.admin{
+            border: none;
+            outline: 0;
+            padding: 12px;
+            margin: 10px;
+            color: white;
+            background-color: lightseagreen;
+            text-align: center;
+            cursor: pointer;
+            width: 25%;
+            font-size: 18px;
+        }
 
+        ul.c{
+            padding: 20px;
+            margin: 15px;
+            box-shadow: #2d2d30;
+        }
+
+        .container1 {
+            padding: 80px 120px;
+            text-align: center;
+        }
+        @media (max-width: 600px) {
+            .container1 {
+                padding: 40px 40px;
+
+            }
+        }
+    </style>
 </head>
 <body>
 <%@include file = "header.jsp" %>

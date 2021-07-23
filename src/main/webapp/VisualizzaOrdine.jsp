@@ -15,78 +15,16 @@
 <head>
     <title>Visualizza Ordine</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="css/stile.css" type = "text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css1/stile.css" type = "text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
 
-        .navbar-nav>li>a {
-            padding-top: 25px;
-            padding-bottom: 15px;
-        }
 
-        .navbar-toggle {
-            margin-top: 18px;
-        }
-        .navbar-brand {
-            float: left;
-            height: 70px;
-            padding: 7px 7px;
-            font-size: 20px;
-            line-height: 20px;
-        }
-        .navbar {
-            font-family: Montserrat, sans-serif;
-            margin-bottom: 0;
-            background-color: #2d2d30;
-            border: 0;
-            font-size: 11px !important;
-            letter-spacing: 4px;
-            opacity: 0.9;
-        }
-        .nav-tabs li a {
-            color: #777;
-        }
-        .navbar li a, .navbar .navbar-brand {
-            color: #d5d5d5 !important;
-        }
-        .navbar-nav li a:hover {
-            color: #fff !important;
-        }
-
-        .navbar-nav li.active a {
-            color: #fff !important;
-            background-color: #29292c !important;
-        }
-        .navbar-default .navbar-toggle {
-            border-color: transparent;
-        }
-        .open .dropdown-toggle {
-            color: #fff;
-            background-color: #555 !important;
-        }
-        .dropdown-menu li a {
-            color: #000 !important;
-        }
-        .dropdown-menu li a:hover {
-            background-color: lightseagreen !important;
-        }
-        footer {
-            background-color: #2d2d30;
-            color: #f5f5f5;
-            padding: 32px;
-        }
-        footer a {
-            color: #f5f5f5;
-        }
-        footer a:hover {
-            color: #777;
-            text-decoration: none;
-        }
         .container {
             padding: 60px 0;
         }
@@ -94,12 +32,6 @@
             .container {
                 padding: 40px 40px;
             }
-        }
-
-        .column {
-            float: left;
-            width: 25%;
-            padding: 0 10px;
         }
 
         .row {margin: 0 -5px;}
@@ -125,10 +57,6 @@
             background-color: #f1f1f1;
         }
 
-        .price {
-            color: grey;
-            font-size: 22px;
-        }
 
         .card button {
             border: none;
