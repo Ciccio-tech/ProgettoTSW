@@ -178,6 +178,12 @@ public class ClienteDAO {
     }
 
 
-
-
+    public boolean updatePassword(String Npassword, String username) throws SQLException {
+        try(Connection c= ConPool.getConnection()){
+            PreparedStatement ps = c.prepareStatement("UPDATE utente_registrato SET pass=? WHERE username = ?;");
+            ps.setString(1, Npassword);
+            ps.setString(2, username);
+            return ps.executeUpdate()==1;
+        }
+    }
 }

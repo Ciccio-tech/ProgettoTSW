@@ -1,12 +1,10 @@
 package servlet;
 
-
 import MyException.MyServletException;
 import model.Amministratore;
 import model.AmministratoreDAO;
 import model.Cliente;
 import model.ClienteDAO;
-
 
 
 import javax.servlet.ServletException;
@@ -33,7 +31,6 @@ public class LoginServlet extends HttpServlet {
 
         if(username != null && password!= null){
             if((amministratore = amministratoreDAO.doRetrieveByUsernamePassword(username, password)) != null){
-                System.out.println(amministratore.getNome());
                 session.setAttribute("username", username);
                 session.setAttribute("amministratore", amministratore);
                 response.sendRedirect("admin.jsp");
@@ -51,6 +48,7 @@ public class LoginServlet extends HttpServlet {
         if(cliente != null) {
             session.setAttribute("username", username);
             session.setAttribute("pass", password);
+            session.setAttribute("cliente", cliente);
         }
 
         assert cliente != null;

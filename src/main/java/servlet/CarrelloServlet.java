@@ -19,9 +19,11 @@ public class CarrelloServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Carrello carrello= (Carrello) session.getAttribute("carrello");
 
+        /*
         String q= request.getQueryString();
         q= q.replaceAll("\\D+", "");
         System.out.println(q);
+        */
 
 
         if(carrello == null){
@@ -29,25 +31,28 @@ public class CarrelloServlet extends HttpServlet {
             carrello.setP_carrelloV();
         }
 
-        String IdProdottoS = q;
+        String IdProdottoS = request.getParameter("codP");
         System.out.println(IdProdottoS);
         int Idprodotto= Integer.parseInt(IdProdottoS);
 
-        /*
         String addS = request.getParameter("qty");
         System.out.println(addS);
+        int a= Integer.parseInt(addS);
+
+        /*
         if(addS!=null){
             int add= Integer.parseInt(addS);
             System.out.println(Idprodotto + add);
-            carrello.add(Idprodotto, add);
+            //carrello.add(Idprodotto, add);
             System.out.println(carrello.toString());
         }
         */
 
-        session.setAttribute("carrello", carrello);
+
         RequestDispatcher requestDispatcher;
 
-        if(carrello.add(Idprodotto, 2)) {
+        if(carrello.add(Idprodotto, a)) {
+            session.setAttribute("carrello", carrello);
             requestDispatcher = request.getRequestDispatcher("Carrello.jsp");
         }
         else {

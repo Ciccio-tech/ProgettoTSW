@@ -125,7 +125,7 @@
                 } else {
                     x.style.display = "none";
                 }
-                //$("prodForm").css("display, inline");
+
             }
 
             function revealDeleteP(){
@@ -135,7 +135,7 @@
                 } else {
                     x.style.display = "none";
                 }
-                //$("prodForm").css("display, inline");
+
             }
 
             function revealNewA(){
@@ -145,7 +145,7 @@
                 } else {
                     x.style.display = "none";
                 }
-                //$("prodForm").css("display, inline");
+
             }
 
             function revealDeleteA(){
@@ -155,7 +155,7 @@
                 } else {
                     x.style.display = "none";
                 }
-                //$("prodForm").css("display, inline");
+
             }
 
         </script>
