@@ -135,9 +135,13 @@
     </div>
 
 
-    <button class="admin" name="Clienti"  onclick="revealCliente()"> Visualizza tutti i clienti!</button>  <br>
-    <div class="admin" id="allCliente" style="display: none">
+    <form action="AdminUtenti" method="get"><button class="admin" name="Clienti"> Visualizza tutti i clienti!</button>  </form> <br>
+    <div class="admin" id="allCliente">
             <table id="customers">
+                <%
+                    ArrayList<Cliente> clienti= (ArrayList<Cliente>) request.getAttribute("clienti");
+                    if(clienti != null){
+                %>
                 <tr>
                     <th>Username</th>
                     <th>Nome</th>
@@ -145,23 +149,23 @@
                     <th>Posta elettronica</th>
                 </tr>
                 <%
-        ArrayList<Cliente> clienti= (ArrayList<Cliente>) request.getAttribute("clienti");
-        if(clienti != null){
-            for(Cliente c: clienti){
-                String u= c.getUsername();
-                String nome= c.getNome();
-                String cognome= c.getCognome();
-                String email= c.getP_elettronica();
-    %>
+                        System.out.println("nell'if dei clienti");
+                        for(Cliente c: clienti){
+                            String u= c.getUsername();
+                            String nome= c.getNome();
+                            String cognome= c.getCognome();
+                            String email= c.getP_elettronica();
+                %>
                 <tr class="text-center" >
                     <td><%=u%></td>
                     <td><%=nome%></td>
                     <td><%=cognome%></td>
                     <td><%=email%></td>
 
-    <%  }
-    }
-    %>  </tr>
+                </tr>
+                <%  }
+                }
+                %>
             </table>
     </div>
 
@@ -197,7 +201,6 @@
             } else {
                 x.style.display = "none";
             }
-            //$("prodForm").css("display, inline");
         }
 
         function revealDeleteP(){
@@ -207,7 +210,6 @@
             } else {
                 x.style.display = "none";
             }
-            //$("prodForm").css("display, inline");
         }
 
         function revealNewA(){
@@ -217,7 +219,6 @@
             } else {
                 x.style.display = "none";
             }
-            //$("prodForm").css("display, inline");
         }
 
         function revealDeleteA(){
@@ -227,18 +228,8 @@
             } else {
                 x.style.display = "none";
             }
-            //$("prodForm").css("display, inline");
         }
 
-        function revealCliente(){
-            var x= document.getElementById("allCliente");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-            //$("prodForm").css("display, inline");
-        }
 
     </script>
 </div>
