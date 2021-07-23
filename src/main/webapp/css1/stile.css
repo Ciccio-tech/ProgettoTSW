@@ -1,3 +1,4 @@
+
 body {
     font: 400 15px/1.8 Lato, sans-serif;
     color: #777;
@@ -9,7 +10,7 @@ h3, h4 {
     color: #111;
 }
 .container {
-    padding: 80px 120px;
+    padding: 80px 500px;
 }
 .person {
     border: 10px solid transparent;
@@ -151,4 +152,233 @@ textarea {
 
 video{
     position: center;
+}
+
+
+/*Pagina AMMINISTRATORE*/
+button.admin{
+    border: none;
+    outline: 0;
+    padding: 12px;
+    margin: 10px;
+    color: white;
+    background-color: lightseagreen;
+    text-align: center;
+    cursor: pointer;
+    width: 25%;
+    font-size: 18px;
+}
+
+ul.c{
+    padding: 20px;
+    margin: 15px;
+    box-shadow: #2d2d30;
+}
+
+.container1 {
+    padding: 80px 120px;
+    text-align: center;
+}
+@media (max-width: 600px) {
+    .container1 {
+        padding: 40px 40px;
+
+    }
+}
+
+/* Pagina Carrello */
+
+.row {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+    margin: 0 -16px;
+}
+
+.col-25 {
+    -ms-flex: 25%; /* IE10 */
+    flex: 25%;
+}
+
+.col-50 {
+    -ms-flex: 50%; /* IE10 */
+    flex: 50%;
+}
+
+.col-75 {
+    -ms-flex: 75%; /* IE10 */
+    flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+    padding: 0 16px;
+}
+
+.container2 {
+    background-color: #f2f2f2;
+    padding: 5px 20px 15px 20px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+}
+
+input[type=email], input[type=password], input[type=date], input[type=text]{
+    width: 100%;
+    border: 2px solid lightseagreen;
+    border-radius: 4px;
+    padding: 12px 20px;
+    margin: 8px 0;
+}
+
+label {
+    margin-bottom: 10px;
+    display: block;
+}
+
+.icon-container {
+    margin-bottom: 20px;
+    padding: 7px 0;
+    font-size: 24px;
+}
+
+
+a {
+    color: #2196F3;
+}
+
+hr {
+    border: 1px solid lightgrey;
+}
+
+span.price {
+    float: right;
+    color: grey;
+}
+.button1 {
+    background-color: lightseagreen; /* Green */
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.button4 {border-radius: 12px;}
+@media (max-width: 800px) {
+    .row {
+        flex-direction: column-reverse;
+    }
+    .col-25 {
+        margin-bottom: 20px;
+    }
+}
+.container3 {
+    padding: 30px 20px;
+}
+@media (max-width: 600px) {
+    .container3 {
+        padding: 40px 40px;
+    }
+}
+
+table {
+    margin-bottom: 20px;
+    margin-top: 100px;
+    margin-left: 20px;
+    border-collapse: collapse;
+    width: 97%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+div #img {
+    width: 80px;
+    height:80px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius:50%;
+}
+.button3 {background-color: #f44336;} /* Red */
+.button2 {
+    border: none;
+    color: white;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius:50%;
+}
+
+ /* Pagin CATALOGO */
+
+.container4 {
+    padding: 60px 0;
+}
+@media (max-width: 600px) {
+    .container4 {
+        padding: 40px 40px;
+    }
+}
+
+.column {
+    float: left;
+    width: 25%;
+    padding: 0 10px;
+}
+
+.row {margin: 0 -5px;}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+    height: 470px;
+}
+
+.price {
+    color: grey;
+    font-size: 22px;
+}
+
+.card button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: lightseagreen;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+.card button:hover {
+    opacity: 0.7;
 }
