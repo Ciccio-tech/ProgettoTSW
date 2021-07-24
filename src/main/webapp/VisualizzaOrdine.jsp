@@ -1,9 +1,7 @@
-<%@ page import="model.Dettagli_ordine" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="model.Ordine2" %>
-<%@ page import="model.Dettaglio_ordine2" %>
-<%@ page import="model.prodottiCarrello" %><%--
+<%@ page import="model.*" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: damia
   Date: 19/07/2021
@@ -77,22 +75,21 @@
 
     </style>
 </head>
+<body>
 <%@include file = "header.jsp" %>
+
 <div class="container">
     <div class="field2">
         <div class="row ">
             <div class="card x">
                 <div>
-                    <input type="date" class="ricerca"  name="da" placeholder="da data..." >
-                    <input type="date" class="ricerca" name="a" placeholder="a data..." >
-                    <button id = "selector" class="button button2">Cerca</button>
 
                 </div>
                 <div class="cart-list">
                     <h1 id = "title">Ordini effettuati</h1>
                     <%
-                        List<Dettaglio_ordine2> lista= (List<Dettaglio_ordine2>) request.getAttribute("fatture");
-                        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+                        System.out.println("ordini effettuati");
+                        ArrayList<Ordine> ordini = (ArrayList<Ordine>) request.getAttribute("ordini");
                     %>
 
                     <table class="table">
@@ -107,42 +104,31 @@
                         </thead>
                         <tbody>
 
-                        <!--n ordini esistenti nel database-->
                         <%
-                            if (lista == null ? true : lista.size() == 0) {
+                            if (ordini == null) {
                         %>
                         <tr>
                             <td colspan = "8" style ="text-align: center">Nessun ordine risulta essere stato effettuato</td>
                         </tr>
                         <%
                         } else {
-                            for (Dettaglio_ordine2 det_ord : lista) {
-                                int size = det_ord.size();
-                                java.util.List<Ordine2> ordine = det_ord.getProdotti();
                         %>
-                        <tr class="text-center">
-                            <td rowspan="<%=size%> " class="product-name">
-                                <p><%= format.format(det_ord.getData().getTime())%></p>
-                                <a href="FatturaPDF?id=<%=det_ord.getCod()%>">	<button  class="button button2 submitter" type="submit">Fattura</button></a>
-                            </td>
+                            <tr class="text-center">
                             <%
-                                for(Ordine2 o : ordine){
-                                    prodottiCarrello bean = o.getProdotto();
+                                for(Ordine o: ordini){
                             %>
-                            <td><a  class="button button2" href="ProductControl?id=<%=bean.getProdotto().getCodP()%>&act=view">Aggiungi</a></td>
-                            <td><div id="img" style="background-image: url('<%=bean.getProdotto().getImmagine()%>');"></div></td>
-                            <td><%=bean.getProdotto().getMarca()%></td>
-                            <td><%=bean.getProdotto().getPrezzo()%></td>
-                            <td><%=bean.getProdotto().getPrezzoConIva()%></td
-                            <td><%=o.getQuantita()%></td>
-                        </tr>
-                        <%}
+                                <td><%=o.getCodO()%></td>
+                                <td><%=o.isStato()%></td>
+                                <td><%=o.getData()%></td
+                                <td><%=o.getCarrello().totale()%></td>
+                            </tr>
+                        <%
+                                }
                         }
-                        }%>
+                        %>
                         </tbody>
                     </table>
 
-                    <p style = "text-align: center">pg <input class = "pageof" type = "number" value = "1" min="1" max="<%= request.getAttribute("maxPg") %>"> of <%= request.getAttribute("maxPg") %> <button id = "submit">Invia</button></p>
                 </div>
             </div>
         </div>

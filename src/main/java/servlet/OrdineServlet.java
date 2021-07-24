@@ -60,15 +60,11 @@ public class OrdineServlet extends HttpServlet {
                     ordine.setCarrello(carrello);
                     try {
                         if(ordineDAO.createOrdine(ordine)){
-                            System.out.println("ultimo if dell'esito");
-                            session.setAttribute("esito", true);
-                            request.setAttribute("esito", true);
+                            requestDispatcher = request.getRequestDispatcher("ConfermaOrdine.jsp");
                         }
                         else{
-                            System.out.println("ELSE");
-                            request.setAttribute("esito", false);
+                            requestDispatcher = request.getRequestDispatcher("404.jsp");
                         }
-                        requestDispatcher = request.getRequestDispatcher("ConfermaOrdine.jsp");
                         requestDispatcher.forward(request, response);
                     } catch (SQLException e) {
                         e.printStackTrace();
