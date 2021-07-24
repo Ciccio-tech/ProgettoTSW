@@ -85,7 +85,7 @@ $(document).ready(function() {
 
         if (validation ()) {
             $(".alert").slideUp();
-            $.post("AddressOperations", {operation: "1", via: via, ncv: nC, citta: ct, provincia: provincia , cap: cap, stato: st}, "html")
+            $.post("IndirizzoServlet", {operation: "1", via: via, ncv: nC, citta: ct, provincia: provincia , cap: cap, stato: st}, "html")
                 .done(function(data){
                     var string = '<option value="'+data.codice+'">Indirizzo:'+data.street+', ' +data.nCv+", CAP:"+data.CAP+"; citta\'" +data.citta+'</option>';
                     $("#address").append(string);

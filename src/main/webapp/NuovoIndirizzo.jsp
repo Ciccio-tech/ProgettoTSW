@@ -1,20 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+
+
 <br> <button id="toggle" class="button button2">Aggiungi indirizzo</button><br>
 <div id="AddIndirizzo"><br>
     <label  class="myLabel" for="adr"><i class="fa fa-address-card-o"></i> Indirizzo</label>
     <input class="myInput1" type="text"  id="adr" name="address" placeholder="via della repubblica">
-    <div id= "AddressWarning" class="alert"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> <strong>Errore!</strong> L'indirizzo non puÚ contenere numeri o caratteri speciali</div>
+    <div id= "AddressWarning" class="alert"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> <strong>Errore!</strong> L'indirizzo non pu√≤ contenere numeri o caratteri speciali</div>
 
     <label  class="myLabel" for="adr"><i class="fa fa-address-card-o"></i> Numero civico</label>
     <input class="myInput1" type="number"  id="nc" name="nc" min="1" ><br>
 
-    <label class="myLabel" for="city"><i class="fa fa-institution"></i> Citt‡</label>
+    <label class="myLabel" for="city"><i class="fa fa-institution"></i> Citt√†</label>
     <input class="myInput1" type="text"  id="city" name="city" placeholder="Roma">
-    <div id= "cityWarning" class="alert"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> <strong>Errore!</strong> La citt‡ non puÚ contenere spazi bianchi, numeri o caratteri speciali</div>
+    <div id= "cityWarning" class="alert"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> <strong>Errore!</strong> La citt√† non pu√≤ contenere spazi bianchi, numeri o caratteri speciali</div>
 
     <label  class="myLabel" for="city"><i class="fa fa-institution"></i> Provincia</label>
     <input class="myInput1" type="text"  id="provincia" name="provincia" placeholder="Roma">
-    <div id= "provinciaWarning" class="alert"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> <strong>Errore!</strong> La provincia non puÚ contenere spazi bianchi, numeri o caratteri speciali</div>
+    <div id= "provinciaWarning" class="alert"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> <strong>Errore!</strong> La provincia non pu√≤ contenere spazi bianchi, numeri o caratteri speciali</div>
 
     <label  class="myLabel" for="adr"><i class="fa fa-address-card-o"></i> CAP</label>
     <input class="myInput1" type="text" id="CAP"  name="CAP" placeholder="80890">
@@ -22,7 +24,7 @@
 
     <label  class="myLabel" for="state">Stato</label>
     <input class="myInput1" type="text" id="state" name="state"  placeholder="Italia">
-    <div id= "statoWarning" class="alert"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> <strong>Errore!</strong> Lo stato non puÚ contenere spazi bianchi, numeri o caratteri speciali</div>
+    <div id= "statoWarning" class="alert"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> <strong>Errore!</strong> Lo stato non pu√≤ contenere spazi bianchi, numeri o caratteri speciali</div>
 
     <button id="butt" class="button button2">Aggiungi</button>
 

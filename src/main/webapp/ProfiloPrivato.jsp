@@ -5,8 +5,8 @@
   Time: 09:16
   To change this template use File | Settings | File Templates.
 --%>
-<<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import="model.Cliente, model.Amministratore"%>
+<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="model.Cliente"%>
 +
 <!DOCTYPE html>
 <html>
@@ -115,6 +115,8 @@
         </div>
         </form>
 
+        <h3>Aggiungi nuovo indirizzo</h3>
+        <%@ include file = "NuovoIndirizzo.jsp" %>
 
         <script>
             function Reveal(){
@@ -133,7 +135,7 @@
 
 <%@include file = "footer.jsp" %>
 <script type="text/javascript" src= "JavaScript/credenziali.js"></script>
-<!--<script src = "JavaScript/validation.js"></script-->
+<script src = "JavaScript/validation.js"></script>
 <script src = "JavaScript/profilo.js"></script>
 </body>
 </html>

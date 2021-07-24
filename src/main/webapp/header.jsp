@@ -39,7 +39,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="ProfiloPrivato.jsp">Area Personale</a></li>
                         <li><a href="VisualizzaOrdine.jsp">Visualizza Ordini</a></li>
-                        <li><form action="Logout" method="get"> <button name="logout"> Logout </button> </form></li>
+                        <li><a name="logout"><form action="Logout" method="get">  Logout  </form></a></li>
                         <% if(session.getAttribute("amministratore")!=null){%>
                         <li><a href="admin.jsp">Pannello Controllo</a> </li>
                         <% } %>
