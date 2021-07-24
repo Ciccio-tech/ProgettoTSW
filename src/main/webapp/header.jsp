@@ -39,7 +39,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="ProfiloPrivato.jsp">Area Personale</a></li>
                         <li><a href="VisualizzaOrdine.jsp">Visualizza Ordini</a></li>
-                        <li><a name="logout"><form action="Logout" method="get">  Logout  </form></a></li>
+                        <li><form action="Logout" method="get"> <button style="background-color: lightseagreen;border: none;color: white;width: 20px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;" name="logout"> Logout </button> </form></li>
                         <% if(session.getAttribute("amministratore")!=null){%>
                         <li><a href="admin.jsp">Pannello Controllo</a> </li>
                         <% } %>
@@ -47,7 +47,12 @@
                 </li>
                 <%} %>
                 <li><a href="Carrello.jsp"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
-                <li><a href="ricerca.jsp"><span class="glyphicon glyphicon-search"></span></a></li>
+                <li><form class="navbar-form navbar-left" action="Categorie">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search" name="srch">
+                        <button type="submit" class="form-control lente" > Cerca</button>
+                    </div>
+                </form></li>
             </ul>
         </div>
     </div>

@@ -66,3 +66,30 @@ footer a:hover {
 }
 
 
+body {
+    font-family: Arial;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid lightseagreen;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+}
+
+form.example button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    color: lightseagreen;
+    font-size: 17px;
+    border: 1px solid lightseagreen;
+    border-left: none;
+    cursor: pointer;
+}

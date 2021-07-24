@@ -115,9 +115,6 @@
         </div>
         </form>
 
-        <h3>Aggiungi nuovo indirizzo</h3>
-        <%@ include file = "NuovoIndirizzo.jsp" %>
-
         <script>
             function Reveal(){
                 var x= document.getElementById("modificaP");
@@ -134,7 +131,6 @@
     <% } %>
 
 <%@include file = "footer.jsp" %>
-<script type="text/javascript" src= "JavaScript/credenziali.js"></script>
 <script src = "JavaScript/validation.js"></script>
 <script src = "JavaScript/profilo.js"></script>
 </body>

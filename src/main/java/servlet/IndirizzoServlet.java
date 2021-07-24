@@ -25,6 +25,7 @@ public class IndirizzoServlet {
 
             dao=new IndirizzoDAO();
             try {
+                System.out.println("ciao sono in insertServlet 1");
                 int op = Integer.parseInt(request.getParameter("operation"));
                 Cliente cliente = (Cliente) request.getSession().getAttribute("cliente");
                 java.util.Map<Integer, Indirizzo> ad = (java.util.Map<Integer,Indirizzo>)request.getSession().getAttribute("address");
@@ -32,6 +33,7 @@ public class IndirizzoServlet {
                     //operazione di visualizzazione
                     request.getSession().setAttribute("address", dao.doRetrieveAll(cliente.getUsername()));
                 } else if (op == 1 && cliente != null) {
+                    System.out.println("ciao sono in insertServlet");
                     //operazione di inserimento
                     Indirizzo indirizzo = new Indirizzo();
                     indirizzo.setCAP(Integer.parseInt(request.getParameter("cap")));
@@ -40,7 +42,10 @@ public class IndirizzoServlet {
                     indirizzo.setnCv(Integer.parseInt(request.getParameter("ncv")));
                     indirizzo.setProvincia(request.getParameter("provincia"));
                     indirizzo.setVia(request.getParameter("via"));
-                    indirizzo.setCodice(dao.doSave(indirizzo, cliente));
+                    int code=dao.doSave(indirizzo, cliente);
+                    System.out.println(code);
+                    indirizzo.setCodice(code);
+
 
                     if (ad != null) {
                         ad.put(indirizzo.getCodice(), indirizzo);

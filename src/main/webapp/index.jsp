@@ -36,20 +36,7 @@
         .person:hover {
             border-color: #f1f1f1;
         }
-        .navbar-toggle {
-            margin-top: 18px;
-        }
-        .navbar-brand {
-            float: left;
-            height: 70px;
-            padding: 7px 7px;
-            font-size: 20px;
-            line-height: 20px;
-        }
-        .navbar-nav>li>a {
-            padding-top: 25px;
-            padding-bottom: 15px;
-        }
+
         .carousel-inner img {
             /* -webkit-filter: grayscale(90%);
              filter: grayscale(90%);  make all photos black and white */
@@ -70,14 +57,7 @@
         }
         .bg-1 h3 {color: #fff;}
         .bg-1 p {font-style: italic;}
-        .list-group-item:first-child {
-            border-top-right-radius: 0;
-            border-top-left-radius: 0;
-        }
-        .list-group-item:last-child {
-            border-bottom-right-radius: 0;
-            border-bottom-left-radius: 0;
-        }
+
         .thumbnail {
             padding: 0 0 15px 0;
             border: none;
