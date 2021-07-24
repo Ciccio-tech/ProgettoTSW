@@ -22,6 +22,9 @@ public class Ordine {
     private String username;
     private Carrello carrello;
 
+    public Ordine(){}
+
+
     public int getCodO() {
         return codO;
     }
@@ -48,7 +51,7 @@ public class Ordine {
 
     public void SetDataS(String data){
         GregorianCalendar d= new GregorianCalendar();
-        String[] a = data.split("/");
+        String[] a = data.split("-");
         d.set(Integer.parseInt(a[0]), Integer.parseInt(a[1]), Integer.parseInt(a[2]));
         this.dataO=d;
     }
@@ -74,7 +77,7 @@ public class Ordine {
         int mese= this.dataO.get(Calendar.MONTH);
         int giorno= this.dataO.get(Calendar.DAY_OF_MONTH);
         int anno=this.dataO.get(Calendar.YEAR);
-        data=giorno+"/"+mese+ ""+anno;
+        data= anno + "-" + mese+"-"+giorno;
         return data;
     }
 

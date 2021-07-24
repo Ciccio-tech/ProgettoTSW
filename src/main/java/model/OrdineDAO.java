@@ -18,6 +18,8 @@ public class OrdineDAO {
     public ArrayList<Ordine> doRetrieveAll(int offset, int limit) throws SQLException {
         try(Connection c= ConPool.getConnection()){
             PreparedStatement ps= c.prepareStatement("SELECT * FROM ordine LIMIT ?, ?");
+            ps.setInt(1, offset);
+            ps.setInt(2, limit);
             ArrayList<Ordine> ArrOr = new ArrayList<>();
             ResultSet rs= ps.executeQuery();
             while(rs.next()){
@@ -37,17 +39,12 @@ public class OrdineDAO {
 
     public boolean createOrdine(Ordine ordine) throws SQLException{
         try(Connection c = ConPool.getConnection()){
-            QueryBuilder queryBuilder= new QueryBuilder("ordine");
-            queryBuilder.insert("codO, stato, dataO, username");
-            PreparedStatement ps= c.prepareStatement(queryBuilder.GenerateQuery());
+            PreparedStatement ps=c.prepareStatement("INSERT INTO ordine (codO, stato, dataO, username) VALUES(?,?,?,?)");
             ps.setInt(1, ordine.getCodO());
             ps.setBoolean(2, ordine.isStato());
             ps.setString(3, ordine.getData());
             ps.setString(4, ordine.getUsername());
-            if(ps.executeUpdate() == 1)
-                return true;
-            else
-                return false;
+            return ps.executeUpdate() == 1;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

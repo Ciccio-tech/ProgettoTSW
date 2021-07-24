@@ -99,11 +99,10 @@
                         <thead class="thead-primary">
                         <tr class="text-center">
                             <th>&nbsp;</th> <!--crea lo spazio-->
-                            <th>Recenzione</th>
-                            <th>Prodotto</th>
-                            <th>Modello Prodotto</th>
-                            <th>Prezzo</th>
-                            <th>Quantità</th>
+                            <th>Codice Ordine</th>
+                            <th>Stato</th>
+                            <th>Data Ordine</th>
+                            <th>Totale</th>
                         </tr>
                         </thead>
                         <tbody>

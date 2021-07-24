@@ -210,7 +210,7 @@
 <div class="row container1">
     <div class="col-75">
         <div class="container2">
-            <form action="Carrello">
+            <form action="Ordine" method="get">
 
                 <div class="row">
                     <div class="col-50">
@@ -223,38 +223,31 @@
                             Cliente cliente= new Cliente();
                             cliente.setUsername((String) Usersession1.getAttribute("username"));
                         %>
+                        <!-- name, email, adr, city, prov, cap,  -->
                         <h3>Billing Address</h3>
-                        <label for="fname"><i class="fa fa-user"></i> </label>
-                        <input type="text" id="fname" name="firstname" placeholder="John M. Doe" readonly>
+                        <label for="name"><i class="fa fa-user"></i> </label>
+                        <input type="text" id="name" name="name" placeholder="John M. Doe" >
                         <label for="email"><i class="fa fa-envelope"></i> Email</label>
-                        <input type="text" id="email" name="email" placeholder="john@example.com" readonly>
+                        <input type="text" id="email" name="email" placeholder="john@example.com">
 
                         <label for="adr"><i class="fa fa-address-card-o"></i> Indirizzo</label>
                         <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
                         <label for="city"><i class="fa fa-institution"></i> Città </label>
                         <input type="text" id="city" name="city" placeholder="New York">
+                        <label for="prov">Provincia</label>
+                        <input type="text" id="prov" name="prov" placeholder="SA">
+                        <label for="cap">Cap</label>
+                        <input type="text" id="cap" name="cap" placeholder="84049">
+                        <label for="state">Nazione</label>
+                        <input type="text" id="state" name="state" placeholder="NY">
 
-                        <div class="row">
-                            <div class="col-50">
-                                <label for="prov">Provincia</label>
-                                <input type="text" id="prov" name="prov" placeholder="SA">
-                           </div>
-
-                            <div class="col-50">
-                                <label for="cap">Cap</label>
-                                <input type="text" id="cap" name="cap" placeholder="84049">
-                            </div>
-
-                            <div class="col-50">
-                                <label for="state">Nazione</label>
-                                <input type="text" id="state" name="state" placeholder="NY">
-                            </div>
                         </div>
                     </div>
 
                     <div class="col-50">
                         <h3>Payment</h3>
-                        <label for="fname">Accepted Cards</label>
+                        <label for="card">Accepted Cards</label>
+                        <input type="text" id="card" name="card">
                         <div class="icon-container">
                             <i class="fa fa-cc-visa" style="color:navy;"></i>
                             <i class="fa fa-cc-amex" style="color:blue;"></i>
@@ -264,12 +257,14 @@
 
                     </div>
 
-                </div>
+
                 <label>
                     <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
                 </label>
 
                 <input type="submit" value="Acquista" class="button button4" style="width: 100%">
+
+    <%  session.setAttribute("carrello", carrello);%>
 
                 <%}%>
             </form>
