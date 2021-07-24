@@ -26,7 +26,7 @@ public class ConPool  {
         String port = "3306";
         String db = "ProgettoTsw";
         String username = "root";
-        String password = "Damiana00*";
+        String password = "Ciccio1007_";
 
         newConnection = DriverManager.getConnection("jdbc:mysql://"+ ip+":"+ port+"/"+db+"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false", username, password);
         newConnection.setAutoCommit(true);
