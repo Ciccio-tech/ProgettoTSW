@@ -150,7 +150,21 @@
             margin: 4px 2px;
             cursor: pointer;
             border-radius:50%;
+
+        } .mylink:link, .mylink:visited {
+              background-color: lightseagreen;
+              color: white;
+              padding: 10px 20px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+          }
+
+        .mylink:hover, .mylink:active {
+            background-color: lightseagreen;
+            color: white;
         }
+
 
     </style>
 </head>
@@ -218,7 +232,7 @@
                             if(Usersession1.getAttribute("username")== null){
                         %>
                         <h3>Non si possono effettuare Ordini se non si è registrati: </h3>
-                        <li><a href="Login.jsp">Login</a></li>
+                        <li><a class="mylink" href= "Login.jsp"> Login </a></li>
                         <%
                         }else{
                             Cliente cliente= new Cliente();
@@ -269,7 +283,7 @@
     </div>
     <div class="col-25">
         <div class="container2">
-            <% assert carrello != null;%>
+            <% if(carrello != null){%>
             <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b><%=carrello.getP_carrello().size()%></b></span></h4>
             <%
                 double totale=0.0;
@@ -278,11 +292,16 @@
             %>
             <p><a href="#"><%=prodotto.getModello()%></a> <span class="price"><%=p.totale()%></span></p>
             <%
-                totale+=p.totale();
+                    totale+=p.totale();
                 }%>
             <hr>
             <p>Total <span class="price" style="color:black"><b><%=totale%></b></span></p>
+            <%}else{%>
+            <h4>Il carrello è vuoto</h4>
+            <%}%>
+
         </div>
+
     </div>
 </div>
 
