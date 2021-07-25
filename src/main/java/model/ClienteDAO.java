@@ -72,7 +72,7 @@ public class ClienteDAO {
 
     public Cliente doRetrieveByUsername(String username) throws SQLException {
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT username, password , nome, cognome, p_elettronica FROM utente_registrato WHERE username=?");
+            PreparedStatement ps = con.prepareStatement("SELECT username, pass , nome, cognome, email FROM utente_registrato WHERE username=?");
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {

@@ -3,11 +3,14 @@ package servlet;
 import MyException.MyServletException;
 import model.Cliente;
 import model.ClienteDAO;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -19,6 +22,8 @@ public class RegistrazioneServlet extends HttpServlet {
     private final ClienteDAO clienteDAO= new ClienteDAO();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        HttpSession session = request.getSession();
+        RequestDispatcher requestDispatcher;
         if(request.getSession().getAttribute("utente_registrato") != null){
             try {
                 throw new MyServletException("Utente già loggato!");
@@ -35,6 +40,16 @@ public class RegistrazioneServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }
+        Cliente cl1;
+        try {
+            cl1=clienteDAO.doRetrieveByUsername(username);
+            session.setAttribute("warning", true);
+            requestDispatcher= request.getRequestDispatcher("Registrazione.jsp");
+            requestDispatcher.forward(request, response);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            }
 
         String password= request.getParameter("pass");
         if(!(password != null && password.length()>=8 && !password.toUpperCase().equals(password) && !password.toLowerCase().equals(password) && password.matches(".*[0-9].*"))){

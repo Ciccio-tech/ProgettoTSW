@@ -217,6 +217,7 @@
                         <% HttpSession Usersession1= request.getSession();
                             if(Usersession1.getAttribute("username")== null){
                         %>
+                        <h3>Non si possono effettuare Ordini se non si è registrati: </h3>
                         <li><a href="Login.jsp">Login</a></li>
                         <%
                         }else{
@@ -245,22 +246,18 @@
                     </div>
 
                     <div class="col-50">
-                        <h3>Payment</h3>
+                        <h4>Payment</h4>
                         <label for="card">Accepted Cards</label>
                         <input type="text" id="card" name="card">
                         <div class="icon-container">
-                            <i class="fa fa-cc-visa" style="color:navy;"></i>
-                            <i class="fa fa-cc-amex" style="color:blue;"></i>
-                            <i class="fa fa-cc-mastercard" style="color:red;"></i>
-                            <i class="fa fa-cc-discover" style="color:orange;"></i>
+                            <input type="radio" name="visa" id="visa"><label class="fa fa-cc-visa" for="visa" style="color:navy;"></label>
+                            <input type="radio" id="amex"><label class="fa fa-cc-amex" for="amex" style="color:blue;"></label>
+                            <input type="radio" id="mastercard"><label  for="mastercard" class="fa fa-cc-mastercard" style="color:red;"></label>
+                            <input type="radio" id="discover"><label for="discover" class="fa fa-cc-discover" style="color:orange;"></label>
                         </div>
 
                     </div>
 
-
-                <label>
-                    <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
-                </label>
 
                 <input type="submit" value="Acquista" class="button button4" style="width: 100%">
 

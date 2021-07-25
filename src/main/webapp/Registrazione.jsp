@@ -71,17 +71,17 @@
                     <fieldset>
                         <h2> Registrazione  </h2>
                             <%
-                            Boolean warning = (Boolean) request.getAttribute("warning");
+                            Boolean warning = (Boolean) session.getAttribute("warning");
                             if (warning != null && warning) {
                         %>
-                        <div id="alert3" class="alert" style=""><span class="closebtn" onclick="this.parentElement.style.display='none';">×</span> <strong>Errore!</strong> Esite già un utente con questa email e username! Cambiare username ed email!</div>
+                        <div id="alert3" class="alert" style=""><span class="closebtn" onclick="this.parentElement.style.display='none';">×</span> <strong>Errore!</strong> Esite già un utente con questo username! Cambiare username.</div>
                             <%}
                         %>
-                        <p><input class="myInput1" id="username" type="text" size="30" name = "username" placeholder="username maggiore di 6 caratteri" autocomplete="off"><br></p>
+                        <p><input class="myInput1" id="username" type="text" size="30" name = "username" placeholder="username maggiore di 6 caratteri" autocomplete="off" onkeyup="CheckUsername(this.value)"><br></p>
                         <p><input class="myInput1" id="pass" type="password" size="30" name = "pass" placeholder="Password tra i 8 e i 25 caratteri" autocomplete="off"><br></p>
                         <p><input class="myInput1" id="comfermaPassword" type="password" size="30" name = "confermaPassword" placeholder="Conferma Password" autocomplete="off"><br></p>
                         <p><input class="myInput1" id="nome" type="text" size="30" name = "nome" placeholder="Nome" autocomplete="off"><br></p>
-                        <p><input class="myInput1" id="cognome" type="text" size="30" name = "cognome" placeholder="Cogname" autocomplete="off"><br></p>
+                        <p><input class="myInput1" id="cognome" type="text" size="30" name = "cognome" placeholder="Cognome" autocomplete="off"><br></p>
                         <p><input class="myInput1" id="email" type="email" size="30" name = "email" placeholder="Email" autocomplete="off"><br></p>
 
                         <button class="button button4" type="submit" value="Registrati!"> Registrati</button>

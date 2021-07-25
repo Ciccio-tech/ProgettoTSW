@@ -88,7 +88,6 @@
                         <h2> Account  </h2>
                         <%
                             Boolean warning = (Boolean) session.getAttribute("warning");
-                            System.out.println(warning);
                             if (warning != null && warning) {
                         %>
                         <div id="alert3" class="alert" style=""><span class="closebtn" onclick="this.parentElement.style.display='none';">×</span> <strong>Errore!</strong> Nome utente o password non corretti</div>
