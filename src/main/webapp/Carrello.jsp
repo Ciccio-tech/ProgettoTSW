@@ -240,7 +240,7 @@
                         %>
                         <!-- name, email, adr, city, prov, cap,  -->
                         <h3>Billing Address</h3>
-                        <label for="name"><i class="fa fa-user"></i> </label>
+                        <label for="name"><i class="fa fa-user"></i> Nome</label>
                         <input type="text" id="name" name="name" placeholder="John M. Doe" >
                         <label for="email"><i class="fa fa-envelope"></i> Email</label>
                         <input type="text" id="email" name="email" placeholder="john@example.com">
@@ -264,10 +264,10 @@
                         <label for="card">Accepted Cards</label>
                         <input type="text" id="card" name="card">
                         <div class="icon-container">
-                            <input type="radio" name="visa" id="visa"><label class="fa fa-cc-visa" for="visa" style="color:navy;"></label>
-                            <input type="radio" id="amex"><label class="fa fa-cc-amex" for="amex" style="color:blue;"></label>
-                            <input type="radio" id="mastercard"><label  for="mastercard" class="fa fa-cc-mastercard" style="color:red;"></label>
-                            <input type="radio" id="discover"><label for="discover" class="fa fa-cc-discover" style="color:orange;"></label>
+                            <input type="radio" name="carta" id="visa"><label class="fa fa-cc-visa" for="visa" style="color:navy;"></label>
+                            <input type="radio" name="carta" id="amex"><label class="fa fa-cc-amex" for="amex" style="color:blue;"></label>
+                            <input type="radio" name="carta" id="mastercard"><label  for="mastercard" class="fa fa-cc-mastercard" style="color:red;"></label>
+                            <input type="radio" name="carta" id="discover"><label for="discover" class="fa fa-cc-discover" style="color:orange;"></label>
                         </div>
 
                     </div>

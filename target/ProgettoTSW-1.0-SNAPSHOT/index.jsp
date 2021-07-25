@@ -249,7 +249,7 @@
 
 
 <div id="video">
-    <video width="500" height="450" controls>
+    <video style="width: 100%; height: 100%" controls>
         <source src="images/Video/Nikon.mp4" type="video/mp4">
     </video>
 </div>

@@ -1,9 +1,6 @@
 package servlet;
 
-import model.Carrello;
-import model.Cliente;
-import model.Ordine;
-import model.OrdineDAO;
+import model.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

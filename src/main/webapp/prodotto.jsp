@@ -130,10 +130,9 @@
                 <% if(recensione!= null){
                     for(Recensione r: recensione){
                         String commento= r.getCommento();
-                        int voto= r.getVoto();
                         String nome = r.getUsername();
                 %>
-                <h4> Recensioni: </h4><p> <%=nome%>></p><p> <%=voto%></p><p> <%=commento%></p>
+                <h4> Recensioni: </h4><p> <%=nome%> afferma:  <%=commento%></p>
 
                 <%}
 
