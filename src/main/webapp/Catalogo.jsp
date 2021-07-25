@@ -106,7 +106,10 @@
                 <h5><%= e.getMarca()+ e.getModello()%></h5>
                 <p class="price">$<%=e.getPrezzo()%>
                 </p>
-                <p> <form action="Carrello" method="get"> <button id="carrello"  >Aggiungi al Carrello </button> </p>
+                <p>  <%
+                    if(session.getAttribute("amministratore")==null){%>
+                         <form action="Carrello" method="get"> <button id="carrello"  >Aggiungi al Carrello </button> </p>
+                    <% } %>
                     <input type="hidden" name="codP" value=<%=e.getCodP()%> >
                     <input type="hidden" name="qty" value="1">
                     </form>

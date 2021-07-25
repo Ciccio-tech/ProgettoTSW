@@ -117,12 +117,16 @@
                     <label  class="myLabel" for="qty" >Inserite la quantit&#224 che desiderate acquistare:</label>
                     <input id="qty" type="number" name="qty" value = "1" min="1" max="<%=quantita%>"><br>
                     <input type="hidden" name="codP" value=<%=codP%> >
-                     <button class="button button2" style="width: 100%;">Aggiungi al carrello!</button>
+                        <%
+                    if(session.getAttribute("amministratore")==null){%>
+                        <button class="button button2" style="width: 100%;">Aggiungi al carrello!</button>
+                    <% } %>
+
                 </form>
                         <a href="Catalogo.jsp" class="button button2" style="width: 100%; ">Indietro</a>
 
             </div>
-            <div >
+            <div style="margin: 30px;">
                 <% if(recensione!= null){
                     for(Recensione r: recensione){
                         String commento= r.getCommento();
