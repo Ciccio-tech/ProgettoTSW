@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,8 +18,11 @@ import java.util.ArrayList;
 
 public class VisualizzaOrdineServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        HttpSession session = request.getSession();
+        System.out.println("sERVLET");
         OrdineDAO ordineDAO= new OrdineDAO();
-        String username = request.getParameter("username");
+        String username = (String) session.getAttribute("username");
+        System.out.println(username);
         if(username != null) {
             try {
                 System.out.println(username);
@@ -30,8 +34,11 @@ public class VisualizzaOrdineServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }
+
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("VisualizzaOrdine.jsp");
-        requestDispatcher.forward(request, response);
+        requestDispatcher.include(request, response);
+
+
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{

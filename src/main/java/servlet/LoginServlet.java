@@ -35,7 +35,10 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("amministratore", amministratore);
                 response.sendRedirect("admin.jsp");
             }else {
-                cliente = clienteDAO.doRetrieveByUsernamePassword(username, password);
+               if( (cliente = clienteDAO.doRetrieveByUsernamePassword(username, password)) == null) {
+                   session.setAttribute("warning", true);
+                   response.sendRedirect("Login.jsp");
+               }
             }
         }
         else
@@ -51,11 +54,14 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("cliente", cliente);
         }
 
+
         assert cliente != null;
 
         if(amministratore == null) {
             response.sendRedirect("index.jsp");
         }
+
+
     }
 
 

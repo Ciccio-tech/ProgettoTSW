@@ -78,6 +78,7 @@
 <body>
 <%@include file = "header.jsp" %>
 
+<%response.sendRedirect(response.encodeRedirectURL("VisualizzaOrdine"));%>
 <div class="container">
     <div class="field2">
         <div class="row ">
@@ -90,6 +91,8 @@
                     <%
                         System.out.println("ordini effettuati");
                         ArrayList<Ordine> ordini = (ArrayList<Ordine>) request.getAttribute("ordini");
+                        if(ordini != null)
+                            System.out.println(ordini.get(0).getUsername());
                     %>
 
                     <table class="table">
@@ -99,7 +102,6 @@
                             <th>Codice Ordine</th>
                             <th>Stato</th>
                             <th>Data Ordine</th>
-                            <th>Totale</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -120,7 +122,6 @@
                                 <td><%=o.getCodO()%></td>
                                 <td><%=o.isStato()%></td>
                                 <td><%=o.getData()%></td
-                                <td><%=o.getCarrello().totale()%></td>
                             </tr>
                         <%
                                 }
