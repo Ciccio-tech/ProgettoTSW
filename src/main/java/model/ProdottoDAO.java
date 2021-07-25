@@ -92,14 +92,11 @@ public class ProdottoDAO {
         }
     }
 
-    public ArrayList<Prodotto> doRetrieveByModelloorMarca(String against, int offset, int limit) throws SQLException {
+    public ArrayList<Prodotto> doRetrieveByModelloorMarca(String against) throws SQLException {
         try(Connection c= ConPool.getConnection()){
-            QueryBuilder queryBuilder= new QueryBuilder("prodotto");
-            queryBuilder.select("codP, tipo, marca, modello, prezzo, quantità, immagine, IVA").where("MATCH(marca, modello) AGAINST(?) LIMIT ?, ?");
-            PreparedStatement ps = c.prepareStatement(queryBuilder.GenerateQuery());
-            ps.setString(1, against);
-            ps.setInt(2, offset);
-            ps.setInt(3, limit);
+            PreparedStatement ps = c.prepareStatement("SELECT codP, tipo, marca, modello, prezzo, quantità, immagine, IVA FROM prodotto WHERE (marca LIKE ? or modello LIKE ?) ORDER BY marca");
+            ps.setString(1, "%"+against+"%");
+            ps.setString(2, "%"+against+"%");
             ResultSet rs = ps.executeQuery();
             ArrayList<Prodotto> prodotti= new ArrayList<>();
             while(rs.next()){
@@ -110,7 +107,8 @@ public class ProdottoDAO {
                 p.setModello(rs.getString(4));
                 p.setPrezzo(rs.getFloat(5));
                 p.setQuantita(rs.getInt(6));
-                p.setIva(rs.getInt(7));
+                p.setImmagine(rs.getString(7));
+                p.setIva(rs.getInt(8));
                 prodotti.add(p);
             }
             return prodotti;
