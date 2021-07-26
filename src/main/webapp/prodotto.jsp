@@ -75,6 +75,21 @@
         .col-50{
             padding: 0 16px;
         }
+        .img-magnifier-container {
+            position:relative;
+            box-sizing: border-box;
+            cursor: none;
+        }
+
+        .img-magnifier-glass {
+            position: absolute;
+            display: none;
+            border: 3px solid #000;
+            border-radius: 50%;
+            /*grandezza magnifier glass:*/
+            width: 100px;
+            height: 100px;
+        }
 
     </style>
 
