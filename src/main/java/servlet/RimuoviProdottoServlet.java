@@ -1,7 +1,7 @@
 package servlet;
 
 import model.Carrello;
-import model.prodottiCarrello;
+import model.Prodotto;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,13 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
 
 
 @WebServlet("/RimuoviProdotto")
 public class RimuoviProdottoServlet extends HttpServlet {
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException{
+        public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException{
         String q= request.getQueryString();
         q= q.replaceAll("\\D+", "");
         System.out.println(q);
@@ -27,8 +26,9 @@ public class RimuoviProdottoServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Carrello carrello= (Carrello) session.getAttribute("carrello");
 
-        ArrayList<prodottiCarrello> a= carrello.getP_carrello();
-        carrello.removeProduct(a, Idprodotto);
+        Prodotto p= new Prodotto();
+        p.setCodP(Idprodotto);
+        carrello.removeProduct(p);
 
         session.setAttribute("carrello", carrello);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("Carrello.jsp");

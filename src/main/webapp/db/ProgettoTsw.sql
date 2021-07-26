@@ -33,28 +33,16 @@ create table utente_registrato(
     provincia varchar(60) not null,
     stato varchar(40) default 'italia'
 );
-create table dettaglio_ordine(
-	codF INT PRIMARY KEY,
-	quantita int NOT NULL, 
-	IVA int NOT NULL,
-    dataO date not null,
-    codInd int not null,
-    foreign key(codInd) references indirizzo(codInd)
-    on delete cascade
-	on update cascade
-); 
 
 CREATE TABLE ordine(
 	codO int primary key,
 	stato boolean NOT NULL,
+    dataO date not null,
 	username varchar(20)  not null,
     foreign key(username) references utente_registrato(username)
 	on delete cascade
-	on update cascade,
-    codF int not null,
-    foreign key(codF) references dettaglio_ordine(codF)
-	on delete cascade
 	on update cascade
+	
 ); 
 
 create table amministratore(
@@ -113,21 +101,13 @@ insert into indirizzo ( username, via, cap, nCivico, citta, provincia) value
 ("Claudia99","via tommasini",84061,7,"Castel San Lorenzo","Salerno"),
 ("Pippo88","via roma",85178,16,"Aquara","Salerno");
 
-insert into dettaglio_ordine value
-(0001,1,21,"2020-05-10",001),
-(0002,2,20,"2020-10-19",002),
-(0003,4,21,"2021-06-02",003),
-(0004,5,20,"2021-01-13",004),
-(0005,8,21,"2021-04-30",002),
-(0006,2,20,"2021-03-09",003)
-;
 
 insert into ordine value
-(012351,true,"Claudia99",0001),
-(012352,true,"Elena01",0003),
-(012353,true,"Jae-Wook98",0002),
-(012354,true,"Martina01",0005), 
-(012355,true,"Giovanni777",0006)
+(012351,true,"2020-05-10","Claudia99"),
+(012352,true,"2020-05-10","Elena01"),
+(012353,true,"2020-05-10","Jae-Wook98"),
+(012354,true,"2020-05-10","Martina01"), 
+(012355,true,"2020-05-10","Giovanni777")
 ;
 
 

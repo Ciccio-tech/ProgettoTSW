@@ -1,4 +1,5 @@
-<%@ page import="model.*" %><%--
+<%@ page import="model.*" %>
+<%@ page import="java.util.Map" %><%--
   Created by IntelliJ IDEA.
   User: damia
   Date: 12/07/2021
@@ -185,14 +186,14 @@
                 <th>Tatale prezzo</th> <%
                 Carrello carrello= (Carrello) session.getAttribute("carrello");
                 if(carrello != null){
-                    for(prodottiCarrello p: carrello.getP_carrello()){
-                        Prodotto prodotto= p.getProdotto();
-                        int q= p.getQuantita();
+                    for(Map.Entry<Prodotto,Integer> e : carrello.getEntryset()) {
+                        Prodotto prodotto= e.getKey();
+                        int q= e.getValue();
                         if(prodotto!= null && q!=0){
                             String Nome= prodotto.getModello();
                             String immagine= prodotto.getImmagine();
                             float prezzo = prodotto.getPrezzo();
-                            double prezzo_t = p.totale();
+                            double prezzo_t = prodotto.getPrezzo()* q;
                             int id= prodotto.getCodP();
 
             %>
@@ -284,15 +285,15 @@
     <div class="col-25">
         <div class="container2">
             <% if(carrello != null){%>
-            <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b><%=carrello.getP_carrello().size()%></b></span></h4>
+            <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b><%=carrello.size()%></b></span></h4>
             <%
                 double totale=0.0;
-                for(prodottiCarrello p: carrello.getP_carrello()){
-                    Prodotto prodotto= p.getProdotto();
+                for(Map.Entry<Prodotto,Integer> e : carrello.getEntryset()){
+                    Prodotto prodotto= e.getKey();
             %>
-            <p><a href="#"><%=prodotto.getModello()%></a> <span class="price"><%=p.totale()%></span></p>
+            <p><a href="#"><%=prodotto.getModello()%></a> <span class="price"><%=prodotto.getPrezzo()*e.getValue()%></span></p>
             <%
-                    totale+=p.totale();
+                    totale+=prodotto.getPrezzo()*e.getValue();
                 }%>
             <hr>
             <p>Total <span class="price" style="color:black"><b><%=totale%></b></span></p>

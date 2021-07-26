@@ -1,6 +1,9 @@
 package servlet;
 
-import model.*;
+import model.Carrello;
+import model.Cliente;
+import model.Ordine;
+import model.OrdineDAO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,7 +15,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 //<!-- name, email, adr, city, prov, cap, card -->
@@ -58,6 +60,7 @@ public class OrdineServlet extends HttpServlet {
                     try {
                         if(ordineDAO.createOrdine(ordine)){
                             requestDispatcher = request.getRequestDispatcher("ConfermaOrdine.jsp");
+                            session.setAttribute("carrello", new Carrello()); //svuota il carrello dopo l'acquisto
                         }
                         else{
                             requestDispatcher = request.getRequestDispatcher("404.jsp");

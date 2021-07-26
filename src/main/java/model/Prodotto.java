@@ -15,6 +15,7 @@ quantità int Not null
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Prodotto {
     private int codP;
@@ -144,5 +145,16 @@ public class Prodotto {
         return  (money + iva);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Prodotto prodotto = (Prodotto) o;
+        return codP == prodotto.codP;
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(codP);
+    }
 }
