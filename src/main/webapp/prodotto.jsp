@@ -123,7 +123,7 @@
                     <% } %>
 
                 </form>
-                        <a href="Catalogo.jsp" class="button button2" style="width: 100%; ">Indietro</a>
+                        <a href="Categorie?categoria=0" class="button button2" style="width: 100%; ">Indietro</a>
 
             </div>
             <div style="margin: 30px;">

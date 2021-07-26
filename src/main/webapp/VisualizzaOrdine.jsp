@@ -97,14 +97,25 @@
                     <%
                         System.out.println("ordini effettuati");
                         ArrayList<Ordine> ordini = (ArrayList<Ordine>) request.getAttribute("ordini");
-                        if(ordini != null)
+
+                        Boolean warning = (Boolean) session.getAttribute("warning");
+                        if (warning != null && warning) { %>
+
+                    <div id="alert3" class="alert" style=""><span class="closebtn" onclick="this.parentElement.style.display='none';">×</span> <strong>Errore!</strong>Non hai ancora effettuato ordini..</div>
+                    <%  }%>
+
+                    <%
+                        /*if(ordini != null) {
                             System.out.println(ordini.get(0).getUsername());
+                        }
+                        */
+
                     %>
 
                     <table class="table">
                         <thead class="thead-primary">
                         <tr class="text-center">
-                            <th>&nbsp;</th> <!--crea lo spazio-->
+                            <th></th> <!--crea lo spazio   &nbsp;-->
                             <th>Codice Ordine</th>
                             <th>Stato</th>
                             <th>Data Ordine</th>
@@ -121,13 +132,18 @@
                         <%
                         } else {
                         %>
+                        <%
+                            for(Ordine o: ordini){
+                        %>
                             <tr class="text-center">
-                            <%
-                                for(Ordine o: ordini){
-                            %>
+                                <td></td>
                                 <td><%=o.getCodO()%></td>
-                                <td><%=o.isStato()%></td>
-                                <td><%=o.getData()%></td
+                                <%if(o.isStato()){%>
+                                    <td>Spedito!</td>
+                                <%}else{%>
+                                    <td>In Attesa..</td>
+                                <%}%>
+                                <td><%=o.getData()%></td>
                             </tr>
                         <%
                                 }

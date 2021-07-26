@@ -43,9 +43,12 @@ public class RegistrazioneServlet extends HttpServlet {
         Cliente cl1;
         try {
             cl1=clienteDAO.doRetrieveByUsername(username);
-            session.setAttribute("warning", true);
-            requestDispatcher= request.getRequestDispatcher("Registrazione.jsp");
-            requestDispatcher.forward(request, response);
+            System.out.println(username);
+            if(cl1!= null) {
+                session.setAttribute("warning", true);
+                requestDispatcher = request.getRequestDispatcher("Registrazione.jsp");
+                requestDispatcher.forward(request, response);
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();

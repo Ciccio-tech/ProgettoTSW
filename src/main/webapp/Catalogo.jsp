@@ -106,6 +106,7 @@
 
 
             <%
+                if(prodotti!= null)
                 for (Prodotto e : prodotti) { %>
         <div class="column" >
             <div class="card">

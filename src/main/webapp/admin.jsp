@@ -149,7 +149,6 @@
                     <th>Posta elettronica</th>
                 </tr>
                 <%
-                        System.out.println("nell'if dei clienti");
                         for(Cliente c: clienti){
                             String u= c.getUsername();
                             String nome= c.getNome();

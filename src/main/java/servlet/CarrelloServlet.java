@@ -1,6 +1,8 @@
 package servlet;
 
 import model.Carrello;
+import model.Prodotto;
+import model.ProdottoDAO;
 import model.prodottiCarrello;
 
 import javax.servlet.RequestDispatcher;
@@ -33,8 +35,6 @@ public class CarrelloServlet extends HttpServlet {
         String addS = request.getParameter("qty");
         System.out.println(addS);
         int a= Integer.parseInt(addS);
-        int i=0;
-
 
 
         if(carrello.add(Idprodotto, a)) {

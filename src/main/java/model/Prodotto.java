@@ -112,7 +112,10 @@ public class Prodotto {
     }
 
     public int getQuantita() {
-        return quantita;
+        if(this.quantita == 0)
+            return -1;
+        else
+            return quantita;
     }
 
     public void setQuantita(int quantita) {

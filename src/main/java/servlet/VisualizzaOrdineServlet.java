@@ -27,8 +27,12 @@ public class VisualizzaOrdineServlet extends HttpServlet {
             try {
                 System.out.println(username);
                 ArrayList<Ordine> ordini = ordineDAO.doRetrieveByUsername(username);
-                System.out.println(ordini.get(1).getUsername());
-                request.setAttribute("ordini", ordini);
+                if(ordini != null)
+                    request.setAttribute("ordini", ordini);
+                else{
+                    session.setAttribute("warning", true);
+                }
+
 
             } catch (SQLException e) {
                 e.printStackTrace();

@@ -155,12 +155,13 @@
     </a>
 </div>
 
-<!-- Container -->
+<!-- Container per "Chi siamo"-->
 <div id="band" class="container text-center">
     <h3> Chi siamo? </h3>
     <p>Siamo un ragazzo e una ragazza con la passione per la fotografia</p>
     <br>
     <div class="row">
+<!-- Container per le recensioni-->
         <h3> Cosa dicono di noi:</h3>
         <div class="col-sm-4">
             <p class="text-center"><strong>Elena</strong></p><br>
@@ -218,44 +219,9 @@
             </div>
         </div>
     </div>
-
-    <!-- Modal-->
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h4><span class="glyphicon glyphicon-lock"></span> Tickets</h4>
-                </div>
-                <div class="modal-body">
-                    <form role="form">
-                        <div class="form-group">
-                            <label for="psw"><span class="glyphicon glyphicon-shopping-cart"></span> Tickets, $23 per person</label>
-                            <input type="number" class="form-control" id="psw" placeholder="How many?">
-                        </div>
-                        <div class="form-group">
-                            <label for="usrname"><span class="glyphicon glyphicon-user"></span> Send To</label>
-                            <input type="text" class="form-control" id="usrname" placeholder="Enter email">
-                        </div>
-                        <button type="submit" class="btn btn-block">Pay
-                            <span class="glyphicon glyphicon-ok"></span>
-                        </button>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
-                        <span class="glyphicon glyphicon-remove"></span> Cancel
-                    </button>
-                    <p>Need <a href="#">help?</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
-
+<!-- Video -->
 <div id="video">
     <video style="width: 100%; height: 100%" controls>
         <source src="images/Video/Nikon.mp4" type="video/mp4">
@@ -277,6 +243,7 @@
 
     </div>
 </div>
+
 </div>
 <!-- Footer -->
 <%@include file = "footer.jsp" %>
@@ -308,7 +275,7 @@
                     // Add hash (#) to URL when done scrolling (default click behavior)
                     window.location.hash = hash;
                 });
-            } // End if
+            }
         });
     })
 </script>
