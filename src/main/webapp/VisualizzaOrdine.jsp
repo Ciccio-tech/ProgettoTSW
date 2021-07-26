@@ -21,7 +21,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
-
+        input[type=text]{
+            width: 100%;
+            border: 2px solid lightseagreen;
+            border-radius: 4px;
+            padding: 12px 20px;
+            margin: 8px 0;
+        }
 
         .container {
             padding: 60px 0;

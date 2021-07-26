@@ -55,7 +55,7 @@
             border-radius: 3px;
         }
 
-        input[type=email], input[type=password], input[type=date], input[type=text]{
+        input[type=email], input[type=password], input[type=date],input[type=text]{
             width: 100%;
             border: 2px solid lightseagreen;
             border-radius: 4px;

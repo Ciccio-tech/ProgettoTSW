@@ -18,6 +18,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
+<style>
+    input[type=text]{
+        width: 100%;
+        border: 2px solid lightseagreen;
+        border-radius: 4px;
+        padding: 12px 20px;
+        margin: 8px 0;
+    }
+</style>
 
 <body  data-spy="scroll" data-target=".navbar" data-offset="50">
 <%@include file = "header.jsp" %><br><br>

@@ -20,6 +20,14 @@
 </head>
 
 <style>
+    input[type=text]{
+        width: 100%;
+        border: 2px solid lightseagreen;
+        border-radius: 4px;
+        padding: 12px 20px;
+        margin: 8px 0;
+    }
+
     .field2{
         padding: 20px;
         margin: 100px;

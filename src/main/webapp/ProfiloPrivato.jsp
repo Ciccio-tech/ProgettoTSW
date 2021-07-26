@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
-        input[type=text], input[type=password],input[type=email]{
+         input[type=password],input[type=email],input[type=text]{
             width: 100%;
             border: 2px solid lightseagreen;
             border-radius: 4px;
