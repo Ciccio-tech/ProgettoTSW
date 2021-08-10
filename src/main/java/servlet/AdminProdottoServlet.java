@@ -2,7 +2,6 @@ package servlet;
 
 import MyException.MyServletException;
 import model.Amministratore;
-import model.Cliente;
 import model.Prodotto;
 import model.ProdottoDAO;
 
@@ -24,6 +23,7 @@ public class AdminProdottoServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         System.out.println("servlet prodotti");
         Amministratore amministratore = (Amministratore) request.getSession().getAttribute("amministratore");
+        System.out.println(amministratore);
         if(amministratore == null){
             System.out.println("if");
             try {
@@ -33,9 +33,10 @@ public class AdminProdottoServlet extends HttpServlet {
             }
         }
 
-        String idP=request.getParameter("codP");
+        String idP=request.getParameter("cod");
+        System.out.println(idP);
         if(idP != null){
-            System.out.println("secondo if");
+            System.out.println("secondo if"+idP);
             boolean rimuovi =  Boolean.parseBoolean(request.getParameter("rimuovi"));
             if(rimuovi){
                 System.out.println("SIAMO NEL RIMUOVI");

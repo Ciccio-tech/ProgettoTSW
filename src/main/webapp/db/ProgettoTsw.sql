@@ -9,7 +9,7 @@ CREATE TABLE prodotto (
 	modello char(200) NOT NULL,
 	prezzo float NOT NULL,
 	quantità int Not null, 
-	immagine char(50),
+	immagine text,
     IVA int NOT NULL
 );
 

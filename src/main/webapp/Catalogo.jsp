@@ -42,7 +42,7 @@
         .column {
             float: left;
             width: 25%;
-            padding: 0 10px;
+            padding: 10px 10px;
         }
 
         .row {margin: 0 -5px;}
