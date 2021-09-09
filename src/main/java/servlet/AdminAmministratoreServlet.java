@@ -29,14 +29,16 @@ public class AdminAmministratoreServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }else{
+
             String username= request.getParameter("username");
             boolean rimuovi =  Boolean.parseBoolean(request.getParameter("rimuovi"));
-            if(username!= null && rimuovi){
+            if(username!= null && rimuovi) {
                 try {
                     amministratoreDAO.doDelete(username);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
+
             }else{
                 String pass= request.getParameter("pass");
                 String nome = request.getParameter("nome");

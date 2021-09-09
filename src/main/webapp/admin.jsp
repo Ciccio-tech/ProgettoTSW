@@ -1,5 +1,6 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="model.Cliente" %><%--
+<%@ page import="model.Cliente" %>
+<%@ page import="model.Amministratore" %><%--
   Created by IntelliJ IDEA.
   User: franc
   Date: 21/07/2021
@@ -127,9 +128,9 @@
     <button class="admin" name="RimozioneProdotto" onclick="revealDeleteP()"> Rimuovi un prodotto!</button> <br>
     <div id="deleteProduct" style="display: none">
         <form action="AdminProdotto" method="get">
-            <label class="codP" for="codP">Codice Prodotto:</label>
-            <input type="number" id="codP" name="codP"><br><br>
-            <input type="hidden" id="rimuovi" name="rimuovi" value="true">
+            <label class="codP" for="cod">Codice Prodotto:</label>
+            <input type="number" id="codP" name="cod"><br><br>
+            <input type="hidden" id="rimuovi" name="rimuovi" value="true" >
             <input  type="submit" value="Submit">
         </form>
     </div>
@@ -174,7 +175,7 @@
             <label class="prodForm" for="username">Username:</label>
             <input class="prodForm" type="text" id="username" name="username"><br><br>
             <label class="prodForm" for="pass">Password:</label>
-            <input class="prodForm" type="text" id="pass" name="pass" ><br><br>
+            <input class="prodForm" type="password" id="pass" name="pass" ><br><br>
             <label class="prodForm" for="nome">Nome:</label>
             <input class="prodForm" type="text" id="nome" name="nome" ><br><br>
             <label class="prodForm" for="cognome">Cognome:</label>
@@ -182,6 +183,8 @@
             <input class="prodForm" type="submit" value="Submit">
         </form>
     </div>
+
+
     <button class="admin" name="RimozioneAmministratore" id="removeAdmin" onclick="revealDeleteA()">Rimuovi un Amministratore!</button>
     <div id="deleteA" style="display: none">
         <form action="AdminServlet" method="get">

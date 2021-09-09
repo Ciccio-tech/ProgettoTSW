@@ -126,7 +126,7 @@
                 <h3> <%= Marca + " " + Modello %></h3>
                 <hr style="border:3px solid #f1f1f1"><br>
                 <h4 class="price"><span>Iva: 22%</span></h4>
-                <p>La quantit&#224 disponibile in magazzino è: <%=quantita%></p>
+                <p>La quantit&#224 disponibile in magazzino &egrave: <%=quantita%></p>
                 <p>Prezzo: $<%=prezzo%></p>
                 <form action="Carrello" method="get">
                     <label  class="myLabel" for="qty" >Inserite la quantit&#224 che desiderate acquistare:</label>

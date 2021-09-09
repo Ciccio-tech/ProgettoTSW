@@ -1,5 +1,4 @@
-function validatePassword () {
-    var password = document.getElementById("password").value;
+function validatePassword (password) {
     var passid_len = password.length;
     var flag = true;
 

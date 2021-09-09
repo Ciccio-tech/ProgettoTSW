@@ -1,25 +1,22 @@
 
 $(document).ready(function() {
-    $("#success1").hide();
-    $("#alert1").hide();
-    $("#success2").hide();
-    $("#alert2").hide();
-    $("#alert3").hide();
 
 
-    $("#but2").click(function () {
-        var pw = $("#pass").val();
-        var oldpw= $("#password").val();
-        if(oldpw==pw && validatePassword ()){
-            $.post("CambioPasswordServlet", {op: "modCred", pass: pw}, "html")
+    $("#cambio").click(function () {
+        var pw = $("#password").val();
+        var oldpw= $("#vecchiaPassword").val();
+        var username= $("#username").val();
+        var confermaPass=$("#conferma_password").val();
+        if(oldpw!=pw && confermaPass == pw && validatePassword(pw)){
+            $.post("CambioPasswordServlet", {password: pw, username: username, vecchiaPassword: oldpw, conferma_password: confermaPass})
                 .done(function(data){
-                    $("#success2").slideDown();
+                   alert("Modifica avvenuta con successo");
                 })
                 .fail(function() {
-                    $("#alert2").slideDown();
+                    alert("Errore! Modifica non avvenuta");
                 });
         }else{
-            $("#alert3").slideDown();
+            alert("Password non ha i requisiti per essere sicura!");
         }
 
     });

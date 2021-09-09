@@ -12,11 +12,9 @@ import java.util.ArrayList;
 
 public class AmministratoreDAO {
 
-    public ArrayList<Amministratore> doRettieveAll(int offset, int limit) throws SQLException {
+    public ArrayList<Amministratore> doRettieveAll() throws SQLException {
         try (Connection c= ConPool.getConnection()){
             PreparedStatement ps= c.prepareStatement("SELECT * FROM amministratore LIMIT ?,?");
-            ps.setInt(1, offset);
-            ps.setInt(2, limit);
             ArrayList<Amministratore> arr= new ArrayList<>();
             ResultSet rs = ps.executeQuery();
             while(rs.next()){

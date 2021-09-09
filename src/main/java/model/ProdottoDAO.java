@@ -190,15 +190,9 @@ public class ProdottoDAO {
     public void UpdateQuantita(Prodotto prodotto, int q){
         int quantità= prodotto.getQuantita() - q;
         try(Connection c= ConPool.getConnection()){
-            PreparedStatement ps= c.prepareStatement("UPDATE prodotto SET tipo=?, marca=?, modello=?, prezzo=?, quantità=?, immagine=?, IVA=? WHERE codP=?");
-            ps.setString(1, prodotto.getTipo());
-            ps.setString(2, prodotto.getMarca());
-            ps.setString(3, prodotto.getModello());
-            ps.setFloat(4, prodotto.getPrezzo());
-            ps.setInt(5, quantità);
-            ps.setInt(6, prodotto.getCodP());
-            ps.setString(7, prodotto.getImmagine());
-            ps.setInt(8,prodotto.getIVA());
+            PreparedStatement ps= c.prepareStatement("UPDATE prodotto SET quantità=? WHERE codP=?");
+            ps.setInt(1, quantità);
+            ps.setInt(2,prodotto.getCodP());
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("UPDATE ERROR.");
             }

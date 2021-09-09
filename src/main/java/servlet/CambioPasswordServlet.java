@@ -1,6 +1,5 @@
 package servlet;
 
-import MyException.MyServletException;
 import model.Cliente;
 import model.ClienteDAO;
 
@@ -15,43 +14,44 @@ import java.sql.SQLException;
 
 @WebServlet("/CambioPasswordServlet")
 public class CambioPasswordServlet extends HttpServlet {
-
+    ClienteDAO clienteDAO= new ClienteDAO();
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        ClienteDAO clienteDAO= new ClienteDAO();
-        String username= request.getParameter("username");
-        System.out.println(username);
-        String vecchiaPassword;
-        String nuovaP;  //nuova password
-        String ConfermaNP; //conferma nuova password
-        Cliente cliente;
-        RequestDispatcher requestDispatcher = null;
-        if(username != null) {
-            vecchiaPassword= request.getParameter("vecchiaPassword");
-            nuovaP=  request.getParameter("password");
-            ConfermaNP =  request.getParameter("conferma_password");
-            if(nuovaP.equals(ConfermaNP)) {
-                cliente = clienteDAO.doRetrieveByUsernamePassword(username, vecchiaPassword);
-                if (cliente != null) {
-                    try {
-                        if(clienteDAO.updatePassword(nuovaP, username)){
-                            requestDispatcher = request.getRequestDispatcher("index.jsp");
-                        }else
-                            requestDispatcher = request.getRequestDispatcher("ProfiloPrivato.jsp");
-                    } catch (SQLException e) {
-                        e.printStackTrace();
+
+        if(request.getHeader("x-requested-with") != null) {
+            String username= request.getParameter("username");
+            System.out.println(username);
+            String vecchiaPassword;
+            String nuovaP;  //nuova password
+            String ConfermaNP; //conferma nuova password
+            Cliente cliente;
+            RequestDispatcher requestDispatcher = null;
+            if(username != null) {
+                vecchiaPassword= request.getParameter("vecchiaPassword");
+                nuovaP=  request.getParameter("password");
+                ConfermaNP =  request.getParameter("conferma_password");
+                if(nuovaP.equals(ConfermaNP)) {
+                    cliente = clienteDAO.doRetrieveByUsernamePassword(username, vecchiaPassword);
+                    if (cliente != null) {
+                        try {
+                            if(clienteDAO.updatePassword(nuovaP, username)){
+                                response.setStatus(200);
+                            }else
+                                response.setStatus(500);
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }
-        }
-        else{
-            try {
-                throw new MyServletException("Utente non loggato");
-            } catch (MyServletException e) {
-                e.printStackTrace();
+            else{
+                System.out.println("ciao");
+                response.setStatus(500);
             }
         }
-        assert requestDispatcher != null;
-        requestDispatcher.forward(request, response);
+        else{
+            System.out.println("ciao");
+            response.setStatus(500);
+        }
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

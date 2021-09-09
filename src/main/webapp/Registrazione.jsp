@@ -84,7 +84,7 @@
                         <p><input class="myInput1" id="cognome" type="text" size="30" name = "cognome" placeholder="Cognome" autocomplete="off"><br></p>
                         <p><input class="myInput1" id="email" type="email" size="30" name = "email" placeholder="Email" autocomplete="off"><br></p>
 
-                        <button class="button button4" type="submit" value="Registrati!"> Registrati</button>
+                        <button class="button button4" type="submit" value="Registrati!" onclick="alert('Registrazione avvenuta con successo! Eseguire il login!')"> Registrati</button>
 
                     </div>
 

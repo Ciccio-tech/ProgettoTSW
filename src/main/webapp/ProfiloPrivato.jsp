@@ -101,19 +101,16 @@
 
 
         <button id="but2" class="but2 button button2" onclick="Reveal()">Modifica Password</button> <br>
-
-        <form action="CambioPasswordServlet" method="get">
-        <div id="modificaP" style="display: none">
-            <label  class="myLabel"  for="vecchiaPassword"> Vecchia Password:</label>
-            <input class="myInput1" type="password" id="vecchiaPassword" name="vecchiaPassword"> <br>
-            <label  class="myLabel"  for="password"> Nuova Password:</label>
-            <input class="myInput1" type="password" id="password" name="password"> <br>
-            <label  class="myLabel"  for="conferma_password"> Conferma Nuova Password:</label>
-            <input class="myInput1" type="password" id="conferma_password" name="conferma_password"> <br>
-            <input class="myInput1" type="hidden" id="username" name="username" value=<%=username%>>
-            <button class= "button button2" type="submit">Conferma!</button>
-        </div>
-        </form>
+            <div id="modificaP" style="display: none">
+                <label  class="myLabel"  for="vecchiaPassword"> Vecchia Password:</label>
+                <input class="myInput1" type="password" id="vecchiaPassword" name="vecchiaPassword"> <br>
+                <label  class="myLabel"  for="password"> Nuova Password:</label>
+                <input class="myInput1" type="password" placeholder="Password tra i 8 e i 25 caratteri" id="password" name="password"> <br>
+                <label  class="myLabel"  for="conferma_password"> Conferma Nuova Password:</label>
+                <input class="myInput1" type="password" id="conferma_password" name="conferma_password"> <br>
+                <input class="myInput1" type="hidden" id="username" name="username" value=<%=username%>>
+                <button class= "button button2" type="submit" id ="cambio">Conferma!</button>
+            </div>
 
         <script>
             function Reveal(){
@@ -131,6 +128,7 @@
     <% } %>
 
 <%@include file = "footer.jsp" %>
+
 <script src = "JavaScript/validation.js"></script>
 <script src = "JavaScript/profilo.js"></script>
 </body>

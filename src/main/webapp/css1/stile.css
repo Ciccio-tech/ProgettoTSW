@@ -73,4 +73,28 @@ body {
 * {
     box-sizing: border-box;
 }
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+}
+.alert.success {background-color: #4CAF50;}
+.warning {
+    background-color: #ffff85;
+    padding: 20px;
+    color: black;
+}
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
 
+.closebtn:hover {
+    color: black;
+}
