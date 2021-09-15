@@ -104,14 +104,6 @@
                     <div id="alert3" class="alert" style=""><span class="closebtn" onclick="this.parentElement.style.display='none';">×</span> <strong>Errore!</strong>Non hai ancora effettuato ordini..</div>
                     <%  }%>
 
-                    <%
-                        /*if(ordini != null) {
-                            System.out.println(ordini.get(0).getUsername());
-                        }
-                        */
-
-                    %>
-
                     <table class="table">
                         <thead class="thead-primary">
                         <tr class="text-center">

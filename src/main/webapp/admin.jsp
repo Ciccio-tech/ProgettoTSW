@@ -61,28 +61,31 @@
             }
         }
 
-        #customers {
+        #customers, #customers1 {
             font-family: Arial, Helvetica, sans-serif;
             border-collapse: collapse;
             width: 100%;
         }
 
-        #customers td, #customers th {
+       td, th {
             border: 1px solid #ddd;
             padding: 8px;
         }
 
-        #customers tr:nth-child(even){background-color: #f2f2f2;}
+       tr:nth-child(even){background-color: #f2f2f2;}
 
-        #customers tr:hover {background-color: #ddd;}
+       tr:hover {background-color: #ddd;}
 
-        #customers th {
+       th {
             padding-top: 12px;
             padding-bottom: 12px;
             text-align: left;
             background-color: lightseagreen;
             color: white;
         }
+
+
+
 
     </style>
 </head>
@@ -167,6 +170,35 @@
                 }
                 %>
             </table>
+    </div>
+
+    <form action="ViewAdmin" method="get"><button class="admin" > Visualizza tutti gli amministratori!</button>  </form>
+    <div class="admin" id="allAdmin">
+        <table id="customers1">
+            <%
+                ArrayList<Amministratore> admin = (ArrayList<Amministratore>) request.getAttribute("admin");
+                if(admin != null){
+            %>
+            <tr>
+                <th>Username</th>
+                <th>Nome</th>
+                <th>Cognome</th>
+            </tr>
+            <%
+                for(Amministratore a: admin){
+                    String u= a.getUsername();
+                    String nome= a.getNome();
+                    String cognome= a.getCognome();
+            %>
+            <tr class="text-center" >
+                <td><%=u%></td>
+                <td><%=nome%></td>
+                <td><%=cognome%></td>
+            </tr>
+            <%  }
+            }
+            %>
+        </table>
     </div>
 
     <button class="admin" name="AggiuntaAmministratore" onclick="revealNewA()">Aggiungi un Amministratore!</button> <br>

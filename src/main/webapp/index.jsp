@@ -154,13 +154,13 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
-
-<!-- Container per "Chi siamo"-->
 <div id="band" class="container text-center">
+<!-- Container per "Chi siamo"
+
     <h3> Chi siamo? </h3>
     <p>Siamo un ragazzo e una ragazza con la passione per la fotografia</p>
     <br>
-    <div class="row">
+    <div class="row">-->
 <!-- Container per le recensioni-->
         <h3> Cosa dicono di noi:</h3>
         <div class="col-sm-4">
@@ -187,7 +187,7 @@
                 <img src="images/FotoProdotti/Sigma100-400mmF5-6-3.jpg" class="img-circle person" alt="Prodotti" width="255" height="255">
             </a>
             <div id="demo3" class="collapse">
-                <p>Prdootti di ottima qualità</p>
+                <p>Prodotti di ottima qualità</p>
                 <p>e prezzi scontati!</p>
             </div>
         </div>

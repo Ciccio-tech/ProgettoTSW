@@ -153,7 +153,8 @@
 
                 }
                 else{ %>
-                <p>Non ci sono recensioni per questo prodotto...</p>
+                <h3> Recenzioni :</h3><br>
+                <p> Non ci sono recensioni per questo prodotto...</p>
                 <% } %>
 
                 <% } %>
@@ -161,9 +162,6 @@
         </div>
     </section>
 
-    <!--   <section>
-     %@ < include file = "recensione.jsp" %>
-    </section>-->
-    <%@include file = "footer.jsp" %>
+      <%@include file = "footer.jsp" %>
 </body>
 </html>
