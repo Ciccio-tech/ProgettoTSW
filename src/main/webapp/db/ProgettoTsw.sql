@@ -96,7 +96,8 @@ insert into utente_registrato values
 ("Jae-Wook98","JaeWook98Lee*", "Jae-Wook", "Lee", "jaewooklee98@gmail.com"),
 ("Jung-kook97","Jungkook97*", "Jung-kook", "jeon","jung-kook97@gmail.com"),
 ("Ji-min95","Jimin95?", "Ji-min", "Park","parkjimin95@gmail.com"),
-("Tae-hyung95","TaeHyung95^", "Tae-hyung", "Kim", "vkim95@gmail.com")
+("Tae-hyung95","TaeHyung95^", "Tae-hyung", "Kim", "vkim95@gmail.com"),
+("Antonella01","Accarino01", "Antonella", "Accarino", "antonella01@gmail.com")
 ;
 
 insert into indirizzo ( username, via, cap, nCivico, citta, provincia) value

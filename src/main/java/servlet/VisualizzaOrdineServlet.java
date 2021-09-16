@@ -19,13 +19,10 @@ import java.util.ArrayList;
 public class VisualizzaOrdineServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession();
-        System.out.println("sERVLET");
         OrdineDAO ordineDAO= new OrdineDAO();
         String username = (String) session.getAttribute("username");
-        System.out.println(username);
         if(username != null) {
             try {
-                System.out.println(username);
                 ArrayList<Ordine> ordini = ordineDAO.doRetrieveByUsername(username);
                 if(ordini != null)
                     request.setAttribute("ordini", ordini);

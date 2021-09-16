@@ -19,9 +19,7 @@ public class RimuoviProdottoServlet extends HttpServlet {
         public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException{
         String q= request.getQueryString();
         q= q.replaceAll("\\D+", "");
-        System.out.println(q);
         String IdProdottoS = q;
-        System.out.println(IdProdottoS);
         int Idprodotto= Integer.parseInt(IdProdottoS);
         HttpSession session = request.getSession();
         Carrello carrello= (Carrello) session.getAttribute("carrello");

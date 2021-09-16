@@ -95,7 +95,6 @@
                 <div class="cart-list">
                     <h1 id = "title">Ordini effettuati</h1>
                     <%
-                        System.out.println("ordini effettuati");
                         ArrayList<Ordine> ordini = (ArrayList<Ordine>) request.getAttribute("ordini");
 
                         Boolean warning = (Boolean) session.getAttribute("warning");

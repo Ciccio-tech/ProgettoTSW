@@ -86,7 +86,6 @@
             display: none;
             border: 3px solid #000;
             border-radius: 50%;
-            /*grandezza magnifier glass:*/
             width: 100px;
             height: 100px;
         }
@@ -119,7 +118,7 @@
                     <div class="img-magnifier-container">
                         <img id="image" src=<%=immagine%> >  <!--{product.photo}-->
                     </div>
-                    <script type = "text/javascript" src = "JavaScript/magnifier.js"></script>
+                    <script type = "text/javascript" src = "JavaScript/zoomImmagine.js"></script>
                     <script>magnify('image', 3);</script>
             </div>
             <div class="col-50" class="capo">

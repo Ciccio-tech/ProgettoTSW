@@ -32,10 +32,8 @@ public class CarrelloServlet extends HttpServlet {
         int Idprodotto = Integer.parseInt(IdProdottoS);
 
         String addS = request.getParameter("qty");
-        System.out.println(addS);
         int a = Integer.parseInt(addS);
         int i = 0;
-
 
         try {
             Prodotto p=dao.doRetrieveById(Idprodotto);

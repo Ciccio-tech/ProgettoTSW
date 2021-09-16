@@ -19,7 +19,6 @@ public class CambioPasswordServlet extends HttpServlet {
 
         if(request.getHeader("x-requested-with") != null) {
             String username= request.getParameter("username");
-            System.out.println(username);
             String vecchiaPassword;
             String nuovaP;  //nuova password
             String ConfermaNP; //conferma nuova password
@@ -44,12 +43,10 @@ public class CambioPasswordServlet extends HttpServlet {
                 }
             }
             else{
-                System.out.println("ciao");
                 response.setStatus(500);
             }
         }
         else{
-            System.out.println("ciao");
             response.setStatus(500);
         }
     }

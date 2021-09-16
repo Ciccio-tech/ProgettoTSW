@@ -11,7 +11,7 @@ function magnify(imgID, zoom) {
     glass.style.backgroundImage = "url('" + img.src + "')";
     glass.style.backgroundRepeat = "no-repeat";
     glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
-    bw = 3;
+    bw =3;
     w = glass.offsetWidth / 2;
     h = glass.offsetHeight / 2;
     /*execute a function when someone moves the magnifier glass over the image:*/
@@ -21,9 +21,11 @@ function magnify(imgID, zoom) {
     img.addEventListener("mousemove", moveMagnifier);
     glass.addEventListener("mouseout", remove);
     img.addEventListener("mouseout", remove);
+
+
     function moveMagnifier(e) {
         var pos, x, y;
-        /*prevent any other actions that may occur when moving over the image*/
+        /*prevenire qualsiasi altra azione che possa verificarsi quando ci si muove sopra l'immagine*/
         e.preventDefault();
         /*get the cursor's x and y positions:*/
         pos = getCursorPos(e);
@@ -37,7 +39,7 @@ function magnify(imgID, zoom) {
         /*set the position of the magnifier glass:*/
         glass.style.left = (x - w) + "px";
         glass.style.top = (y - h) + "px";
-        /*display what the magnifier glass "sees":*/
+        /*visualizzare ciò che "vede" la lente d'ingrandimento:*/
         glass.style.backgroundPosition = "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw) + "px";
     }
     function getCursorPos(e) {

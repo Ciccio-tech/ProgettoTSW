@@ -179,38 +179,38 @@
             <tr>
                 <th>Rimuovi Prodotto</th>
                 <th>Immagine Prodotto</th>
-                <th>Nome prodotto</th>
+                <th>Marca</th>
+                <th>Modello</th>
                 <th>Prezzo</th>
                 <th>IVA</th>
-                <th>Quantità</th>
-                <th>Tatale prezzo</th> <%
-                Carrello carrello= (Carrello) session.getAttribute("carrello");
+                <th>Quantit&#224</th>
+                <th>Tatale prezzo</th>
+                <% Carrello carrello= (Carrello) session.getAttribute("carrello");
                 if(carrello != null){
                     for(Map.Entry<Prodotto,Integer> e : carrello.getEntryset()) {
                         Prodotto prodotto= e.getKey();
                         int q= e.getValue();
                         if(prodotto!= null && q!=0){
-                            String Nome= prodotto.getModello();
+                            String marca= prodotto.getMarca();
+                            String modello= prodotto.getModello();
                             String immagine= prodotto.getImmagine();
                             float prezzo = prodotto.getPrezzo();
+                            int iva = prodotto.getIVA();
                             double prezzo_t = prodotto.getPrezzo()* q;
                             int id= prodotto.getCodP();
 
             %>
-
             </tr>
-
-
-
                 <tr class="text-center">
-                <td class="product-remove"><form action="RimuoviProdotto" method="get"><button class="removeX button2 button3" id="deleteButton" name="<%=id%>"><span class="glyphicon glyphicon-trash" style="color: white"></span></button></form>
+                <td class="product-remove"> <form action="RimuoviProdotto" method="get"><button class="removeX button2 button3" id="deleteButton" name="<%=id%>"><span class="glyphicon glyphicon-trash" style="color: white"></span></button></form>
                 <td class="image-prod"><div id="img" style="background-image: url(<%=immagine%>);"></div> </td>
-                <td class="product-name"><%=Nome%></td>
+                <td class="prod-marca"><%=marca%></td>
+                <td class="product-name"><%=modello%></td>
                 <td><%=prezzo%></td>
-                <td>22&#37;</td>
+                <td><%=iva%>&#37;</td>
                 <td class="quantity"><div class="input-group mb-3"><input type="number" name="quantity" class="quantity form-control input-number" value="<%=q%>" min="1" max="100"></div></td> <!-- in value dobbiamo portare la quantita dell'ordine -->
                 <td class="total"><%=prezzo_t%></td>
-          </tr> <%
+            </tr> <%
                     }
                 }
 
@@ -232,8 +232,8 @@
                         <% HttpSession Usersession1= request.getSession();
                             if(Usersession1.getAttribute("username")== null){
                         %>
-                        <h3>Non si possono effettuare Ordini se non si è registrati: </h3>
-                        <li><a class="mylink" href= "Login.jsp"> Login </a></li>
+                            <h3>Non si possono effettuare Ordini se non si &egrave registrati: </h3>
+                            <a class="mylink" href= "Login.jsp"> Login </a>
                         <%
                         }else{
                             Cliente cliente= new Cliente();
