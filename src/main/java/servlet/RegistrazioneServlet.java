@@ -33,7 +33,7 @@ public class RegistrazioneServlet extends HttpServlet {
         }
 
         String username = request.getParameter("username");
-        if(!(username != null && username.length()>= 6 && username.matches("^[0-9a-zA-Z]+$"))){
+        if(!(username != null && username.length()>= 6 && username.matches("^[0-9a-zA-Z]+$"))){  // espressione regolare
             try {
                 throw new MyServletException("Username non valido");
             } catch (MyServletException e) {
@@ -43,7 +43,6 @@ public class RegistrazioneServlet extends HttpServlet {
         Cliente cl1;
         try {
             cl1=clienteDAO.doRetrieveByUsername(username);
-            System.out.println(username);
             if(cl1!= null) {
                 session.setAttribute("warning", true);
                 requestDispatcher = request.getRequestDispatcher("Registrazione.jsp");

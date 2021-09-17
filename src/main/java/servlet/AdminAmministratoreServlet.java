@@ -45,11 +45,7 @@ public class AdminAmministratoreServlet extends HttpServlet {
                 String cognome = request.getParameter("cognome");
                 Amministratore newAdmin= new Amministratore(username, pass, nome, cognome);
                 try {
-                   if(amministratoreDAO.createAmministratore(newAdmin)){
-                       request.setAttribute("notifica", "Nuovo Amministratore aggiunto con successo!");
-                   }else
-                       request.setAttribute("notifica", "ATTENZIONE: il nuovo Amministratore non è stato aggiunto");
-
+                   amministratoreDAO.createAmministratore(newAdmin);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

@@ -4,20 +4,12 @@ import java.sql.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/*
-codO int primary key,
-stato boolean NOT NULL,
-dataO date NOT NULL,
-username varchar(20)  not null,
-foreign key(username) references utente_registrato(username)
- */
-
 
 public class OrdineDAO {
 
     public ArrayList<Ordine> doRetrieveAll(int offset, int limit) throws SQLException {
         try(Connection c= ConPool.getConnection()){
-            PreparedStatement ps= c.prepareStatement("SELECT * FROM ordine LIMIT ?, ?");
+            PreparedStatement ps= c.prepareStatement("SELECT * FROM ordine LIMIT ?, ?"); // LIMIT limita il numero di record
             ps.setInt(1, offset);
             ps.setInt(2, limit);
             ArrayList<Ordine> ArrOr = new ArrayList<>();
@@ -70,10 +62,6 @@ public class OrdineDAO {
 
     public ArrayList<Ordine> doRetrieveByUsername(String username) throws SQLException{
         try(Connection c = ConPool.getConnection()){
-            /*
-            QueryBuilder queryBuilder = new QueryBuilder("ordine");
-            queryBuilder.select("*").where("username= ?");
-             */
             PreparedStatement ps= c.prepareStatement("SELECT * FROM ordine WHERE username=?");
             ps.setString(1, username);
             ResultSet rs= ps.executeQuery();

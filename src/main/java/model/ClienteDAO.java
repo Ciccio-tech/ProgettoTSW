@@ -159,11 +159,6 @@ public class ClienteDAO {
 
     public void doSave(Cliente cliente) throws SQLException{
         try(Connection c = ConPool.getConnection()){
-            /*
-            QueryBuilder queryBuilder = new QueryBuilder("utente_registrato");
-            queryBuilder.insert("username, pass, nome, cognome, email");
-            PreparedStatement ps= c.prepareStatement(queryBuilder.GenerateQuery());
-             */
             PreparedStatement ps= c.prepareStatement("INSERT INTO utente_registrato(username, pass, nome, cognome, email) VALUES(?,?,?,?,?)");
             ps.setString(1, cliente.getUsername());
             ps.setString(2, cliente.getPassword());

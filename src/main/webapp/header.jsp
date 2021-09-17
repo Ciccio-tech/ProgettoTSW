@@ -48,12 +48,14 @@
                 </li>
                 <% if(session.getAttribute("amministratore")==null){%>
                 <li><a href="Carrello.jsp"><span class="glyphicon glyphicon-shopping-cart"></span></a></li><% } %><%} %>
+
                 <li><form class="navbar-form navbar-left" action="Ricerca">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Search" name="ricerca">
                         <button type="submit" class="form-control lente"  > Cerca</button>
                     </div>
                 </form></li>
+
             </ul>
         </div>
     </div>

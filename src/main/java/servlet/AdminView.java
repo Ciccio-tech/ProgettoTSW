@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 @WebServlet("/ViewAdmin")
-public class ViewAdmin extends HttpServlet {
+public class AdminView extends HttpServlet {
     private final AmministratoreDAO adminDAO= new AmministratoreDAO();
     
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

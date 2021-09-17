@@ -100,7 +100,7 @@
                         Boolean warning = (Boolean) session.getAttribute("warning");
                         if (warning != null && warning) { %>
 
-                    <div id="alert3" class="alert" style=""><span class="closebtn" onclick="this.parentElement.style.display='none';">×</span> <strong>Errore!</strong>Non hai ancora effettuato ordini..</div>
+                    <div id="alert3" class="alert" style=""><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> <strong>Errore!</strong>Non hai ancora effettuato ordini..</div>
                     <%  }%>
 
                     <table class="table">

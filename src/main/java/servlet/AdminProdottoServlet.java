@@ -68,10 +68,7 @@ public class AdminProdottoServlet extends HttpServlet {
                     prodotto.setImmagine(immagine);
                     prodotto.setIva(Integer.parseInt(IVA));
                         try {
-                            if(prodottoDAO.doSave(prodotto)) {
-                                request.setAttribute("notifica", "Nuovo Prodotto aggiunto con successo!");
-                            }else
-                                request.setAttribute("notifica", "Nuovo Prodotto NON aggiunto!");
+                            prodottoDAO.doSave(prodotto);
                         } catch (SQLException e) {
                             e.printStackTrace();
                         }

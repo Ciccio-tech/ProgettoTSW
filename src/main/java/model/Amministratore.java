@@ -1,12 +1,4 @@
 package model;
-/*
-create table amministratore(
-username varchar(20) primary key,
-pass varchar(20) NOT NULL,
-nome char(15) NOT NULL,
-cognome char(15) NOT NULL
-);
- */
 
 public class Amministratore {
 
