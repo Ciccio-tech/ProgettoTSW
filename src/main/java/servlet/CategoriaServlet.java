@@ -46,8 +46,6 @@ public class CategoriaServlet extends HttpServlet {
         }else{
             request.getRequestDispatcher(response.encodeURL("/ErrorPage/404.jsp")).forward(request, response);
         }
-
-
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{

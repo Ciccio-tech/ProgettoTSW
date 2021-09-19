@@ -5,6 +5,5 @@ function validatePassword (password) {
     if (passid_len == 0 ||passid_len >= 25 || passid_len < 8) {
         flag = false;
     }
-
     return flag;
 }

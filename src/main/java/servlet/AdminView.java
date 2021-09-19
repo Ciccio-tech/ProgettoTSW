@@ -20,7 +20,7 @@ public class AdminView extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ArrayList<Amministratore> admin = null;
         try{
-            admin=adminDAO.doRettieveAll(0,10);
+            admin=adminDAO.doRettieveAll();
             
         } catch (SQLException e) {
             e.printStackTrace();

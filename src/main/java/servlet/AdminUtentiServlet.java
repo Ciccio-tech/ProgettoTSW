@@ -21,7 +21,7 @@ public class AdminUtentiServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         ArrayList<Cliente> clienti = null;
         try {
-            clienti = clienteDAO.doRettieveAll(0, 10);
+            clienti = clienteDAO.doRettieveAll();
         } catch (SQLException e) {
             e.printStackTrace();
         }

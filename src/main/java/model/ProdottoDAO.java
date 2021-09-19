@@ -9,6 +9,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+
+private int codP;
+    private String tipo;
+    private String marca;
+    private String modello;
+    private float prezzo;
+    private int quantità;
+    codP, tipo, marca, modello, prezzo, quantità
+ */
 
 public class ProdottoDAO {
 

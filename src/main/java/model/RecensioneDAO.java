@@ -7,6 +7,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 
+ /*
+ username varchar(20) not null,
+codP int not null,
+FOREIGN KEY (username) REFERENCES utente_registrato(username)
+on delete cascade
+on update cascade,
+FOREIGN KEY (codP) REFERENCES prodotto(codP)
+on delete cascade
+on update cascade,
+primary key(username, codP),
+dataR date NOT NULL,
+voto int NOT NULL,
+commento char(50)
+  */
 public class RecensioneDAO {
 
      public ArrayList<Recensione> doRetrieveByCodP(int codP) throws SQLException{

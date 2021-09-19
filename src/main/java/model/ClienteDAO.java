@@ -8,11 +8,9 @@ import java.util.ArrayList;
 
 public class ClienteDAO {
 
-    public ArrayList<Cliente> doRettieveAll(int offset, int limit) throws SQLException {
+    public ArrayList<Cliente> doRettieveAll() throws SQLException {
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT username, pass, nome, cognome, email FROM utente_registrato LIMIT ?, ?");
-            ps.setInt(1, offset);
-            ps.setInt(2, limit);
+            PreparedStatement ps = con.prepareStatement("SELECT username, pass, nome, cognome, email FROM utente_registrato");
             ArrayList<Cliente> cli = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -30,6 +28,12 @@ public class ClienteDAO {
         }
     }
 
+    protected static void setCliente (ResultSet rs, Cliente cliente) throws SQLException {
+        cliente.setNome(rs.getString("nome"));
+        cliente.setCognome(rs.getString("cognome"));
+        cliente.setUsername(rs.getString("username"));
+        cliente.setPassword(rs.getString("pass"));
+    }
 
   public Cliente doRetrieveByUsernamePassword(String username, String password){
         try (Connection con = ConPool.getConnection()) {
@@ -72,6 +76,7 @@ public class ClienteDAO {
         }
         return null;
     }
+
 
     public void doSave(Cliente cliente) throws SQLException{
         try(Connection c = ConPool.getConnection()){

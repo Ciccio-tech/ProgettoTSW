@@ -60,10 +60,7 @@ public class LoginServlet extends HttpServlet {
         if(amministratore == null) {
             response.sendRedirect("index.jsp");
         }
-
-
     }
-
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);

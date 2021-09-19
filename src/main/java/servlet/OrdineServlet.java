@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Map;
 
+//<!-- name, email, adr, city, prov, cap, card -->
 
 @WebServlet("/Ordine")
 
@@ -51,6 +52,7 @@ public class OrdineServlet extends HttpServlet {
                     ordine.setCodO(codO);
                     ordine.setStato(stato);
                     ordine.setDataO(data);
+                    System.out.println(data.toString());
                     ordine.setCarrello(carrello);
                     try {
                         if(ordineDAO.createOrdine(ordine)){
