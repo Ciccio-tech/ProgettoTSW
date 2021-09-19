@@ -49,20 +49,6 @@ public class AmministratoreDAO {
 
     }
 
-    public boolean deleteAmministratore(String username) throws SQLException {
-        try(Connection c=ConPool.getConnection()){
-            QueryBuilder queryBuilder = new QueryBuilder("amministratore");
-            queryBuilder.delete().where("username=?");
-            PreparedStatement ps=c.prepareStatement(queryBuilder.GenerateQuery());
-            ps.setString(1, username);
-            if(ps.executeUpdate() == 1)
-                return true;
-            else
-                return false;
-        }
-    }
-
-
     public Amministratore doRetrieveByUsernamePassword(String username, String password){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("SELECT username, pass, nome, cognome FROM amministratore WHERE username=? AND pass=?");

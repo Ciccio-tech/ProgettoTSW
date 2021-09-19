@@ -42,6 +42,7 @@ function magnify(imgID, zoom) {
         /*visualizzare ciò che "vede" la lente d'ingrandimento:*/
         glass.style.backgroundPosition = "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw) + "px";
     }
+
     function getCursorPos(e) {
         var a, x = 0, y = 0;
         e = e || window.event;

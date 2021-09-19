@@ -19,7 +19,6 @@ public class AdminUtentiServlet extends HttpServlet {
     private final ClienteDAO clienteDAO= new ClienteDAO();
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        System.out.println("servlet Utenti");
         ArrayList<Cliente> clienti = null;
         try {
             clienti = clienteDAO.doRettieveAll(0, 10);

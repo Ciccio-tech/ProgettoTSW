@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Map;
 
-//<!-- name, email, adr, city, prov, cap, card -->
 
 @WebServlet("/Ordine")
 
@@ -28,7 +27,6 @@ public class OrdineServlet extends HttpServlet {
         ProdottoDAO prodottoDAO= new ProdottoDAO();
         Cliente cliente= (Cliente) session.getAttribute("cliente");
         RequestDispatcher requestDispatcher;
-        System.out.println(carrello.totale() + " " + cliente.getUsername());
         if(carrello != null && cliente!= null){
             String name= request.getParameter("name");
             String email= request.getParameter("email");
@@ -42,7 +40,6 @@ public class OrdineServlet extends HttpServlet {
             if(name != null && email != null && carta != null){
                 try {
                     ArrayList<Ordine> ordini = ordineDAO.doRetrieveAll(0, 100);
-                    System.out.println(ordini.get(1).getUsername());
                     int size=ordini.size();
                     Ordine o= ordini.get(size-1);
                     int lastC= o.getCodO();
@@ -54,7 +51,6 @@ public class OrdineServlet extends HttpServlet {
                     ordine.setCodO(codO);
                     ordine.setStato(stato);
                     ordine.setDataO(data);
-                    System.out.println(data.toString());
                     ordine.setCarrello(carrello);
                     try {
                         if(ordineDAO.createOrdine(ordine)){

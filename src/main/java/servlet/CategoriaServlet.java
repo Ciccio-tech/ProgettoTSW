@@ -3,7 +3,6 @@ package servlet;
 import model.Prodotto;
 import model.ProdottoDAO;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,12 +17,6 @@ import java.util.ArrayList;
 public class CategoriaServlet extends HttpServlet {
     public ProdottoDAO prodottoDAO;
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-        /*
-        System.out.println("servlet Categorie");
-        String q= request.getQueryString();
-        q= q.replaceAll("\\D+", "");
-
-         */
 
         prodottoDAO= new ProdottoDAO();
         ArrayList<Prodotto> prodotti= null;

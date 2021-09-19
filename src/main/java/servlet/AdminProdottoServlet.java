@@ -21,11 +21,8 @@ public class AdminProdottoServlet extends HttpServlet {
     private final ProdottoDAO prodottoDAO= new ProdottoDAO();
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        System.out.println("servlet prodotti");
         Amministratore amministratore = (Amministratore) request.getSession().getAttribute("amministratore");
-        System.out.println(amministratore);
         if(amministratore == null){
-            System.out.println("if");
             try {
                 throw new MyServletException("Utente non autorizzato.");
             } catch (MyServletException e) {
@@ -34,12 +31,9 @@ public class AdminProdottoServlet extends HttpServlet {
         }
 
         String idP=request.getParameter("cod");
-        System.out.println(idP);
         if(idP != null){
-            System.out.println("secondo if"+idP);
             boolean rimuovi =  Boolean.parseBoolean(request.getParameter("rimuovi"));
             if(rimuovi){
-                System.out.println("SIAMO NEL RIMUOVI");
                 try {
                     prodottoDAO.doDelete(Integer.parseInt(idP));
                 } catch (SQLException e) {
@@ -56,7 +50,6 @@ public class AdminProdottoServlet extends HttpServlet {
                 String immagine= request.getParameter("immagine");
                 String quantita = request.getParameter("quantita");
                 String IVA = request.getParameter("iva");
-                System.out.println(idP + tipo + marca + modello + prezzo + immagine + quantita + IVA);
                 if(tipo!=null && marca!=null && modello!=null && prezzo!=null && quantita!=null) {
                     prodotto = new Prodotto();
                     prodotto.setCodP(Integer.parseInt(idP));

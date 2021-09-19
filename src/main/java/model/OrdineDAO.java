@@ -43,23 +43,6 @@ public class OrdineDAO {
     }
 
 
-    public boolean deleteOrdine(Ordine ordine)throws SQLException{
-        try(Connection c= ConPool.getConnection()){
-            QueryBuilder queryBuilder= new QueryBuilder("ordine");
-            queryBuilder.delete().where("codO=?");
-            PreparedStatement ps= c.prepareStatement(queryBuilder.GenerateQuery());
-            ps.setInt(1, ordine.getCodO());
-            if(ps.executeUpdate() == 1)
-                return true;
-            else
-                return false;
-        }
-        catch(SQLException e){
-            throw new RuntimeException(e);
-        }
-    }
-
-
     public ArrayList<Ordine> doRetrieveByUsername(String username) throws SQLException{
         try(Connection c = ConPool.getConnection()){
             PreparedStatement ps= c.prepareStatement("SELECT * FROM ordine WHERE username=?");

@@ -20,19 +20,7 @@ create table utente_registrato(
 	cognome char(15) NOT NULL, 
 	email char(30) NOT NULL
 );
- CREATE TABLE indirizzo (
-	codInd int auto_increment  primary key,
-	username varchar(20) ,
-	FOREIGN KEY (username) REFERENCES utente_registrato(username)
-		on update cascade
-        on delete set null,
-    via varchar (50) not null,
-    cap int (5) not null,
-    nCivico int not null,
-    citta varchar(60) not null,
-    provincia varchar(60) not null,
-    stato varchar(40) default 'italia'
-);
+
 
 CREATE TABLE ordine(
 	codO int primary key,
@@ -65,7 +53,7 @@ create table recensione(
 	primary key(username, codP),
 	dataR date NOT NULL,
 	voto int NOT NULL, 
-	commento char(50)
+	commento text
 );
  
 
@@ -100,13 +88,6 @@ insert into utente_registrato values
 ("Antonella01","Accarino01", "Antonella", "Accarino", "antonella01@gmail.com")
 ;
 
-insert into indirizzo ( username, via, cap, nCivico, citta, provincia) value
-("Martina01","via parmenide",84069,1,"Roscigno","Salerno"),
-("Elena01","via giuliani",84012,28,"Roma","Roma"),
-("Claudia99","via tommasini",84061,7,"Castel San Lorenzo","Salerno"),
-("Pippo88","via roma",85178,16,"Aquara","Salerno");
-
-
 insert into ordine value
 (012351,true,"2020-05-10","Claudia99"),
 (012352,true,"2020-05-10","Elena01"),
@@ -121,10 +102,10 @@ INSERT INTO amministratore VALUES
 ("Damiana5", "password2","Damiana", "Buono");
 
 insert into recensione values
-("Martina01",0004,"2021-05-20",6,"il prodotto é..."),
-("Ji-min95",0005,"2020-11-23",8,"il prodotto é..."),
-("Elena01",0008,"2021-04-13",6,"il servizio é..."),
-("Tae-hyung95",0010,"2020-11-27",6,"il prodotto é..."),
-("Jae-Wook98",0003,"2021-04-21",6,"il prodotto e il servizio sono..")
+("Martina01",0004,"2021-05-20",6,"Il prodotto &egrave di buona qualit&#224 "),
+("Ji-min95",0005,"2020-11-23",8,"Il prodotto  &egrave arrivato nel tempo prestabilito "),
+("Elena01",0008,"2021-04-13",6,"Spedizione puntuale"),
+("Tae-hyung95",0010,"2020-11-27",6,"Il prodotto &egrave di buona qualit&#224 "),
+("Jae-Wook98",0003,"2021-04-21",6,"il prodotto e il servizio sono davvero buone")
 ;
 
