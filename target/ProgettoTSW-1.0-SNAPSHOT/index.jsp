@@ -42,7 +42,7 @@
             opacity: 0.7;
         }
         .person:hover {
-            border-color: #f1f1f1;
+            border-color: white;
         }
 
         .carousel-inner img {
