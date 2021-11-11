@@ -49,7 +49,6 @@
         @media (max-width: 600px) {
             .container {
                 padding: 40px 40px;
-
             }
 
         }
@@ -104,7 +103,6 @@
         if(prodotto!= null){
             String Marca= prodotto.getMarca();
             String Modello= prodotto.getModello();
-            String Tipo= prodotto.getTipo();
             Float prezzo= prodotto.getPrezzo();
             String immagine= prodotto.getImmagine();
             int quantita = prodotto.getQuantita();
@@ -128,16 +126,16 @@
                 <p>La quantit&#224 disponibile in magazzino &egrave: <%=quantita%></p>
                 <p>Prezzo: $<%=prezzo%></p>
                 <form action="Carrello" method="get">
-                    <label  class="myLabel" for="qty" >Inserite la quantit&#224 che desiderate acquistare:</label>
-                    <input id="qty" type="number" name="qty" value = "1" min="1" max="<%=quantita%>"><br>
-                    <input type="hidden" name="codP" value=<%=codP%> >
+                     <input type="hidden" name="codP" value=<%=codP%> >
                         <%
                     if(session.getAttribute("amministratore")==null){%>
+                        <label  class="myLabel" for="qty" >Inserite la quantit&#224 che desiderate acquistare:</label>
+                        <input id="qty" type="number" name="qty" value = "1" min="1" max="<%=quantita%>"><br>
                         <button class="button button2" style="width: 100%;">Aggiungi al carrello!</button>
                     <% } %>
 
                 </form>
-                        <a href="Categorie?categoria=0" class="button button2" style="width: 100%; ">Indietro</a>
+                        <a href="Catalogo?categoria=0" class="button button2" style="width: 100%; ">Indietro</a>
 
             </div>
             <div style="margin: 30px;">

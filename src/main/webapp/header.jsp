@@ -12,17 +12,15 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                    <li><a href="index.jsp">Home</a></li>
-                <li><a href="Categorie?categoria=0">Prodotti</a></li>
-
-
+                <li><a href="index.jsp">Home</a></li>
+                <li><a href="Catalogo?categoria=0">Prodotti</a></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="">Catalogo
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="Categorie?categoria=1">Fotocamere</a></li>
-                        <li><a href="Categorie?categoria=2">Obiettivi fotografici</a></li>
-                        <li><a href="Categorie?categoria=3">Accessori</a></li>
+                        <li><a href="Catalogo?categoria=1">Fotocamere</a></li>
+                        <li><a href="Catalogo?categoria=2">Obiettivi fotografici</a></li>
+                        <li><a href="Catalogo?categoria=3">Accessori</a></li>
                     </ul>
                 </li>
                 <% HttpSession Usersession= request.getSession();

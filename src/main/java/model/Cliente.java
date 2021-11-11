@@ -1,17 +1,7 @@
 package model;
 
-/*
-create table utente_registrato(
-username varchar(20) primary key,
-pass varchar(20) NOT NULL,
-nome char(15) NOT NULL,
-cognome char(15) NOT NULL,
-n_telefono char(10) NOT NULL,
-email char(30) NOT NULL,
-);
- */
 
-import java.util.GregorianCalendar;
+
 import java.util.List;
 
 public class Cliente {
@@ -35,13 +25,6 @@ public class Cliente {
 
     }
 
-    public List<Ordine> getOrdine() {
-        return ordine;
-    }
-
-    public void setOrdine(List<Ordine> ordine) {
-        this.ordine = ordine;
-    }
 
     public String getUsername() {
         return username;

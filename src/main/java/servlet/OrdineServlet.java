@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
+import java.util.Date;
 import java.util.Map;
 
 //<!-- name, email, adr, city, prov, cap, card -->
@@ -31,13 +31,7 @@ public class OrdineServlet extends HttpServlet {
         if(carrello != null && cliente!= null){
             String name= request.getParameter("name");
             String email= request.getParameter("email");
-            String address = request.getParameter("adr");
-            String citta = request.getParameter("city");
-            String provincia = request.getParameter("prov");
-            String cap= request.getParameter("cap");
             String carta= request.getParameter("card");
-            String indirizzo = address + " " +citta + " "+ provincia + " "+ cap;
-            System.out.println( name+ email + indirizzo + carta);
             if(name != null && email != null && carta != null){
                 try {
                     ArrayList<Ordine> ordini = ordineDAO.doRetrieveAll(0, 100);
@@ -46,13 +40,12 @@ public class OrdineServlet extends HttpServlet {
                     int lastC= o.getCodO();
                     int codO= lastC+1;
                     boolean stato= true;
-                    GregorianCalendar data = new GregorianCalendar();
+                    Date data = new Date();
                     Ordine ordine = new Ordine();
                     ordine.setUsername(cliente.getUsername());
                     ordine.setCodO(codO);
                     ordine.setStato(stato);
                     ordine.setDataO(data);
-                    System.out.println(data.toString());
                     ordine.setCarrello(carrello);
                     try {
                         if(ordineDAO.createOrdine(ordine)){

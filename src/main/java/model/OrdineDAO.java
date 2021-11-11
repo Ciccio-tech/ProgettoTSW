@@ -18,7 +18,7 @@ public class OrdineDAO {
                 Ordine ordine= new Ordine();
                 ordine.setCodO(Integer.parseInt(rs.getString(1)));
                 ordine.setStato(Boolean.parseBoolean(rs.getString(2)));
-                ordine.SetDataS(rs.getString(3));
+                ordine.setDataO(rs.getDate(3));
                 ordine.setUsername(rs.getString(4));
                 ArrOr.add(ordine);
             }
@@ -34,7 +34,7 @@ public class OrdineDAO {
             PreparedStatement ps=c.prepareStatement("INSERT INTO ordine (codO, stato, dataO, username) VALUES(?,?,?,?)");
             ps.setInt(1, ordine.getCodO());
             ps.setBoolean(2, ordine.isStato());
-            ps.setString(3, ordine.getData());
+            ps.setDate(3, new java.sql.Date(ordine.getDate().getTime()));
             ps.setString(4, ordine.getUsername());
             return ps.executeUpdate() == 1;
         } catch (SQLException e) {
@@ -53,7 +53,7 @@ public class OrdineDAO {
                 Ordine o= new Ordine();
                 o.setCodO(rs.getInt(1));
                 o.setStato(rs.getBoolean(2));
-                o.SetDataS(rs.getString(3));
+                o.setDataO(rs.getDate(3));
                 o.setUsername(rs.getString(4));
                 ordini.add(o);
             }

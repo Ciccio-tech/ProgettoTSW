@@ -36,15 +36,5 @@ public class Carrello {
        map.remove(p);
     }
 
-    public double totale(){
-        double totale=0.0;
-        for(Map.Entry<Prodotto,Integer> e: map.entrySet()){
-            totale += (e.getKey().getPrezzo()*e.getValue());
-        }
-        return totale;
-    }
-
-
-
 
 }

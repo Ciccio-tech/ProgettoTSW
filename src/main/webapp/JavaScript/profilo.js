@@ -9,7 +9,7 @@ $(document).ready(function() {
         var confermaPass=$("#conferma_password").val();
         if(oldpw!=pw && confermaPass == pw && validatePassword(pw)){
             $.post("CambioPasswordServlet", {password: pw, username: username, vecchiaPassword: oldpw, conferma_password: confermaPass})
-                .done(function(data){
+                .done(function(){
                    alert("Modifica avvenuta con successo");
                 })
                 .fail(function() {

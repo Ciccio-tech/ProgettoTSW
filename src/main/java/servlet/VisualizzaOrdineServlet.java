@@ -27,10 +27,8 @@ public class VisualizzaOrdineServlet extends HttpServlet {
                 if(ordini != null)
                     request.setAttribute("ordini", ordini);
                 else{
-                    session.setAttribute("warning", true);
+                    request.setAttribute("warning", Boolean.TRUE);
                 }
-
-
             } catch (SQLException e) {
                 e.printStackTrace();
             }

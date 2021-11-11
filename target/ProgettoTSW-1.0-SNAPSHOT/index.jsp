@@ -34,31 +34,22 @@
         .container {
             padding: 80px 120px;
         }
-        .person {
+        .prodotto {
             border: 10px solid transparent;
             margin-bottom: 25px;
             width: 80%;
             height: 80%;
             opacity: 0.7;
         }
-        .person:hover {
-            border-color: white;
+        .prodotto:hover {
+            border-color: #d0d0d0;
         }
 
         .carousel-inner img {
-            /* -webkit-filter: grayscale(90%);
-             filter: grayscale(90%);  make all photos black and white */
-            width: 100%; /* Set width to 100% */
+            width: 100%;
             margin: auto;
         }
-        .carousel-caption h3 {
-            color: #fff !important;
-        }
-        @media (max-width: 600px) {
-            .carousel-caption {
-                display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
-            }
-        }
+
         .bg-1 {
             background: #2d2d30;
             color: #bdbdbd;
@@ -75,31 +66,14 @@
             margin-top: 15px;
             color: #555;
         }
-        .btn {
-            padding: 10px 20px;
-            background-color: #333;
-            color: #f1f1f1;
-            border-radius: 0;
-            transition: .2s;
-        }
-        .btn:hover, .btn:focus {
-            border: 1px solid #333;
-            background-color: #fff;
-            color: #000;
-        }
-        .modal-header, h4, .close {
+
+        h4 {
             background-color: #333;
             color: #fff !important;
             text-align: center;
             font-size: 30px;
         }
-        .modal-header, .modal-body {
-            padding: 40px 50px;
-        }
 
-        .form-control {
-            border-radius: 0;
-        }
         textarea {
             resize: none;
         }
@@ -127,20 +101,15 @@
     <div class="carousel-inner" role="listbox">
         <div class="item active">
             <img src="images/Slider/foto.jpg" alt="FotoSlider1" width="1200" height="600">
-            <div class="carousel-caption">
-            </div>
         </div>
 
         <div class="item">
             <img src="images/Slider/foto3.jpg" alt="FotoSlider2" width="1200" height="600">
-            <div class="carousel-caption">
-            </div>
         </div>
 
         <div class="item">
             <img src="images/Slider/foto5.jpg" alt="FotoSlider3" width="1200" height="600">
-            <div class="carousel-caption">
-            </div>
+
         </div>
     </div>
 
@@ -155,18 +124,13 @@
     </a>
 </div>
 <div id="band" class="container text-center">
-<!-- Container per "Chi siamo"
 
-    <h3> Chi siamo? </h3>
-    <p>Siamo un ragazzo e una ragazza con la passione per la fotografia</p>
-    <br>
-    <div class="row">-->
 <!-- Container per le recensioni-->
         <h3> Cosa dicono di noi:</h3>
         <div class="col-sm-4">
             <p class="text-center"><strong>Elena</strong></p><br>
             <a href="#demo" data-toggle="collapse">
-                <img src="images/FotoProdotti/CanonG9.jpg" class="img-circle person" alt="Spedizione" width="255" height="255">
+                <img src="images/FotoProdotti/CanonG9.jpg" class="img-circle prodotto" alt="Spedizione" width="255" height="255">
             </a>
             <div id="demo" class="collapse">
                 <p>Spedizione Puntuale, come sempre!</p>
@@ -175,7 +139,7 @@
         <div class="col-sm-4">
             <p class="text-center"><strong>Jin-Sung</strong></p><br>
             <a href="#demo2" data-toggle="collapse">
-                <img  src="images/FotoProdotti/SigmaNikon50mm.jpg" class="img-circle person" alt="Servizio clienti" width="255" height="255">
+                <img src="images/FotoProdotti/SigmaNikon50mm.jpg" class="img-circle prodotto" alt="Servizio clienti" width="255" height="255">
             </a>
             <div id="demo2" class="collapse">
                 <p>Gentili e cordiali</p>
@@ -184,7 +148,7 @@
         <div class="col-sm-4">
             <p class="text-center"><strong>Giovanni</strong></p><br>
             <a href="#demo3" data-toggle="collapse">
-                <img src="images/FotoProdotti/Sigma100-400mmF5-6-3.jpg" class="img-circle person" alt="Prodotti" width="255" height="255">
+                <img src="images/FotoProdotti/Sigma100-400mmF5-6-3.jpg" class="img-circle prodotto" alt="Prodotti" width="255" height="255">
             </a>
             <div id="demo3" class="collapse">
                 <p>Prodotti di ottima qualità</p>

@@ -87,8 +87,8 @@
                     <fieldset>
                         <h2> Account  </h2>
                         <%
-                            Boolean warning = (Boolean) session.getAttribute("warning");
-                            if (warning != null && warning) {
+                            Boolean warning = (Boolean) request.getAttribute("warning");
+                            if (warning == null ? false : warning) {
                         %>
                         <div id="alert3" class="alert" style=""><span class="closebtn" onclick="this.parentElement.style.display='none';">×</span> <strong>Errore!</strong> Nome utente o password non corretti</div>
                         <%}

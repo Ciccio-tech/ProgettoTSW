@@ -1,11 +1,9 @@
 package servlet;
 
-import MyException.MyServletException;
 import model.Amministratore;
 import model.AmministratoreDAO;
 import model.Cliente;
 import model.ClienteDAO;
-
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,40 +23,33 @@ public class LoginServlet extends HttpServlet {
         HttpSession session= request.getSession();
         String username= request.getParameter("username");
         String password= request.getParameter("pass");
-        Cliente cliente= null;
-        Amministratore amministratore = null;
+        Cliente cliente;
+        String page = new String();
+        Amministratore amministratore;
 
-
-        if(username != null && password!= null){
-            if((amministratore = amministratoreDAO.doRetrieveByUsernamePassword(username, password)) != null){
-                session.setAttribute("username", username);
-                session.setAttribute("amministratore", amministratore);
-                response.sendRedirect("admin.jsp");
-            }else {
-               if( (cliente = clienteDAO.doRetrieveByUsernamePassword(username, password)) == null) {
-                   session.setAttribute("warning", true);
-                   response.sendRedirect("Login.jsp");
-               }
+        try {
+            if(username != null && password!= null){
+                if((amministratore = amministratoreDAO.doRetrieveByUsernamePassword(username, password)) != null){
+                    session.setAttribute("username", username);
+                    session.setAttribute("amministratore", amministratore);
+                    page="admin.jsp";
+                }else {
+                   if( (cliente = clienteDAO.doRetrieveByUsernamePassword(username, password)) != null) {
+                       session.setAttribute("username", username);
+                       session.setAttribute("pass", password);
+                       session.setAttribute("cliente", cliente);
+                       page="index.jsp";
+                   }
+                }
             }
-        }
-        else
-            try {
-                throw new MyServletException("username o password non corretti");
-            } catch (MyServletException e) {
-                e.printStackTrace();
-            }
-
-        if(cliente != null) {
-            session.setAttribute("username", username);
-            session.setAttribute("pass", password);
-            session.setAttribute("cliente", cliente);
-        }
-
-
-        assert cliente != null;
-
-        if(amministratore == null) {
-            response.sendRedirect("index.jsp");
+            if (page.length() == 0){
+                request.setAttribute("warning", Boolean.TRUE);
+                getServletContext().getRequestDispatcher(response.encodeURL("/Login.jsp")).forward(request, response);
+            } else
+                response.sendRedirect(response.encodeURL(page));
+        }catch (Exception e) {
+            response.sendRedirect("error.jsp");
+            e.printStackTrace();
         }
     }
 

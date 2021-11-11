@@ -3,7 +3,6 @@ package servlet;
 import model.Cliente;
 import model.ClienteDAO;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,7 +22,6 @@ public class CambioPasswordServlet extends HttpServlet {
             String nuovaP;  //nuova password
             String ConfermaNP; //conferma nuova password
             Cliente cliente;
-            RequestDispatcher requestDispatcher = null;
             if(username != null) {
                 vecchiaPassword= request.getParameter("vecchiaPassword");
                 nuovaP=  request.getParameter("password");

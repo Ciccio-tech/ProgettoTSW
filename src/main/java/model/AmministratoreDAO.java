@@ -1,11 +1,5 @@
 package model;
 
-/*
-username varchar(20) primary key,
-pass varchar(20) NOT NULL,
-nome char(15) NOT NULL,
-cognome char(15) NOT NULL
- */
 
 import java.sql.*;
 import java.util.ArrayList;

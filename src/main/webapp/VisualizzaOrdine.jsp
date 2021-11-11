@@ -89,20 +89,12 @@
     <div class="field2">
         <div class="row ">
             <div class="card x">
-                <div>
 
-                </div>
                 <div class="cart-list">
                     <h1 id = "title">Ordini effettuati</h1>
                     <%
                         ArrayList<Ordine> ordini = (ArrayList<Ordine>) request.getAttribute("ordini");
-
-                        Boolean warning = (Boolean) session.getAttribute("warning");
-                        if (warning != null && warning) { %>
-
-                    <div id="alert3" class="alert" style=""><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> <strong>Errore!</strong>Non hai ancora effettuato ordini..</div>
-                    <%  }%>
-
+                    %>
                     <table class="table">
                         <thead class="thead-primary">
                         <tr class="text-center">
@@ -113,18 +105,15 @@
                         </tr>
                         </thead>
                         <tbody>
-
                         <%
-                            if (ordini == null) {
-                        %>
-                        <tr>
-                            <td colspan = "8" style ="text-align: center">Nessun ordine risulta essere stato effettuato</td>
-                        </tr>
+                            if(ordini==null ? true : ordini.size() == 0){
+                            %>
+                            <tr class="text-center">
+                                <td colspan="4" style ="text-align: center">Nessun ordine risulta essere stato effettuato</td>
+                            </tr>
                         <%
-                        } else {
-                        %>
-                        <%
-                            for(Ordine o: ordini){
+                            } else{
+                                for(Ordine o: ordini){
                         %>
                             <tr class="text-center">
                                 <td></td>
@@ -134,7 +123,7 @@
                                 <%}else{%>
                                     <td>In Attesa..</td>
                                 <%}%>
-                                <td><%=o.getData()%></td>
+                                <td><%=o.getFormattedDate()%></td>
                             </tr>
                         <%
                                 }

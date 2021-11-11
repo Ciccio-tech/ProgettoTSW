@@ -12,9 +12,9 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-@WebServlet("/Categorie")
+@WebServlet("/Catalogo")
 
-public class CategoriaServlet extends HttpServlet {
+public class CatalogoServlet extends HttpServlet {
     public ProdottoDAO prodottoDAO;
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 

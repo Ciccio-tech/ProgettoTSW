@@ -1,18 +1,5 @@
 package model;
 
-/*
-
-CREATE TABLE prodotto(
-codP INT PRIMARY KEY,
-tipo char(30) NOT NULL,
-marca char(15) NOT NULL,
-modello char(200) NOT NULL,
-prezzo float NOT NULL,
-quantità int Not null
-);
- */
-
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Objects;

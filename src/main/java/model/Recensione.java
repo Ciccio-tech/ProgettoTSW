@@ -1,22 +1,5 @@
 package model;
 
-/*
-create table recensione(
-username varchar(20) not null,
-codP int not null,
-FOREIGN KEY (username) REFERENCES utente_registrato(username)
-on delete cascade
-on update cascade,
-FOREIGN KEY (codP) REFERENCES prodotto(codP)
-on delete cascade
-on update cascade,
-primary key(username, codP),
-dataR date NOT NULL,
-voto int NOT NULL,
-commento char(50)
-);
- */
-
 import java.util.GregorianCalendar;
 
 public class Recensione{

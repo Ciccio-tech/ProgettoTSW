@@ -103,8 +103,6 @@
     <h2 style="text-align:center">Prodotti </h2>
     <div class="row">
 
-
-
             <%
                 if(prodotti!= null)
                 for (Prodotto e : prodotti) { %>
@@ -112,7 +110,7 @@
             <div class="card">
 
                 <img src=<%=e.getImmagine()%>  alt="Immagine_Prodotto" style="width:100%">
-                <h5><%= e.getMarca()+ e.getModello()%></h5>
+                <h5><%= e.getMarca()+" "+e.getModello()%></h5>
                 <p class="price">$<%=e.getPrezzo()%>
                 </p>
                 <p>  <%

@@ -28,12 +28,6 @@ public class ClienteDAO {
         }
     }
 
-    protected static void setCliente (ResultSet rs, Cliente cliente) throws SQLException {
-        cliente.setNome(rs.getString("nome"));
-        cliente.setCognome(rs.getString("cognome"));
-        cliente.setUsername(rs.getString("username"));
-        cliente.setPassword(rs.getString("pass"));
-    }
 
   public Cliente doRetrieveByUsernamePassword(String username, String password){
         try (Connection con = ConPool.getConnection()) {

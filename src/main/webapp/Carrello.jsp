@@ -208,7 +208,7 @@
                 <td class="product-name"><%=modello%></td>
                 <td><%=prezzo%></td>
                 <td><%=iva%>&#37;</td>
-                <td class="quantity"><div class="input-group mb-3"><input type="number" name="quantity" class="quantity form-control input-number" value="<%=q%>" min="1" max="100"></div></td> <!-- in value dobbiamo portare la quantita dell'ordine -->
+                <td class="quantity"><div class="input-group mb-3"><input type="number" name="quantity" class="quantity form-control input-number" value="<%=q%>" min="1" max="100" readonly="readonly"></div></td> <!-- in value dobbiamo portare la quantita dell'ordine -->
                 <td class="total"><%=prezzo_t%></td>
             </tr> <%
                     }
@@ -249,13 +249,13 @@
                         <label for="adr"><i class="fa fa-address-card-o"></i> Indirizzo</label>
                         <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
                         <label for="city"><i class="fa fa-institution"></i> Città </label>
-                        <input type="text" id="city" name="city" placeholder="New York">
+                        <input type="text" id="city" name="city" placeholder="Castel San Lorenzo">
                         <label for="prov">Provincia</label>
                         <input type="text" id="prov" name="prov" placeholder="SA">
                         <label for="cap">Cap</label>
                         <input type="text" id="cap" name="cap" placeholder="84049">
                         <label for="state">Nazione</label>
-                        <input type="text" id="state" name="state" placeholder="NY">
+                        <input type="text" id="state" name="state" placeholder="ITA">
 
                         </div>
                     </div>

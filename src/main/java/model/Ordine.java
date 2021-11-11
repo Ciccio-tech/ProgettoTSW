@@ -1,24 +1,14 @@
 package model;
 
-/*
-CREATE TABLE ordine(
-codO int primary key,
-stato boolean NOT NULL,
-dataO date NOT NULL,
-username varchar(20)  not null,
-foreign key(username) references utente_registrato(username)
-on delete cascade
-on update cascade
-);
- */
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Ordine {
     private int codO;
     private boolean stato;
-    private GregorianCalendar dataO;
+    private Date dataO;
     private String username;
     private Carrello carrello;
 
@@ -41,19 +31,8 @@ public class Ordine {
         this.stato = stato;
     }
 
-    public GregorianCalendar getDataO() {
-        return dataO;
-    }
-
-    public void setDataO(GregorianCalendar dataO) {
+    public void setDataO(Date dataO) {
         this.dataO = dataO;
-    }
-
-    public void SetDataS(String data){
-        GregorianCalendar d= new GregorianCalendar();
-        String[] a = data.split("-");
-        d.set(Integer.parseInt(a[0]), Integer.parseInt(a[1]), Integer.parseInt(a[2]));
-        this.dataO=d;
     }
 
     public String getUsername() {
@@ -72,13 +51,13 @@ public class Ordine {
         this.carrello = carrello;
     }
 
-    public String getData(){
-        String data;
-        int mese= this.dataO.get(Calendar.MONTH);
-        int giorno= this.dataO.get(Calendar.DAY_OF_MONTH);
-        int anno=this.dataO.get(Calendar.YEAR);
-        data= anno + "-" + mese+"-"+giorno;
-        return data;
+    public String getFormattedDate(){
+        SimpleDateFormat s = new SimpleDateFormat("dd.MM.yyyy");
+        return s.format(dataO);
+    }
+
+    public Date getDate () {
+        return dataO;
     }
 
 }
